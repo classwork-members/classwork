@@ -3,7 +3,6 @@ package com.soft.classwork.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
 /**
  * Created by Yuukiiii
  * on 2018/3/15 14:34
@@ -16,6 +15,4 @@ public class FrontController {
     public String helloHtml(){
         return "hello";
     }
-
-
 }
