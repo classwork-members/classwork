@@ -4,6 +4,7 @@ import java.util.List;
 
 public class User  {
 
+
   private String userid;
   private String password;
   private String username;
@@ -56,6 +57,7 @@ public class User  {
 //
 //  @JsonIgnore
 //  @Override
+
   public String getPassword() {
     return this.password;
   }
