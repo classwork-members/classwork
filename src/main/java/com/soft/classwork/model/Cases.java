@@ -1,7 +1,7 @@
 package com.soft.classwork.model;
 
 
-public class Case {
+public class Cases {
 
   private String caseid;
   private String casename;

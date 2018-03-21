@@ -1,5 +1,6 @@
 package com.soft.classwork.Controller;
 
+import com.soft.classwork.model.User;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +13,5 @@ import javax.validation.Valid;
 
 @RestController
 public class BackController {
-    @PostMapping(value = "/login")
-    public String login(@Valid TUser tUser, BindingResult result) {
-        if(!result.hasErrors())
-            return "success: "+tUser.getUsername()+" "+tUser.getPassword();
-        else
-            return "failed: "+tUser.getUsername()+" "+tUser.getPassword();
-    }
+
 }
