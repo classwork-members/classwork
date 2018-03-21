@@ -1,6 +1,6 @@
 package com.soft.classwork.Controller;
 
-import com.soft.classwork.Service.CaseService;
+import com.soft.classwork.service.CaseService;
 import com.soft.classwork.model.Result;
 import com.soft.classwork.utils.ResultUtil;
 import net.sf.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.soft.classwork.Service;
+package com.soft.classwork.service;
 
 import com.soft.classwork.model.Cases;
 import com.soft.classwork.repository.CaseRepository;
