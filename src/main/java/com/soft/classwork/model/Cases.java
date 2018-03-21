@@ -3,6 +3,7 @@ package com.soft.classwork.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 @Entity
 public class Cases {
@@ -12,8 +13,16 @@ public class Cases {
   private Integer caseid;
 
   private String casename;
-  private String illnessid;
+  private Integer illnessid;
+  private Timestamp casedate;
 
+  public Timestamp getCasedate() {
+    return casedate;
+  }
+
+  public void setCasedate(Timestamp casedate) {
+    this.casedate = casedate;
+  }
 
   public Integer getCaseid() {
     return caseid;
@@ -33,11 +42,11 @@ public class Cases {
   }
 
 
-  public String getIllnessid() {
+  public Integer getIllnessid() {
     return illnessid;
   }
 
-  public void setIllnessid(String illnessid) {
+  public void setIllnessid(Integer illnessid) {
     this.illnessid = illnessid;
   }
 
