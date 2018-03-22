@@ -27,3 +27,4 @@ mybatis:
 logging:
   level:
     org.springfromework.web: info
+
