@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Glance Design Dashboard an Admin Panel Category Flat Bootstrap Responsive Website Template | General Elements :: w3layouts</title>
+    <title>Pet Hospital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -60,7 +60,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="sidebar-menu">
-                        <li class="header">考卷详情</li>
+                        <li class="header">生成考试</li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-table"></i> <span>用户管理</span>
@@ -102,7 +102,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <li><a href="manageExam.html"><i class="fa fa-angle-right"></i>考试管理</a></li>
                             </ul>
                         </li>
-                        <li><a href="managePaper.html"><i class="fa fa-angle-right text-aqua"></i> <span>返回上一级</span></a></li>
+                        <li><a href="manageExam.html"><i class="fa fa-angle-right text-aqua"></i> <span>返回上一级</span></a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -129,7 +129,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </li>
                             <li><a href="#">
-                                <div class="user_img"><img src="images/1.jpg" alt=""></div>
+                                <div class="user_img"><img src="../../java/com/soft/classwork/view/images/1.jpg" alt=""></div>
                                 <div class="notification_desc">
                                     <p>Lorem ipsum dolor amet</p>
                                     <p><span>1 hour ago</span></p>
@@ -137,7 +137,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <div class="clearfix"></div>
                             </a></li>
                             <li class="odd"><a href="#">
-                                <div class="user_img"><img src="images/4.jpg" alt=""></div>
+                                <div class="user_img"><img src="../../java/com/soft/classwork/view/images/4.jpg" alt=""></div>
                                 <div class="notification_desc">
                                     <p>Lorem ipsum dolor amet </p>
                                     <p><span>1 hour ago</span></p>
@@ -145,7 +145,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <div class="clearfix"></div>
                             </a></li>
                             <li><a href="#">
-                                <div class="user_img"><img src="images/3.jpg" alt=""></div>
+                                <div class="user_img"><img src="../../java/com/soft/classwork/view/images/3.jpg" alt=""></div>
                                 <div class="notification_desc">
                                     <p>Lorem ipsum dolor amet </p>
                                     <p><span>1 hour ago</span></p>
@@ -168,7 +168,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </li>
                             <li><a href="#">
-                                <div class="user_img"><img src="images/4.jpg" alt=""></div>
+                                <div class="user_img"><img src="../../java/com/soft/classwork/view/images/4.jpg" alt=""></div>
                                 <div class="notification_desc">
                                     <p>Lorem ipsum dolor amet</p>
                                     <p><span>1 hour ago</span></p>
@@ -176,7 +176,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <div class="clearfix"></div>
                             </a></li>
                             <li class="odd"><a href="#">
-                                <div class="user_img"><img src="images/1.jpg" alt=""></div>
+                                <div class="user_img"><img src="../../java/com/soft/classwork/view/images/1.jpg" alt=""></div>
                                 <div class="notification_desc">
                                     <p>Lorem ipsum dolor amet </p>
                                     <p><span>1 hour ago</span></p>
@@ -184,7 +184,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <div class="clearfix"></div>
                             </a></li>
                             <li><a href="#">
-                                <div class="user_img"><img src="images/3.jpg" alt=""></div>
+                                <div class="user_img"><img src="../../java/com/soft/classwork/view/images/3.jpg" alt=""></div>
                                 <div class="notification_desc">
                                     <p>Lorem ipsum dolor amet </p>
                                     <p><span>1 hour ago</span></p>
@@ -256,13 +256,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"> </div>
         </div>
         <div class="header-right">
-
             <div class="profile_details">
                 <ul>
                     <li class="dropdown profile_details_drop">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             <div class="profile_img">
-                                <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
+                                <span class="prfil-img"><img src="../../java/com/soft/classwork/view/images/2.jpg" alt=""> </span>
                                 <div class="user-name">
                                     <p>Admin Name</p>
                                     <span>Administrator</span>
@@ -288,79 +287,131 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- //header-ends -->
     <!-- main content start-->
     <div id="page-wrapper">
-        <div class="main-page general">
+        <div class="main-page">
+            <div class="form-grids row widget-shadow" data-example-id="basic-forms">
+                <div class="form-title">
+                    <h4>生成考试 :</h4>
+                </div>
+                <div class="form-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">考试名</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" >
+                        </div>
+                        <div class="form-group">
+                            <label for="starttime">开始时间</label>
+                            <input type="text" class="form-control" id="starttime" >
+                        </div>
+                        <div class="form-group">
+                            <label for="endtime">结束时间</label>
+                            <input type="text" class="form-control" id="endtime" >
+                        </div>
+                        <label for="quan">可以参与考试的用户权限级别</label>
+                        <div class="checkbox" id="quan">
+                            <label> <input type="checkbox"> 10 </label>
+                            <label> <input type="checkbox"> 20 </label>
+                        </div>
+                        <label for="self">选择考卷</label>
+                        <div class="tables" id="self">
+                            <div class="bs-example widget-shadow" data-example-id="hoverable-table">
+                                <div class="row">
+                                    <div class="col-md-3 grid_box1">
+                                        <div class="search-box">
+                                            <form class="input">
+                                                <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32">
+                                                <label class="input__label" for="input-32">
+                                                    <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                                        <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                                    </svg>
+                                                </label>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>考卷名</th>
+                                        <th>总分值</th>
+                                        <th>考试时长</th>
+                                        <th>题目范围</th>
+                                        <th>具体题目</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="active">
+                                        <th scope="row">1</th>
+                                        <td>sjllll</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        <td>@mdo</td>
+                                        <td>@mdo</td>
+                                        <td><a href="#">选择该考卷</a> </td>
+                                    </tr>
+                                    <tr class="success">
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                        <td>@mdo</td>
+                                        <td>@mdo</td>
+                                        <td><a href="#">选择该考卷</a> </td>
+                                    </tr>
+                                    <tr tr class="info">
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                        <td>@mdo</td>
+                                        <td>@mdo</td>
+                                        <td><a href="#">选择该考卷</a> </td>
+                                    </tr>
+                                    <tr tr class="warning">
+                                        <th scope="row">4</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                        <td>@mdo</td>
+                                        <td>@mdo</td>
+                                        <td><a href="#">选择该考卷</a> </td>
+                                    </tr>
+                                    <tr tr class="danger">
+                                        <th scope="row">5</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                        <td>@mdo</td>
+                                        <td>@mdo</td>
+                                        <td><a href="#">选择该考卷</a> </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <ul class="pagination pagination-lg">
+                                        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="panel-group tool-tips widget-shadow" id="accordion" role="tablist" aria-multiselectable="true">
-                <h4 class="title2"> 题目列表 :</h4>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                选择题
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                            <div class="panel-body">
-                                答案：A
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            Eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim  Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                            <div class="panel-body">
-                                答案：A
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                            <div class="panel-body">
-                                答案：C
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            Eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim  Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                            <div class="panel-body">
-                                答案：B
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                填空题
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body">
-                            Eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim  Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingThree">
-                        <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                简答题
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                        <div class="panel-body">
-                            3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.  apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                        </div>
-                    </div>
+                        <button type="submit" class="btn btn-default">提交</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <!--footer-->
     <div class="footer">
-        <p>&copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>		</div>
+        <p>&copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+    </div>
     <!--//footer-->
 </div>
 
@@ -400,5 +451,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.js"> </script>
+
 </body>
 </html>
