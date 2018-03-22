@@ -1,17 +1,23 @@
 package com.soft.classwork.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Role {
 
-  private String roleid;
+  @Id
+  @GeneratedValue
+  private Integer roleid;
   private String rolename;
 
 
-  public String getRoleid() {
+  public Integer getRoleid() {
     return roleid;
   }
 
-  public void setRoleid(String roleid) {
+  public void setRoleid(Integer roleid) {
     this.roleid = roleid;
   }
 

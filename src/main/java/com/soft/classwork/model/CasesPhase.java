@@ -1,28 +1,34 @@
 package com.soft.classwork.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-public class CasePhase {
+@Entity
+public class CasesPhase {
 
-  private String casephaseid;
-  private String caseid;
+  @Id
+  @GeneratedValue
+  private Integer casephaseid;
+  private Integer caseid;
   private String casephasename;
   private String dataid;
 
 
-  public String getCasephaseid() {
+  public Integer getCasephaseid() {
     return casephaseid;
   }
 
-  public void setCasephaseid(String casephaseid) {
+  public void setCasephaseid(Integer casephaseid) {
     this.casephaseid = casephaseid;
   }
 
 
-  public String getCaseid() {
+  public Integer getCaseid() {
     return caseid;
   }
 
-  public void setCaseid(String caseid) {
+  public void setCaseid(Integer caseid) {
     this.caseid = caseid;
   }
 

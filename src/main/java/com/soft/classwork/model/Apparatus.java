@@ -1,36 +1,41 @@
 package com.soft.classwork.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Apparatus {
+    @Id
+    @GeneratedValue
+    private Integer appaid;
+    private String appaname;
+    private String appadesc;
 
-  private String appaid;
-  private String appaname;
-  private String appadesc;
 
-
-  public String getAppaid() {
+    public Integer getAppaid() {
     return appaid;
   }
 
-  public void setAppaid(String appaid) {
+    public void setAppaid(Integer appaid) {
     this.appaid = appaid;
   }
 
 
-  public String getAppaname() {
+    public String getAppaname() {
     return appaname;
   }
 
-  public void setAppaname(String appaname) {
+    public void setAppaname(String appaname) {
     this.appaname = appaname;
   }
 
 
-  public String getAppadesc() {
+    public String getAppadesc() {
     return appadesc;
   }
 
-  public void setAppadesc(String appadesc) {
+    public void setAppadesc(String appadesc) {
     this.appadesc = appadesc;
   }
 
