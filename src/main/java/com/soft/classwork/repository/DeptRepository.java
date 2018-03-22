@@ -9,10 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 
-<<<<<<< HEAD
 public interface DeptRepository extends JpaRepository<Department,Integer>{
-=======
-public interface DeptRepository extends JpaRepository<Department,String>{
->>>>>>> just try
-
 }
