@@ -1,17 +1,14 @@
 package com.soft.classwork.Controller;
 
-import com.soft.classwork.model.User;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Yuukiiii
- * on 2018/3/15 14:59
+ * on 2018/3/21 16:23
  */
 
 @RestController
 public class BackController {
+
 
 }

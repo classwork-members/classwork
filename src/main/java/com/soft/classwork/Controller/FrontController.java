@@ -3,7 +3,6 @@ package com.soft.classwork.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 
 /**
  * Created by Yuukiiii
@@ -17,4 +16,6 @@ public class FrontController {
     public String helloHtml(){
         return "hello";
     }
+
+
 }

@@ -13,7 +13,6 @@ import java.util.List;
  * on 2018/3/21 15:07
  */
 
-@Component
 @Service
 public class DeptService {
 
@@ -25,7 +24,7 @@ public class DeptService {
         return deptRepository.save(department);
     }
 
-    public void deleteDept(String deptid){
+    public void deleteDept(Integer deptid){
         deptRepository.deleteById(deptid);
     }
 
@@ -33,11 +32,11 @@ public class DeptService {
         return deptRepository.findAll();
     }
 
-    public Department findOenDept(String deptid){
+    public Department findOenDept(Integer deptid){
         return deptRepository.getOne(deptid);
     }
 
-    public Department updateDept(String deptid, String deptname, String deptdesc){
+    public Department updateDept(Integer deptid, String deptname, String deptdesc){
         Department department = new Department();
         department.setDeptdesc(deptdesc);
         department.setDeptid(deptid);

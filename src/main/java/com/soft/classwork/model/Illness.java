@@ -1,18 +1,24 @@
 package com.soft.classwork.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Illness {
 
-  private String illnessid;
+  @Id
+  @GeneratedValue
+  private Integer illnessid;
   private String illnessname;
   private String parentid;
 
 
-  public String getIllnessid() {
+  public Integer getIllnessid() {
     return illnessid;
   }
 
-  public void setIllnessid(String illnessid) {
+  public void setIllnessid(Integer illnessid) {
     this.illnessid = illnessid;
   }
 

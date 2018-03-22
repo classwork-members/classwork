@@ -9,7 +9,7 @@ public class Department {
 
   @Id
   @GeneratedValue
-  private String deptid;
+  private Integer deptid;
 
   private String deptname;
 
@@ -18,11 +18,11 @@ public class Department {
   public Department() {
   }
 
-  public String getDeptid() {
+  public Integer getDeptid() {
     return deptid;
   }
 
-  public void setDeptid(String deptid) {
+  public void setDeptid(Integer deptid) {
     this.deptid = deptid;
   }
 
