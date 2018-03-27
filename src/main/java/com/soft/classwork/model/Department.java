@@ -1,18 +1,28 @@
 package com.soft.classwork.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Department {
 
-  private String deptid;
+  @Id
+  @GeneratedValue
+  private Integer deptid;
+
   private String deptname;
+
   private String deptdesc;
 
+  public Department() {
+  }
 
-  public String getDeptid() {
+  public Integer getDeptid() {
     return deptid;
   }
 
-  public void setDeptid(String deptid) {
+  public void setDeptid(Integer deptid) {
     this.deptid = deptid;
   }
 

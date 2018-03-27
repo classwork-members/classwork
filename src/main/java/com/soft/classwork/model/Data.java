@@ -1,18 +1,24 @@
 package com.soft.classwork.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Data {
 
-  private String dataid;
+  @Id
+  @GeneratedValue
+  private Integer dataid;
   private long datatype;
   private String content;
 
 
-  public String getDataid() {
+  public Integer getDataid() {
     return dataid;
   }
 
-  public void setDataid(String dataid) {
+  public void setDataid(Integer dataid) {
     this.dataid = dataid;
   }
 
