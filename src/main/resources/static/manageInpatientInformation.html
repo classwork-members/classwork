@@ -42,6 +42,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <link href="css/custom.css" rel="stylesheet">
     <!--//Metis Menu -->
 
+
+
 </head>
 <body class="cbp-spmenu-push">
 <div class="main-content">
@@ -364,17 +366,21 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="exampleModalLabel">新建用户</h4>
+                                            <h4 class="modal-title" id="exampleModalLabel">新建住院信息</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form action="/example/html5/demo_form.asp" method="get">
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">用户名</label>
+                                                    <label for="recipient-name" class="control-label">病种名</label>
                                                     <input type="text" class="form-control" id="recipient-name">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="control-label">密码</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                    <label for="recipient-name" class="control-label">开始时间</label>
+                                                    <input type="datetime-local" class="form-control" name="user_date" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">结束时间</label>
+                                                    <input type="datetime-local" class="form-control" name="user_date" />
                                                 </div>
                                             </form>
                                         </div>
@@ -410,14 +416,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="gridSystemModalLabel">修改用户</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form action="/example/html5/demo_form.asp" method="get">
                                                 <div class="form-group">
-                                                    <label for="recipient-name2" class="control-label">用户名</label>
-                                                    <input type="text" class="form-control" value="123" id="recipient-name2">
+                                                    <label for="recipient-name" class="control-label">病种名</label>
+                                                    <input type="text" class="form-control" value="" id="recipient-name2">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text2" class="control-label">密码</label>
-                                                    <textarea class="form-control" id="message-text2">123</textarea>
+                                                    <label for="recipient-name" class="control-label">开始时间</label>
+                                                    <input type="datetime-local" class="form-control" name="user_date" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">结束时间</label>
+                                                    <input type="datetime-local" class="form-control" name="user_date" />
                                                 </div>
                                             </form>
                                         </div>
