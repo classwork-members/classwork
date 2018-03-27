@@ -1,5 +1,13 @@
 package com.soft.classwork.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,18 +18,35 @@ import java.util.Collection;
 import java.util.List;
 
 public class User implements UserDetails {
-  private String userid;
+  private int userid;
   private String password;
   private String username;
+  private String email;
   private long isAuthority;
+  private String role;
   private List<Role> roles;
 
+  public String getRole() {
+    return role;
+  }
 
-  public String getUserid() {
+  public void setRole(String role) {
+    this.role = role;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public int getUserid() {
     return userid;
   }
 
-  public void setUserid(String userid) {
+  public void setUserid(int userid) {
     this.userid = userid;
   }
 
@@ -66,7 +91,7 @@ public class User implements UserDetails {
     return this.password;
   }
 
-//  @Override
+  @Override
   public String getUsername() {
     return this.username;
   }
@@ -93,4 +118,5 @@ public class User implements UserDetails {
   public boolean isEnabled() {
     return true;
   }
+
 }
