@@ -1,0 +1,111 @@
+2018-03-28 10:38:23,145 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 26772 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 10:38:23,224 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 10:38:23,360 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 10:39:12,497 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 63.085 seconds (JVM running for 88.573)
+2018-03-28 10:39:34,865 DEBUG (UserService.java:25)- name is ______________ljs------------------
+2018-03-28 11:17:52,251 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-28 11:19:33,175 DEBUG (UserService.java:25)- name is ______________admin------------------
+2018-03-28 11:28:00,986 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-28 11:36:49,305 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 5236 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 11:36:49,310 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 11:36:49,312 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 11:37:05,608 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 18.022 seconds (JVM running for 23.308)
+
+
+2018-03-28 11:57:08,298 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 28892 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 11:57:08,303 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 11:57:08,312 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 11:57:22,305 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 15.52 seconds (JVM running for 35.36)
+2018-03-28 12:21:57,716 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 21988 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 12:21:57,720 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 12:21:57,730 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 12:22:13,687 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 17.154 seconds (JVM running for 24.613)
+2018-03-28 12:27:36,170 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 8776 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 12:27:36,176 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 12:27:36,178 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 12:27:50,443 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 15.511 seconds (JVM running for 22.685)
+2018-03-28 12:29:40,703 DEBUG (UserService.java:25)- name is ______________admin@163.com------------------
+2018-03-28 12:58:52,727 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 27004 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 12:58:52,731 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 12:58:52,732 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 12:59:31,712 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 42.752 seconds (JVM running for 57.433)
+2018-03-28 13:05:04,964 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 8084 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 13:05:04,981 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 13:05:04,984 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 13:05:22,845 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 20.655 seconds (JVM running for 28.204)
+2018-03-28 13:06:21,324 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 15020 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 13:06:21,350 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 13:06:21,353 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 13:06:31,218 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 11.053 seconds (JVM running for 13.264)
+2018-03-28 13:07:03,962 DEBUG (UserService.java:25)- name is ______________admin@163.com------------------
+2018-03-28 15:31:45,304 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 29472 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 15:31:45,346 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 15:31:45,444 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 15:32:05,233 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 22.271 seconds (JVM running for 28.636)
+2018-03-28 15:32:56,491 DEBUG (UserService.java:25)- name is ______________admin@163.com------------------
+2018-03-28 15:32:56,889 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-28 15:34:28,391 DEBUG (UserService.java:25)- name is ______________admin@163.com------------------
+2018-03-28 15:36:42,563 DEBUG (UserService.java:25)- name is ______________admin@163.com------------------
+2018-03-28 15:37:57,032 DEBUG (UserService.java:25)- name is ______________sdf@dfe.com------------------
+2018-03-28 15:42:38,285 DEBUG (UserService.java:25)- name is ______________admin@163.com------------------
+2018-03-28 15:42:38,459 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-28 15:43:13,794 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-28 15:44:52,461 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-28 15:44:54,594 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-28 15:45:49,885 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 10732 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 15:45:49,890 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 15:45:49,912 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 15:46:09,646 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 21.729 seconds (JVM running for 28.285)
+2018-03-28 15:46:50,782 DEBUG (UserService.java:25)- name is ______________admin@163.com------------------
+2018-03-28 15:46:51,103 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-28 16:10:08,147 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 23500 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 16:10:08,152 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 16:10:08,152 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 16:10:30,901 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 23.521 seconds (JVM running for 25.115)
+2018-03-28 16:12:39,904 DEBUG (UserManageController.java:23)- __________________username: test1___________password:123_______email:null______gender:null__________
+2018-03-28 16:12:39,929 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-28 16:13:49,861 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 2212 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 16:13:49,866 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 16:13:49,868 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 16:14:08,577 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 19.41 seconds (JVM running for 20.777)
+2018-03-28 16:14:56,016 DEBUG (UserManageController.java:23)- __________________username: test2333___________password:123456_______email:test@test.com______gender:null__________
+2018-03-28 16:14:56,018 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-28 16:19:08,406 DEBUG (UserManageController.java:23)- __________________username: test2333___________password:213_______email:test@test.com______gender:null__________
+2018-03-28 16:19:08,407 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-28 16:23:59,248 DEBUG (UserManageController.java:23)- __________________username: test2___________password:123_______email:test2@test.com______gender:null__________
+2018-03-28 16:23:59,248 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-28 17:44:14,721 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 16500 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 17:44:14,724 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 17:44:14,726 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 17:44:37,844 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 23.621 seconds (JVM running for 25.779)
+2018-03-28 17:45:37,762 DEBUG (UserManageController.java:23)- __________________username: test2___________password:123_______email:test2@test.com______gender:null__________
+2018-03-28 17:45:37,804 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-28 17:49:46,700 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 13648 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 17:49:46,705 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 17:49:46,707 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 17:50:08,602 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 22.376 seconds (JVM running for 24.588)
+2018-03-28 17:51:54,521 DEBUG (UserManageController.java:23)- __________________username: test2___________password:123_______email:test2@test.com______gender:null__________
+2018-03-28 17:51:55,115 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-28 18:09:03,839 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 27888 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 18:09:03,844 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 18:09:03,846 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 18:09:21,646 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 18.445 seconds (JVM running for 24.123)
+2018-03-28 18:13:54,854 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 5588 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 18:13:54,857 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 18:13:54,859 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 18:14:26,223 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 36.867 seconds (JVM running for 46.628)
+2018-03-28 18:17:07,537 DEBUG (UserManageController.java:23)- __________________username: test3___________password:123_______email:test3@test.com______gender:null__________
+2018-03-28 18:19:16,312 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 23324 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 18:19:16,330 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 18:19:16,332 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 18:19:38,058 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 23.873 seconds (JVM running for 31.177)
+2018-03-28 18:21:28,180 DEBUG (UserManageController.java:23)- __________________username: test3___________password:123_______email:test3@test.com______gender:null__________
+2018-03-28 18:21:37,480 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-28 21:54:42,759 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 26460 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 21:54:42,779 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 21:54:42,781 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-28 21:55:05,099 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 27.965 seconds (JVM running for 41.639)
+2018-03-28 21:57:39,869 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-28 23:25:48,319 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 26540 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-28 23:25:48,324 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-28 23:25:48,361 INFO (SpringApplication.java:656)- The following profiles are active: dev

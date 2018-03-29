@@ -27,7 +27,7 @@
     <root level="info">
         <appender-ref ref="STDOUT" />
     </root>
-    <logger name="org.sang" level="DEBUG">
+    <logger name="com.soft.classwork" level="DEBUG">
         <appender-ref ref="baselog" />
     </logger>
 </configuration>

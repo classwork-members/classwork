@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soft.classwork.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.soft.classwork.model.User">
+        <id column="userid" property="userid"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+    </resultMap>
+    <resultMap id="lazyLoadRoles" type="com.soft.classwork.model.User" extends="BaseResultMap">
+        <collection property="roles" ofType="com.soft.classwork.model.Role" select="com.soft.classwork.mapper.UserMapper.getRolesByHrId"
+                    column="userid"></collection>
+    </resultMap>
+    <select id="loadUserByUsername" resultMap="lazyLoadRoles">
+        select * from user WHERE username=#{username};
+    </select>
+    <select id="getRolesByHrId" resultType="com.soft.classwork.model.Role">
+        SELECT r.* FROM user_roles h,role r where h.roles_id=r.roleid AND h.user_id=#{userid}
+    </select>
+    <select id="getUserByName" resultType="com.soft.classwork.model.User">
+        SELECT * FROM user WHERE username=#{username}
+    </select>
+    <insert id="register">
+        INSERT INTO user set username=#{username},password=#{password},email=#{email}
+    </insert>
+    <insert id="setRole">
+        INSERT INTO user_roles SET user_id=#{id},roles_id=2
+    </insert>
+    <select id="getUserList" resultMap="lazyLoadRoles">
+        select * from user
+    </select>
+    <select id="getRoleByRoleName" resultType="com.soft.classwork.model.Role">
+        select * from role where rolename = #{roleName}
+    </select>
+    <update id="updateUserInfo" >
+        UPDATE user
+        <set>
+            <if test="user.username !=null">
+                username = #{user.username},
+            </if>
+            <if test="user.password != null">
+                password = #{user.password},
+            </if>
+            <if test="user.email != null">
+                email = #{user.email}
+            </if>
+        </set>
+        where userid = #{user.userid}
+    </update>
+
+    <update id="updateUserRole">
+        update user_roles
+        <set>
+            roles_id = #{roles_id}
+        </set>
+        where user_id = #{user_id}
+    </update>
+    <delete id="deleteUserByUserId">
+        delete from user where userid = #{userid}
+    </delete>
+
+    <delete id="deleteUserRolesByUserId">
+        delete from user_roles where user_id = #{user_id}
+    </delete>
+</mapper>
