@@ -22,6 +22,6 @@ server:
   port: 8085
 
 
-logging:
   level:
     org.springfromework.web: info
+logging:

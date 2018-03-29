@@ -303,9 +303,24 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div><!--//end-search-box-->
                     </div>
                     <h4>用户列表</h4>
+                    <script>
+                        function setLineNum(line){
+                            if(typeof(line)   ==   "undefined "){
+                                alert('缺少参数');
+                            }else{
+                                //只要保证那个隐藏的INPUT存在,这里就不再判断是否存在了.
+                                alert('点击了第'+line.id+'行');
+                                document.getElementById("line_num").value = line.id;
+                            }
+                        }
+                        function showLineNum(){
+                            //只要保证那个隐藏的INPUT存在,这里也不再判断是否存在了.
+                            document.getElementById("line_num").value;
+                        }
+                    </script>
                     <table class="table table-hover">
                         <thead>
-                        <tr>
+                        <tr >
                             <th>ID</th>
                             <th>用户名</th>
                             <th>密码</th>
@@ -313,7 +328,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="active">
+                        <tr class="active" onclick="setLineNum(this)"  id="1">
                             <th scope="row">1</th>
                             <td>sjllll</td>
                             <td>Otto</td>
@@ -411,7 +426,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                             <li><a type="button" class="hvr-icon-rotate col-23" data-toggle="modal" data-target="#gridSystemModal">修改</a></li>
-                            <div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+                            <div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" onclick="showLineNum()">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -426,7 +441,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text2" class="control-label">密码</label>
-                                                    <textarea class="form-control" id="message-text2">123</textarea>
+                                                    <textarea class="form-control" id="message-text2"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="quan2">用户权限选择</label>
@@ -445,7 +460,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
+                            </div>
+
                         </ul>
                     </div>
                 </div>
