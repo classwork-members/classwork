@@ -5,7 +5,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <title>Pet Hospital</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -255,8 +255,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<h2 class="title1">Login</h2>
 				<div class="widget-shadow">
 					<div class="login-body">
-						<form action="#" method="post">
-							<input type="email" class="user" name="email" placeholder="Enter Your Email" required="">
+						<!--<form action="/login" method="post">-->
+						<form class="form-signin" role="form" name="form" th:action="@{/login}" action="/login" method="post">
+							<input type="email" class="user" name="username" placeholder="Enter Your Email" required="">
 							<input type="password" name="password" class="lock" placeholder="Password" required="">
 							<div class="forgot-grid">
 								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Remember me</label>

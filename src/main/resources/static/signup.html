@@ -257,17 +257,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<h2 class="title1">SignUp Here</h2>
 				<div class="sign-up-row widget-shadow">
 					<h5>Personal Information :</h5>
-				<form action="#" method="post">
+				<form action="/userManage/signin" method="post">
 					<div class="sign-u">
-								<input type="text" name="firstname" placeholder="First Name" required="">
+								<input type="text" name="username" placeholder="Name" required="">
 						<div class="clearfix"> </div>
 					</div>
-					<div class="sign-u">
+					<!--<div class="sign-u">
 								<input type="text" placeholder="Last Name" required="">
 						<div class="clearfix"> </div>
-					</div>
+					</div>-->
 					<div class="sign-u">
-								<input type="email" placeholder="Email Address" required="">
+								<input type="email" name="email" placeholder="Email Address" required="">
 						<div class="clearfix"> </div>
 					</div>
 					<div class="sign-u">
@@ -276,11 +276,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="sign-up2">
 							<label>
-								<input type="radio" name="Gender" required="">
+								<input type="radio" name="Gender" value="male" required="" >
 								Male
 							</label>
 							<label>
-								<input type="radio" name="Gender" required="">
+								<input type="radio" name="Gender" value="female" required="" checked>
 								Female
 							</label>
 						</div>
@@ -288,7 +288,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<h6>Login Information :</h6>
 					<div class="sign-u">
-								<input type="password" placeholder="Password" required="">
+								<input type="password" name="password" placeholder="Password" required="">
 						<div class="clearfix"> </div>
 					</div>
 					<div class="sign-u">

@@ -9,6 +9,14 @@ import java.util.List;
 
 public interface UserMapper {
     User loadUserByUsername(String username);
+    User getUserByName(String username);
     List<Role> getRolesByHrId(Long id);
-    int register(@Param("username") String username, @Param("password") String password);
+    int setRole(int id);
+    int register(@Param("username") String username, @Param("password") String password, @Param("email")String email);
+    List<User> getUserList();
+    Role getRoleByRoleName(String roleName);
+    int updateUserInfo(@Param("user")User user);
+    int updateUserRole(@Param("user_id")int user_id,@Param("roles_id") int roles_id);
+    int deleteUserByUserId(@Param("userid")int userid);
+    int deleteUserRolesByUserId(@Param("user_id") int user_id);
 }

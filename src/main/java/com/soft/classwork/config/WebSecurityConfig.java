@@ -35,15 +35,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/index.html", "/userManage/**");
+        web.ignoring().antMatchers("/index.html", "/userManage/**","/login.html#/**","/static/**","/signup.html");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/login","/css/**","/images/**","/js/**","/fonts/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login")
-                .defaultSuccessUrl("/index").failureUrl("/login?error").permitAll().and()
+                .failureUrl("/login?error").permitAll().and()
                 .logout().permitAll();
     }
 }
