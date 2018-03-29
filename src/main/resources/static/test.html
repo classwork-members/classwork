@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <a href="#" class="a_post">发起POST请求</a>
+    <script>
+        $(".a_post").on("click",function(event){
+            event.preventDefault();//使a自带的方法失效，即无法调整到href中的URL(http://www.baidu.com)
+            $.post(
+                "hello",
+                { username: "123", password: "123" },//参数列表
+                function(result){
+                    //请求正确之后的操作
+                    // alert(result)
+                    // if (result.toString()=="1")
+                    //     window.location.href = "http://www.jb51.net";
+                    // else
+                    //     window.location.href = "http://www.baidu.com";
+                    alert("1");
+                    alert(result);
+                },
+                "json"
+            );
+        });
+    </script>
+    <a href="/test2/nihao">nihao</a>
+</body>
+</html>
