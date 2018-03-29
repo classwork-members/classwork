@@ -1,24 +1,27 @@
 spring:
   profiles:
     active: dev
+  thymeleaf:
+     mode: HTML5
+     cache: false
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://115.159.148.70:3306/test?characterEncoding=utf8&useSSL=true
+    url: jdbc:mysql://115.159.148.70:3306/work?characterEncoding=utf8&useSSL=true
     username: root
     password: 961017
+
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-
-  thymeleaf:
-    cache: false
+    database-platform: org.hibernate.dialect.MySQL5Dialect
 
 server:
-  port: 8083
+  port: 8085
 
-logging:
+
   level:
     org.springfromework.web: info
+logging:
