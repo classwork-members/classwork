@@ -3,6 +3,7 @@ package com.soft.classwork.model;
 import java.util.List;
 
 public class User  {
+
   private String userid;
   private String password;
   private String username;
