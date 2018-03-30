@@ -304,6 +304,51 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <h4>用户列表</h4>
                     <script>
+                        function getUrlParam(name) {
+                            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                            if (r != null) return unescape(r[2]); return null; //返回参数值
+                        }
+                        $(document).ready(function( ){
+                            var url = "/userManage/userList";
+                            var num = getUrlParam("num");
+                            $.get(
+                                url,
+                                {},//参数列表
+                                function(result,status,xhr){
+                                    num=Number(num);
+                                    if(num+2<result.data.length)
+                                    {
+                                        for (var i=num;i<num+2;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].userid +"</th><td>"+ result.data[i].username +"</td><td>"+ result.data[i].email  +"</td><td>"+ result.data[i].roles +"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (var i=num;i<result.data.length;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].userid +"</th><td>"+ result.data[i].username +"</td><td>"+ result.data[i].email  +"</td><td>"+ result.data[i].roles[1] +"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    var ul=document.getElementById("pagenum");
+                                    var pagenum=1;
+                                    for(var j=0;j<result.data.length;j+=2)
+                                    {
+                                        var li=document.createElement("li");
+                                        j=Number(j);
+                                        li.innerHTML="<a href=\"manageUser.html?num="+j+"\">"+pagenum+"</a>";
+                                        ul.appendChild(li);
+                                        pagenum++;
+                                    }
+                                },
+                                "json"
+                            );
+                        });
                         function setLineNum(line){
                             if(typeof(line)   ==   "undefined "){
                                 alert('缺少参数');
@@ -326,52 +371,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <tr >
                             <th>ID</th>
                             <th>用户名</th>
-                            <th>密码</th>
-                            <th>权限</th>
+                            <th>邮箱</th>
+                            <th>角色</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="active" onclick="setLineNum(this)"  id="1">
-                            <th scope="row">1</th>
-                            <td>sjllll</td>
-                            <td>Otto</td>
-                            <td>1</td>
-                        </tr>
-                        <tr class="success" onclick="setLineNum(this)"  >
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>2</td>
-                        </tr>
-                        <tr tr class="info" onclick="setLineNum(this)"  >
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>1</td>
-                        </tr>
-                        <tr tr class="warning">
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>2</td>
-                        </tr>
-                        <tr tr class="danger">
-                            <th scope="row">5</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>1</td>
-                        </tr>
+                        <tbody id="thedata">
                         </tbody>
                     </table>
                     <div class="row">
-                        <ul class="pagination pagination-lg">
-                            <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        <ul class="pagination pagination-lg" id="pagenum">
                         </ul>
                     </div>
                     <div class="buttons_w3ls_agile">
@@ -388,7 +396,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <form>
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">用户名</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
+                                                    <input type="datetime-local" class="form-control" id="recipient-name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="control-label">密码</label>

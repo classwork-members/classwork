@@ -13,14 +13,12 @@
         if (r != null) return unescape(r[2]); return null; //返回参数值
     }
     $(document).ready(function( ){
-        var id = getUrlParam("id");
-        var url = "/manageCase2/"+id;
-        $.post(
+        var url = "/userManage/userList";
+        $.get(
             url,
             {},//参数列表
-            function(result){
-                alert(result[0].caseid);
-                alert(result[0].casename);
+            function(result,status,xhr){
+                alert(result.data[0].username);
             },
             "json"
         );
