@@ -356,7 +356,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
                             <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
                             <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
-                            <li> <a href="login.html"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                            <li> <a  href="login" th:action="@{/logout}" methods="post"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                            <form th:action="@{/logout}" method="post">
+                                <input type="submit" class="btn btn-primary" value="注销"/>
+                            </form>
                         </ul>
                     </li>
                 </ul>

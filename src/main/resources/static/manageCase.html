@@ -287,6 +287,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
     <!-- //header-ends -->
     <!-- main content start-->
+
     <div id="page-wrapper">
         <div class="main-page">
             <div class="tables">
@@ -296,109 +297,157 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <thead>
                         <tr>
                             <th>ID</th>
+                            <th>病种ID</th>
                             <th>病例名</th>
                             <th>收录时间</th>
                             <th>病例各阶段</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="active">
-                            <th scope="row">1</th>
-                            <td>sjllll</td>
-                            <td>Otto</td>
-                            <td><a type="button"  data-toggle="modal" data-target="#detail" data-whatever="@mdo" >查看详情</a></td>
-                        </tr>
-                        <tr class="success">
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td><a type="button"  data-toggle="modal" data-target="#detail" data-whatever="@mdo" >查看详情</a></td>
-                        </tr>
-                        <tr tr class="info">
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td><a type="button"  data-toggle="modal" data-target="#detail" data-whatever="@mdo" >查看详情</a></td>
-                        </tr>
-                        <tr tr class="warning">
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td><a type="button"  data-toggle="modal" data-target="#detail" data-whatever="@mdo" >查看详情</a></td>
-                            <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="exampleModalLabel2">疾病名</h4>
+                        <tbody id="thedata">
+                        <script>
+                            function getUrlParam(name) {
+                                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                                var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                                if (r != null) return unescape(r[2]); return null; //返回参数值
+                            }
+                            $(document).ready(function( ){
+                                var id = getUrlParam("id");
+                                var num = getUrlParam("num");
+                                var url = "/manageCase2/"+id;
+                                $.post(
+                                    url,
+                                    {},//参数列表
+                                    function(result){
+                                        if(num+2<result.length)
+                                        {
+                                            for (var i=num;i<num+2;i++)
+                                            {
+                                                var $tab1 = $("#thedata");
+                                                var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result[i].caseid +"</th><td>"+ result[i].illnessid +"</td><td>"+ result[i].casename +"</td><td>"+ result[i].casedate +"</td><td><a type=\"button\"  data-toggle=\"modal\" data-target=\"#detail\" data-whatever=\"@mdo\" >查看详情</a></td></tr>";
+                                                $tab1.append(trData);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            for (var i=num;i<result.length;i++)
+                                            {
+                                                var $tab1 = $("#thedata");
+                                                var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result[i].caseid +"</th><td>"+ result[i].illnessid +"</td><td>"+ result[i].casename +"</td><td>"+ result[i].casedate +"</td><td><a type=\"button\"  data-toggle=\"modal\" data-target=\"#detail\" data-whatever=\"@mdo\" >查看详情</a></td></tr>";
+                                                $tab1.append(trData);
+                                            }
+                                        }
+                                        var ul=document.getElementById("pagenum");
+                                        var pagenum=1;
+                                        for(var j=0;j<result.length;j+=2)
+                                        {
+                                            var li=document.createElement("li");
+                                            j=Number(j);
+                                            li.innerHTML="<a href=\"manageCase.html?id="+id+"&num="+j+"\">"+pagenum+"</a>";
+                                            ul.appendChild(li);
+                                            pagenum++;
+                                        }
+
+                                    },
+                                    "json"
+                                );
+                            });
+                            function setLineNum(line){
+                                if(typeof(line)   ==   "undefined "){
+                                    alert('缺少参数');
+                                }else{
+                                    document.getElementById("recipient-name2").value = line.cells[2].innerHTML;
+                                    document.getElementById("catalog-name2").value = line.cells[1].innerHTML;
+                                    document.getElementById("date2").value = line.cells[3].innerHTML;
+                                    if(line.cells[3].innerHTML==1)
+                                    {
+                                        document.getElementById("quanxian1").checked=true;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("quanxian2").checked=true;
+                                    }
+                                }
+                            }
+                        </script>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <ul class="pagination pagination-lg" id="pagenum">
+                            <!--<li><a href="manageCase.html" aria-label="Previous"><span aria-hidden="true">«</span></a></li>-->
+                            <!--<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>-->
+                        </ul>
+                    </div>
+                    <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="exampleModalLabel2">疾病名</h4>
+                                </div>
+                                <div class="modal-body" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingOne">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    接诊
+                                                </a>
+                                            </h4>
                                         </div>
-                                        <div class="modal-body" id="accordion" role="tablist" aria-multiselectable="true">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading" role="tab" id="headingOne">
-                                                        <h4 class="panel-title">
-                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                                接诊
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                                        <div class="panel-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading" role="tab" id="headingTwo">
-                                                        <h4 class="panel-title">
-                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                                病例检查
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                        <div class="panel-body">
-                                                            Eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim  Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading" role="tab" id="headingThree">
-                                                        <h4 class="panel-title">
-                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                                诊断结果
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                        <div class="panel-body">
-                                                            3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.  apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading" role="tab" id="headingFour">
-                                                        <h4 class="panel-title">
-                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                                治疗方案
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                                        <div class="panel-body">
-                                                            Cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                                            </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    病例检查
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                Eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim  Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingThree">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    诊断结果
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                            <div class="panel-body">
+                                                3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.  apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingFour">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                    治疗方案
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                            <div class="panel-body">
+                                                Cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                                </div>
                             </div>
-                        </tr>
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
                     <div class="buttons_w3ls_agile">
                         <ul class="bt-list">
                             <li><a type="button" class="hvr-icon-float-away col-24" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">添加</a></li>
@@ -466,32 +515,53 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                             <li><a type="button" class="hvr-icon-rotate col-23" data-toggle="modal" data-target="#gridSystemModal">修改</a></li>
-                            <div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+                            <div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="gridSystemModalLabel">修改用户</h4>
+                                            <h4 class="modal-title" id="exampleModalLabel3">修改病例</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form>
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">用户名</label>
-                                                    <input type="text" class="form-control" value="123" id="recipient-nam2e">
+                                                    <label for="recipient-name" class="control-label">病例名</label>
+                                                    <input type="text" class="form-control" id="recipient-name2">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="control-label">密码</label>
-                                                    <textarea class="form-control" id="message-text2">123</textarea>
+                                                    <label for="catalog-name" class="control-label">病例类别</label>
+                                                    <input type="text" class="form-control" id="catalog-name2" value="当前类别">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password" class="control-label">日期</label>
+                                                    <input type="text" class="form-control" id="date2">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="receive-text" class="control-label">接诊</label>
+                                                    <textarea class="form-control" id="receive-text2"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inspect-text" class="control-label">检查</label>
+                                                    <textarea class="form-control" id="inspect-text2"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="diagnosis-text" class="control-label">诊断</label>
+                                                    <textarea class="form-control" id="diagnosis-text2"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="treat-text" class="control-label">治疗</label>
+                                                    <textarea class="form-control" id="treat-text2"></textarea>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
-                                            <button type="button" class="btn btn-primary">取消</button>
+                                            <button type="button" class="btn btn-default" >保存</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.modal -->
                         </ul>
                     </div>
                 </div>
