@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pet Hospital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+
+    <!-- font-awesome icons CSS -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons CSS -->
+
+    <!-- side nav css file -->
+    <link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
+    <!-- side nav css file -->
+
+    <!-- js-->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+
+    <!--webfonts-->
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+    <!--//webfonts-->
+
+    <!-- Metis Menu -->
+    <script src="js/metisMenu.min.js"></script>
+    <script src="js/custom.js"></script>
+    <link href="css/custom.css" rel="stylesheet">
+    <!--//Metis Menu -->
+
+</head>
+<body>
+    <script >
+    function beforeSubmit() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        alert(username);
+        alert(password);
+    }
+    </script>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">新建用户</h4>
+            </div>
+            <div class="modal-body">
+                <form action="userManage/signin" method="post" onsubmit="return beforeSubmit()">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">用户名</label>
+                        <input type="text" name="username" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="password-text" class="control-label">密码</label>
+                        <input type="text" name="password" class="form-control" id="password-text">
+                    </div>
+                    <div class="form-group">
+                        <label for="email-text" class="control-label">邮箱</label>
+                        <input type="text" name="email" class="form-control" id="email-text">
+                    </div>
+                    <div class="form-group">
+                        <label><input type="radio" name="Gender" value="male" required="" >男</label>
+                        <label><input type="radio" name="Gender" value="female" required="" checked>女</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" value="提交" onclick="window.location.href='manageUser.html'">提交</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

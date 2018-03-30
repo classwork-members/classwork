@@ -317,12 +317,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 {},//参数列表
                                 function(result,status,xhr){
                                     num=Number(num);
-                                    if(num+2<result.data.length)
+                                    if(num+5<result.data.length)
                                     {
-                                        for (var i=num;i<num+2;i++)
+                                        for (var i=num;i<num+5;i++)
                                         {
                                             var $tab1 = $("#thedata");
-                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].userid +"</th><td>"+ result.data[i].username +"</td><td>"+ result.data[i].email  +"</td><td>"+ result.data[i].roles +"</td></tr>";
+                                            if(result.data[i].roles[0].rolename=="ROLE_admin")
+                                                var role="管理员";
+                                            else if(result.data[i].roles[0].rolename=="ROLE_normal")
+                                                var role="普通用户";
+                                            else
+                                                var role="error";
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].userid +"</th><td>"+ result.data[i].username +"</td><td>"+ result.data[i].email  +"</td><td>"+ role+"</td></tr>";
                                             $tab1.append(trData);
                                         }
                                     }
@@ -331,13 +337,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         for (var i=num;i<result.data.length;i++)
                                         {
                                             var $tab1 = $("#thedata");
-                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].userid +"</th><td>"+ result.data[i].username +"</td><td>"+ result.data[i].email  +"</td><td>"+ result.data[i].roles[1] +"</td></tr>";
+                                            if(result.data[i].roles[0].rolename=="ROLE_admin")
+                                                var role="管理员";
+                                            else if(result.data[i].roles[0].rolename=="ROLE_normal")
+                                                var role="普通用户";
+                                            else
+                                                var role="error";
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].userid +"</th><td>"+ result.data[i].username +"</td><td>"+ result.data[i].email  +"</td><td>"+ role +"</td></tr>";
                                             $tab1.append(trData);
                                         }
                                     }
                                     var ul=document.getElementById("pagenum");
                                     var pagenum=1;
-                                    for(var j=0;j<result.data.length;j+=2)
+                                    for(var j=0;j<result.data.length;j+=5)
                                     {
                                         var li=document.createElement("li");
                                         j=Number(j);
@@ -354,7 +366,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 alert('缺少参数');
                             }else{
                                 document.getElementById("recipient-name2").value = line.cells[1].innerHTML;
-                                document.getElementById("message-text2").value = line.cells[2].innerHTML;
+                                document.getElementById("email-text2").value = line.cells[2].innerHTML;
+                                document.getElementById("delete-user").value = line.cells[0].innerHTML;
                                 if(line.cells[3].innerHTML==1)
                                 {
                                     document.getElementById("quanxian1").checked=true;
@@ -364,6 +377,22 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     document.getElementById("quanxian2").checked=true;
                                 }
                             }
+                        }
+                        function deleteTheUser() {
+                            var id = document.getElementById("delete-user").value;
+                            alert(id);
+                            var url = "/userManage/deleteuser";
+                            $.post(
+                                url,
+                                {
+                                    userid:id
+                                },//参数列表
+                                function(result,status,xhr){
+                                    alert(result.msg);
+                                    window.location.href="manageUser.html?num=0";
+                                },
+                                "json"
+                            );
                         }
                     </script>
                     <table class="table table-hover">
@@ -393,29 +422,28 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="exampleModalLabel">新建用户</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form action="userManage/signin" method="post" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">用户名</label>
-                                                    <input type="datetime-local" class="form-control" id="recipient-name">
+                                                    <input type="text" name="username" class="form-control" id="recipient-name">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="control-label">密码</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                    <label for="password-text" class="control-label">密码</label>
+                                                    <input type="text" name="password" class="form-control" id="password-text">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="quan">用户权限选择</label>
-                                                    <div class="radio" id="quan">
-                                                        <label><input type="radio" name="gender" required="">1级</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <label><input type="radio" name="gender" required="">2级 </label>
-                                                    </div>
+                                                    <label for="email-text" class="control-label">邮箱</label>
+                                                    <input type="text" name="email" class="form-control" id="email-text">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label><input type="radio" name="Gender" value="male" required="" >男</label>
+                                                    <label><input type="radio" name="Gender" value="female" required="" checked>女</label>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary" value="提交">提交</button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                                 </div>
                                             </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default">保存</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
@@ -429,8 +457,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="mySmallModalLabel">提示</h4>
                                         </div>
                                         <div class="modal-body"> 确定要删除该用户吗                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" >确定</button>
+                                        <div class="modal-footer" value="" id="delete-user">
+                                            <button type="button" class="btn btn-default" onclick="deleteTheUser()">确定</button>
                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
@@ -451,8 +479,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                     <input type="text" class="form-control" value="123" id="recipient-name2">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text2" class="control-label">密码</label>
-                                                    <textarea class="form-control" id="message-text2"></textarea>
+                                                    <label for="recipient-name2" class="control-label">邮箱</label>
+                                                    <input type="text" class="form-control" value="123" id="email-text2">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="quan2">用户权限选择</label>
