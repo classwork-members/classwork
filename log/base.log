@@ -1,8 +1,3 @@
 2018-03-30 10:09:26,156 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on PC-201603051421 with PID 40320 (E:\IdeaProjects\githouse\classwork\target\classes started by Administrator in E:\IdeaProjects\githouse\classwork)
 2018-03-30 10:09:26,160 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
 2018-03-30 10:09:26,160 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-03-30 10:09:51,221 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 27.391 seconds (JVM running for 31.956)
-2018-03-30 10:10:24,240 DEBUG (UserService.java:30)- name is ______________sjl------------------
-2018-03-30 10:10:24,664 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
-2018-03-30 14:07:29,652 DEBUG (UserService.java:30)- name is ______________sjl------------------
-2018-03-30 14:07:30,642 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________

@@ -1,0 +1,64 @@
+2018-03-29 14:45:29,580 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on PC-201603051421 with PID 7988 (E:\IdeaProjects\githouse\classwork\target\classes started by Administrator in E:\IdeaProjects\githouse\classwork)
+2018-03-29 14:45:29,627 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 14:45:29,628 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 14:45:47,213 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 28.568 seconds (JVM running for 44.847)
+2018-03-29 14:49:08,778 DEBUG (UserManageController.java:26)- __________________username: sjl___________password:123_______email:872964789@qq.com______gender:null__________
+2018-03-29 14:49:10,189 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-29 14:49:45,545 DEBUG (UserService.java:30)- name is ______________872964789@qq.com------------------
+2018-03-29 14:49:57,270 DEBUG (UserService.java:30)- name is ______________872964789@qq.com------------------
+2018-03-29 14:57:02,169 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on PC-201603051421 with PID 8472 (E:\IdeaProjects\githouse\classwork\target\classes started by Administrator in E:\IdeaProjects\githouse\classwork)
+2018-03-29 14:57:02,171 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 14:57:02,172 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 14:57:13,832 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 12.674 seconds (JVM running for 14.195)
+2018-03-29 15:04:19,903 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on PC-201603051421 with PID 19436 (E:\IdeaProjects\githouse\classwork\target\classes started by Administrator in E:\IdeaProjects\githouse\classwork)
+2018-03-29 15:04:19,907 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:04:19,912 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:04:40,510 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 23.411 seconds (JVM running for 26.07)
+2018-03-29 15:10:35,340 DEBUG (UserService.java:30)- name is ______________sjl------------------
+2018-03-29 15:30:44,627 DEBUG (UserService.java:30)- name is ______________sjl------------------
+2018-03-29 15:30:46,313 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:32:13,399 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:38:03,045 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:38:14,839 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:40:15,306 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:42:44,140 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:44:27,427 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:45:07,688 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:45:32,110 DEBUG (UserService.java:30)- name is ______________sjl------------------
+2018-03-29 15:45:32,492 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:45:57,029 DEBUG (UserManageController.java:26)- __________________username: sjl2___________password:123_______email:111@qq.com______gender:null__________
+2018-03-29 15:45:57,581 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-29 15:46:17,070 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:46:26,044 DEBUG (UserService.java:30)- name is ______________sjl2------------------
+2018-03-29 15:46:26,497 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:57:14,704 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:58:04,369 DEBUG (UserService.java:30)- name is ______________sjl2------------------
+2018-03-29 15:58:04,540 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 15:59:10,721 DEBUG (UserService.java:30)- name is ______________sjl2------------------
+2018-03-29 15:59:17,578 DEBUG (UserService.java:30)- name is ______________sjl2------------------
+2018-03-29 15:59:17,791 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 16:01:32,442 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on PC-201603051421 with PID 27452 (E:\IdeaProjects\githouse\classwork\target\classes started by Administrator in E:\IdeaProjects\githouse\classwork)
+2018-03-29 16:01:32,446 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 16:01:32,447 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 16:02:14,959 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 44.331 seconds (JVM running for 48.087)
+2018-03-29 16:03:55,625 DEBUG (UserService.java:30)- name is ______________sjl------------------
+2018-03-29 16:03:56,335 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 18:18:34,788 DEBUG (UserService.java:30)- name is ______________sjl------------------
+2018-03-29 18:18:49,869 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 21:54:28,545 DEBUG (UserService.java:30)- name is ______________sjl------------------
+2018-03-29 22:41:10,702 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on PC-201603051421 with PID 4112 (E:\IdeaProjects\githouse\classwork\target\classes started by Administrator in E:\IdeaProjects\githouse\classwork)
+2018-03-29 22:41:10,702 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 22:41:10,733 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 22:41:32,405 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 23.811 seconds (JVM running for 38.877)
+2018-03-29 22:42:29,334 DEBUG (UserService.java:30)- name is ______________sjl------------------
+2018-03-29 22:42:29,908 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 22:46:19,042 DEBUG (HomeController.java:15)- ______________arrive in HomeController____________________
+2018-03-29 22:55:06,280 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on PC-201603051421 with PID 36064 (E:\IdeaProjects\githouse\classwork\target\classes started by Administrator in E:\IdeaProjects\githouse\classwork)
+2018-03-29 22:55:06,282 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 22:55:06,283 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 22:56:17,424 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 78.87 seconds (JVM running for 87.646)
+2018-03-29 23:06:24,104 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on PC-201603051421 with PID 34912 (E:\IdeaProjects\githouse\classwork\target\classes started by Administrator in E:\IdeaProjects\githouse\classwork)
+2018-03-29 23:06:24,106 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 23:06:24,107 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 23:06:43,812 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 20.7 seconds (JVM running for 22.616)
+2018-03-29 23:08:57,659 DEBUG (UserService.java:30)- name is ______________sjl------------------
