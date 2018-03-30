@@ -11,7 +11,7 @@ public class Illness {
   @GeneratedValue
   private Integer illnessid;
   private String illnessname;
-  private String parentid;
+  private Integer parentid;
 
 
   public Integer getIllnessid() {
@@ -32,11 +32,11 @@ public class Illness {
   }
 
 
-  public String getParentid() {
+  public Integer getParentid() {
     return parentid;
   }
 
-  public void setParentid(String parentid) {
+  public void setParentid(Integer parentid) {
     this.parentid = parentid;
   }
 
