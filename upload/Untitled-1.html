@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th style="position: relative">省份
+          <select name="" id="menu">
+            <option value="0" selected>全部</option>
+          </select>
+
+        </th>
+        <th>未录入零售商</th>
+        <th>地址</th>
+
+      </tr>
+    </thead>
+    <tbody id="container">
+      <tr id='template' style="display:none;">
+        <td id='province'></td>
+        <td id='name'></td>
+        <td id='address'></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
+<script>
+  $(function () {
+    $.post('retailer/getProvince', function (rawData) {
+      var p = JSON.parse(rawData);
+      if (p['code'] != 1000) {
+        alert(p['data']);
+        return;
+      }
+      var province = p['data']
+      for (var j of province) {
+        createSingleProvince(j)
+      }
+    })
+
+    function createSingleProvince(data) {
+      var menu = $('#menu')
+      var o = $("<option></option>")
+      o.text(data['name'])
+      o.attr("value", data['id'])
+      menu.append(o)
+    }
+    // mockp = { "code": 1000, "data": [{ "id": "1", "piny": "Beijing", "name": "\u5317\u4eac" }, { "id": "2", "piny": "Shanghai", "name": "\u4e0a\u6d77" }, { "id": "3", "piny": "Tianjin", "name": "\u5929\u6d25" }, { "id": "4", "piny": "InnerMongolia", "name": "\u5185\u8499\u53e4" }, { "id": "5", "piny": "Shanxi", "name": "\u5c71\u897f" }, { "id": "6", "piny": "Hebei", "name": "\u6cb3\u5317" }, { "id": "7", "piny": "Liaoning", "name": "\u8fbd\u5b81" }, { "id": "8", "piny": "Jilin", "name": "\u5409\u6797" }, { "id": "9", "piny": "Heilongjiang", "name": "\u9ed1\u9f99\u6c5f" }, { "id": "10", "piny": "Jiangsu", "name": "\u6c5f\u82cf" }, { "id": "11", "piny": "Anhui", "name": "\u5b89\u5fbd" }, { "id": "12", "piny": "Shandong", "name": "\u5c71\u4e1c" }, { "id": "13", "piny": "Zhejiang", "name": "\u6d59\u6c5f" }, { "id": "14", "piny": "Jiangxi", "name": "\u6c5f\u897f" }, { "id": "15", "piny": "Fujian", "name": "\u798f\u5efa" }, { "id": "16", "piny": "Hunan", "name": "\u6e56\u5357" }, { "id": "17", "piny": "Hubei", "name": "\u6e56\u5317" }, { "id": "18", "piny": "Henan", "name": "\u6cb3\u5357" }, { "id": "19", "piny": "Guangdong", "name": "\u5e7f\u4e1c" }, { "id": "20", "piny": "Hainan", "name": "\u6d77\u5357" }, { "id": "21", "piny": "Guangxi", "name": "\u5e7f\u897f" }, { "id": "22", "piny": "Guizhou", "name": "\u8d35\u5dde" }, { "id": "23", "piny": "Sichuan", "name": "\u56db\u5ddd" }, { "id": "24", "piny": "Yunnan", "name": "\u4e91\u5357" }, { "id": "25", "piny": "Shaanxi", "name": "\u9655\u897f" }, { "id": "26", "piny": "Gansu", "name": "\u7518\u8083" }, { "id": "27", "piny": "Ningxia", "name": "\u5b81\u590f" }, { "id": "28", "piny": "Qinghai", "name": "\u9752\u6d77" }, { "id": "29", "piny": "Xinjiang", "name": "\u65b0\u7586" }, { "id": "30", "piny": "Tibet", "name": "\u897f\u85cf" }, { "id": "31", "piny": "Taiwan", "name": "\u53f0\u6e7e" }, { "id": "32", "piny": "Chongqing", "name": "\u91cd\u5e86" }, { "id": "33", "piny": "Hongkong", "name": "\u9999\u6e2f" }, { "id": "34", "piny": "Macau", "name": "\u6fb3\u95e8" }] }
+    // // mockp = JSON.parse(mockp)
+    // for (j of mockp['data']) {
+    //   createSingleProvince(j)
+    // }
+
+    $('#menu').change(function () {
+      var id = $(this).children('option:selected').val()
+      postData(id)
+    })
+
+    var table = $('#container');
+    function postData(id) {
+      if (+id === 0) id = null
+      $.post('/retailer/getNotCollectRetailer', id, function (rawData) {
+        var d = JSON.parse(rawData);
+
+        if (d['code'] != 1000) {
+          alert(d['data']);
+          return;
+        }
+
+        var data = d['data'];
+        for (var i in data) {
+          createSingleRecord(data[i]);
+        }
+      })
+    }
+    // var mockdata = [{ provinceId: "10", 省份: "江苏", 未录入零售商: "宜兴市洪彬轮胎销售有限公司", 地址: "宜兴市宜城街道融达汽车城1幢817号" },
+    // { provinceId: "10", 省份: "江苏", 未录入零售商: "徐州市泉山区顺源汽车美容用品经营部", 地址: "徐州市金山东路大学城4号楼3单元101" }];
+    // for (var i in mockdata) {
+    //   createSingleRecord(mockdata[i]);
+    // }
+    function createSingleRecord(data) {
+      var daddy = $('#container');
+
+      var node = $('#template').clone(1).removeClass('template').show();
+
+      node.find('#name').text(data['未录入零售商']);
+      node.find('#address').text(data['地址']);
+      node.find('#province').text(data['省份']);
+
+      node.appendTo(daddy);
+    }
+    postData(0)
+  })
+</script>

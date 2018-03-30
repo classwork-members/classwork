@@ -1,0 +1,104 @@
+2018-03-29 08:18:21,873 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 25120 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-29 08:18:21,890 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 08:18:21,942 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 08:19:28,292 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 76.219 seconds (JVM running for 112.721)
+2018-03-29 08:42:17,068 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 17316 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-29 08:42:17,072 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 08:42:17,074 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 08:42:32,479 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 19.113 seconds (JVM running for 29.464)
+2018-03-29 08:43:04,411 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-29 08:53:46,972 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 13836 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-29 08:53:46,975 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 08:53:46,977 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 08:53:58,802 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 13.173 seconds (JVM running for 19.998)
+2018-03-29 08:58:24,386 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 26844 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-29 08:58:24,391 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 08:58:24,393 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 08:58:33,554 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 10.156 seconds (JVM running for 12.109)
+2018-03-29 08:58:39,127 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-29 09:19:14,149 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 21632 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-03-29 09:19:14,152 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 09:19:14,154 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 09:19:34,240 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 22.544 seconds (JVM running for 28.504)
+2018-03-29 09:20:39,940 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-29 15:01:41,539 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70298 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:01:41,541 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:01:41,542 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:01:47,697 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 6.392 seconds (JVM running for 12.112)
+2018-03-29 15:04:22,724 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70315 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:04:22,726 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:04:22,726 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:04:28,567 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 6.124 seconds (JVM running for 11.891)
+2018-03-29 15:06:13,876 DEBUG (UserService.java:30)- name is ______________1249794581@qq.com------------------
+2018-03-29 15:06:45,905 DEBUG (UserManageController.java:26)- __________________username: 1249794581@qq.com___________password:123_______email:1249794581@qq.com______gender:null__________
+2018-03-29 15:06:46,206 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-03-29 15:06:58,208 DEBUG (UserService.java:30)- name is ______________1249794581@qq.com------------------
+2018-03-29 15:13:39,825 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70356 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:13:39,830 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:13:39,832 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:13:46,720 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 7.138 seconds (JVM running for 12.918)
+2018-03-29 15:13:55,181 DEBUG (UserService.java:30)- name is ______________1249794581@qq.com------------------
+2018-03-29 15:15:48,554 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70378 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:15:48,556 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:15:48,559 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:15:54,870 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 6.573 seconds (JVM running for 12.237)
+2018-03-29 15:18:32,231 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70398 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:18:32,233 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:18:32,234 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:18:37,846 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.895 seconds (JVM running for 11.603)
+2018-03-29 15:20:26,755 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70410 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:20:26,757 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:20:26,758 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:20:32,760 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 6.291 seconds (JVM running for 11.993)
+2018-03-29 15:32:17,045 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70444 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:32:17,048 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:32:17,048 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:32:25,051 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 8.307 seconds (JVM running for 14.02)
+2018-03-29 15:47:03,151 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70473 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:47:03,155 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:47:03,156 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:47:08,367 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.465 seconds (JVM running for 11.144)
+2018-03-29 15:47:40,987 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70480 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:47:40,991 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:47:40,993 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:47:47,141 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 6.409 seconds (JVM running for 12.13)
+2018-03-29 15:50:46,379 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70505 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:50:46,381 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:50:46,383 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:50:53,863 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 7.897 seconds (JVM running for 13.674)
+2018-03-29 15:54:14,908 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70521 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 15:54:14,910 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 15:54:14,911 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 15:54:20,337 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.699 seconds (JVM running for 11.377)
+2018-03-29 17:24:48,483 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70805 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 17:24:48,486 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 17:24:48,486 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 17:24:53,578 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.364 seconds (JVM running for 11.066)
+2018-03-29 17:29:03,178 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70827 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 17:29:03,180 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 17:29:03,181 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 17:29:08,152 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.215 seconds (JVM running for 10.893)
+2018-03-29 17:33:21,435 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 70845 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 17:33:21,436 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 17:33:21,437 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 17:33:26,378 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.186 seconds (JVM running for 10.916)
+2018-03-29 17:56:11,974 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 71050 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 17:56:11,975 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 17:56:11,976 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 17:56:16,747 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.002 seconds (JVM running for 10.685)
+2018-03-29 18:05:12,079 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 71085 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 18:05:12,081 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 18:05:12,082 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 18:05:17,010 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.169 seconds (JVM running for 10.865)
+2018-03-29 18:16:15,842 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 71100 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 18:16:15,844 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 18:16:15,845 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 18:16:21,029 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.427 seconds (JVM running for 11.148)
+2018-03-29 18:23:52,881 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 71120 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 18:23:52,883 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 18:23:52,885 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 18:23:57,917 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.296 seconds (JVM running for 11.067)
+2018-03-29 18:32:14,859 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on liuxianhaodeMacBook-Pro.local with PID 71272 (/Users/liuxianhao/Documents/project/classwork/target/classes started by liuxianhao in /Users/liuxianhao/Documents/project/classwork)
+2018-03-29 18:32:14,861 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-03-29 18:32:14,862 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-03-29 18:32:19,641 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 5.008 seconds (JVM running for 10.624)

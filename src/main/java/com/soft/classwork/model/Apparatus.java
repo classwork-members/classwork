@@ -8,35 +8,35 @@ import javax.persistence.Id;
 public class Apparatus {
     @Id
     @GeneratedValue
-    private Integer appaid;
-    private String appaname;
-    private String appadesc;
+  private Integer appaid;
+  private String appadesc;
+  private String appaname;
 
 
-    public Integer getAppaid() {
+  public Integer getAppaid() {
     return appaid;
   }
 
-    public void setAppaid(Integer appaid) {
+  public void setAppaid(Integer appaid) {
     this.appaid = appaid;
   }
 
 
-    public String getAppaname() {
-    return appaname;
-  }
-
-    public void setAppaname(String appaname) {
-    this.appaname = appaname;
-  }
-
-
-    public String getAppadesc() {
+  public String getAppadesc() {
     return appadesc;
   }
 
-    public void setAppadesc(String appadesc) {
+  public void setAppadesc(String appadesc) {
     this.appadesc = appadesc;
+  }
+
+
+  public String getAppaname() {
+    return appaname;
+  }
+
+  public void setAppaname(String appaname) {
+    this.appaname = appaname;
   }
 
 }
