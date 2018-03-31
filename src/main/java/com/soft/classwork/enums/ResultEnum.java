@@ -11,7 +11,9 @@ public enum ResultEnum {
     GETDARA_FAIL("0006","获取数据失败。"),
     USER_NULL("0007","该用户不存在。"),
     DELETE_USER_FAIL("0008","删除用户失败。"),
-    DELETE_USERROLE_FAIL("0009","删除用户-角色失败。")
+    DELETE_USERROLE_FAIL("0009","删除用户-角色失败。"),
+    ROLE_DATA_FAIL("0010","获取role数据失败"),
+    USER_DATA_FAIL("0011","获取user数据失败"),
     ;
     private String code;
     private String msg;

@@ -22,10 +22,11 @@ public class UserManageController {
     @Autowired
     UserService userService;
     @RequestMapping(value = "/signin", method = RequestMethod.POST)
-    public Result register(@Param("username") String username, @Param("password")String password, @Param("email")String email, @Param("Gender")String gender ){
-        logger.debug("__________________username: "+username+"___________password:"+password+"_______email:"+email+"______gender:"+gender+"__________");
+    public Result register(@Param("username") String username, @Param("password")String password, @Param("email")String email, @Param("Gender")String gender,@Param("role")String role ){
+        logger.debug("__________________username: "+username+"___________password:"+password+"_______email:"+email+"______gender:"+gender+"__________role:"+role+"_______________");
         //return ResultUtil.success();
-        int i = userService.register(username, password,email);
+        int i = userService.register(username, password,email,role);
+        logger.debug("_____________i:"+i+"_________");
         if (i == 1) {
             return ResultUtil.success("注册成功!");
         } else if (i == -1) {
@@ -43,8 +44,8 @@ public class UserManageController {
     }
 
     @RequestMapping(value="/modifyuserinfo",method = RequestMethod.POST)
-    public Result upfateUserInfo(@Param("username") String username, @Param("password")String password, @Param("email")String email,@Param("role")String role){
-        int rs = userService.updateUserInfo(username,password,email,role);
+    public Result updateUserInfoById(@Param("userid")int userid,@Param("username") String username, @Param("password")String password, @Param("email")String email,@Param("role")String role){
+        int rs = userService.updateUserInfoById(userid,username,password,email,role);
         return ResultUtil.success(rs);
     }
 

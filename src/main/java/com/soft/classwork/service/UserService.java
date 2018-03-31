@@ -35,17 +35,30 @@ public class UserService implements UserDetailsService{
         return user;
     }
 
-    public int register(String username, String password, String email){
+    @Transactional
+    public int register(String username, String password, String email, String rolename){
         //如果用户名存在，返回错误
         if (userMapper.loadUserByUsername(username) != null) {
             return -1;
         }
+        logger.debug("______"+rolename.substring(0,5)+"_____________");
+        if(!rolename.substring(0,5).equals("ROLE_")){
+            rolename = "ROLE_"+ rolename;
+        }
+        System.out.println("_________________roleName:"+rolename+"_______________________");
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encode = encoder.encode(password);
         int rs =  userMapper.register(username, encode, email);
         if(rs!=0){
             User user = userMapper.getUserByName(username);
-            if(userMapper.setRole(user.getUserid())==0){
+            if(user == null){
+                throw new PetException(ResultEnum.USER_DATA_FAIL);
+            }
+            Role role = userMapper.getRoleByRoleName(rolename);
+            if(role == null){
+                throw new PetException(ResultEnum.ROLE_DATA_FAIL);
+            }
+            if(userMapper.setRole(user.getUserid(), role.getRoleid())==0){
                 throw new PetException(ResultEnum.INSERT_FAIL);
             }
         }else{
@@ -54,14 +67,18 @@ public class UserService implements UserDetailsService{
         return rs;
     }
 
-    public int updateUserInfo(String username, String password, String email,String roleName){
-        User user = userMapper.getUserByName(username);
-        if(roleName.substring(0,4) != "ROLE_"){
+    @Transactional
+    public int updateUserInfoById(int userid, String username, String password, String email,String roleName){
+        User user = userMapper.getUserById(userid);
+        if(!roleName.substring(0,5).equals("ROLE_")){
             roleName = "ROLE_"+ roleName;
-            System.out.println("_________________roleName:"+roleName+"_______________________");
         }
+        System.out.println("_________________roleName:"+roleName+"_______________________");
         if(user != null){
             Role role = userMapper.getRoleByRoleName(roleName);
+            if(role==null){
+                throw new PetException(ResultEnum.ROLE_DATA_FAIL);
+            }
             System.out.println("_________________roleId:"+role.getRoleid()+"_______________________"+role.getRolename());
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             String encode = encoder.encode(password);

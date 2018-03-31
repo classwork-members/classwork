@@ -20,14 +20,17 @@
     <select id="getRolesByHrId" resultType="com.soft.classwork.model.Role">
         SELECT r.* FROM user_roles h,role r where h.roles_id=r.roleid AND h.user_id=#{userid}
     </select>
+    <select id="getUserById" resultType="com.soft.classwork.model.User">
+        SELECT * FROM user WHERE userid=#{userid}
+    </select>
     <select id="getUserByName" resultType="com.soft.classwork.model.User">
-        SELECT * FROM user WHERE username=#{username}
+        select * from user where username=#{username};
     </select>
     <insert id="register">
         INSERT INTO user set username=#{username},password=#{password},email=#{email}
     </insert>
     <insert id="setRole">
-        INSERT INTO user_roles SET user_id=#{id},roles_id=2
+        INSERT INTO user_roles SET user_id=#{user_id},roles_id= #{role_id}
     </insert>
     <select id="getUserList" resultMap="lazyLoadRoles">
         select * from user
