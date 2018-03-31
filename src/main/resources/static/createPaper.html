@@ -286,6 +286,25 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
     <!-- //header-ends -->
     <!-- main content start-->
+   <script>
+       function setChoice(choice) {
+           if(choice=="1"){
+               document.getElementById("auto").hidden = false;
+               document.getElementById("auto-label").hidden = false;
+               document.getElementById("self").hidden = true;
+               document.getElementById("self-label").hidden = true;
+           }
+           else if(choice=="2"){
+               document.getElementById("auto").hidden = true;
+               document.getElementById("auto-label").hidden = true;
+               document.getElementById("self").hidden = false;
+               document.getElementById("self-label").hidden = false;
+           }
+           else {
+               alert("error");
+           }
+       }
+   </script>
     <div id="page-wrapper">
         <div class="main-page">
             <div class="form-grids row widget-shadow" data-example-id="basic-forms">
@@ -293,54 +312,58 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <h4>生成考卷 :</h4>
                 </div>
                 <div class="form-body">
-                    <form>
+                    <form action="helpCreatePaper.html">
                         <div class="form-group">
                             <label for="exampleInputEmail1">考卷名</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" >
+                            <input type="text" name="paper-name" class="form-control" id="exampleInputEmail1" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">考试时长</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" >
+                            <input type="text" name="paper-time" class="form-control" id="exampleInputPassword1" >
                         </div>
-                        <label for="auto">自动生成考题</label>
-                        <div class="tables" id="auto">
+                        <div class="form-group">
+                            <label><input type="radio" name="choice" value="automatic" onclick="setChoice(1)" required="" >自动生成考题</label>
+                            <label><input type="radio" name="choice" value="autonomy" onclick="setChoice(2)" required="" >自主选择考题</label>
+                        </div>
+                        <label for="auto" hidden id="auto-label">自动生成考题</label>
+                        <div class="tables" hidden id="auto">
                             <div class="bs-example widget-shadow">
                                 <label for="catalog">题目范围</label>
                                 <div class="checkbox" id="catalog">
-                                    <label> <input type="checkbox"> 传染病 </label>
-                                    <label> <input type="checkbox"> 寄生虫病 </label>
+                                    <label> <input name="range" type="checkbox"> 传染病 </label>
+                                    <label> <input name="range" type="checkbox"> 寄生虫病 </label>
                                 </div>
                                 <div class="form-group">
                                     <label for="quan">选择题数量</label>
                                     <div class="radio" id="quan">
-                                        <label><input type="radio" name="gender" required="">10</label>
-                                        <label><input type="radio" name="gender" required="">20 </label>
-                                        <label><input type="radio" name="gender" required="">30 </label>
+                                        <label><input type="radio" name="choice-question" required="">10</label>
+                                        <label><input type="radio" name="choice-question" required="">20 </label>
+                                        <label><input type="radio" name="choice-question" required="">30 </label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label >填空题数量</label>
                                     <div class="radio">
-                                        <label><input type="radio" name="gender" required="">5</label>
-                                        <label><input type="radio" name="gender" required="">10 </label>
-                                        <label><input type="radio" name="gender" required="">15 </label>
+                                        <label><input type="radio" name="completion" required="">5</label>
+                                        <label><input type="radio" name="completion" required="">10 </label>
+                                        <label><input type="radio" name="completion" required="">15 </label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label >简答题数量</label>
                                     <div class="radio">
-                                        <label><input type="radio" name="gender" required="">1</label>
-                                        <label><input type="radio" name="gender" required="">2</label>
-                                        <label><input type="radio" name="gender" required="">3</label>
+                                        <label><input type="radio" name="answer-questions" required="">1</label>
+                                        <label><input type="radio" name="answer-questions" required="">2</label>
+                                        <label><input type="radio" name="answer-questions" required="">3</label>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" >一键生成</button>
-                                </div>
+                                <!--<div class="modal-footer">-->
+                                    <!--<button type="button" class="btn btn-default" >一键生成</button>-->
+                                <!--</div>-->
                             </div>
                         </div>
-                        <label for="self">自主选择考题</label>
-                        <div class="tables" id="self">
+                        <label for="self" hidden id="self-label">自主选择考题</label>
+                        <div class="tables" hidden id="self">
                             <div class="bs-example widget-shadow" data-example-id="hoverable-table">
                                 <label for="catalog">已有题目</label>
                                 <table class="table table-hover">
@@ -412,14 +435,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <div class="row">
                                     <div class="col-md-3 grid_box1">
                                         <div class="search-box">
-                                            <form class="input">
+                                            <div class="input">
                                                 <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32">
                                                 <label class="input__label" for="input-32">
                                                     <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                                         <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
                                                     </svg>
                                                 </label>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -496,8 +519,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                         </div>
-
-                        <a href="paperDetail.html"><button type="submit" class="btn btn-default">提交</button></a>
+                        <button type="submit" class="btn btn-default" >提交</button>
                     </form>
                 </div>
             </div>
