@@ -13,14 +13,22 @@
         if (r != null) return unescape(r[2]); return null; //返回参数值
     }
     $(document).ready(function( ){
+        var username = getUrlParam("username");
+        var password = getUrlParam("password");
+        var userid = getUrlParam("userid");
+        var email = getUrlParam("email");
+        var Gender = getUrlParam("Gender");
+        var role = getUrlParam("role");
+        alert(userid);
         var url = "/userManage/modifyuserinfo";
         $.post(
             url,
             {
-                username:"15",
-                password:"15",
-                email:"15",
-                role:"15"
+                userid:userid,
+                username:username,
+                password:password,
+                email:email,
+                role:role
             },//参数列表
             function(result,status,xhr){
                 alert(result.msg);
