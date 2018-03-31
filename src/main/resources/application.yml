@@ -1,9 +1,13 @@
 spring:
   profiles:
     active: dev
+
+
   thymeleaf:
      mode: HTML5
      cache: false
+
+     prefix: classpath:/static/
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver

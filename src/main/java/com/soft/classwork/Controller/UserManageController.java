@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @Controller
-@RequestMapping("/userManage")
 public class UserManageController {
     private final static Logger logger = LoggerFactory.getLogger(UserManageController.class);
 
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/signin", method = RequestMethod.POST)
+    //@ResponseBody
+    @RequestMapping(value = "/userManage/signin", method = RequestMethod.POST)
     public String register(Model model,@Param("username") String username, @Param("password")String password, @Param("email")String email, @Param("Gender")String gender, @Param("role")String role ){
         logger.debug("__________________username: "+username+"___________password:"+password+"_______email:"+email+"______gender:"+gender+"__________role:"+role+"_______________");
         //return ResultUtil.success();
@@ -36,19 +36,19 @@ public class UserManageController {
         if (i == 1) {
             ResultUtil.success("注册成功!");
             model.addAttribute("msg",0);
-            return "manageUser";
+            return "redirect:/manageUser.html";
         } else if (i == -1) {
             ResultUtil.Error(ResultEnum.REGISTER_FAIL1);
             model.addAttribute("msg",1);
-            return "manageUser";
+            return "redirect:/manageUser.html";
         }
         ResultUtil.Error(ResultEnum.REGISTER_FAIL2);
         model.addAttribute("msg",2);
-        return "manageUser";
+        return "redirect:/manageUser.html";
     }
 
     @ResponseBody
-    @RequestMapping(value="/userList",method = RequestMethod.GET)
+    @RequestMapping(value="/userManage/userList",method = RequestMethod.GET)
     public Result getUserList(){
         List<User> userList = userService.getUserList();
         if( userList == null){
@@ -58,14 +58,14 @@ public class UserManageController {
     }
 
     @ResponseBody
-    @RequestMapping(value="/modifyuserinfo",method = RequestMethod.POST)
+    @RequestMapping(value="/userManage/modifyuserinfo",method = RequestMethod.POST)
     public Result updateUserInfoById(@Param("userid")int userid,@Param("username") String username, @Param("password")String password, @Param("email")String email,@Param("role")String role){
         int rs = userService.updateUserInfoById(userid,username,password,email,role);
         return ResultUtil.success(rs);
     }
 
     @ResponseBody
-    @RequestMapping(value="/deleteuser",method = RequestMethod.POST)
+    @RequestMapping(value="/userManage/deleteuser",method = RequestMethod.POST)
     public Result deleteUserByUserId(@Param("userid") int userid){
         int rs = userService.deleteUserByUserId( userid);
         return ResultUtil.success(rs);
