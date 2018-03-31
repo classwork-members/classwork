@@ -523,7 +523,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="exampleModalLabel3">修改病例</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form id="addcassform" method="post">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">病例名</label>
                                                     <input type="text" class="form-control" id="recipient-name2">
@@ -555,7 +555,25 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" >保存</button>
+                                            <button type="button" class="btn btn-default" onclick="post()">保存</button>
+                                            <script>
+                                                $("#addcassform").ajaxSubmit({
+                                                    url: '',
+                                                    type: 'post',
+                                                    dataType: 'json',
+                                                    beforeSubmit: function () {},
+                                                    success: function (data) {
+                                                        if (data.Res == "True" || data.Res == true) {
+                                                            $('.jsrz_main_check').html('您的申请已提交，我们将会在1-2个工作日内进行审核，请耐心等待!');
+                                                        } else {
+                                                            alert(data.Msg);
+                                                        }
+                                                    },
+                                                    clearForm: false,//禁止清楚表单
+                                                    resetForm: false //禁止重置表单
+                                                });
+                                                });
+                                            </script>
                                             <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>

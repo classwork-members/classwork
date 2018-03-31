@@ -25,4 +25,8 @@ public class CaseService {
         return caseRepository.findCasesByIllnessid(illnessId);
     }
 
+//    public String addCases(String casename,
+//                           String datetime,
+//                           )
 }
+
