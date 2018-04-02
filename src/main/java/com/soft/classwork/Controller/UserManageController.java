@@ -25,26 +25,26 @@ public class UserManageController {
     @Autowired
     UserService userService;
 
-    //@ResponseBody
+    @ResponseBody
     @RequestMapping(value = "/userManage/signin", method = RequestMethod.POST)
-    public String register(Model model,@Param("username") String username, @Param("password")String password, @Param("email")String email, @Param("Gender")String gender, @Param("role")String role ){
+    public Result register(@Param("username") String username, @Param("password")String password, @Param("email")String email, @Param("Gender")String gender, @Param("role")String role ){
         logger.debug("__________________username: "+username+"___________password:"+password+"_______email:"+email+"______gender:"+gender+"__________role:"+role+"_______________");
         //return ResultUtil.success();
 
         int i = userService.register(username, password,email,role);
         logger.debug("_____________i:"+i+"_________");
         if (i == 1) {
-            ResultUtil.success("注册成功!");
-            model.addAttribute("msg",0);
-            return "redirect:/manageUser.html";
+            return ResultUtil.success("注册成功!");
+           // model.addAttribute("msg",0);
+           // return "redirect:/manageUser.html";
         } else if (i == -1) {
-            ResultUtil.Error(ResultEnum.REGISTER_FAIL1);
-            model.addAttribute("msg",1);
-            return "redirect:/manageUser.html";
+            return ResultUtil.Error(ResultEnum.REGISTER_FAIL1);
+            //model.addAttribute("msg",1);
+            //return "redirect:/manageUser.html";
         }
-        ResultUtil.Error(ResultEnum.REGISTER_FAIL2);
-        model.addAttribute("msg",2);
-        return "redirect:/manageUser.html";
+        return ResultUtil.Error(ResultEnum.REGISTER_FAIL2);
+        //model.addAttribute("msg",2);
+        //return "redirect:/manageUser.html";
     }
 
     @ResponseBody

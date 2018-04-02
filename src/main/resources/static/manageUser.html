@@ -423,7 +423,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="exampleModalLabel">新建用户</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="userManage/signin" method="post" onsubmit="return beforeSubmit()">
+                                            <form id="registerUser" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">用户名</label>
                                                     <input type="text" name="username" class="form-control" id="recipient-name">
@@ -445,7 +445,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                     <label><input type="radio" name="role" value="ROLE_admin" required="" checked>管理员</label>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary" value="提交">提交</button>
+                                                    <button type="button" id="registerUserBt" class="btn btn-primary" value="提交">提交</button>
                                                     <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                                 </div>
                                             </form>
@@ -549,6 +549,24 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             classie.toggle( showLeftPush, 'disabled' );
         }
     }
+    $("#registerUserBt").click(function(){
+        $.ajax({
+            type: "POST",   //提交的方法
+            url:"/userManage/signin", //提交的地址
+            data:$('#registerUser').serialize(),// 序列化表单值
+            async: false,
+            error: function(request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function(data) {  //成功
+                if(data.code == "0000"){
+                    window.location.href = "/manageUser.html";
+                }else{
+                    alert(data.msg);
+                }
+            }
+            });
+    });
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
 
