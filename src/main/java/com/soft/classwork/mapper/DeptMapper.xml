@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft.classwork.mapper.DeptMapper">
+    <insert id="insertDept" parameterType="com.soft.classwork.model.Department">
+        INSERT into department set deptname = #{department.deptname},deptdesc = #{department.deptdesc},
+        deptprincipal = #{department.deptprincipal}
+    </insert>
+</mapper>
