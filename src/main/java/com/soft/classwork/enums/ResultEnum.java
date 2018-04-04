@@ -19,6 +19,7 @@ public enum ResultEnum {
     INSERT_DEPT("0014","新增科室失败"),
     INSERT_DEPT1("0015","该科室已存在，请勿重复插入"),
     DEPT_ID("0016","deptid不能为空"),
+    DEPT_PRIN("0017","principalArr不能为空。")
     ;
     private String code;
     private String msg;
