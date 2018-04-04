@@ -36,15 +36,15 @@ public class UserManageController {
         if (i == 1) {
             ResultUtil.success("注册成功!");
             model.addAttribute("msg",0);
-            return "redirect:/manageUser.html";
+            return "manageUser";
         } else if (i == -1) {
             ResultUtil.Error(ResultEnum.REGISTER_FAIL1);
             model.addAttribute("msg",1);
-            return "redirect:/manageUser.html";
+            return "manageUser";
         }
         ResultUtil.Error(ResultEnum.REGISTER_FAIL2);
         model.addAttribute("msg",2);
-        return "redirect:/manageUser.html";
+        return "manageUser";
     }
 
     @ResponseBody
