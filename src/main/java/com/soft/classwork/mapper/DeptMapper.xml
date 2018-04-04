@@ -12,7 +12,7 @@
         )
     </insert>
     <select id="getDepartmentList" resultType="com.soft.classwork.model.Department">
-        SELECT * FROM department
+        SELECT * FROM department ORDER BY deptid
     </select>
     <select id="getDeptByName" resultType="com.soft.classwork.model.Department">
         select * from department where deptname = #{deptname}

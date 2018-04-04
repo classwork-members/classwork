@@ -57,24 +57,4 @@ public class DeptService {
         }
         return deptMapper.deleteDept(id);
     }
-
-    /*public void deleteDept(Integer deptid){
-        deptMapper.deleteById(deptid);
-    }
-
-    public List<Department> findAllDept(){
-        return deptMapper.findAll();
-    }
-
-    public Department findOenDept(Integer deptid){
-        return deptMapper.getOne(deptid);
-    }
-
-    public Department updateDept(Integer deptid, String deptname, String deptdesc){
-        Department department = new Department();
-        department.setDeptdesc(deptdesc);
-        department.setDeptid(deptid);
-        department.setDeptname(deptname);
-        return deptMapper.save(department);
-    }*/
 }
