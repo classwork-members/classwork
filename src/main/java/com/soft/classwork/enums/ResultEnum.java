@@ -14,6 +14,11 @@ public enum ResultEnum {
     DELETE_USERROLE_FAIL("0009","删除用户-角色失败。"),
     ROLE_DATA_FAIL("0010","获取role数据失败"),
     USER_DATA_FAIL("0011","获取user数据失败"),
+    REQUEST_NULL("0012","传入参数为空"),
+    DEPT_NAME("0013","departmentName不能为空"),
+    INSERT_DEPT("0014","新增科室失败"),
+    INSERT_DEPT1("0015","该科室已存在，请勿重复插入"),
+    DEPT_ID("0016","deptid不能为空"),
     ;
     private String code;
     private String msg;

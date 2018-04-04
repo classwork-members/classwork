@@ -15,6 +15,26 @@ public class Department {
 
   private String deptdesc;
 
+  private String deptprincipal;
+
+  private String[] principalArr;
+
+  public String[] getPrincipalArr() {
+    return principalArr;
+  }
+
+  public void setPrincipalArr(String[] principalArr) {
+    this.principalArr = principalArr;
+  }
+
+  public String getDeptprincipal() {
+    return deptprincipal;
+  }
+
+  public void setDeptprincipal(String deptprincipal) {
+    this.deptprincipal = deptprincipal;
+  }
+
   public Department() {
   }
 
