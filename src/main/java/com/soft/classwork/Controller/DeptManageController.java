@@ -49,8 +49,6 @@ public class DeptManageController {
 
     @RequestMapping(value = "/updateDept",method = RequestMethod.POST)
     public Result updateDept(@RequestBody Department department){
-        logger.debug("________________update department_______________"+department.getPrincipalArr().length);
-
         if(department == null){
             throw new PetException(ResultEnum.REQUEST_NULL);
         }
@@ -66,6 +64,6 @@ public class DeptManageController {
         if(deptid == 0){
             throw new PetException(ResultEnum.DEPT_ID);
         }
-        return null;
+        return ResultUtil.success(deptService.deleteDept(deptid));
     }
 }

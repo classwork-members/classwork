@@ -51,6 +51,13 @@ public class DeptService {
         return deptMapper.updateDept(department);
     }
 
+    public int deleteDept(int id){
+        if(deptMapper.getDeptById(id) == null){
+            throw new PetException(ResultEnum.NONTASK_ERROR);
+        }
+        return deptMapper.deleteDept(id);
+    }
+
     /*public void deleteDept(Integer deptid){
         deptMapper.deleteById(deptid);
     }
