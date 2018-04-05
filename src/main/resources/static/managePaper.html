@@ -308,7 +308,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <tr>
                             <th>ID</th>
                             <th>考卷名</th>
-                            <th>总分值</th>
+                            <th>每题</th>
                             <th>考试时长</th>
                             <th>题目范围</th>
                             <th>具体题目</th>
@@ -321,7 +321,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <td>Otto</td>
                             <td>@mdo</td>
                             <td>@mdo</td>
-                            <td><a type="button"  href="paperDetail.html" >查看详情</a></td>
+                            <td><a type="button"  href="paperDetail.html" >查看详情或修改题目</a></td>
                         </tr>
                         <tr class="success">
                             <th scope="row">2</th>
@@ -329,7 +329,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <td>Thornton</td>
                             <td>@fat</td>
                             <td>@mdo</td>
-                            <td><a type="button"  href="paperDetail.html" >查看详情</a></td>
+                            <td><a type="button"  href="paperDetail.html" >查看详情或修改题目</a></td>
                         </tr>
                         <tr tr class="info">
                             <th scope="row">3</th>
@@ -337,7 +337,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <td>the Bird</td>
                             <td>@twitter</td>
                             <td>@mdo</td>
-                            <td><a type="button"  href="paperDetail.html" >查看详情</a></td>
+                            <td><a type="button"  href="paperDetail.html" >查看详情或修改题目</a></td>
                         </tr>
                         <tr tr class="warning">
                             <th scope="row">4</th>
@@ -345,7 +345,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <td>the Bird</td>
                             <td>@twitter</td>
                             <td>@mdo</td>
-                            <td><a type="button"  href="paperDetail.html" >查看详情</a></td>
+                            <td><a type="button"  href="paperDetail.html" >查看详情或修改题目</a></td>
                         </tr>
                         <tr tr class="danger">
                             <th scope="row">5</th>
@@ -353,7 +353,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <td>the Bird</td>
                             <td>@twitter</td>
                             <td>@mdo</td>
-                            <td><a type="button"  href="paperDetail.html" >查看详情</a></td>
+                            <td><a type="button"  href="paperDetail.html" >查看详情或修改题目</a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -371,7 +371,23 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="buttons_w3ls_agile">
                         <ul class="bt-list">
                             <li><a type="button" class="hvr-icon-float-away col-24" href="createPaper.html">新增试卷</a></li>
-                            <li><a type="button" class="hvr-icon-sink-away col-8" data-toggle="modal" data-target=".bs-example-modal-sm">删除</a></li>
+                            <script>
+                                function deleteTheUser() {
+                                    var id = document.getElementById("delete-user").value;
+                                    var url = "/userManage/deleteuser";
+                                    $.post(
+                                        url,
+                                        {
+                                            userid:id
+                                        },//参数列表
+                                        function(result,status,xhr){
+                                            window.location.href="manageUser.html?num=0";
+                                        },
+                                        "json"
+                                    );
+                                }
+                            </script>
+                            <li><a type="button" class="hvr-icon-sink-away col-8" data-toggle="modal" data-target=".bs-example-modal-sm">删除试卷</a></li>
                             <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
@@ -379,31 +395,36 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title" id="mySmallModalLabel">提示</h4>
                                         </div>
-                                        <div class="modal-body"> 确定要删除该用户吗                                        </div>
+                                        <div class="modal-body"> 确定要删除该试卷吗                                        </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
-                                            <button type="button" class="btn btn-default" >取消</button>
+                                            <button type="button" class="btn btn-default" >确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <li><a type="button" class="hvr-icon-rotate col-23" data-toggle="modal" data-target="#gridSystemModal">修改</a></li>
+
+                            <li><a type="button" class="hvr-icon-rotate col-23" data-toggle="modal" data-target="#gridSystemModal">修改基本信息</a></li>
                             <div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="gridSystemModalLabel">修改用户</h4>
+                                            <h4 class="modal-title" id="gridSystemModalLabel">修改试卷基本信息</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form>
                                                 <div class="form-group">
-                                                    <label for="recipient-name2" class="control-label">用户名</label>
+                                                    <label for="recipient-name2" class="control-label">考卷名</label>
                                                     <input type="text" class="form-control" value="123" id="recipient-name2">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text2" class="control-label">密码</label>
-                                                    <textarea class="form-control" id="message-text2">123</textarea>
+                                                    <label for="recipient-time" class="control-label">考卷时长</label>
+                                                    <input type="text" class="form-control" value="123" id="recipient-time">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-scope" class="control-label">每题分值</label>
+                                                    <input type="text" class="form-control" value="123" id="recipient-scope">
                                                 </div>
                                             </form>
                                         </div>

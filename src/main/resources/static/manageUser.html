@@ -350,7 +350,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                                     var ul=document.getElementById("pagenum");
                                     var pagenum=1;
-                                    for(var j=0;j<result.data.length-1;j+=5)
+                                    for(var j=0;j<result.data.length;j+=5)
                                     {
                                         var li=document.createElement("li");
                                         j=Number(j);
@@ -382,7 +382,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         }
                         function deleteTheUser() {
                             var id = document.getElementById("delete-user").value;
-                            alert(id);
                             var url = "/userManage/deleteuser";
                             $.post(
                                 url,
