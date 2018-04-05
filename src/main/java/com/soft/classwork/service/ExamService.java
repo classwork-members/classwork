@@ -42,7 +42,8 @@ public class ExamService {
                            String alternativeB,
                            String alternativeC,
                            String alternativeD,
-                           String correctAnswer) {
+                           String correctAnswer,
+                           Integer illnessid) {
         Exam exam = new Exam();
         exam.setAlternativea(alternativeA);
         exam.setAlternativeb(alternativeB);
@@ -51,8 +52,13 @@ public class ExamService {
         exam.setQuestion(question);
         exam.setCorrectAnswer(correctAnswer);
         exam.setExamid(examid);
+        exam.setIllnessid(illnessid);
         return examRepository.save(exam);
     }
+
+//    public Exam updateExam(Exam exam){
+//
+//    }
 
     public List<Exam> findExamByIllnessid(Integer illnessid){return examRepository.findAllByIllnessid(illnessid);}
 }
