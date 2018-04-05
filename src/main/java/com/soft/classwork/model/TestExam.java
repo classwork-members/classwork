@@ -1,10 +1,14 @@
 package com.soft.classwork.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class TestExam {
 
+  @Id
+  @GeneratedValue
   private Integer testid;
   private Integer examid;
   private Integer score;

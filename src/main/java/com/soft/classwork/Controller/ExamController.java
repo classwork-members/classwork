@@ -53,7 +53,7 @@ public class ExamController {
     }
 
     //38
-    @DeleteMapping(value = "/examManage/deleteExam")
+    @PostMapping(value = "/examManage/deleteExam")
     public Result deleteExam(@RequestParam("examid") Integer examid){
         examService.deleteExam(examid);
         return ResultUtil.success(ResultEnum.SUCCESS);
@@ -77,7 +77,7 @@ public class ExamController {
     }
 
     //40
-    @GetMapping(value = "/examManage/alltest")
-    public Result
+//    @GetMapping(value = "/examManage/alltest")
+//    public Result
 
 }
