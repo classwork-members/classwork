@@ -19,6 +19,13 @@ public enum ResultEnum {
     INSERT_DEPT("0014","新增科室失败"),
     INSERT_DEPT1("0015","该科室已存在，请勿重复插入"),
     DEPT_ID("0016","deptid不能为空"),
+    DEPT_PRIN("0017","principalArr不能为空。"),
+    ILLNESS_NAME("0018","illness name 不能为空。"),
+    ILLNESS_IN_TIME("0019","illness in time 不能为空"),
+    ADD_HOS_INFO("0020","添加入院信息失败"),
+    HOS_ID("0021","hospitalized 不能为空"),
+    UPDATE_HOS_FAIL("0022","更新住院信息失败。"),
+    DELETE_HOS_FAIL("0023","删除住院信息失败。"),
     ;
     private String code;
     private String msg;

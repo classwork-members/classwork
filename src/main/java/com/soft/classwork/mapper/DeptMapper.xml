@@ -12,7 +12,7 @@
         )
     </insert>
     <select id="getDepartmentList" resultType="com.soft.classwork.model.Department">
-        SELECT * FROM department
+        SELECT * FROM department ORDER BY deptid
     </select>
     <select id="getDeptByName" resultType="com.soft.classwork.model.Department">
         select * from department where deptname = #{deptname}
@@ -35,4 +35,10 @@
     <select id="getDeptByNameAndId" resultType="com.soft.classwork.model.Department">
         SELECT * FROM department WHERE deptid=#{deptid} AND deptname=#{deptname}
     </select>
+    <select id="getDeptById" resultType="com.soft.classwork.model.Department">
+        SELECT * FROM department WHERE deptid=#{deptid}
+    </select>
+    <delete id="deleteDept">
+        DELETE FROM department WHERE deptid = #{deptid}
+    </delete>
 </mapper>

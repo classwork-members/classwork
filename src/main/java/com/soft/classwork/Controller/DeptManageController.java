@@ -23,18 +23,16 @@ public class DeptManageController {
     @Autowired
     DeptService deptService;
     @RequestMapping(value = "/addDepartment", method = RequestMethod.POST)
-    public Result addDepartment(@Param("deptname") String deptname, @Param("deptprincipal") String[] principalArr, @Param("deptdesc")String deptdesc){
-        if(deptname == null){
+    public Result addDepartment(@RequestBody Department department){
+        if(department.getDeptname() == null){
             return ResultUtil.Error(ResultEnum.DEPT_NAME);
         }
-        String deptprincipal = "";
-        if(principalArr!=null){
-            deptprincipal = StringUtil.ArrayToString(principalArr);
+
+        if(department.getPrincipalArr()!=null){
+            department.setDeptprincipal(StringUtil.ArrayToString(department.getPrincipalArr()));
+        }else {
+            return ResultUtil.Error(ResultEnum.DEPT_PRIN);
         }
-        Department department = new Department();
-        department.setDeptname(deptname);
-        department.setDeptprincipal(deptprincipal);
-        department.setDeptdesc(deptdesc);
 
         if(deptService.addDept(department)<1){
             return ResultUtil.Error(ResultEnum.INSERT_DEPT);
@@ -49,23 +47,24 @@ public class DeptManageController {
 
     @RequestMapping(value = "/updateDept",method = RequestMethod.POST)
     public Result updateDept(@RequestBody Department department){
-        logger.debug("________________update department_______________"+department.getPrincipalArr().length);
-
         if(department == null){
             throw new PetException(ResultEnum.REQUEST_NULL);
         }
         if(department.getDeptname()==null){
             throw new PetException(ResultEnum.DEPT_NAME);
         }
+        if(department.getPrincipalArr()==null){
+            throw new PetException(ResultEnum.DEPT_PRIN);
+        }
         department.setDeptprincipal(StringUtil.ArrayToString(department.getPrincipalArr()));
-       return ResultUtil.success(deptService.updateDept(department));
+        return ResultUtil.success(deptService.updateDept(department));
     }
 
-    @RequestMapping(value = "/deleteDept", method = RequestMethod.POST)
+    @RequestMapping(value = "/reduceDept", method = RequestMethod.POST)
     public Result deleteDept(@Param("deptid") int deptid){
         if(deptid == 0){
             throw new PetException(ResultEnum.DEPT_ID);
         }
-        return null;
+        return ResultUtil.success(deptService.deleteDept(deptid));
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft.classwork.mapper.HosMapper">
+    <insert id="addInfo" parameterType="com.soft.classwork.model.Hospitalized">
+        INSERT INTO hospitalized (dt_in_hospital,dt_out_hospital,illnessname)
+        VALUES (
+        #{hos.dt_in_hospital},
+        #{hos.dt_out_hospital},
+        #{hos.illnessname}
+        )
+    </insert>
+    <update id="modifyInfo" parameterType="com.soft.classwork.model.Hospitalized">
+        UPDATE hospitalized
+        <set>
+            <if test="hos.dt_in_hospital != null">
+                dt_in_hospital = #{hos.dt_in_hospital},
+            </if>
+            <if test="hos.dt_out_hospital != null">
+                dt_out_hospital = #{hos.dt_out_hospital},
+            </if>
+            <if test="hos.illnessname != null">
+                illnessname = #{hos.illnessname}
+            </if>
+            where hospitalizedid = #{hos.hospitalizedid}
+        </set>
+    </update>
+    <delete id="deleteInfo">
+        DELETE FROM hospitalized WHERE hospitalizedid = #{id}
+    </delete>
+    <select id="getList" resultType="com.soft.classwork.model.Hospitalized">
+        SELECT * FROM hospitalized ORDER by hospitalizedid
+    </select>
+</mapper>

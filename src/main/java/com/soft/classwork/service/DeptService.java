@@ -51,23 +51,11 @@ public class DeptService {
         return deptMapper.updateDept(department);
     }
 
-    /*public void deleteDept(Integer deptid){
-        deptMapper.deleteById(deptid);
+    public int deleteDept(int id){
+        if(deptMapper.getDeptById(id) == null){
+            throw new PetException(ResultEnum.NONTASK_ERROR);
+        }
+        return deptMapper.deleteDept(id);
     }
-
-    public List<Department> findAllDept(){
-        return deptMapper.findAll();
-    }
-
-    public Department findOenDept(Integer deptid){
-        return deptMapper.getOne(deptid);
-    }
-
-    public Department updateDept(Integer deptid, String deptname, String deptdesc){
-        Department department = new Department();
-        department.setDeptdesc(deptdesc);
-        department.setDeptid(deptid);
-        department.setDeptname(deptname);
-        return deptMapper.save(department);
-    }*/
 }
+
