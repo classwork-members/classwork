@@ -21,7 +21,7 @@ public class TestService {
     @Autowired
     ExamRepository examRepository;
 
-    public List<Test> getAllTest(){
-
-    }
+//    public List<Test> getAllTest(){
+//
+//    }
 }
