@@ -22,6 +22,9 @@ public class HosService {
     }
 
     public int modifyInfo(Hospitalized hospitalized){
+        if(hosMapper.getHosById(hospitalized.getHospitalizedid()) == null){
+            throw new PetException(ResultEnum.NONTASK_ERROR);
+        }
         int rs = hosMapper.modifyInfo(hospitalized);
         if(rs<1){
             throw new PetException(ResultEnum.UPDATE_HOS_FAIL);
@@ -30,6 +33,9 @@ public class HosService {
     }
 
     public int deleteHosInfo(int id){
+        if(hosMapper.getHosById(id) == null){
+            throw new PetException(ResultEnum.INFO_NOT_EXIT);
+        }
         int rs = hosMapper.deleteInfo(id);
         if(rs<1){
             throw new PetException(ResultEnum.DELETE_HOS_FAIL);
