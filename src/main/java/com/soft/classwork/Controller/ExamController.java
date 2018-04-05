@@ -134,15 +134,6 @@ public class ExamController {
         testService.deletetest(testid);
         return ResultUtil.success("delete success!");
     }
-    //43
-//    @PostMapping(value = "/test/test")
-//    public Result testtest(Integer illnessid){
-//
-//    }
-    //44
-    @PostMapping(value = "/examManage/deletetest")
-    public Result deletetest(@RequestParam("testid") Integer testid){
-        testService.deletetest(testid);
-        return ResultUtil.success("delete success!");
-    }
+
+
 }
