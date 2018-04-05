@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<script>
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return decodeURIComponent(r[2]); return null; //返回参数值
+    }
+    $(document).ready(function( ){
+        var userid = getUrlParam("userid");
+        var question = getUrlParam("question");
+        var alternativec = getUrlParam("alternativec");
+        var alternatived = getUrlParam("alternatived");
+        var alternativea = getUrlParam("alternativea");
+        var alternativeb = getUrlParam("alternativeb");
+        var correctAnswer = getUrlParam("correctAnswer");
+        var illnessid = getUrlParam("illnessid");
+        alert(userid);
+        var url = "/examManage/updateExam";
+        $.post(
+            url,
+            {
+                examid:userid,
+                alternativeA:alternativea,
+                alternativeB:alternativeb,
+                alternativeC:alternativec,
+                alternativeD:alternatived,
+                correctAnswer:correctAnswer,
+                question:question,
+                illnessid:illnessid
+            },//参数列表
+            function(result,status,xhr){
+                alert(result.msg);
+                window.location.href="manageQuestion.html?num=0";
+            },
+            "json"
+        );
+    })
+</script>
+</body>
+</html>
