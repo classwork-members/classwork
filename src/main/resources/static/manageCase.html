@@ -459,10 +459,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="exampleModalLabel">新建病例</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form action="/caseManage/addCase" method="post">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">病例名</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
+                                                    <input type="text" class="form-control" id="recipient-name" name="blm">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="catalog-name" class="control-label">病例类别</label>
@@ -474,19 +474,30 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="receive-text" class="control-label">接诊</label>
-                                                    <div class="form-group"> <input type="file" id="exampleInputFile" >  </div>
+                                                    <div class="form-group">
+                                                        <input type="file" id="jiezhen" >
+                                                    </div>
                                                     <textarea class="form-control" id="receive-text"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inspect-text" class="control-label">检查</label>
+                                                    <div class="form-group">
+                                                        <input type="file" id="jiancha" >
+                                                    </div>
                                                     <textarea class="form-control" id="inspect-text"></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="diagnosis-text" class="control-label">诊断</label>
+                                                    <label for="diagnosis-text" class="control-label">诊断11</label>
+                                                    <div class="form-group">
+                                                        <input type="file" id="zhenduan" >
+                                                    </div>
                                                     <textarea class="form-control" id="diagnosis-text"></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="treat-text" class="control-label">治疗</label>
+                                                    <label for="treat-text" class="control-label">治疗1</label>
+                                                    <div class="form-group">
+                                                        <input type="file" id="zhiliao" >
+                                                    </div>
                                                     <textarea class="form-control" id="treat-text"></textarea>
                                                 </div>
                                             </form>
@@ -554,25 +565,44 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 </div>
                                             </form>
                                         </div>
+
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" onclick="post()">保存</button>
                                             <script>
-                                                $("#addcassform").ajaxSubmit({
-                                                    url: '',
-                                                    type: 'post',
-                                                    dataType: 'json',
-                                                    beforeSubmit: function () {},
-                                                    success: function (data) {
-                                                        if (data.Res == "True" || data.Res == true) {
-                                                            $('.jsrz_main_check').html('您的申请已提交，我们将会在1-2个工作日内进行审核，请耐心等待!');
-                                                        } else {
-                                                            alert(data.Msg);
+                                                function post() {
+                                                    var num = getUrlParam("num");
+                                                    $.ajax({
+                                                        type: "POST",   //提交的方法
+                                                        url:"/caseManage/addCase", //提交的地址
+                                                        data:
+                                                            $('#addcassform').serialize()+"&num="+num
+                                                        ,// 序列化表单值
+                                                        async: false,
+                                                        error: function(request) {  //失败的话
+                                                            alert("Connection error");
+                                                        },
+                                                        success: function(data) {  //成功
+                                                            alert(data.msg);  //就将返回的数据显示出来
+                                                            window.location.href = "/"
                                                         }
-                                                    },
-                                                    clearForm: false,//禁止清楚表单
-                                                    resetForm: false //禁止重置表单
-                                                });
-                                                });
+                                                    });
+                                                }
+                                                    $("#addcassform").ajaxSubmit({
+                                                        url: '',
+                                                        type: 'post',
+                                                        dataType: "json",
+                                                        beforeSubmit: function () {},
+                                                        success: function (data) {
+                                                            if (data.Res == "True" || data.Res == true) {
+                                                                $('.jsrz_main_check').html('您的申请已提交，我们将会在1-2个工作日内进行审核，请耐心等待!');
+                                                            } else {
+                                                                alert(data.Msg);
+                                                            }
+                                                        },
+                                                        clearForm: false,//禁止清楚表单
+                                                        resetForm: false //禁止重置表单
+                                                    });
+                                                }
                                             </script>
                                             <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>

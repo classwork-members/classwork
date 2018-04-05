@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft.classwork.mapper.DeptMapper">
+    <insert id="insertDept" parameterType="com.soft.classwork.model.Department">
+        INSERT INTO department (deptname,deptprincipal, deptdesc)
+        VALUES (
+        #{deptname,jdbcType=VARCHAR },
+        #{deptprincipal,jdbcType=VARCHAR},
+        #{deptdesc, jdbcType=VARCHAR}
+        )
+    </insert>
+    <select id="getDepartmentList" resultType="com.soft.classwork.model.Department">
+        SELECT * FROM department ORDER BY deptid
+    </select>
+    <select id="getDeptByName" resultType="com.soft.classwork.model.Department">
+        select * from department where deptname = #{deptname}
+    </select>
+    <update id="updateDept" parameterType="com.soft.classwork.model.Department">
+        update department
+        <set>
+            <if test="dept.deptname != null">
+                deptname = #{dept.deptname},
+            </if>
+            <if test="dept.deptprincipal != null">
+                deptprincipal = #{dept.deptprincipal},
+            </if>
+            <if test="dept.deptdesc != null">
+                deptdesc = #{dept.deptdesc}
+            </if>
+        </set>
+        where deptid = #{dept.deptid}
+    </update>
+    <select id="getDeptByNameAndId" resultType="com.soft.classwork.model.Department">
+        SELECT * FROM department WHERE deptid=#{deptid} AND deptname=#{deptname}
+    </select>
+    <select id="getDeptById" resultType="com.soft.classwork.model.Department">
+        SELECT * FROM department WHERE deptid=#{deptid}
+    </select>
+    <delete id="deleteDept">
+        DELETE FROM department WHERE deptid = #{deptid}
+    </delete>
+</mapper>

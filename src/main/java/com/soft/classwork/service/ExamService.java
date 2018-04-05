@@ -3,6 +3,8 @@ package com.soft.classwork.service;
 import com.soft.classwork.model.Exam;
 import com.soft.classwork.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,7 +13,8 @@ import java.util.List;
  * on 2018/3/22 08:42
  */
 
-
+@Transactional
+@Service
 public class ExamService {
 
     @Autowired
@@ -38,15 +41,19 @@ public class ExamService {
                            String alternativeA,
                            String alternativeB,
                            String alternativeC,
-                           Character correctAnswer) {
+                           String alternativeD,
+                           String correctAnswer) {
         Exam exam = new Exam();
-        exam.setAlternativeA(alternativeA);
-        exam.setAlternativeB(alternativeB);
-        exam.setAlternativeC(alternativeC);
+        exam.setAlternativea(alternativeA);
+        exam.setAlternativeb(alternativeB);
+        exam.setAlternativec(alternativeC);
+        exam.setAlternatived(alternativeD);
         exam.setQuestion(question);
         exam.setCorrectAnswer(correctAnswer);
         exam.setExamid(examid);
         return examRepository.save(exam);
     }
+
+    public List<Exam> findExamByIllnessid(Integer illnessid){return examRepository.findAllByIllnessid(illnessid);}
 }
 

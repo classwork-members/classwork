@@ -10,20 +10,20 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Exam {
+public class Exam{
 
     @Id
     @GeneratedValue
     private Integer examid;
+
+    private String alternativea;
+    private String alternativeb;
+    private String alternativec;
+    private String alternatived;
+    private String correctAnswer;
     private String question;
-    private String alternativeA;
-    private String alternativeB;
-    private String alternativeC;
+    private Integer illnessid;
 
-    private Character correctAnswer;
-
-    public Exam() {
-    }
 
     public Integer getExamid() {
         return examid;
@@ -33,6 +33,52 @@ public class Exam {
         this.examid = examid;
     }
 
+
+    public String getAlternativea() {
+        return alternativea;
+    }
+
+    public void setAlternativea(String alternativea) {
+        this.alternativea = alternativea;
+    }
+
+
+    public String getAlternativeb() {
+        return alternativeb;
+    }
+
+    public void setAlternativeb(String alternativeb) {
+        this.alternativeb = alternativeb;
+    }
+
+
+    public String getAlternativec() {
+        return alternativec;
+    }
+
+    public void setAlternativec(String alternativec) {
+        this.alternativec = alternativec;
+    }
+
+
+    public String getAlternatived() {
+        return alternatived;
+    }
+
+    public void setAlternatived(String alternatived) {
+        this.alternatived = alternatived;
+    }
+
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+
     public String getQuestion() {
         return question;
     }
@@ -41,35 +87,15 @@ public class Exam {
         this.question = question;
     }
 
-    public String getAlternativeA() {
-        return alternativeA;
+
+    public Integer getIllnessid() {
+        return illnessid;
     }
 
-    public void setAlternativeA(String alternativeA) {
-        this.alternativeA = alternativeA;
+    public void setIllnessid(Integer illnessid) {
+        this.illnessid = illnessid;
     }
 
-    public String getAlternativeB() {
-        return alternativeB;
-    }
 
-    public void setAlternativeB(String alternativeB) {
-        this.alternativeB = alternativeB;
-    }
 
-    public String getAlternativeC() {
-        return alternativeC;
-    }
-
-    public void setAlternativeC(String alternativeC) {
-        this.alternativeC = alternativeC;
-    }
-
-    public Character getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public void setCorrectAnswer(Character correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
 }
