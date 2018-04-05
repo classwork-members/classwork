@@ -287,22 +287,25 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- //header-ends -->
     <!-- main content start-->
    <script>
-       function setChoice(choice) {
-           if(choice=="1"){
-               document.getElementById("auto").hidden = false;
-               document.getElementById("auto-label").hidden = false;
-               document.getElementById("self").hidden = true;
-               document.getElementById("self-label").hidden = true;
-           }
-           else if(choice=="2"){
-               document.getElementById("auto").hidden = true;
-               document.getElementById("auto-label").hidden = true;
-               document.getElementById("self").hidden = false;
-               document.getElementById("self-label").hidden = false;
-           }
-           else {
-               alert("error");
-           }
+
+       function beforeSubmit() {
+           alert(document.getElementById("exampleInputEmail1").value);
+           var url = "/userManage/modifyuserinfo";
+           $.post(
+               url,
+               {
+                   userid:userid,
+                   username:username,
+                   password:password,
+                   email:email,
+                   role:role
+               },//参数列表
+               function(result,status,xhr){
+                   alert(result.msg);
+                   window.location.href="createPaper2.html?id=0";
+               },
+               "json"
+           );
        }
    </script>
     <div id="page-wrapper">
@@ -312,8 +315,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <h4>生成考卷 :</h4>
                 </div>
                 <div class="form-body">
-                    <form action="helpCreatePaper.html">
-                        <div class="form-group">
+                    <form id="fromcreate" name="fromcreate" action="createPaper2.html" onsubmit="beforeSubmit()" >
+                        <div class="form-group" >
                             <label for="exampleInputEmail1">考卷名</label>
                             <input type="text" name="paper-name" class="form-control" id="exampleInputEmail1" >
                         </div>
@@ -321,205 +324,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <label for="exampleInputPassword1">考试时长</label>
                             <input type="text" name="paper-time" class="form-control" id="exampleInputPassword1" >
                         </div>
-                        <div class="form-group">
-                            <label><input type="radio" name="choice" value="automatic" onclick="setChoice(1)" required="" >自动生成考题</label>
-                            <label><input type="radio" name="choice" value="autonomy" onclick="setChoice(2)" required="" >自主选择考题</label>
-                        </div>
-                        <label for="auto" hidden id="auto-label">自动生成考题</label>
-                        <div class="tables" hidden id="auto">
-                            <div class="bs-example widget-shadow">
-                                <label for="catalog">题目范围</label>
-                                <div class="checkbox" id="catalog">
-                                    <label> <input name="range" type="checkbox"> 传染病 </label>
-                                    <label> <input name="range" type="checkbox"> 寄生虫病 </label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="quan">选择题数量</label>
-                                    <div class="radio" id="quan">
-                                        <label><input type="radio" name="choice-question" required="">10</label>
-                                        <label><input type="radio" name="choice-question" required="">20 </label>
-                                        <label><input type="radio" name="choice-question" required="">30 </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label >填空题数量</label>
-                                    <div class="radio">
-                                        <label><input type="radio" name="completion" required="">5</label>
-                                        <label><input type="radio" name="completion" required="">10 </label>
-                                        <label><input type="radio" name="completion" required="">15 </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label >简答题数量</label>
-                                    <div class="radio">
-                                        <label><input type="radio" name="answer-questions" required="">1</label>
-                                        <label><input type="radio" name="answer-questions" required="">2</label>
-                                        <label><input type="radio" name="answer-questions" required="">3</label>
-                                    </div>
-                                </div>
-                                <!--<div class="modal-footer">-->
-                                    <!--<button type="button" class="btn btn-default" >一键生成</button>-->
-                                <!--</div>-->
-                            </div>
-                        </div>
-                        <label for="self" hidden id="self-label">自主选择考题</label>
-                        <div class="tables" hidden id="self">
-                            <div class="bs-example widget-shadow" data-example-id="hoverable-table">
-                                <label for="catalog">已有题目</label>
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>所属病种</th>
-                                        <th>考题名</th>
-                                        <th>内容</th>
-                                        <th>答案</th>
-                                        <th>题目类型</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="active">
-                                        <th scope="row">1</th>
-                                        <td>sjllll</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr class="success">
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr tr class="info">
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr tr class="warning">
-                                        <th scope="row">4</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr tr class="danger">
-                                        <th scope="row">5</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="row">
-                                    <ul class="pagination pagination-lg">
-                                        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </div>
-                                <label for="catalog">新增题目</label>
-                                <div class="row">
-                                    <div class="col-md-3 grid_box1">
-                                        <div class="search-box">
-                                            <div class="input">
-                                                <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32">
-                                                <label class="input__label" for="input-32">
-                                                    <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                                        <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
-                                                    </svg>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>所属病种</th>
-                                        <th>考题名</th>
-                                        <th>内容</th>
-                                        <th>答案</th>
-                                        <th>题目类型</th>
-                                        <th>操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="active">
-                                        <th scope="row">1</th>
-                                        <td>sjllll</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><a href="#">添加到当前考卷</a> </td>
-                                    </tr>
-                                    <tr class="success">
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><a href="#">添加到当前考卷</a> </td>
-                                    </tr>
-                                    <tr tr class="info">
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><a href="#">添加到当前考卷</a> </td>
-                                    </tr>
-                                    <tr tr class="warning">
-                                        <th scope="row">4</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><a href="#">添加到当前考卷</a> </td>
-                                    </tr>
-                                    <tr tr class="danger">
-                                        <th scope="row">5</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><a href="#">添加到当前考卷</a> </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="row">
-                                    <ul class="pagination pagination-lg">
-                                        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-default" >提交</button>
+                        <button type="submit" class="btn btn-default" >下一步</button>
                     </form>
                 </div>
             </div>
