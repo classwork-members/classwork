@@ -104,6 +104,9 @@ public class UserService implements UserDetailsService{
     }
 
     public int deleteUserByUserId(int userid){
+        if(userMapper.getUserById(userid) == null){
+            throw new PetException(ResultEnum.INFO_NOT_EXIT);
+        }
         int rs = userMapper.deleteUserByUserId(userid);
         if(rs == 0){
             throw new PetException(ResultEnum.DELETE_USER_FAIL);
