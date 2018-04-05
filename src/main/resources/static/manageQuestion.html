@@ -294,6 +294,83 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <div class="tables">
                 <div class="bs-example widget-shadow" data-example-id="hoverable-table">
                     <h4>考题列表</h4>
+                    <script>
+                        function getUrlParam(name) {
+                            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                            if (r != null) return unescape(r[2]); return null; //返回参数值
+                        }
+                        $(document).ready(function( ){
+                            var url = "/userManage/userList";
+                            var num = getUrlParam("num");
+                            $.get(
+                                url,
+                                {},//参数列表
+                                function(result,status,xhr){
+                                    num=Number(num);
+                                    if(num+5<result.data.length)
+                                    {
+                                        for (var i=num;i<num+5;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            if(result.data[i].roles[0].rolename=="ROLE_admin")
+                                                var role="管理员";
+                                            else if(result.data[i].roles[0].rolename=="ROLE_normal")
+                                                var role="普通用户";
+                                            else
+                                                var role="error";
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].userid +"</th><td>"+ result.data[i].username +"</td><td>"+ result.data[i].email  +"</td><td>"+ role+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (var i=num;i<result.data.length;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            if(result.data[i].roles[0].rolename=="ROLE_admin")
+                                                var role="管理员";
+                                            else if(result.data[i].roles[0].rolename=="ROLE_normal")
+                                                var role="普通用户";
+                                            else
+                                                var role="error";
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].userid +"</th><td>"+ result.data[i].username +"</td><td>"+ result.data[i].email  +"</td><td>"+ role+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    var ul=document.getElementById("pagenum");
+                                    var pagenum=1;
+                                    for(var j=0;j<result.data.length;j+=5)
+                                    {
+                                        var li=document.createElement("li");
+                                        j=Number(j);
+                                        li.innerHTML="<a href=\"manageUser.html?num="+j+"\">"+pagenum+"</a>";
+                                        ul.appendChild(li);
+                                        pagenum++;
+                                    }
+                                },
+                                "json"
+                            );
+                        });
+                        function setLineNum(line){
+                            if(typeof(line)   ==   "undefined "){
+                                alert('缺少参数');
+                            }else{
+                                document.getElementById("recipient-name2").value = line.cells[1].innerHTML;
+                                document.getElementById("email-text2").value = line.cells[2].innerHTML;
+                                document.getElementById("delete-user").value = line.cells[0].innerHTML;
+                                document.getElementById("userid").value = line.cells[0].innerHTML;
+                                if(line.cells[3].innerHTML=="普通用户")
+                                {
+                                    document.getElementById("quanxian1").checked=true;
+                                }
+                                else if(line.cells[3].innerHTML=="管理员")
+                                {
+                                    document.getElementById("quanxian2").checked=true;
+                                }
+                            }
+                        }
+                    </script>
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -304,39 +381,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <th>分类</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="active">
-                            <th scope="row">1</th>
-                            <td>sjllll</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr class="success">
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr tr class="info">
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr tr class="warning">
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>@mdo</td>
-                        </tr>
+                        </thead>
+                        <tbody id="thedata">
                         </tbody>
                     </table>
                     <div class="buttons_w3ls_agile">
                         <ul class="bt-list">
+                            <script>
+
+                            </script>
                             <li><a type="button" class="hvr-icon-float-away col-24" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">添加</a></li>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                                 <div class="modal-dialog" role="document">
@@ -372,6 +425,22 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                 </div>
                             </div>
+                            <script>
+                                function deleteTheUser() {
+                                    var id = document.getElementById("delete-user").value;
+                                    var url = "/userManage/deleteuser";
+                                    $.post(
+                                        url,
+                                        {
+                                            userid:id
+                                        },//参数列表
+                                        function(result,status,xhr){
+                                            window.location.href="manageUser.html?num=0";
+                                        },
+                                        "json"
+                                    );
+                                }
+                            </script>
                             <li><a type="button" class="hvr-icon-sink-away col-8" data-toggle="modal" data-target=".bs-example-modal-sm">删除</a></li>
                             <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                                 <div class="modal-dialog modal-sm">
