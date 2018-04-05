@@ -4,6 +4,7 @@ import com.soft.classwork.enums.ResultEnum;
 import com.soft.classwork.model.BigTest;
 import com.soft.classwork.model.Exam;
 import com.soft.classwork.model.Result;
+import com.soft.classwork.model.Test;
 import com.soft.classwork.service.ExamService;
 import com.soft.classwork.service.TestService;
 import com.soft.classwork.utils.ResultUtil;
@@ -82,12 +83,57 @@ public class ExamController {
     }
 
     //40
+//    @GetMapping(value = "/examManage/alltest")
+//    public Object getAllTest(){
+//        List<BigTest> bigTests =  testService.getAllTest();
+//        if (bigTests==null)
+//            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+//        //System.out.println(bigTests.toString());
+//        return bigTests;
+//    }
+
+    //40
     @GetMapping(value = "/examManage/alltest")
-    public Object getAllTest(){
-        List<BigTest> bigTests =  testService.getAllTest();
-        if (bigTests==null)
+    public Result getAlltest(){
+        List<Test> testList = testService.getAllTest2();
+        if (testList==null)
             return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
-        //System.out.println(bigTests.toString());
-        return bigTests;
+        return ResultUtil.success(testList);
     }
+
+    //41
+    @PostMapping(value = "/examManage/addtest1")
+    public Result addtest1(@RequestParam("testname") String testname,
+                           @RequestParam("testtime") Integer testtime) {
+        Test test = testService.addtest1(testname, testtime);
+        if (test==null)
+            return ResultUtil.Error(ResultEnum.INSERT_FAIL);
+        return ResultUtil.success(test);
+    }
+
+    //42
+    @PostMapping(value = "/examManage/randomtest")
+    public Result ramdomtest(@RequestParam("testid") Integer testid,
+                             @RequestParam("illnessid") Integer illnessid,
+                             @RequestParam("score") Integer score,
+                             @RequestParam("examcount") Integer examcount){
+        Boolean b = testService.randomtest(testid,illnessid,score,examcount);
+        if (!b)
+            return ResultUtil.Error(ResultEnum.UPDATE_FAIL);
+        return ResultUtil.success("random success");
+    }
+
+    //43
+//    @PostMapping(value = "/test/test")
+//    public Result testtest(Integer illnessid){
+//
+//    }
+    //44
+    @PostMapping(value = "/examManage/deletetest")
+    public Result deletetest(@RequestParam("testid") Integer testid){
+        testService.deletetest(testid);
+        return ResultUtil.success("delete success!");
+    }
+
+
 }
