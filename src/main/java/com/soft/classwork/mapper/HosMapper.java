@@ -10,4 +10,5 @@ public interface HosMapper {
     int modifyInfo(@Param("hos") Hospitalized hos);
     int deleteInfo(@Param("id") int id);
     List<Hospitalized> getList();
+    Hospitalized getHosById(@Param("id") int id);
 }
