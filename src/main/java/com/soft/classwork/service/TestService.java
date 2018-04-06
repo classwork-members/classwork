@@ -5,12 +5,15 @@ import com.soft.classwork.model.Exam;
 import com.soft.classwork.model.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import com.soft.classwork.model.TestExam;
 import com.soft.classwork.repository.ExamRepository;
 import com.soft.classwork.repository.TestExamRepository;
 import com.soft.classwork.repository.TestRepository;
+import com.soft.classwork.utils.NumberUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,4 +57,51 @@ public class TestService {
         }
         return bigTests;
     }
+
+    public List<Test> getAllTest2(){
+        return testRepository.findAll();
+    }
+
+    public Test addtest1(String testname,Integer testime){
+        Test test = new Test();
+        test.setIllnessid(null);
+        test.setTesttime(testime);
+        test.setTotalscore(null);
+        test.setTotalscore(null);
+        test.setTestname(testname);
+        test.setExamcount(null);
+        return testRepository.save(test);
+    }
+
+    public void deletetest(Integer testid){
+        testRepository.deleteById(testid);
+        testExamRepository.deleteAllBytestid(testid);
+    }
+
+    public boolean randomtest(Integer testid,Integer illnessid,Integer score,Integer examcount){
+        List<Exam> examList = examRepository.findAllByIllnessid(illnessid);
+        Integer count = examList.size();
+        System.out.println(count);
+        Exam[] exams = new Exam[count];
+        Integer[] examids = new Integer[count];
+        Exam[] s = examList.toArray(exams);
+        for (int i = 0; i <count ; i++) {
+            examids[i] = exams[i].getExamid();
+        }
+        System.out.println(Arrays.toString(examids));
+        int[] array = NumberUtil.getRandomIntegerArray(count,examcount);
+        System.out.println(Arrays.toString(array));
+        for (int i = 0; i <array.length ; i++) {
+            TestExam testExam = new TestExam();
+            testExam.setExamid(examids[array[i]]);
+            testExam.setScore(score);
+            testExam.setTestid(testid);
+            TestExam testExam1 = testExamRepository.save(testExam);
+//            if(testExam1==null);
+//                return false;
+        }
+        return true;
+    }
+
+
 }

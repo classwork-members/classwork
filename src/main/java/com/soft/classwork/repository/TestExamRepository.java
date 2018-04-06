@@ -13,4 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TestExamRepository extends JpaRepository<TestExam,Integer>{
 
     public List<TestExam> findAllByTestid(Integer testid);
+
+    public void deleteAllBytestid(Integer testid);
+
 }

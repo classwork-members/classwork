@@ -15,7 +15,8 @@ public class Test {
   private Integer testtime;
   private String testname;
   private Integer illnessid;
-
+  private Integer totalscore;
+  private Integer examcount;
 
   public Integer getTestid() {
     return testid;
@@ -52,6 +53,22 @@ public class Test {
     this.illnessid = illnessid;
   }
 
+  public Integer getTotalscore() {
+    return totalscore;
+  }
+
+  public void setTotalscore(Integer totalscore) {
+    this.totalscore = totalscore;
+  }
+
+  public Integer getExamcount() {
+    return examcount;
+  }
+
+  public void setExamcount(Integer examcount) {
+    this.examcount = examcount;
+  }
+
   @Override
   public String toString() {
     return "Test{" +
@@ -59,6 +76,8 @@ public class Test {
             ", testtime=" + testtime +
             ", testname='" + testname + '\'' +
             ", illnessid=" + illnessid +
+            ", totalscore=" + totalscore +
+            ", examcount=" + examcount +
             '}';
   }
 }

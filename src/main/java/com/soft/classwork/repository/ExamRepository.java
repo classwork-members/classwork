@@ -14,4 +14,8 @@ import java.util.List;
 public interface ExamRepository extends JpaRepository<Exam,Integer> {
 
     public List<Exam> findAllByIllnessid(Integer illnessid);
+
+    public Integer countAllByIllnessid(Integer illnessid);
+
+    public List<Integer> findByIllnessid(Integer illnessid);
 }
