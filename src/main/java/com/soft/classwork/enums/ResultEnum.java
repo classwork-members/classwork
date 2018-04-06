@@ -23,7 +23,7 @@ public enum ResultEnum {
     ILLNESS_NAME("0018","illness name 不能为空。"),
     ILLNESS_IN_TIME("0019","illness in time 不能为空"),
     ADD_HOS_INFO("0020","添加入院信息失败"),
-    HOS_ID("0021","hospitalized 不能为空"),
+    HOS_ID("0021","hospitalized id 不能为空"),
     UPDATE_HOS_FAIL("0022","更新住院信息失败。"),
     DELETE_HOS_FAIL("0023","删除住院信息失败。"),
     DRUG_ID_NULL("0024","drug id 不能为空"),
@@ -36,6 +36,12 @@ public enum ResultEnum {
     INFO_NOT_EXIT("0031","该条数据不存在，删除无效"),
     DELETE_DEPT_FAIL("0032","删除科室失败。"),
     UPDATE_DEPT_FAIL("0033","更新科室失败。"),
+    CHARGE_PAYMENT_NULL("0034","charge parment不能小于0"),
+    CHARGE_PURPOSE_NULL("0035","charge purpose不能为空"),
+    DELETE_FAIL("0036","删除失败"),
+    DATA_EXIT("0037","该数据已存在，请勿重复插入。"),
+    UPDATE_DATA_NONEXIT("0038","该数据不存在，请先新建"),
+    CHARGE_ID_NULL("0039","charge id 不能为空。"),
     ;
     private String code;
     private String msg;
