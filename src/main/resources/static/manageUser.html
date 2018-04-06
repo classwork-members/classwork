@@ -334,6 +334,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     }
                                     else
                                     {
+                                        for (var i=num;i<result.data.length;i++)
                                         {
                                             var $tab1 = $("#thedata");
                                             if(result.data[i].roles[0].rolename=="ROLE_admin")
@@ -346,7 +347,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             $tab1.append(trData);
                                         }
                                     }
-
                                     var ul=document.getElementById("pagenum");
                                     var pagenum=1;
                                     for(var j=0;j<result.data.length;j+=5)
@@ -432,7 +432,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email-text" class="control-label">邮箱</label>
-                                                    <input type="text" name="email" class="form-control" id="email-text">
+                                                    <input type="email" name="email" class="form-control" id="email-text">
                                                 </div>
                                                 <div class="form-group">
                                                     <label><input type="radio" name="Gender" value="male" required="" >男</label>
@@ -488,7 +488,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="recipient-name2" class="control-label">邮箱</label>
-                                                    <input type="text" name="email" class="form-control" id="email-text2">
+                                                    <input type="email" name="email" class="form-control" id="email-text2">
                                                 </div>
                                                 <div class="form-group">
                                                     <label><input type="radio" name="Gender" value="male" required="" id="gender1">男</label>
