@@ -1,9 +1,11 @@
 package com.soft.classwork.Controller;
 
 import com.soft.classwork.enums.ResultEnum;
+import com.soft.classwork.model.BigTest;
 import com.soft.classwork.model.Exam;
 import com.soft.classwork.model.Result;
 import com.soft.classwork.service.ExamService;
+import com.soft.classwork.service.TestService;
 import com.soft.classwork.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,6 +23,9 @@ public class ExamController {
 
     @Autowired
     ExamService examService;
+
+    @Autowired
+    TestService testService;
 
     @Autowired
 
@@ -77,7 +82,12 @@ public class ExamController {
     }
 
     //40
-//    @GetMapping(value = "/examManage/alltest")
-//    public Result
-
+    @GetMapping(value = "/examManage/alltest")
+    public Object getAllTest(){
+        List<BigTest> bigTests =  testService.getAllTest();
+        if (bigTests==null)
+            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+        //System.out.println(bigTests.toString());
+        return bigTests;
+    }
 }
