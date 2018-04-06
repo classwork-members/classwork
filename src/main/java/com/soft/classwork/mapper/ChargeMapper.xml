@@ -30,4 +30,10 @@
         </set>
         WHERE chargeid = #{charge.chargeid}
     </update>
+    <delete id="deleteChargeById">
+        DELETE FROM charge WHERE chargeid = #{id}
+    </delete>
+    <select id="getChargeList" resultType="com.soft.classwork.model.Charge">
+        SELECT * FROM charge ORDER BY chargeid
+    </select>
 </mapper>

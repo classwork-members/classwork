@@ -6,6 +6,7 @@ import com.soft.classwork.model.Charge;
 import com.soft.classwork.model.Result;
 import com.soft.classwork.service.ChargeService;
 import com.soft.classwork.utils.ResultUtil;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,22 @@ public class ChargeManageController {
         if(charge.getChargeid() == 0){
             throw new PetException(ResultEnum.CHARGE_ID_NULL);
         }
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        charge.setDt_update(dateFormat.format(date));
         return ResultUtil.success(chargeService.updateCharge(charge));
+    }
+
+    @RequestMapping(value = "/deleteCharge", method = RequestMethod.GET)
+    public Result deleteCharge(@Param("chargeid") int chargeid){
+        if(chargeid == 0){
+            throw new PetException(ResultEnum.CHARGE_ID_NULL);
+        }
+        return ResultUtil.success(chargeService.deleteCharge(chargeid));
+    }
+
+    @RequestMapping(value = "/getChargeList", method = RequestMethod.GET)
+    public Result getChargeList(){
+        return ResultUtil.success(chargeService.getChargeList());
     }
 }

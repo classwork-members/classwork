@@ -7,6 +7,8 @@ import com.soft.classwork.model.Charge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ChargeService {
     @Autowired
@@ -29,5 +31,20 @@ public class ChargeService {
             throw new PetException(ResultEnum.UPDATE_FAIL);
         }
         return rs;
+    }
+
+    public int deleteCharge(int id){
+        if(chargeMapper.getChargeById(id) == null){
+            throw new PetException(ResultEnum.INFO_NOT_EXIT);
+        }
+        int rs = chargeMapper.deleteChargeById(id);
+        if(rs == 0){
+            throw new PetException(ResultEnum.DELETE_FAIL);
+        }
+        return rs;
+    }
+
+    public List<Charge> getChargeList(){
+        return chargeMapper.getChargeList();
     }
 }
