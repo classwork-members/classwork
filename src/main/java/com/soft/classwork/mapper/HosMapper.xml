@@ -23,8 +23,8 @@
             <if test="hos.illnessname != null">
                 illnessname = #{hos.illnessname}
             </if>
-            where hospitalizedid = #{hos.hospitalizedid}
         </set>
+        where hospitalizedid = #{hos.hospitalizedid}
     </update>
     <delete id="deleteInfo">
         DELETE FROM hospitalized WHERE hospitalizedid = #{id}
