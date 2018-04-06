@@ -23,7 +23,7 @@ public class DrugManageController {
         if(drug.getDrugname() == null){
             throw new PetException(ResultEnum.DRUG_NAME_NULL);
         }
-        if(drug.getDrugfee() < 0){
+        if(Float.valueOf(drug.getDrugfee()) < 0){
             throw new PetException(ResultEnum.DRUG_FEE_NULL);
         }
         return ResultUtil.success(drugService.addDrug(drug));

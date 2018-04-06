@@ -11,7 +11,6 @@ public class Test {
   @Id
   @GeneratedValue
   private Integer testid;
-
   private Integer testtime;
   private String testname;
   private Integer illnessid;
