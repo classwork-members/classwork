@@ -303,57 +303,79 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div><!--//end-search-box-->
                     </div>
                     <h4>药品列表</h4>
+                    <script>
+                        function getUrlParam(name) {
+                            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                            if (r != null) return unescape(r[2]); return null; //返回参数值
+                        }
+                        $(document).ready(function( ){
+                            var url = "/drugManage/getDrugList";
+                            var num = getUrlParam("num");
+                            $.get(
+                                url,
+                                {},//参数列表
+                                function(result,status,xhr){
+                                    num=Number(num);
+                                    if(num+5<result.data.length)
+                                    {
+                                        for (var i=num;i<num+5;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].drugid +"</th><td>"+ result.data[i].drugname +"</td><td>"+ result.data[i].drugfee  +"</td><td>"+ result.data[i].drugdesc+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (var i=num;i<result.data.length;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].drugid +"</th><td>"+ result.data[i].drugname +"</td><td>"+ result.data[i].drugfee  +"</td><td>"+ result.data[i].drugdesc+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    var ul=document.getElementById("pagenum");
+                                    var pagenum=1;
+                                    for(var j=0;j<result.data.length;j+=5)
+                                    {
+                                        var li=document.createElement("li");
+                                        j=Number(j);
+                                        li.innerHTML="<a href=\"manageDrug.html?num="+j+"\">"+pagenum+"</a>";
+                                        ul.appendChild(li);
+                                        pagenum++;
+                                    }
+                                },
+                                "json"
+                            );
+                        });
+                        function setLineNum(line){
+                            if(typeof(line)   ==   "undefined "){
+                                alert('缺少参数');
+                            }else{
+                                document.getElementById("delete-user").value = line.cells[0].innerHTML;
+                                document.getElementById("userid").value = line.cells[0].innerHTML;
+                                document.getElementById("recipient-name2").value = line.cells[1].innerHTML;
+                                document.getElementById("message-text2").value = line.cells[3].innerHTML;
+                                document.getElementById("fee-name2").value = line.cells[2].innerHTML;
+                                alert(line.cells[0].innerHTML);
+                            }
+                        }
+                    </script>
                     <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>ID</th>
                             <th>药品名</th>
-                            <th>描述</th>
                             <th>费用</th>
+                            <th>描述</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="active">
-                            <th scope="row">1</th>
-                            <td>sjllll</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr class="success">
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr tr class="info">
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr tr class="warning">
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr tr class="danger">
-                            <th scope="row">5</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        <tbody id="thedata">
                         </tbody>
                     </table>
                     <div class="row">
-                        <ul class="pagination pagination-lg">
-                            <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        <ul class="pagination pagination-lg" id="pagenum">
                         </ul>
                     </div>
                     <div class="buttons_w3ls_agile">
@@ -364,32 +386,46 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="exampleModalLabel">新建药品</h4>
+                                            <h4 class="modal-title" id="exampleModalLabel">添加药品</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form id="newDept" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">药品名</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
+                                                    <input type="text" name="drugname" class="form-control" id="recipient-name">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="control-label">描述</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                    <label for="password-text" class="control-label">费用</label>
+                                                    <input type="text" name="drugfee" class="form-control" id="password-text">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">适用病症</label>
-                                                    <input type="text" class="form-control" id="disease-name">
+                                                    <label for="email-text" class="control-label">描述</label>
+                                                    <input type="text" name="drugdesc" class="form-control" id="email-text">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" id="newDeptBt" class="btn btn-primary" value="提交">提交</button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                                 </div>
                                             </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
-                                            <button type="button" class="btn btn-primary">取消</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <li><a type="button" class="hvr-icon-sink-away col-8" data-toggle="modal" data-target=".bs-example-modal-sm">删除</a></li>
+                            <script>
+                                function deleteTheUser() {
+                                    var id = document.getElementById("delete-user").value;
+                                    var url = "/drugManage/deleteDrug?drugid="+id;
+                                    $.get(
+                                        url,
+                                        {},//参数列表
+                                        function(result,status,xhr){
+                                            window.location.href="manageDrug.html";
+                                        },
+                                        "json"
+                                    );
+                                }
+                            </script>
                             <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
@@ -397,10 +433,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title" id="mySmallModalLabel">提示</h4>
                                         </div>
-                                        <div class="modal-body"> 确定要删除该用户吗                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
-                                            <button type="button" class="btn btn-default" >取消</button>
+                                        <div class="modal-body"> 确定要删除该用户吗</div>
+                                        <div class="modal-footer" value="" id="delete-user">
+                                            <button type="button" class="btn btn-default" onclick="deleteTheUser()">确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
@@ -411,26 +447,27 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="gridSystemModalLabel">修改药品</h4>
+                                            <h4 class="modal-title" id="gridSystemModalLabel">修改药品信息</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form id="modifyDept" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
                                                     <label for="recipient-name2" class="control-label">药品名</label>
-                                                    <input type="text" class="form-control" id="recipient-name2">
+                                                    <input type="text" class="form-control" value="123" id="recipient-name2">
+                                                    <input vlaue="" id="userid" name="userid" hidden>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text2" class="control-label">描述</label>
-                                                    <textarea class="form-control" id="message-text2"></textarea>
+                                                    <input type="text" class="form-control" value="123" id="message-text2">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="recipient-name2" class="control-label">适用病症</label>
-                                                    <input type="text" class="form-control" id="disease-name2">
+                                                    <label for="recipient-name2" class="control-label">费用</label>
+                                                    <input type="text" class="form-control" value="123" id="fee-name2">
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" id="modifyDepyBt">保存</button>
                                             <button type="button" class="btn btn-primary">取消</button>
                                         </div>
                                     </div><!-- /.modal-content -->
@@ -475,6 +512,53 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             classie.toggle( showLeftPush, 'disabled' );
         }
     }
+    $("#newDeptBt").click(function(){
+        $.ajax({
+            type: "POST",   //提交的方法
+            contentType: "application/json;charset=UTF-8",
+            url:"/drugManage/addDrug", //提交的地址
+            data: JSON.stringify({
+                drugname: $("#recipient-name").val(),
+                drugfee: $("#password-text").val(),
+                drugdesc: $("#email-text").val(),
+            }),
+            async: false,
+            error: function(request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function(data) {  //成功
+                if(data.code == "0000"){
+                    window.location.href = "/manageDrug.html";
+                }else{
+                    alert(data.msg);
+                }
+            }
+        });
+    });
+    $("#modifyDepyBt").click(function() {
+        $.ajax({
+            type: "POST",   //提交的方法
+            contentType: "application/json;charset=UTF-8",
+            url:"/drugManage/updateDrug", //提交的地址
+            data: JSON.stringify({
+                drugid: $("#userid").val(),
+                drugname: $("#recipient-name2").val(),
+                drugfee: $("#fee-name2").val(),
+                drugdesc: $("#message-text2").val(),
+            }),
+            async: false,
+            error: function(request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function(data) {  //成功
+                if(data.code == "0000"){
+                    window.location.href = "/manageDrug.html";
+                }else{
+                    alert(data.msg);
+                }
+            }
+        });
+    });
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
 

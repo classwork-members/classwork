@@ -303,6 +303,65 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div><!--//end-search-box-->
                     </div>
                     <h4>试卷列表</h4>
+                    <script>
+                        function getUrlParam(name) {
+                            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                            if (r != null) return unescape(r[2]); return null; //返回参数值
+                        }
+                        $(document).ready(function( ){
+                            var url = "/examManage/alltest";
+                            var num = getUrlParam("num");
+                            $.get(
+                                url,
+                                {},//参数列表
+                                function(result,status,xhr){
+                                    num=Number(num);
+                                    if(num+5<result.data.length)
+                                    {
+                                        for (var i=num;i<num+5;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].examIntegerMap.Exam.examid +"</th><td>"+ result.data[i].examIntegerMap.Exam.alternativea +"</td><td>"+ result.data[i].examIntegerMap.Exam.alternativeb +"</td><td>"+ result.data[i].examIntegerMap.Exam.alternativec+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (var i=num;i<result.data.length;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].drugid +"</th><td>"+ result.data[i].drugname +"</td><td>"+ result.data[i].drugfee  +"</td><td>"+ result.data[i].drugdesc+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    var ul=document.getElementById("pagenum");
+                                    var pagenum=1;
+                                    for(var j=0;j<result.data.length;j+=5)
+                                    {
+                                        var li=document.createElement("li");
+                                        j=Number(j);
+                                        li.innerHTML="<a href=\"manageDrug.html?num="+j+"\">"+pagenum+"</a>";
+                                        ul.appendChild(li);
+                                        pagenum++;
+                                    }
+                                },
+                                "json"
+                            );
+                        });
+                        function setLineNum(line){
+                            if(typeof(line)   ==   "undefined "){
+                                alert('缺少参数');
+                            }else{
+                                document.getElementById("delete-user").value = line.cells[0].innerHTML;
+                                document.getElementById("userid").value = line.cells[0].innerHTML;
+                                document.getElementById("recipient-name2").value = line.cells[1].innerHTML;
+                                document.getElementById("message-text2").value = line.cells[3].innerHTML;
+                                document.getElementById("fee-name2").value = line.cells[2].innerHTML;
+                                alert(line.cells[0].innerHTML);
+                            }
+                        }
+                    </script>
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -314,47 +373,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <th>具体题目</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="active">
-                            <th scope="row">1</th>
-                            <td>sjllll</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td><a type="button"  href="paperDetail.html" >查看详情或修改题目</a></td>
-                        </tr>
-                        <tr class="success">
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@mdo</td>
-                            <td><a type="button"  href="paperDetail.html" >查看详情或修改题目</a></td>
-                        </tr>
-                        <tr tr class="info">
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>@mdo</td>
-                            <td><a type="button"  href="paperDetail.html" >查看详情或修改题目</a></td>
-                        </tr>
-                        <tr tr class="warning">
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>@mdo</td>
-                            <td><a type="button"  href="paperDetail.html" >查看详情或修改题目</a></td>
-                        </tr>
-                        <tr tr class="danger">
-                            <th scope="row">5</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>@mdo</td>
-                            <td><a type="button"  href="paperDetail.html" >查看详情或修改题目</a></td>
-                        </tr>
+                        <tbody id="thedata">
                         </tbody>
                     </table>
                     <div class="row">
