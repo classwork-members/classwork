@@ -335,7 +335,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     }
                                     else
                                     {
-                                        for (var i=num;i<num+5;i++) {
+                                        for (var i=num;i<result.data.length;i++) {
                                             var $tab1 = $("#thedata");
                                             if(result.data[i].deptprincipal!='') {
                                                 var deptprincipal = result.data[i].deptprincipal;
@@ -546,7 +546,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             type: "POST",   //提交的方法
             contentType: "application/json;charset=UTF-8",
             url:"/deptManage/addDepartment", //提交的地址
-            data:$('#newDept').serialize(),// 序列化表单值
+            data: JSON.stringify({
+                deptname: $("#recipient-name").val(),
+                deptdesc: $("#message-text").val(),
+                deptprincipal: $("#quan").val(),
+            }),
             async: false,
             error: function(request) {  //失败的话
                 alert("Connection error");
@@ -561,7 +565,27 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         });
     });
     $("#modifyDepyBt").click(function() {
-
+        $.ajax({
+            type: "POST",   //提交的方法
+            contentType: "application/json;charset=UTF-8",
+            url:"/deptManage/updateDept", //提交的地址
+            data: JSON.stringify({
+                deptname: $("#recipient-name2").val(),
+                deptdesc: $("#message-text2").val(),
+                deptprincipal: $("#quan2").val(),
+            }),
+            async: false,
+            error: function(request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function(data) {  //成功
+                if(data.code == "0000"){
+                    window.location.href = "/manageDepartment.html";
+                }else{
+                    alert(data.msg);
+                }
+            }
+        });
     });
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
