@@ -436,16 +436,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 <div class="form-group">
                                                     <label for="quan" class="control-label">责任人</label>
                                                     <div class="checkbox" id="quan">
-                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="前台"> 前台 </label>
-                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="执业兽医师"> 执业兽医师 </label>
-                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="助理"> 助理 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="前台" id="dept11"> 前台 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="执业兽医师" id="dept12"> 执业兽医师 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="助理" id="dept13"> 助理 </label>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal" id="newDeptBt">保存</button>
-                                            <button type="button" class="btn btn-primary">取消</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
@@ -479,7 +479,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 <div class="form-group">
                                                     <label for="recipient-name2" class="control-label">科室名</label>
                                                     <input type="text" class="form-control" value="123" id="recipient-name2">
-                                                    <input vlaue="" id="deptid" name="deptid" hidden>
+                                                    <input value="" id="deptid" hidden>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text2" class="control-label">功能</label>
@@ -487,17 +487,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="quan2" class="control-label">责任人</label>
-                                                    <div class="checkbox" id="quan2">
-                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="前台"> 前台 </label>
-                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="执业兽医师"> 执业兽医师 </label>
-                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="助理"> 助理 </label>
+                                                    <div class="checkbox2" id="quan2">
+                                                        <label> <input type="checkbox" name="deptprincipal2" required="" value="前台" id="dept21"> 前台 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal2" required="" value="执业兽医师" id="dept22"> 执业兽医师 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal2" required="" value="助理" id="dept23"> 助理 </label>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal" id="modifyDepyBt">保存</button>
-                                            <button type="button" class="btn btn-primary">取消</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
@@ -542,50 +542,74 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         }
     }
     $("#newDeptBt").click(function(){
-        $.ajax({
-            type: "POST",   //提交的方法
-            contentType: "application/json;charset=UTF-8",
-            url:"/deptManage/addDepartment", //提交的地址
-            data: JSON.stringify({
-                deptname: $("#recipient-name").val(),
-                deptdesc: $("#message-text").val(),
-                deptprincipal: $("#quan").val(),
-            }),
-            async: false,
-            error: function(request) {  //失败的话
-                alert("Connection error");
-            },
-            success: function(data) {  //成功
-                if(data.code == "0000"){
-                    window.location.href = "/manageDepartment.html";
-                }else{
-                    alert(data.msg);
+        obj = document.getElementsByName("deptprincipal");
+        check_val = [];
+        for(k in obj){
+            if(obj[k].checked)
+                check_val.push(obj[k].value);
+        }
+        if(check_val==[])
+        {
+            alert("请选择责任人");
+        }
+        else {
+            $.ajax({
+                type: "POST",   //提交的方法
+                contentType: "application/json;charset=UTF-8",
+                url: "/deptManage/addDepartment", //提交的地址
+                data: JSON.stringify({
+                    deptname: $("#recipient-name").val(),
+                    deptdesc: $("#message-text").val(),
+                    principalArr: check_val,
+                }),
+                async: false,
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {  //成功
+                    if (data.code == "0000") {
+                        window.location.href = "/manageDepartment.html";
+                    } else {
+                        alert(data.msg);
+                    }
                 }
-            }
-        });
+            });
+        }
     });
     $("#modifyDepyBt").click(function() {
-        $.ajax({
-            type: "POST",   //提交的方法
-            contentType: "application/json;charset=UTF-8",
-            url:"/deptManage/updateDept", //提交的地址
-            data: JSON.stringify({
-                deptname: $("#recipient-name2").val(),
-                deptdesc: $("#message-text2").val(),
-                deptprincipal: $("#quan2").val(),
-            }),
-            async: false,
-            error: function(request) {  //失败的话
-                alert("Connection error");
-            },
-            success: function(data) {  //成功
-                if(data.code == "0000"){
-                    window.location.href = "/manageDepartment.html";
-                }else{
-                    alert(data.msg);
+        obj = document.getElementsByName("deptprincipal2");
+        check_val = [];
+        for(k in obj){
+            if(obj[k].checked)
+                check_val.push(obj[k].value);
+        }
+        if(check_val==[])
+        {
+            alert("请选择责任人");
+        }
+        else {
+            $.ajax({
+                type: "POST",   //提交的方法
+                contentType: "application/json;charset=UTF-8",
+                url: "/deptManage/updateDept", //提交的地址
+                data: JSON.stringify({
+                    deptname: $("#recipient-name2").val(),
+                    deptdesc: $("#message-text2").val(),
+                    principalArr: check_val,
+                }),
+                async: false,
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {  //成功
+                    if (data.code == "0000") {
+                        window.location.href = "/manageDepartment.html";
+                    } else {
+                        alert(data.msg);
+                    }
                 }
-            }
-        });
+            });
+        }
     });
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
