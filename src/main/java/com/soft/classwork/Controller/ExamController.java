@@ -134,7 +134,6 @@ public class ExamController {
         testService.deletetest(testid);
         return ResultUtil.success("delete success!");
     }
-
     //43
 //    @PostMapping(value = "/test/test")
 //    public Result testtest(Integer illnessid){
@@ -146,6 +145,4 @@ public class ExamController {
         testService.deletetest(testid);
         return ResultUtil.success("delete success!");
     }
-
-
 }

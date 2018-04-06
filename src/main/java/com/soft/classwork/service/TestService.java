@@ -5,7 +5,10 @@ import com.soft.classwork.model.Exam;
 import com.soft.classwork.model.Test;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Arrays;
+=======
+>>>>>>> 40
 import java.util.List;
 import java.util.Random;
 
@@ -57,6 +60,7 @@ public class TestService {
         }
         return bigTests;
     }
+<<<<<<< HEAD
 
     public List<Test> getAllTest2(){
         return testRepository.findAll();
@@ -104,4 +108,6 @@ public class TestService {
     }
 
 
+=======
+>>>>>>> 40
 }
