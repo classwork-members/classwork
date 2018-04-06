@@ -100,8 +100,46 @@ public class TestService {
 //            if(testExam1==null);
 //                return false;
         }
+        Test test = testRepository.getOne(testid);
+        test.setExamcount(examcount);
+        test.setTotalscore(examcount*score);
+        test.setIllnessid(illnessid);
+        testRepository.save(test);
         return true;
     }
 
+    public TestExam addOneExam(Integer testid,Integer examid,Integer score){
+        TestExam testExam = new TestExam();
+        testExam.setTestid(testid);
+        testExam.setExamid(examid);
+        testExam.setScore(score);
+        return testExamRepository.save(testExam);
+
+    }
+
+    public Test updateTest(Integer testid,
+                           String testname,
+                           Integer testtime,
+                           Integer score,
+                           Integer examcount
+                           ){
+        Test test = new Test();
+        test.setTotalscore(score*examcount);
+        test.setExamcount(examcount);
+        test.setTestname(testname);
+        test.setTestid(testid);
+        test.setTesttime(testtime);
+        return testRepository.save(test);
+
+    }
+
+    public List<Exam> getAllExamByTestid(Integer testid){
+        List<TestExam> testExamList = testExamRepository.findAllByTestid(testid);
+        List<Exam> examList = new ArrayList<>();
+        for (TestExam testExam :testExamList){
+            examList.add(examRepository.getOne(testExam.getExamid()));
+        }
+        return examList;
+    }
 
 }

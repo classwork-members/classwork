@@ -1,15 +1,13 @@
 package com.soft.classwork.Controller;
 
 import com.soft.classwork.enums.ResultEnum;
-import com.soft.classwork.model.BigTest;
-import com.soft.classwork.model.Exam;
-import com.soft.classwork.model.Result;
-import com.soft.classwork.model.Test;
+import com.soft.classwork.model.*;
 import com.soft.classwork.service.ExamService;
 import com.soft.classwork.service.TestService;
 import com.soft.classwork.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,8 +26,7 @@ public class ExamController {
     @Autowired
     TestService testService;
 
-    @Autowired
-
+    //@Autowired
 
     //35
     @GetMapping(value = "/examManage/allExam")
@@ -124,15 +121,43 @@ public class ExamController {
     }
 
     //43
-//    @PostMapping(value = "/test/test")
-//    public Result testtest(Integer illnessid){
-//
-//    }
+    @PostMapping(value = "/examManage/addOneExam")
+    public Result addOneExam(@RequestParam("testid") Integer testid,
+                             @RequestParam("examid") Integer examid,
+                             @RequestParam("score") Integer score){
+        TestExam testExam = testService.addOneExam(testid,examid,score);
+        if (testExam==null)
+            return ResultUtil.Error(ResultEnum.INSERT_FAIL);
+        return ResultUtil.success(testExam);
+
+    }
     //44
     @PostMapping(value = "/examManage/deletetest")
     public Result deletetest(@RequestParam("testid") Integer testid){
         testService.deletetest(testid);
         return ResultUtil.success("delete success!");
+    }
+
+    //45
+    @PostMapping(value = "/examManage/updateTest")
+    public Result updateTest(@RequestParam("testid") Integer testid,
+                             @RequestParam("testname") String testname,
+                             @RequestParam("testtime") Integer testtime,
+                             @RequestParam("score") Integer score,
+                             @RequestParam("examcount") Integer examcount){
+        Test test = testService.updateTest(testid,testname,testtime,score,examcount);
+        if (test==null)
+            return ResultUtil.Error(ResultEnum.UPDATE_FAIL);
+        return ResultUtil.success(test);
+    }
+
+    //46
+    @GetMapping(value = "/examManage/getAllExamByTestid")
+    public Result getAllExamByTestid(@RequestParam("testid") Integer testid){
+        List<Exam> examList = testService.getAllExamByTestid(testid);
+        if (examList==null)
+            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+        return ResultUtil.success(examList);
     }
 
 
