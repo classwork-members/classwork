@@ -24,9 +24,14 @@ public class DeptManageController {
     DeptService deptService;
     @RequestMapping(value = "/addDepartment", method = RequestMethod.POST)
     public Result addDepartment(@RequestBody Department department){
-        logger.debug("_______________principal:"+department.getDeptprincipal()+"_____________");
         if(department.getDeptname() == null){
             return ResultUtil.Error(ResultEnum.DEPT_NAME);
+        }
+
+        if(department.getPrincipalArr()!=null){
+            department.setDeptprincipal(StringUtil.ArrayToString(department.getPrincipalArr()));
+        }else {
+            return ResultUtil.Error(ResultEnum.DEPT_PRIN);
         }
 
         if(deptService.addDept(department)<1){
