@@ -96,6 +96,17 @@ public class Exam{
         this.illnessid = illnessid;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Exam{" +
+                "examid=" + examid +
+                ", alternativea='" + alternativea + '\'' +
+                ", alternativeb='" + alternativeb + '\'' +
+                ", alternativec='" + alternativec + '\'' +
+                ", alternatived='" + alternatived + '\'' +
+                ", correctAnswer='" + correctAnswer + '\'' +
+                ", question='" + question + '\'' +
+                ", illnessid=" + illnessid +
+                '}';
+    }
 }

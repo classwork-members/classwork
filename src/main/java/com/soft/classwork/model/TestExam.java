@@ -1,9 +1,15 @@
 package com.soft.classwork.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class TestExam {
+
+  @Id
+  @GeneratedValue
+  private Integer testexamid;
 
   private Integer testid;
   private Integer examid;
@@ -36,4 +42,22 @@ public class TestExam {
     this.score = score;
   }
 
+
+  public Integer getTestexamid() {
+    return testexamid;
+  }
+
+  public void setTestexamid(Integer testexamid) {
+    this.testexamid = testexamid;
+  }
+
+    @Override
+    public String toString() {
+        return "TestExam{" +
+                "testexamid=" + testexamid +
+                ", testid=" + testid +
+                ", examid=" + examid +
+                ", score=" + score +
+                '}';
+    }
 }

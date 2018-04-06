@@ -12,7 +12,7 @@ public class Test {
   @GeneratedValue
   private Integer testid;
 
-  private Timestamp testtime;
+  private Integer testtime;
   private String testname;
   private Integer illnessid;
 
@@ -26,11 +26,11 @@ public class Test {
   }
 
 
-  public Timestamp getTesttime() {
+  public Integer getTesttime() {
     return testtime;
   }
 
-  public void setTesttime(Timestamp testtime) {
+  public void setTesttime(Integer testtime) {
     this.testtime = testtime;
   }
 
@@ -52,4 +52,13 @@ public class Test {
     this.illnessid = illnessid;
   }
 
+  @Override
+  public String toString() {
+    return "Test{" +
+            "testid=" + testid +
+            ", testtime=" + testtime +
+            ", testname='" + testname + '\'' +
+            ", illnessid=" + illnessid +
+            '}';
+  }
 }
