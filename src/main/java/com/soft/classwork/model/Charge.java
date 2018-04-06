@@ -3,9 +3,17 @@ package com.soft.classwork.model;
 public class Charge {
     private int chargeid;
     private String payment;
-    private String usage;
+    private String purpose;
     private String dt_create;
     private String dt_update;
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
 
     public int getChargeid() {
         return chargeid;
@@ -21,14 +29,6 @@ public class Charge {
 
     public void setPayment(String payment) {
         this.payment = payment;
-    }
-
-    public String getUsage() {
-        return usage;
-    }
-
-    public void setUsage(String usage) {
-        this.usage = usage;
     }
 
     public String getDt_create() {
