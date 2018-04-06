@@ -80,14 +80,14 @@ public class ExamController {
     }
 
     //40
-//    @GetMapping(value = "/examManage/alltest")
-//    public Object getAllTest(){
-//        List<BigTest> bigTests =  testService.getAllTest();
-//        if (bigTests==null)
-//            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
-//        //System.out.println(bigTests.toString());
-//        return bigTests;
-//    }
+    @GetMapping(value = "/examManage/alltest2")
+    public Object getAllTest(){
+        List<BigTest> bigTests =  testService.getAllTest();
+        if (bigTests==null)
+            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+        //System.out.println(bigTests.toString());
+        return bigTests;
+    }
 
     //40
     @GetMapping(value = "/examManage/alltest")

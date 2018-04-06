@@ -4,10 +4,7 @@ import com.soft.classwork.model.BigTest;
 import com.soft.classwork.model.Exam;
 import com.soft.classwork.model.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import com.soft.classwork.model.TestExam;
 import com.soft.classwork.repository.ExamRepository;
@@ -81,7 +78,6 @@ public class TestService {
     public boolean randomtest(Integer testid,Integer illnessid,Integer score,Integer examcount){
         List<Exam> examList = examRepository.findAllByIllnessid(illnessid);
         Integer count = examList.size();
-        System.out.println(count);
         Exam[] exams = new Exam[count];
         Integer[] examids = new Integer[count];
         Exam[] s = examList.toArray(exams);
@@ -134,11 +130,17 @@ public class TestService {
     }
 
     public List<Exam> getAllExamByTestid(Integer testid){
+        System.out.println("test");
         List<TestExam> testExamList = testExamRepository.findAllByTestid(testid);
-        List<Exam> examList = new ArrayList<>();
-        for (TestExam testExam :testExamList){
-            examList.add(examRepository.getOne(testExam.getExamid()));
+        List<Exam> examList = new LinkedList<>();
+        System.out.println(testExamList.toString());
+        for (TestExam t : testExamList){
+            Integer in = t.getExamid();
+            Exam exam = examRepository.getOne(in);
+            System.out.println(exam.toString());
+            examList.add(exam);
         }
+        System.out.println(examList.toString());
         return examList;
     }
 

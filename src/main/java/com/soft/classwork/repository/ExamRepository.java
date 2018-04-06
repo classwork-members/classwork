@@ -18,4 +18,6 @@ public interface ExamRepository extends JpaRepository<Exam,Integer> {
     public Integer countAllByIllnessid(Integer illnessid);
 
     public List<Integer> findByIllnessid(Integer illnessid);
+
+
 }
