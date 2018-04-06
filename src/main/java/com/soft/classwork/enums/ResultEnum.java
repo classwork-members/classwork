@@ -42,6 +42,9 @@ public enum ResultEnum {
     DATA_EXIT("0037","该数据已存在，请勿重复插入。"),
     UPDATE_DATA_NONEXIT("0038","该数据不存在，请先新建"),
     CHARGE_ID_NULL("0039","charge id 不能为空。"),
+    ASSAY_ID_NULL("0040","assay id不能为空"),
+    ASSAY_NAME_NULL("0041","assay name不能为空"),
+    ASSAY_DEPARTMENT_NULL("0042","assay department不能为空"),
     ;
     private String code;
     private String msg;
