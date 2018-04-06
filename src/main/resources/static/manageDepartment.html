@@ -60,7 +60,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="sidebar-menu">
-                        <li class="header">科室管理</li>
+                        <li class="header">普通用户管理</li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-table"></i> <span>用户管理</span>
@@ -303,57 +303,114 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div><!--//end-search-box-->
                     </div>
                     <h4>科室列表</h4>
+                    <script>
+                        function getUrlParam(name) {
+                            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                            if (r != null) return unescape(r[2]); return null; //返回参数值
+                        }
+                        $(document).ready(function( ){
+                            var url = "/deptManage/getDepartmentList";
+                            var num = getUrlParam("num");
+                            $.get(
+                                url,
+                                {},//参数列表
+                                function(result,status,xhr){
+                                    num=Number(num);
+                                    if(num+5<result.data.length)
+                                    {
+                                        for (var i=num;i<num+5;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            if(result.data[i].deptprincipal!='') {
+                                                var deptprincipal = result.data[i].deptprincipal;
+                                            }
+                                            else {
+                                                var deptprincipal = "error";
+                                            }
+
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].deptid +"</th><td>"+ result.data[i].deptname +"</td><td>"+ result.data[i].deptdesc  +"</td><td>"+ deptprincipal+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (var i=num;i<num+5;i++) {
+                                            var $tab1 = $("#thedata");
+                                            if(result.data[i].deptprincipal!='') {
+                                                var deptprincipal = result.data[i].deptprincipal;
+                                            }
+                                            else {
+                                                var deptprincipal = "error";
+                                            }
+                                            var trData = "<tr onclick=\"setLineNum( this)\"><th>"+ result.data[i].deptid +" </th><td>"+ result.data[i].deptname +" </td><td>"+ result.data[i].deptdesc +"</td><td>"+ deptprincipal+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+
+                                    }
+
+                                    var ul=document.getElementById("pagenum");
+                                    var pagenum=1;
+                                    for(var j=0;j<result.data.length-1;j+=5)
+                                    {
+                                        var li=document.createElement("li");
+                                        j=Number(j);
+                                        li.innerHTML="<a href=\"manageDepartment.html?num="+j+"\">"+pagenum+"</a>";
+                                        ul.appendChild(li);
+                                        pagenum++;
+                                    }
+                                },
+                                "json"
+                            );
+                        });
+                        function setLineNum(line){
+                            if(typeof(line)   ==   "undefined "){
+                                alert('缺少参数');
+                            }else{
+                                document.getElementById("deptid").value = line.cells[0].innerHTML;
+                                document.getElementById("recipient-name2").value = line.cells[1].innerHTML;
+                                document.getElementById("message-text2").value = line.cells[2].innerHTML;
+                                document.getElementById("delete-dept").value = line.cells[0].innerHTML;
+                                /*if(line.cells[3].innerHTML=="普通用户")
+                                 {
+                                 document.getElementById("quanxian1").checked=true;
+                                 }
+                                 else if(line.cells[3].innerHTML=="管理员")
+                                 {
+                                 document.getElementById("quanxian2").checked=true;
+                                 }*/
+                            }
+                        }
+                        function deleteTheDept() {
+                            var id = document.getElementById("delete-dept").value;
+                            alert(id);
+                            var url = "/deptManage/reduceDept";
+                            $.post(
+                                url,
+                                {
+                                    deptid:id
+                                },//参数列表
+                                function(result,status,xhr){
+                                    window.location.href="manageDepartment.html?num=0";
+                                },
+                                "json"
+                            );
+                        }
+                    </script>
                     <table class="table table-hover">
                         <thead>
-                        <tr>
+                        <tr >
                             <th>ID</th>
                             <th>科室名</th>
                             <th>功能</th>
                             <th>责任人</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="active">
-                            <th scope="row">1</th>
-                            <td>sjllll</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr class="success">
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr tr class="info">
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr tr class="warning">
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr tr class="danger">
-                            <th scope="row">5</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        <tbody id="thedata">
                         </tbody>
                     </table>
                     <div class="row">
-                        <ul class="pagination pagination-lg">
-                            <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        <ul class="pagination pagination-lg" id="pagenum">
                         </ul>
                     </div>
                     <div class="buttons_w3ls_agile">
@@ -367,27 +424,27 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="exampleModalLabel">新建科室</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form id="newDept" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">科室名</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
+                                                    <input type="text" name="deptname" class="form-control" id="recipient-name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="control-label">功能</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                    <textarea class="form-control" name="deptdesc" id="message-text"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="quan" class="control-label">责任人</label>
                                                     <div class="checkbox" id="quan">
-                                                        <label> <input type="checkbox"> 前台 </label>
-                                                        <label> <input type="checkbox"> 执业兽医师 </label>
-                                                        <label> <input type="checkbox"> 助理 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="前台"> 前台 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="执业兽医师"> 执业兽医师 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="助理"> 助理 </label>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" id="newDeptBt">保存</button>
                                             <button type="button" class="btn btn-primary">取消</button>
                                         </div>
                                     </div>
@@ -401,10 +458,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title" id="mySmallModalLabel">提示</h4>
                                         </div>
-                                        <div class="modal-body"> 确定要删除该用户吗                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
-                                            <button type="button" class="btn btn-default" >取消</button>
+                                        <div class="modal-body"> 确定要删除该科室吗                                        </div>
+                                        <div class="modal-footer" value="" id="delete-dept">
+                                            <button type="button" class="btn btn-default" onclick="deleteTheDept()">确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
@@ -418,27 +475,28 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="gridSystemModalLabel">修改科室</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form id="modifyDept" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
                                                     <label for="recipient-name2" class="control-label">科室名</label>
                                                     <input type="text" class="form-control" value="123" id="recipient-name2">
+                                                    <input vlaue="" id="deptid" name="deptid" hidden>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text2" class="control-label">功能</label>
-                                                    <textarea class="form-control" id="message-text2">123</textarea>
+                                                    <textarea class="form-control" id="message-text2"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="quan2" class="control-label">责任人</label>
                                                     <div class="checkbox" id="quan2">
-                                                        <label> <input type="checkbox" checked> 前台 </label>
-                                                        <label> <input type="checkbox" checked> 执业兽医师 </label>
-                                                        <label> <input type="checkbox"> 助理 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="前台"> 前台 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="执业兽医师"> 执业兽医师 </label>
+                                                        <label> <input type="checkbox" name="deptprincipal" required="" value="助理"> 助理 </label>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" id="modifyDepyBt">保存</button>
                                             <button type="button" class="btn btn-primary">取消</button>
                                         </div>
                                     </div><!-- /.modal-content -->
@@ -483,6 +541,28 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             classie.toggle( showLeftPush, 'disabled' );
         }
     }
+    $("#newDeptBt").click(function(){
+        $.ajax({
+            type: "POST",   //提交的方法
+            contentType: "application/json;charset=UTF-8",
+            url:"/deptManage/addDepartment", //提交的地址
+            data:$('#newDept').serialize(),// 序列化表单值
+            async: false,
+            error: function(request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function(data) {  //成功
+                if(data.code == "0000"){
+                    window.location.href = "/manageDepartment.html";
+                }else{
+                    alert(data.msg);
+                }
+            }
+        });
+    });
+    $("#modifyDepyBt").click(function() {
+
+    });
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
 
