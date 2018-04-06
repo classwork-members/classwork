@@ -26,6 +26,16 @@ public enum ResultEnum {
     HOS_ID("0021","hospitalized 不能为空"),
     UPDATE_HOS_FAIL("0022","更新住院信息失败。"),
     DELETE_HOS_FAIL("0023","删除住院信息失败。"),
+    DRUG_ID_NULL("0024","drug id 不能为空"),
+    DRUG_NAME_NULL("0025","drug name 不能为空"),
+    DRUG_FEE_NULL("0026","drug fee 不能为负数。"),
+    ADD_DRUG_FAIL("0027","新增drug失败。"),
+    UPDADE_DRUG_FAIL("0028","更新drug失败。"),
+    DELETE_DRUG_FAIL("0029","删除drug失败。"),
+    DRUG_NAME_EXIT("0030","该药品信息已经存在，请勿重复插入"),
+    INFO_NOT_EXIT("0031","该条数据不存在，删除无效"),
+    DELETE_DEPT_FAIL("0032","删除科室失败。"),
+    UPDATE_DEPT_FAIL("0033","更新科室失败。"),
     ;
     private String code;
     private String msg;

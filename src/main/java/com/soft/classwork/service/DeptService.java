@@ -48,14 +48,22 @@ public class DeptService {
         if(deptMapper.getDeptByNameAndId(department.getDeptid(),department.getDeptname()) == null){
             throw new PetException(ResultEnum.NONTASK_ERROR);
         }
-        return deptMapper.updateDept(department);
+        int rs = deptMapper.updateDept(department);
+        if(rs<1){
+            throw new PetException(ResultEnum.UPDATE_DEPT_FAIL);
+        }
+        return rs;
     }
 
     public int deleteDept(int id){
         if(deptMapper.getDeptById(id) == null){
             throw new PetException(ResultEnum.NONTASK_ERROR);
         }
-        return deptMapper.deleteDept(id);
+        int rs = deptMapper.deleteDept(id);
+        if(rs == 0){
+            throw new PetException(ResultEnum.DELETE_DEPT_FAIL);
+        }
+        return rs;
     }
 }
 

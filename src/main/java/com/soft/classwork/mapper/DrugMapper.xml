@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft.classwork.mapper.DrugMapper">
+    <select id="getDrugByName" resultType="com.soft.classwork.model.Drug">
+        SELECT * from drug where drugname = #{drugname}
+    </select>
+    <insert id="addDrug" parameterType="com.soft.classwork.model.Drug">
+        INSERT INTO drug (drugname,drugfee,drugdesc)
+        VALUES (
+        #{drugname},
+        #{drugfee},
+        #{drugdesc}
+        )
+    </insert>
+    <update id="updateDrugById" parameterType="com.soft.classwork.model.Drug">
+        UPDATE drug
+        <set>
+            <if test="drug.drugname != null">
+                drugname = #{drug.drugname},
+            </if>
+            <if test="drug.drugfee > 0">
+                drugfee = #{drug.drugfee},
+            </if>
+            <if test="drug.drugdesc != null">
+                drugdesc = #{drug.drugdesc}
+            </if>
+        </set>
+        WHERE drugid = #{drug.drugid}
+    </update>
+    <delete id="deleteDrugByid">
+        DELETE FROM drug where drugid = #{id}
+    </delete>
+    <select id="getDrugById" resultType="com.soft.classwork.model.Drug">
+        SELECT * FROM drug WHERE drugid = #{id}
+    </select>
+    <select id="getDrugList" resultType="com.soft.classwork.model.Drug">
+        SELECT * FROM drug ORDER BY drugid
+    </select>
+</mapper>

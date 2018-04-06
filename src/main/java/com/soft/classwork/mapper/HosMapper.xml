@@ -32,4 +32,7 @@
     <select id="getList" resultType="com.soft.classwork.model.Hospitalized">
         SELECT * FROM hospitalized ORDER by hospitalizedid
     </select>
+    <select id="getHosById" resultType="com.soft.classwork.model.Hospitalized">
+        SELECT * FROM hospitalized WHERE hospitalizedid = #{id}
+    </select>
 </mapper>
