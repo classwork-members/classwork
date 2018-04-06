@@ -1,6 +1,5 @@
 package com.soft.classwork.service;
 
-<<<<<<< HEAD
 import com.soft.classwork.model.BigTest;
 import com.soft.classwork.model.Exam;
 import com.soft.classwork.model.Test;
@@ -14,14 +13,6 @@ import com.soft.classwork.repository.TestExamRepository;
 import com.soft.classwork.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-=======
-import com.soft.classwork.model.Test;
-import java.util.List;
-
-import com.soft.classwork.repository.ExamRepository;
-import com.soft.classwork.repository.TestRepository;
-import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> ljs
 
 /**
  * Created by Yuukiiii
