@@ -3,7 +3,7 @@ package com.soft.classwork.model;
 public class Drug {
     private int drugid;
     private String drugname;
-    private float drugfee;
+    private String drugfee;
     private String drugdesc;//药品描述
 
     public int getDrugid() {
@@ -22,11 +22,11 @@ public class Drug {
         this.drugname = drugname;
     }
 
-    public float getDrugfee() {
+    public String getDrugfee() {
         return drugfee;
     }
 
-    public void setDrugfee(float drugfee) {
+    public void setDrugfee(String drugfee) {
         this.drugfee = drugfee;
     }
 

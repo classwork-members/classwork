@@ -20,7 +20,7 @@
             <if test="drug.drugname != null">
                 drugname = #{drug.drugname},
             </if>
-            <if test="drug.drugfee > 0">
+            <if test="drug.drugfee != null">
                 drugfee = #{drug.drugfee},
             </if>
             <if test="drug.drugdesc != null">
