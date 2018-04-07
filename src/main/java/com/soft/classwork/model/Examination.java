@@ -13,8 +13,8 @@ public class Examination {
 
   private String examinationname;
   private Integer testid;
-  private java.sql.Timestamp starttime;
-  private java.sql.Timestamp endtime;
+  private String starttime;
+  private String endtime;
   private Integer roleid;
 
 
@@ -37,20 +37,20 @@ public class Examination {
   }
 
 
-  public java.sql.Timestamp getStarttime() {
+  public String getStarttime() {
     return starttime;
   }
 
-  public void setStarttime(java.sql.Timestamp starttime) {
+  public void setStarttime(String starttime) {
     this.starttime = starttime;
   }
 
 
-  public java.sql.Timestamp getEndtime() {
+  public String getEndtime() {
     return endtime;
   }
 
-  public void setEndtime(java.sql.Timestamp endtime) {
+  public void setEndtime(String endtime) {
     this.endtime = endtime;
   }
 

@@ -12,7 +12,7 @@ public class UserTest {
   @GeneratedValue
   private Integer userTestid;
   private Integer testid;
-  private Timestamp testtime;
+  private String testtime;
   private Integer grade;
   private Integer userid;
 
@@ -35,11 +35,11 @@ public class UserTest {
   }
 
 
-  public Timestamp getTesttime() {
+  public String getTesttime() {
     return testtime;
   }
 
-  public void setTesttime(Timestamp testtime) {
+  public void setTesttime(String testtime) {
     this.testtime = testtime;
   }
 

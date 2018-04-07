@@ -24,7 +24,7 @@ public class FtpFileUtil {
     //密码
     private static final String FTP_PASSWORD = "test";
     //图片路径
-    private static final String FTP_BASEPATH = "/pub/illness/qwr/";
+    private static final String FTP_BASEPATH = "/pub";
 
     public  static boolean uploadFile(String originFileName,InputStream input){
         boolean success = false;
@@ -40,14 +40,17 @@ public class FtpFileUtil {
                 ftp.disconnect();
                 return success;
             }
-            System.out.println(1);
-            ftp.setFileType(FTPClient.BINARY_FILE_TYPE);
-            ftp.makeDirectory(FTP_BASEPATH );
-            ftp.changeWorkingDirectory(FTP_BASEPATH);
-            ftp.enterLocalPassiveMode();
-            boolean b = ftp.storeFile(new String(originFileName.getBytes("UTF-8"),"iso-8859-1"), input);
+            String path = "/test/123";
+            boolean b = ftp.makeDirectory(path);
             System.out.println(b);
-            System.out.println(ftp.getReplyCode());
+            System.out.println(ftp.getReplyCode()+" "+ftp.getReplyString());
+
+            ftp.setFileType(FTPClient.BINARY_FILE_TYPE);
+            ftp.changeWorkingDirectory(FTP_BASEPATH+path);
+            ftp.enterLocalPassiveMode();
+            boolean b2 = ftp.storeFile(new String(originFileName.getBytes("UTF-8"),"iso-8859-1"), input);
+            System.out.println(b2);
+            System.out.println(ftp.getReplyCode()+" "+ftp.getReplyString());
             input.close();
             ftp.logout();
             success = true;
