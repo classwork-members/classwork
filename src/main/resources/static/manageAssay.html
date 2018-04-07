@@ -60,7 +60,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="sidebar-menu">
-                        <li class="header">化验项目管理</li>
+                        <li class="header">普通用户管理</li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-table"></i> <span>用户管理</span>
@@ -303,57 +303,101 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div><!--//end-search-box-->
                     </div>
                     <h4>化验项目列表</h4>
+                    <script>
+                        function getUrlParam(name) {
+                            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                            if (r != null) return unescape(r[2]); return null; //返回参数值
+                        }
+                        $(document).ready(function( ){
+                            var url = "/assayManage/getAssayList";
+                            var num = getUrlParam("num");
+                            $.get(
+                                url,
+                                {},//参数列表
+                                function(result,status,xhr){
+                                    num=Number(num);
+                                    if(num+5<result.data.length)
+                                    {
+                                        for (var i=num;i<num+5;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].assayid +"</th><td>"+ result.data[i].assayname +"</td><td>"+ result.data[i].assaydesc  +"</td><td>"+ result.data[i].department+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (var i=num;i<result.data.length;i++) {
+                                            var $tab1 = $("#thedata");
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].assayid +"</th><td>"+ result.data[i].assayname +"</td><td>"+ result.data[i].assaydesc  +"</td><td>"+ result.data[i].department+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+
+                                    }
+
+                                    var ul=document.getElementById("pagenum");
+                                    var pagenum=1;
+                                    for(var j=0;j<result.data.length;j+=5)
+                                    {
+                                        var li=document.createElement("li");
+                                        j=Number(j);
+                                        li.innerHTML="<a href=\"manageAssay.html?num="+j+"\">"+pagenum+"</a>";
+                                        ul.appendChild(li);
+                                        pagenum++;
+                                    }
+                                },
+                                "json"
+                            );
+                        });
+                        function setLineNum(line){
+                            if(typeof(line)   ==   "undefined "){
+                                alert('缺少参数');
+                            }else{
+                                document.getElementById("assayid").value = line.cells[0].innerHTML;
+                                document.getElementById("assayname").value = line.cells[1].innerHTML;
+                                document.getElementById("assaydesc").value = line.cells[2].innerHTML;
+                                document.getElementById("department").value = line.cells[3].innerHTML;
+                                document.getElementById("delete-assayid").value = line.cells[0].innerHTML;
+                                /*if(line.cells[3].innerHTML=="普通用户")
+                                 {
+                                 document.getElementById("quanxian1").checked=true;
+                                 }
+                                 else if(line.cells[3].innerHTML=="管理员")
+                                 {
+                                 document.getElementById("quanxian2").checked=true;
+                                 }*/
+                            }
+                        }
+                        function deleteTheAssay() {
+                            var id = document.getElementById("delete-assayid").value;
+                            var url = "/assayManage/deleteAssay";
+                            $.get(
+                                url,
+                                {
+                                    assayid:id
+                                },//参数列表
+                                function(result,status,xhr){
+                                    window.location.href="manageAssay.html?num=0";
+                                },
+                                "json"
+                            );
+                        }
+                    </script>
                     <table class="table table-hover">
                         <thead>
-                        <tr>
+                        <tr >
                             <th>ID</th>
                             <th>化验项目名</th>
                             <th>介绍</th>
                             <th>所属科室</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="active">
-                            <th scope="row">1</th>
-                            <td>sjllll</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr class="success">
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr tr class="info">
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr tr class="warning">
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr tr class="danger">
-                            <th scope="row">5</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        <tbody id="thedata">
                         </tbody>
                     </table>
                     <div class="row">
-                        <ul class="pagination pagination-lg">
-                            <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        <ul class="pagination pagination-lg" id="pagenum">
                         </ul>
                     </div>
                     <div class="buttons_w3ls_agile">
@@ -364,27 +408,27 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="exampleModalLabel">新建化验项目</h4>
+                                            <h4 class="modal-title" id="exampleModalLabel">新建化验项目信息</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form id="newAssay" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">化验项目名</label>
                                                     <input type="text" class="form-control" id="recipient-name">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="control-label">介绍</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                    <label for="recipient-name" class="control-label">介绍</label>
+                                                    <input type="datetime-local" class="form-control" id="user_date11" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">所属科室</label>
-                                                    <input type="text" class="form-control" id="department-name">
+                                                    <input type="datetime-local" class="form-control" id="user_date12" />
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
-                                            <button type="button" class="btn btn-primary">取消</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" id="newAssayBt">保存</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
@@ -397,10 +441,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title" id="mySmallModalLabel">提示</h4>
                                         </div>
-                                        <div class="modal-body"> 确定要删除该用户吗                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
-                                            <button type="button" class="btn btn-default" >取消</button>
+                                        <div class="modal-body"> 确定要删除该科室吗                                        </div>
+                                        <div class="modal-footer" value="" id="delete-assayid">
+                                            <button type="button" class="btn btn-default" onclick="deleteTheAssay()">确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
@@ -411,31 +455,31 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="gridSystemModalLabel">修改化验项目</h4>
+                                            <h4 class="modal-title" id="gridSystemModalLabel">修改化验项目信息</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form id="modifyAssay" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
-                                                    <label for="recipient-name2" class="control-label">化验项目名</label>
-                                                    <input type="text" class="form-control" id="recipient-name2">
+                                                    <label for="assayname" class="control-label">化验项目名</label>
+                                                    <input type="text" class="form-control" value="" id="assayname" name="assayname">
+                                                    <input value="" id="assayid" name="assayid" hidden>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text2" class="control-label">介绍</label>
-                                                    <textarea class="form-control" id="message-text2"></textarea>
+                                                    <label for="assaydesc" class="control-label">介绍</label>
+                                                    <input type="datetime-local" class="form-control" id="assaydesc" name="assaydesc"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="recipient-name2" class="control-label">所属科室</label>
-                                                    <input type="text" class="form-control" id="department-name2">
+                                                    <label for="department" class="control-label">所属科室</label>
+                                                    <input type="datetime-local" class="form-control" id="department" name="department"/>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
-                                            <button type="button" class="btn btn-primary">取消</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" id="modifyAssayBt">保存</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
                         </ul>
                     </div>
                 </div>
@@ -475,6 +519,55 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             classie.toggle( showLeftPush, 'disabled' );
         }
     }
+    $("#newAssayBt").click(function(){
+        $.ajax({
+            type: "POST",   //提交的方法
+            contentType: "application/json;charset=UTF-8",
+            url: "/assayManage/addAssay", //提交的地址
+            data: JSON.stringify({
+                assayname: $("#recipient-name").val(),
+                assaydesc: $("#user_date11").val(),
+                department: $("#user_date12").val(),
+            }),
+            async: false,
+            error: function (request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function (data) {  //成功
+                if (data.code == "0000") {
+                    window.location.href = "/manageAssay.html";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        });
+
+    });
+    $("#modifyAssayBt").click(function() {
+        $.ajax({
+            type: "POST",   //提交的方法
+            contentType: "application/json;charset=UTF-8",
+            url: "/assayManage/updateAssay", //提交的地址
+            data:JSON.stringify({
+             assayid:$("#assayid").val(),
+             assayname: $("#assayname").val(),
+             assaydesc: $("#assaydesc").val(),
+             department: $("#department").val(),
+             }),
+            async: false,
+            error: function (request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function (data) {  //成功
+                if (data.code == "0000") {
+                    window.location.href = "/manageAssay.html";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        });
+
+    });
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
 
