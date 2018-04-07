@@ -45,6 +45,9 @@ public enum ResultEnum {
     ASSAY_ID_NULL("0040","assay id不能为空"),
     ASSAY_NAME_NULL("0041","assay name不能为空"),
     ASSAY_DEPARTMENT_NULL("0042","assay department不能为空"),
+    VACCINE_NAME_NULL("0043","vaccine name 不能为空"),
+    VACCINE_FEE_NULL("0044","vaccine fee 不能小于0"),
+    VACCINE_ID_NULL("0045","vaccine id 不能为空"),
     ;
     private String code;
     private String msg;

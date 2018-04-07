@@ -48,6 +48,7 @@ public class AssayController {
 
     @RequestMapping(value = "/getAssayList", method = RequestMethod.GET)
     public Result getAssayList(){
+
         return ResultUtil.success(assayService.getAssayList());
     }
 }
