@@ -157,4 +157,8 @@ public class TestService {
     public void deleteExamination(Integer examinationid){
         examinaRepostitory.deleteById(examinationid);
     }
+
+    public List<Exam> searchExam(String question){
+        return examRepository.findAllByQuestionContaining(question);
+    }
 }

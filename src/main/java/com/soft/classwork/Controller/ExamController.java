@@ -201,6 +201,17 @@ public class ExamController {
     }
 
     //52
-    
+    @GetMapping(value = "/examManage/searchExamByName")
+    public Result searchExamByName(@RequestParam("question") String question){
+        List<Exam> examList = testService.searchExam(question);
+        if(examList==null)
+            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+        else if (examList.size()==0)
+            return ResultUtil.success("nothing found");
+        else
+            return ResultUtil.success(examList);
+
+    }
+
 
 }

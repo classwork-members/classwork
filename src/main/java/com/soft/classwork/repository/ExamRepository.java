@@ -1,6 +1,7 @@
 package com.soft.classwork.repository;
 
 import com.soft.classwork.model.Exam;
+import com.soft.classwork.model.Test;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -19,5 +20,6 @@ public interface ExamRepository extends JpaRepository<Exam,Integer> {
 
     public List<Integer> findByIllnessid(Integer illnessid);
 
+    public List<Exam> findAllByQuestionContaining(String examname);
 
 }
