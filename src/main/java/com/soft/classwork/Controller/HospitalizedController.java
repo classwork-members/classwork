@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class HospitalizedController {
     @Autowired
     HosService hosService;
-
     @RequestMapping(value = "/addInfo", method = RequestMethod.POST)
     public Result addInfo(@RequestBody Hospitalized hospitalized){
         if(hospitalized.getIllnessname() == null){
