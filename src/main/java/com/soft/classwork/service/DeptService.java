@@ -66,4 +66,3 @@ public class DeptService {
         return rs;
     }
 }
-

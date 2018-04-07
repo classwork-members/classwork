@@ -223,7 +223,6 @@ public class ExamController {
             return ResultUtil.success("nothing found");
         else
             return ResultUtil.success(examinationList);
-
     }
 
 
