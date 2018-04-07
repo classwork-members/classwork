@@ -60,7 +60,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="sidebar-menu">
-                        <li class="header">疫苗管理</li>
+                        <li class="header">普通用户管理</li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-table"></i> <span>用户管理</span>
@@ -303,57 +303,101 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div><!--//end-search-box-->
                     </div>
                     <h4>疫苗列表</h4>
+                    <script>
+                        function getUrlParam(name) {
+                            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                            if (r != null) return unescape(r[2]); return null; //返回参数值
+                        }
+                        $(document).ready(function( ){
+                            var url = "/vaccineManage/getVaccineList";
+                            var num = getUrlParam("num");
+                            $.get(
+                                url,
+                                {},//参数列表
+                                function(result,status,xhr){
+                                    num=Number(num);
+                                    if(num+5<result.data.length)
+                                    {
+                                        for (var i=num;i<num+5;i++)
+                                        {
+                                            var $tab1 = $("#thedata");
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].vaccineid +"</th><td>"+ result.data[i].vaccinename +"</td><td>"+ result.data[i].purpose  +"</td><td>"+ result.data[i].fee+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (var i=num;i<result.data.length;i++) {
+                                            var $tab1 = $("#thedata");
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].vaccineid +"</th><td>"+ result.data[i].vaccinename +"</td><td>"+ result.data[i].purpose  +"</td><td>"+ result.data[i].fee+"</td></tr>";
+                                            $tab1.append(trData);
+                                        }
+
+                                    }
+
+                                    var ul=document.getElementById("pagenum");
+                                    var pagenum=1;
+                                    for(var j=0;j<result.data.length;j+=5)
+                                    {
+                                        var li=document.createElement("li");
+                                        j=Number(j);
+                                        li.innerHTML="<a href=\"manageVaccine.html?num="+j+"\">"+pagenum+"</a>";
+                                        ul.appendChild(li);
+                                        pagenum++;
+                                    }
+                                },
+                                "json"
+                            );
+                        });
+                        function setLineNum(line){
+                            if(typeof(line)   ==   "undefined "){
+                                alert('缺少参数');
+                            }else{
+                                document.getElementById("vaccineid").value = line.cells[0].innerHTML;
+                                document.getElementById("vaccinename").value = line.cells[1].innerHTML;
+                                document.getElementById("purpose").value = line.cells[2].innerHTML;
+                                document.getElementById("fee").value = line.cells[3].innerHTML;
+                                document.getElementById("delete-vaccineid").value = line.cells[0].innerHTML;
+                                /*if(line.cells[3].innerHTML=="普通用户")
+                                 {
+                                 document.getElementById("quanxian1").checked=true;
+                                 }
+                                 else if(line.cells[3].innerHTML=="管理员")
+                                 {
+                                 document.getElementById("quanxian2").checked=true;
+                                 }*/
+                            }
+                        }
+                        function deleteTheVaccine() {
+                            var id = document.getElementById("delete-vaccineid").value;
+                            var url = "/vaccineManage/deleteVaccine";
+                            $.get(
+                                url,
+                                {
+                                    id:id
+                                },//参数列表
+                                function(result,status,xhr){
+                                    window.location.href="manageVaccine.html?num=0";
+                                },
+                                "json"
+                            );
+                        }
+                    </script>
                     <table class="table table-hover">
                         <thead>
-                        <tr>
+                        <tr >
                             <th>ID</th>
                             <th>疫苗名</th>
                             <th>用途</th>
                             <th>费用</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="active">
-                            <th scope="row">1</th>
-                            <td>sjllll</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr class="success">
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr tr class="info">
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr tr class="warning">
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr tr class="danger">
-                            <th scope="row">5</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        <tbody id="thedata">
                         </tbody>
                     </table>
                     <div class="row">
-                        <ul class="pagination pagination-lg">
-                            <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        <ul class="pagination pagination-lg" id="pagenum">
                         </ul>
                     </div>
                     <div class="buttons_w3ls_agile">
@@ -367,24 +411,24 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="exampleModalLabel">新建疫苗信息</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form id="newVaccine" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">疫苗名</label>
                                                     <input type="text" class="form-control" id="recipient-name">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="control-label">描述</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                    <label for="recipient-name" class="control-label">描述</label>
+                                                    <input type="datetime-local" class="form-control" id="user_date11" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="fee-name" class="control-label">费用</label>
-                                                    <input type="text" class="form-control" id="fee-name">
+                                                    <label for="recipient-name" class="control-label">费用</label>
+                                                    <input type="datetime-local" class="form-control" id="user_date12" />
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
-                                            <button type="button" class="btn btn-primary">取消</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" id="newVaccineBt">保存</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
@@ -397,10 +441,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title" id="mySmallModalLabel">提示</h4>
                                         </div>
-                                        <div class="modal-body"> 确定要删除该用户吗                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
-                                            <button type="button" class="btn btn-default" >取消</button>
+                                        <div class="modal-body"> 确定要删除该科室吗                                        </div>
+                                        <div class="modal-footer" value="" id="delete-vaccineid">
+                                            <button type="button" class="btn btn-default" onclick="deleteTheVaccine()">确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
@@ -414,28 +458,28 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="gridSystemModalLabel">修改疫苗信息</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form id="modifyVaccine" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">疫苗名</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
+                                                    <label for="vaccinename" class="control-label">疫苗名</label>
+                                                    <input type="text" class="form-control" value="" id="vaccinename" name="vaccinename">
+                                                    <input value="" id="vaccineid" name="vaccineid" hidden>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="control-label">描述</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                    <label for="purpose" class="control-label">描述</label>
+                                                    <input type="datetime-local" class="form-control" id="purpose" name="purpose"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="fee-name" class="control-label">费用</label>
-                                                    <input type="text" class="form-control" id="fee-name">
+                                                    <label for="fee" class="control-label">费用</label>
+                                                    <input type="datetime-local" class="form-control" id="fee" name="fee"/>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
-                                            <button type="button" class="btn btn-primary">取消</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" id="modifyVaccineBt">保存</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
                         </ul>
                     </div>
                 </div>
@@ -475,6 +519,55 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             classie.toggle( showLeftPush, 'disabled' );
         }
     }
+    $("#newVaccineBt").click(function(){
+        $.ajax({
+            type: "POST",   //提交的方法
+            contentType: "application/json;charset=UTF-8",
+            url: "/vaccineManage/addVaccine", //提交的地址
+            data: JSON.stringify({
+                vaccinename: $("#recipient-name").val(),
+                purpose: $("#user_date11").val(),
+                fee: $("#user_date12").val(),
+            }),
+            async: false,
+            error: function (request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function (data) {  //成功
+                if (data.code == "0000") {
+                    window.location.href = "/manageVaccine.html";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        });
+
+    });
+    $("#modifyVaccineBt").click(function() {
+        $.ajax({
+            type: "POST",   //提交的方法
+            contentType: "application/json;charset=UTF-8",
+            url: "/vaccineManage/updateVaccine", //提交的地址
+            data:JSON.stringify({
+                vaccineid:$("#vaccineid").val(),
+                vaccinename: $("#vaccinename").val(),
+                purpose: $("#purpose").val(),
+                fee: $("#fee").val(),
+            }),
+            async: false,
+            error: function (request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function (data) {  //成功
+                if (data.code == "0000") {
+                    window.location.href = "/manageVaccine.html";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        });
+
+    });
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
 
