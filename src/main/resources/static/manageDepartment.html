@@ -351,7 +351,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                                     var ul=document.getElementById("pagenum");
                                     var pagenum=1;
-                                    for(var j=0;j<result.data.length-1;j+=5)
+                                    for(var j=0;j<result.data.length;j+=5)
                                     {
                                         var li=document.createElement("li");
                                         j=Number(j);
@@ -553,6 +553,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             alert("请选择责任人");
         }
         else {
+            alert(check_val)
             $.ajax({
                 type: "POST",   //提交的方法
                 contentType: "application/json;charset=UTF-8",
@@ -588,11 +589,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             alert("请选择责任人");
         }
         else {
+            alert(check_val)
             $.ajax({
                 type: "POST",   //提交的方法
                 contentType: "application/json;charset=UTF-8",
                 url: "/deptManage/updateDept", //提交的地址
                 data: JSON.stringify({
+                    deptid:$("#deptid").val(),
                     deptname: $("#recipient-name2").val(),
                     deptdesc: $("#message-text2").val(),
                     principalArr: check_val,

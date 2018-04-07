@@ -24,9 +24,14 @@ public class DeptManageController {
     DeptService deptService;
     @RequestMapping(value = "/addDepartment", method = RequestMethod.POST)
     public Result addDepartment(@RequestBody Department department){
-        logger.debug("_____________pricipal:"+department.getPrincipalArr()[0]+"______________");
         if(department.getDeptname() == null){
             return ResultUtil.Error(ResultEnum.DEPT_NAME);
+        }
+
+        if(department.getPrincipalArr()!=null){
+            department.setDeptprincipal(StringUtil.ArrayToString(department.getPrincipalArr()));
+        }else {
+            return ResultUtil.Error(ResultEnum.DEPT_PRIN);
         }
 
         if(deptService.addDept(department)<1){
@@ -42,14 +47,16 @@ public class DeptManageController {
 
     @RequestMapping(value = "/updateDept",method = RequestMethod.POST)
     public Result updateDept(@RequestBody Department department){
-        logger.debug("___________update principal:"+department.getPrincipalArr()[0]+"_______________________");
         if(department == null){
             throw new PetException(ResultEnum.REQUEST_NULL);
         }
         if(department.getDeptname()==null){
             throw new PetException(ResultEnum.DEPT_NAME);
         }
-
+        if(department.getPrincipalArr()==null){
+            throw new PetException(ResultEnum.DEPT_PRIN);
+        }
+        department.setDeptprincipal(StringUtil.ArrayToString(department.getPrincipalArr()));
         return ResultUtil.success(deptService.updateDept(department));
     }
 

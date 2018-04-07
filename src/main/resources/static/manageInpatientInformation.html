@@ -338,7 +338,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                                     var ul=document.getElementById("pagenum");
                                     var pagenum=1;
-                                    for(var j=0;j<result.data.length-1;j+=5)
+                                    for(var j=0;j<result.data.length;j+=5)
                                     {
                                         var li=document.createElement("li");
                                         j=Number(j);
@@ -355,9 +355,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 alert('缺少参数');
                             }else{
                                 document.getElementById("hospitalizedid").value = line.cells[0].innerHTML;
-                                document.getElementById("recipient-name2").value = line.cells[1].innerHTML;
-                                document.getElementById("user_date21").value = line.cells[2].innerHTML;
-                                document.getElementById("user_date22").value = line.cells[3].innerHTML;
+                                document.getElementById("illnessname").value = line.cells[1].innerHTML;
+                                document.getElementById("dt_in_hospital").value = line.cells[2].innerHTML;
+                                document.getElementById("dt_out_hospital").value = line.cells[3].innerHTML;
                                 document.getElementById("delete-hospitalized").value = line.cells[0].innerHTML;
                                 /*if(line.cells[3].innerHTML=="普通用户")
                                  {
@@ -376,7 +376,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             $.post(
                                 url,
                                 {
-                                    hospitalizedid:id
+                                    hosid:id
                                 },//参数列表
                                 function(result,status,xhr){
                                     window.location.href="manageInpatientInformation.html?num=0";
@@ -461,17 +461,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         <div class="modal-body">
                                         <form id="modifyInfo" onsubmit="return beforeSubmit()">
                                             <div class="form-group">
-                                                <label for="recipient-name2" class="control-label">病种名</label>
-                                                <input type="text" class="form-control" value="" id="recipient-name2"/>
-                                                <input value="" id="hospitalizedid" hidden>
+                                                <label for="illnessname" class="control-label">病种名</label>
+                                                <input type="text" class="form-control" value="" id="illnessname" name="illnessname">
+                                                <input value="" id="hospitalizedid" name="hospitalizedid" hidden>
                                             </div>
                                             <div class="form-group">
-                                                <label for="recipient-name" class="control-label">开始时间</label>
-                                                <input type="datetime-local" class="form-control" id="user_date21" />
+                                                <label for="dt_in_hospital" class="control-label">开始时间</label>
+                                                <input type="datetime-local" class="form-control" id="dt_in_hospital" name="dt_in_hospital"/>
                                             </div>
                                             <div class="form-group">
-                                                <label for="recipient-name" class="control-label">结束时间</label>
-                                                <input type="datetime-local" class="form-control" id="user_date22" />
+                                                <label for="dt_out_hospital" class="control-label">结束时间</label>
+                                                <input type="datetime-local" class="form-control" id="dt_out_hospital" name="dt_out_hospital"/>
                                             </div>
                                         </form>
                                     </div>
@@ -545,18 +545,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
     });
     $("#modifyInfoBt").click(function() {
-        alert(JSON.stringify($("#recipient2-name").val()));
             $.ajax({
                 type: "POST",   //提交的方法
-                contentType: "application/json;charset=UTF-8",
+                //contentType: "application/json;charset=UTF-8",
                 url: "/hospitalized/modifyHosInfo", //提交的地址
-                data:
-                    JSON.stringify({
+                data:$("#modifyInfo").serialize(),
+                    /*JSON.stringify({
                         hospitalizedid:$("#hospitalizedid").val(),
                         illnessname: $("#recipient2-name").val(),
                         dt_in_hospital: $("#user_date21").val(),
                         dt_out_hospital: $("#user_date22").val(),
-                }),
+                }),*/
                 async: false,
                 error: function (request) {  //失败的话
                     alert("Connection error");
