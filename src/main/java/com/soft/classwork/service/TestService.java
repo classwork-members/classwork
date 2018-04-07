@@ -161,4 +161,8 @@ public class TestService {
     public List<Exam> searchExam(String question){
         return examRepository.findAllByQuestionContaining(question);
     }
+
+    public List<Examination> getAllExamination(){
+        return examinaRepostitory.findAll();
+    }
 }

@@ -213,5 +213,18 @@ public class ExamController {
 
     }
 
+    //53
+    @GetMapping(value = "/examManage/getAllExamination")
+    public Result getAllExamination(){
+        List<Examination> examinationList = testService.getAllExamination();
+        if (examinationList==null)
+            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+        else if (examinationList.size()==0)
+            return ResultUtil.success("nothing found");
+        else
+            return ResultUtil.success(examinationList);
+
+    }
+
 
 }
