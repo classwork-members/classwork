@@ -1,13 +1,11 @@
 package com.soft.classwork.service;
 
-import com.soft.classwork.model.BigTest;
-import com.soft.classwork.model.Exam;
-import com.soft.classwork.model.Test;
+import com.soft.classwork.model.*;
 
 import java.util.*;
 
-import com.soft.classwork.model.TestExam;
 import com.soft.classwork.repository.ExamRepository;
+import com.soft.classwork.repository.ExaminaRepostitory;
 import com.soft.classwork.repository.TestExamRepository;
 import com.soft.classwork.repository.TestRepository;
 import com.soft.classwork.utils.NumberUtil;
@@ -30,6 +28,9 @@ public class TestService {
 
     @Autowired
     TestExamRepository testExamRepository;
+
+    @Autowired
+    ExaminaRepostitory examinaRepostitory;
 
     public List<BigTest> getAllTest(){
         List<BigTest> bigTests = new ArrayList<>();
@@ -63,7 +64,6 @@ public class TestService {
         Test test = new Test();
         test.setIllnessid(null);
         test.setTesttime(testime);
-        test.setTotalscore(null);
         test.setTotalscore(null);
         test.setTestname(testname);
         test.setExamcount(null);
@@ -117,7 +117,8 @@ public class TestService {
                            String testname,
                            Integer testtime,
                            Integer score,
-                           Integer examcount
+                           Integer examcount,
+                           Integer illnessid
                            ){
         Test test = new Test();
         test.setTotalscore(score*examcount);
@@ -125,6 +126,7 @@ public class TestService {
         test.setTestname(testname);
         test.setTestid(testid);
         test.setTesttime(testtime);
+        test.setIllnessid(illnessid);
         return testRepository.save(test);
 
     }
@@ -144,4 +146,15 @@ public class TestService {
         return examList;
     }
 
+    public List<Test> searchTest(String testname){
+        return testRepository.findAllByTestnameContaining(testname);
+    }
+
+    public Examination addExamination(Examination examination){
+        return examinaRepostitory.save(examination);
+    }
+
+    public void deleteExamination(Integer examinationid){
+        examinaRepostitory.deleteById(examinationid);
+    }
 }

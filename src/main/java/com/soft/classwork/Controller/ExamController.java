@@ -2,6 +2,7 @@ package com.soft.classwork.Controller;
 
 import com.soft.classwork.enums.ResultEnum;
 import com.soft.classwork.model.*;
+import com.soft.classwork.repository.ExaminaRepostitory;
 import com.soft.classwork.service.ExamService;
 import com.soft.classwork.service.TestService;
 import com.soft.classwork.utils.ResultUtil;
@@ -25,8 +26,6 @@ public class ExamController {
 
     @Autowired
     TestService testService;
-
-    //@Autowired
 
     //35
     @GetMapping(value = "/examManage/allExam")
@@ -144,8 +143,9 @@ public class ExamController {
                              @RequestParam("testname") String testname,
                              @RequestParam("testtime") Integer testtime,
                              @RequestParam("score") Integer score,
-                             @RequestParam("examcount") Integer examcount){
-        Test test = testService.updateTest(testid,testname,testtime,score,examcount);
+                             @RequestParam("examcount") Integer examcount,
+                             @RequestParam("illnessid") Integer illnessid){
+        Test test = testService.updateTest(testid,testname,testtime,score,examcount,illnessid);
         if (test==null)
             return ResultUtil.Error(ResultEnum.UPDATE_FAIL);
         return ResultUtil.success(test);
@@ -160,5 +160,47 @@ public class ExamController {
         return ResultUtil.success(examList);
     }
 
+    //47
+    @GetMapping(value = "/examManage/searchTestByName")
+    public Result searchTestByName(@RequestParam("testname") String testname){
+        System.out.println(testname);
+        List<Test> testList = testService.searchTest(testname);
+        if(testList==null)
+            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+        else if (testList.size()==0)
+            return ResultUtil.success("nothing found");
+        else
+            return ResultUtil.success(testList);
+
+    }
+
+    //48
+    @PostMapping(value = "/examManage/addExamination")
+    public Result addExamination(Examination examination){
+        Examination examination1 = testService.addExamination(examination);
+        if (examination1==null)
+            return ResultUtil.Error(ResultEnum.INSERT_FAIL);
+        return ResultUtil.success(examination1);
+    }
+
+    //49
+    @PostMapping(value = "/examManage/deleteExamination")
+    public Result deleteExamination(@RequestParam("examinationid") Integer examinationid){
+        testService.deleteExamination(examinationid);
+        return ResultUtil.success("delete success");
+    }
+
+    //50
+    @PostMapping(value = "/examManage/updateExamination")
+    public Result updateExamination(Examination examination){
+        Examination examination1 = testService.addExamination(examination);
+        if (examination1==null)
+            return ResultUtil.Error(ResultEnum.UPDATE_FAIL);
+        return ResultUtil.success(examination1);
+
+    }
+
+    //52
+    
 
 }
