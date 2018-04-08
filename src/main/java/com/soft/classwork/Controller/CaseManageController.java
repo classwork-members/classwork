@@ -80,11 +80,15 @@ public class CaseManageController {
     }
 
     @PostMapping(value = "/updateCasesWords")
-    public Result updateCasesWords(@RequestParam("dataid1") Integer dataid1, @RequestParam("jztext") String words1,
+    public Result updateCasesWords(@RequestParam("blm") String blm,
+                                   @RequestParam("casesid") Integer casesid,
+                                   @RequestParam("illnessid") Integer illnessid,
+                                   @RequestParam("rq") String rq,
+                                   @RequestParam("dataid1") Integer dataid1, @RequestParam("jztext") String words1,
                                    @RequestParam("dataid2") Integer dataid2, @RequestParam("jctext") String words2,
                                    @RequestParam("dataid3") Integer dataid3, @RequestParam("zdtext") String words3,
                                    @RequestParam("dataid4") Integer dataid4, @RequestParam("zltext") String words4){
-        caseService.updateCasesWords(dataid1,words1,dataid2,words2,dataid3,words3,dataid4,words4);
+        caseService.updateCasesWords(blm,casesid,illnessid,rq,dataid1,words1,dataid2,words2,dataid3,words3,dataid4,words4);
         return ResultUtil.success("update success");
 
     }
@@ -103,5 +107,14 @@ public class CaseManageController {
                                  @RequestParam("casephasename") String casephasename) throws IOException{
         return caseService.addOneFileData(file,casesid,casephasename);
     }
+
+    @GetMapping(value = "/showCasesInfo")
+    public Result showCasesInfo(@RequestParam("casesid") Integer casesid){
+        List<Data> dataList = caseService.showCasesInfo(casesid);
+        if (dataList==null)
+            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+        return ResultUtil.success(dataList);
+    }
+
 
 }

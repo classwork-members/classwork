@@ -221,10 +221,18 @@ public class CaseService {
         casesPhaseRepository.delete(casesPhase);
     }
 
-    public void updateCasesWords(Integer dataid1, String words1,
-                                       Integer dataid2, String words2,
-                                       Integer dataid3, String words3,
-                                       Integer dataid4, String words4) {
+    public void updateCasesWords(String blm, Integer casesid, Integer illnessid, String rq, Integer dataid1, String words1,
+                                 Integer dataid2, String words2,
+                                 Integer dataid3, String words3,
+                                 Integer dataid4, String words4) {
+        System.out.println(blm+" "+casesid+" "+illnessid+" "+rq);
+        Cases cases = new Cases();
+        cases.setCaseid(casesid);
+        cases.setCasename(blm);
+        cases.setIllnessid(illnessid);
+        cases.setCasedate(rq);
+        Cases cases1 = caseRepository.save(cases);
+
         if (!words1.equals("")){
             com.soft.classwork.model.Data data = dataRepository.getOne(dataid1);
             data.setContent(words1);
@@ -296,6 +304,17 @@ public class CaseService {
 
         }
         return ResultUtil.success("文件上传成功！");
+    }
+
+    public List<Data> showCasesInfo(Integer casesid){
+        List<CasesPhase> casesPhaseList=casesPhaseRepository.findAllByCaseid(casesid);
+        List<Data> dataList = new LinkedList<>();
+        for (CasesPhase casesPhase : casesPhaseList){
+            Integer dataid = casesPhase.getDataid();
+            Data data = dataRepository.getOne(dataid);
+            dataList.add(data);
+        }
+        return dataList;
     }
 }
 
