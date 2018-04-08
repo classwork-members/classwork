@@ -15,15 +15,15 @@ public class Cases {
   private String casename;
   private Integer illnessid;
 
-  public Timestamp getCasedate() {
+  public String getCasedate() {
     return casedate;
   }
 
-  public void setCasedate(Timestamp casedate) {
+  public void setCasedate(String casedate) {
     this.casedate = casedate;
   }
 
-  private Timestamp casedate;
+  private String casedate;
 
 
   public Integer getCaseid() {
