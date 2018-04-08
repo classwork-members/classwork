@@ -2,6 +2,7 @@ package com.soft.classwork.enums;
 
 public enum ResultEnum {
     UNKOWN_ERROR("1000","未知错误"),
+    UPLOAD_FAIL("2001","上传失败"),
     NONTASK_ERROR("0001","该条任务不存在，请先添加"),
     SUCCESS("0000","成功"),
     UPDATE_FAIL("0002","更新失败"),
@@ -45,7 +46,9 @@ public enum ResultEnum {
     ASSAY_ID_NULL("0040","assay id不能为空"),
     ASSAY_NAME_NULL("0041","assay name不能为空"),
     ASSAY_DEPARTMENT_NULL("0042","assay department不能为空"),
-    ;
+    ADD_CASE_FAIL("0043","插入新病例失败"),
+    ADD_DATA_FAIL("0044","插入新数据失败" ),
+    ADD_CASESPHASE_FAIL("0045","插入新病例阶段数据失败");
     private String code;
     private String msg;
 

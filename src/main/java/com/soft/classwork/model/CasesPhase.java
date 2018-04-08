@@ -13,14 +13,21 @@ public class CasesPhase {
   private Integer caseid;
   private String casephasename;
   private Integer dataid;
-  private Integer phasetypeid;
+  //private Integer phasetypeid;
 
-  public Integer getPhasetypeid() {
-    return phasetypeid;
-  }
+//  public Integer getPhasetypeid() {
+//    return phasetypeid;
+//  }
+//
+//  public void setPhasetypeid(Integer phasetypeid) {
+//    this.phasetypeid = phasetypeid;
+//  }
 
-  public void setPhasetypeid(Integer phasetypeid) {
-    this.phasetypeid = phasetypeid;
+
+  public CasesPhase(Integer caseid, String casephasename, Integer dataid) {
+    this.caseid = caseid;
+    this.casephasename = casephasename;
+    this.dataid = dataid;
   }
 
   public Integer getCasephaseid() {

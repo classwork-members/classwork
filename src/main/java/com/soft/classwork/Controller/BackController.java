@@ -1,5 +1,6 @@
 package com.soft.classwork.Controller;
 
+import com.soft.classwork.enums.ResultEnum;
 import com.soft.classwork.service.CaseService;
 import com.soft.classwork.model.Result;
 import com.soft.classwork.utils.FileUtil;
@@ -42,37 +43,38 @@ public class BackController {
         return caseService.findCasesByIllnessid(8);
     }
 
-    @RequestMapping(value = "/ftpuploadimg", method = RequestMethod.POST)
-    public @ResponseBody
-    String uploadImg(@RequestParam("file") MultipartFile file,
-                     HttpServletRequest request) throws IOException {
-
-        String fileName = file.getOriginalFilename();
-        InputStream inputStream = file.getInputStream();
-        String filePath = null;
-
-        try {
-            File dir = new File("upload/");
-            if (!dir.exists()) {
-                dir.mkdir();
-            }
-            String path = "upload/" + file.getOriginalFilename();
-            FileUtil.uploadFile(file.getBytes(), "upload/", fileName);
-            FtpFileUtil.uploadFile(fileName,new FileInputStream(path));
-
-            //File deletefile = new File(path);
-            //deletefile.delete();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        finally {
-            return fileName;  //该路径图片名称，前端框架可用ngnix指定的路径+filePath,即可访问到ngnix图片服务器中的图片
-        }
-
-
-    }
+//    @RequestMapping(value = "/ftpuploadimg", method = RequestMethod.POST)
+//    public Result uploadImg(@RequestParam("file") MultipartFile file,
+//                     HttpServletRequest request) throws IOException {
+//
+//        String fileName = file.getOriginalFilename();
+//        InputStream inputStream = file.getInputStream();
+//        String filePath = null;
+//
+//
+//        File dir = new File("upload/");
+//        if (!dir.exists()) {
+//            dir.mkdir();
+//        }
+//        String path = "upload/" + file.getOriginalFilename();
+//        try {
+//            FileUtil.uploadFile(file.getBytes(), "upload/",fileName);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResultUtil.Error(ResultEnum.UPLOAD_FAIL);
+//        }
+//        FtpFileUtil.uploadFile(fileName,new FileInputStream(path),fileName);
+//
+//        File deletefile = new File(path);
+//        deletefile.delete();
+//
+//
+//
+//        return ResultUtil.success("upload success");  //该路径图片名称，前端框架可用ngnix指定的路径+filePath,即可访问到ngnix图片服务器中的图片
+//
+//
+//
+//    }
 //
 //    @PostMapping(value = "/addCase")
 //    public String addCase()

@@ -10,9 +10,15 @@ public class Data {
   @Id
   @GeneratedValue
   private Integer dataid;
-  private long datatype;
+  private String datatype;
   private String content;
+  private String dataname;
 
+  public Data(String datatype,String content,String dataname) {
+    this.datatype = datatype;
+    this.content = content;
+    this.dataname = dataname;
+  }
 
   public Integer getDataid() {
     return dataid;
@@ -23,11 +29,11 @@ public class Data {
   }
 
 
-  public long getDatatype() {
+  public String getDatatype() {
     return datatype;
   }
 
-  public void setDatatype(long datatype) {
+  public void setDatatype(String datatype) {
     this.datatype = datatype;
   }
 
@@ -40,4 +46,12 @@ public class Data {
     this.content = content;
   }
 
+
+  public String getDataname() {
+    return dataname;
+  }
+
+  public void setDataname(String dataname) {
+    this.dataname = dataname;
+  }
 }
