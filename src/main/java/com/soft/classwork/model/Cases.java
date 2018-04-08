@@ -22,6 +22,9 @@ public class Cases {
     this.casedate = casedate;
   }
 
+  public Cases() {
+  }
+
   public String getCasedate() {
     return casedate;
   }

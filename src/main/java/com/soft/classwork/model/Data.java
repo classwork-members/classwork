@@ -1,10 +1,14 @@
 package com.soft.classwork.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler"})
+
 public class Data {
 
   @Id
@@ -14,10 +18,7 @@ public class Data {
   private String content;
   private String dataname;
 
-  public Data(String datatype,String content,String dataname) {
-    this.datatype = datatype;
-    this.content = content;
-    this.dataname = dataname;
+  public Data() {
   }
 
   public Integer getDataid() {
