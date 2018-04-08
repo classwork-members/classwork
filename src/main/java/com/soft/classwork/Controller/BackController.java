@@ -38,8 +38,8 @@ public class BackController {
     }
 
     @PostMapping(value = "/manageCase2/{bingzhong}")
-    public Object test2(@PathVariable("bingzhong") String bingzhong) {
-        return caseService.findCasesByIllnessid(8);
+    public Object test2(@PathVariable("bingzhong") int bingzhong) {
+        return caseService.findCasesByIllnessid(bingzhong);
     }
 
     @RequestMapping(value = "/ftpuploadimg", method = RequestMethod.POST)
