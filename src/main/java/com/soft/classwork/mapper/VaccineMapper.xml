@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft.classwork.mapper.VaccineMapper">
+    <insert id="addVaccine" parameterType="com.soft.classwork.model.Vaccine">
+        INSERT INTO vaccine (vaccinename,purpose,fee)
+        VALUES (
+        #{vaccinename},
+        #{purpose},
+        #{fee}
+        )
+    </insert>
+
+    <select id="getVaccineByName" resultType="com.soft.classwork.model.Vaccine">
+        SELECT * FROM vaccine WHERE vaccinename = #{name}
+    </select>
+
+    <select id="getVaccineById" resultType="com.soft.classwork.model.Vaccine">
+        SELECT * FROM vaccine WHERE vaccineid = #{id}
+    </select>
+    <update id="updateVaccineById" parameterType="com.soft.classwork.model.Vaccine">
+        UPDATE vaccine
+        <set>
+            <if test="vaccine.vaccinename != null">
+                vaccinename = #{vaccine.vaccinename},
+            </if>
+            <if test="vaccine.purpose != null">
+                purpose = #{vaccine.purpose},
+            </if>
+            <if test="vaccine.fee != null">
+                fee = #{vaccine.fee}
+            </if>
+        </set>
+        where vaccineid = #{vaccine.vaccineid}
+    </update>
+
+    <delete id="deleteVaccineById">
+        DELETE FROM vaccine WHERE vaccineid = #{id}
+    </delete>
+
+    <select id="getVaccineList" resultType="com.soft.classwork.model.Vaccine">
+        SELECT * FROM vaccine ORDER BY vaccineid
+    </select>
+</mapper>

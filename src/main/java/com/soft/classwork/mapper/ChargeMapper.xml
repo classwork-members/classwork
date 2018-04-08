@@ -22,7 +22,7 @@
                 payment = #{charge.payment},
             </if>
             <if test="charge.purpose != null">
-                purpose = #{charge.purpose}
+                purpose = #{charge.purpose},
             </if>
             <if test="charge.dt_update != null">
                 dt_update = #{charge.dt_update}

@@ -21,7 +21,6 @@ import java.util.Date;
 public class ChargeManageController {
     @Autowired
     ChargeService chargeService;
-
     @RequestMapping(value = "/addCharge", method = RequestMethod.POST)
     public Result addCharge(@RequestBody Charge charge){
         if(Float.valueOf(charge.getPayment())<0){
