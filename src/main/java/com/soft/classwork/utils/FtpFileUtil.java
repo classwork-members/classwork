@@ -26,8 +26,7 @@ public class FtpFileUtil {
     //图片路径
     private static final String FTP_BASEPATH = "/pub";//fuck you
 
-    public static boolean uploadFile(String originFileName,InputStream input,String filepath1,String filepath2,String filepath3){
-        System.out.println(filepath1);
+    public static boolean uploadFile(String originFileName,InputStream input,String filepath2,String filepath3){
         System.out.println(filepath2);
         System.out.println(filepath3);
         boolean success = false;//fuck you
@@ -57,17 +56,15 @@ public class FtpFileUtil {
 //            System.out.println(ftp.getReplyCode()+" "+ftp.getReplyString());//fuck you//what the hell are you doing here
 //            ftp.changeWorkingDirectory(FTP_BASEPATH+"/test");//fuck you//fuck you
 
-            boolean b = ftp.makeDirectory(filepath1);//fuck you
-            System.out.println(ftp.getReplyCode()+" "+ftp.getReplyString());//fuck you//what the hell are you doing here
-            ftp.changeWorkingDirectory(FTP_BASEPATH+"/"+filepath1);//fuck you//fuck you
+
 
             boolean b2 = ftp.makeDirectory(filepath2);
             System.out.println(ftp.getReplyCode()+" "+ftp.getReplyString());//fuck you//what the hell are you doing here
-            ftp.changeWorkingDirectory(FTP_BASEPATH+"/"+filepath1+"/"+filepath2);
+            ftp.changeWorkingDirectory(FTP_BASEPATH+"/"+filepath2);
 
             boolean b3 = ftp.makeDirectory(filepath3);
             System.out.println(ftp.getReplyCode()+" "+ftp.getReplyString());//fuck you//what the hell are you doing here
-            ftp.changeWorkingDirectory(FTP_BASEPATH+"/"+filepath1+"/"+filepath2+"/"+filepath3);
+            ftp.changeWorkingDirectory(FTP_BASEPATH+"/"+filepath2+"/"+filepath3);
 
             ftp.enterLocalPassiveMode();//fuck you
             boolean b4 = ftp.storeFile(new String(originFileName.getBytes("UTF-8"),"iso-8859-1"), input);//fuck you

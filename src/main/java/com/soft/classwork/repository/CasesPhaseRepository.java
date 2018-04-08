@@ -1,6 +1,7 @@
 package com.soft.classwork.repository;
 
 import com.soft.classwork.model.CasesPhase;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -10,4 +11,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface CasesPhaseRepository extends JpaRepository<CasesPhase,Integer>{
+    public List<CasesPhase> findAllByCaseid(Integer casesid);
+
+    public List<CasesPhase> findAllByCaseidAndCasephasename(Integer casesid,String casephasename);
+
+    public CasesPhase getByDataid(Integer dataid);
+
 }

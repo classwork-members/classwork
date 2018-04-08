@@ -30,6 +30,9 @@ public class CasesPhase {
     this.dataid = dataid;
   }
 
+  public CasesPhase() {
+  }
+
   public Integer getCasephaseid() {
     return casephaseid;
   }
