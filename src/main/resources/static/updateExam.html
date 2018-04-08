@@ -60,7 +60,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="sidebar-menu">
-                        <li class="header">生成考试</li>
+                        <li class="header">修改考试信息</li>
                         <li class="treeview">
                             <a href="manageUser.html">
                                 <i class="fa fa-table"></i> <span>用户管理</span>
@@ -107,16 +107,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
     <!-- header-starts -->
     <div class="sticky-header header-section ">
+
         <div class="header-right">
-
-
             <div class="profile_details">
                 <ul>
                     <li class="dropdown profile_details_drop">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             <div class="profile_img">
+                                <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
                                 <div class="user-name">
-                                    <p>管理员</p>
+                                    <p>Admin Name</p>
+                                    <span>Administrator</span>
                                 </div>
                                 <i class="fa fa-angle-down lnr"></i>
                                 <i class="fa fa-angle-up lnr"></i>
@@ -124,7 +125,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </a>
                         <ul class="dropdown-menu drp-mnu">
-                            <li> <a href="login.html"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                            <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+                            <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
+                            <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
+                            <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
                         </ul>
                     </li>
                 </ul>
@@ -156,23 +160,43 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <input type="datetime-local" class="form-control" name="endtime" id="endtime" >
                         </div>
                         <label for="endtime">可以参与考试的用户权限级别</label>
-                            <label> <input name="roleid" type="radio" value="1"> 1级及以下 </label>
-                            <label> <input name="roleid" type="radio" value="2"> 2级及以下 </label>
-                            <label> <input name="roleid" type="radio" value="3"> 3级及以下 </label>
-                            <label> <input name="roleid" type="radio" value="4"> 4级及以下 </label>
+                        <label> <input name="roleid" type="radio" value="1" id="role1"> 1级及以下 </label>
+                        <label> <input name="roleid" type="radio" value="2" id="role2"> 2级及以下 </label>
+                        <label> <input name="roleid" type="radio" value="3" id="role3"> 3级及以下 </label>
+                        <label> <input name="roleid" type="radio" value="4" id="role4"> 4级及以下 </label>
                         <label for="self">选择考卷</label>
-                        <input name="testid" id="testid" >
+                        <input name="testid" id="testid" hidden>
+                        <input name="examiationid" id="examiationid" hidden>
                         <div class="tables" id="self">
                             <div class="bs-example widget-shadow" data-example-id="hoverable-table">
                                 <script>
                                     function getUrlParam(name) {
                                         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
                                         var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-                                        if (r != null) return unescape(r[2]); return null; //返回参数值
+                                        if (r != null) return decodeURIComponent(r[2]); return null; //返回参数值
                                     }
                                     $(document).ready(function( ){
                                         var url = "/examManage/alltest";
                                         var num = getUrlParam("num");
+                                        var examiationid = getUrlParam("id");
+                                        var examinationname = getUrlParam("examinationname");
+                                        var starttime = getUrlParam("starttime");
+                                        var endtime = getUrlParam("endtime");
+                                        var roleid = getUrlParam("roleid");
+                                        var testid = getUrlParam("testid");
+                                        document.getElementById("examiationid").value = examiationid;
+                                        document.getElementById("examinationname").value = examinationname;
+                                        document.getElementById("starttime").value = starttime;
+                                        document.getElementById("endtime").value = endtime;
+                                        document.getElementById("testid").value = testid;
+                                        if(roleid=="1") {
+                                            document.getElementById("role1").checked = true;}
+                                        else if(roleid=="2") {
+                                            document.getElementById("role2").checked = true;}
+                                        else if(roleid=="3") {
+                                            document.getElementById("role3").checked = true;}
+                                        else  {
+                                            document.getElementById("role4").checked = true;}
                                         $.get(
                                             url,
                                             {},//参数列表
@@ -260,7 +284,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
     <!--footer-->
     <div class="footer">
-        <p>&copy;2018 Pet Hospital. </p>
+        <p>&copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
     </div>
     <!--//footer-->
 </div>
@@ -295,7 +319,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         alert(JSON.stringify($('#endtime').val()));
         $.ajax({
             type: "POST",   //提交的方法
-            url:"/examManage/addExamination", //提交的地址
+            url:"/examManage/updateExamination", //提交的地址
             data:$('#registerUser').serialize(),// 序列化表单值
             async: false,
             error: function(request) {  //失败的话

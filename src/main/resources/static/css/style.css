@@ -1472,6 +1472,9 @@ section#tables  p {
 .form-control {
     border-radius: inherit;
 }
+.form-control2 {
+    border-radius: inherit;
+}
 .help-block {
     margin-top: 10px;
 }

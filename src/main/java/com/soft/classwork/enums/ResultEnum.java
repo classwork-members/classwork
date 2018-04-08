@@ -2,6 +2,7 @@ package com.soft.classwork.enums;
 
 public enum ResultEnum {
     UNKOWN_ERROR("1000","未知错误"),
+    UPLOAD_FAIL("2001","上传失败"),
     NONTASK_ERROR("0001","该条任务不存在，请先添加"),
     SUCCESS("0000","成功"),
     UPDATE_FAIL("0002","更新失败"),
@@ -48,7 +49,13 @@ public enum ResultEnum {
     VACCINE_NAME_NULL("0043","vaccine name 不能为空"),
     VACCINE_FEE_NULL("0044","vaccine fee 不能小于0"),
     VACCINE_ID_NULL("0045","vaccine id 不能为空"),
+    ADD_CASE_FAIL("0046","插入新病例失败"),
+    ADD_DATA_FAIL("0047","插入新数据失败" ),
+    ADD_CASESPHASE_FAIL("0048","插入新病例阶段数据失败"),
     ;
+
+
+
     private String code;
     private String msg;
 
