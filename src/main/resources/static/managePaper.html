@@ -62,9 +62,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <ul class="sidebar-menu">
                         <li class="header">考卷管理</li>
                         <li class="treeview">
-                            <a href="manageUser.html">
+                            <a href="#">
                                 <i class="fa fa-table"></i> <span>用户管理</span>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
+                            <ul class="treeview-menu">
+                                <li><a href="manageUser.html"><i class="fa fa-angle-right"></i>普通用户管理</a></li>
+                                <li><a href="manageManager.html"><i class="fa fa-angle-right"></i>管理员管理</a></li>
+                            </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
@@ -83,6 +88,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="treeview">
                             <a href="diseaseChoice.html">
                                 <i class="fa fa-table"></i> <span>病种管理</span>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
                         </li>
                         <li class="treeview">
@@ -107,7 +113,148 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
     <!-- header-starts -->
     <div class="sticky-header header-section ">
+        <div class="header-left">
 
+            <!--toggle button start-->
+            <button id="showLeftPush"><i class="fa fa-bars"></i></button>
+            <!--toggle button end-->
+            <div class="profile_details_left"><!--notifications of menu start -->
+                <ul class="nofitications-dropdown">
+                    <li class="dropdown head-dpdn">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">4</span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="notification_header">
+                                    <h3>You have 3 new messages</h3>
+                                </div>
+                            </li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/1.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet</p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li class="odd"><a href="#">
+                                <div class="user_img"><img src="images/4.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/3.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li>
+                                <div class="notification_bottom">
+                                    <a href="#">See all messages</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown head-dpdn">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">4</span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="notification_header">
+                                    <h3>You have 3 new notification</h3>
+                                </div>
+                            </li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/4.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet</p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li class="odd"><a href="#">
+                                <div class="user_img"><img src="images/1.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/3.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li>
+                                <div class="notification_bottom">
+                                    <a href="#">See all notifications</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown head-dpdn">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="notification_header">
+                                    <h3>You have 8 pending task</h3>
+                                </div>
+                            </li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Database update</span><span class="percentage">40%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar yellow" style="width:40%;"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar green" style="width:90%;"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Mobile App</span><span class="percentage">33%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar red" style="width: 33%;"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar  blue" style="width: 80%;"></div>
+                                </div>
+                            </a></li>
+                            <li>
+                                <div class="notification_bottom">
+                                    <a href="#">See all pending tasks</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+            <!--notification menu end -->
+            <div class="clearfix"> </div>
+        </div>
         <div class="header-right">
             <div class="profile_details">
                 <ul>
@@ -175,13 +322,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         for (var i=num;i<num+5;i++)
                                         {
                                             var $tab1 = $("#thedata");
-                                            if(result.data[i].illnessid=="0"){
-                                                var illness="杂题";
-                                            }
-                                            else{
-                                                var illness="null"
-                                            }
-                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].testid +"</th><td>"+ result.data[i].testname +"</td><td>"+ result.data[i].examcount+"</td><td>"+ result.data[i].totalscore+"</td><td>"+ result.data[i].testtime+"</td><td>"+ illness+"</td><td><a href=\"paperDetail.html?id="+result.data[i].testid+"\">查看具体题目或管理该考卷题目</a></td></tr>";
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].examIntegerMap.Exam.examid +"</th><td>"+ result.data[i].examIntegerMap.Exam.alternativea +"</td><td>"+ result.data[i].examIntegerMap.Exam.alternativeb +"</td><td>"+ result.data[i].examIntegerMap.Exam.alternativec+"</td></tr>";
                                             $tab1.append(trData);
                                         }
                                     }
@@ -190,13 +331,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         for (var i=num;i<result.data.length;i++)
                                         {
                                             var $tab1 = $("#thedata");
-                                            if(result.data[i].illnessid=="0"){
-                                                var illness="杂题";
-                                            }
-                                            else{
-                                                var illness="error"
-                                            }
-                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].testid +"</th><td>"+ result.data[i].testname +"</td><td>"+ result.data[i].examcount+"</td><td>"+ result.data[i].totalscore+"</td><td>"+ result.data[i].testtime+"</td><td>"+ illness+"</td><td><a href=\"paperDetail.html?id="+result.data[i].testid+"\">查看具体题目或管理该考卷题目</a></td></tr>";
+                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].drugid +"</th><td>"+ result.data[i].drugname +"</td><td>"+ result.data[i].drugfee  +"</td><td>"+ result.data[i].drugdesc+"</td></tr>";
                                             $tab1.append(trData);
                                         }
                                     }
@@ -206,7 +341,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     {
                                         var li=document.createElement("li");
                                         j=Number(j);
-                                        li.innerHTML="<a href=\"managePaper.html?num="+j+"\">"+pagenum+"</a>";
+                                        li.innerHTML="<a href=\"manageDrug.html?num="+j+"\">"+pagenum+"</a>";
                                         ul.appendChild(li);
                                         pagenum++;
                                     }
@@ -219,20 +354,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 alert('缺少参数');
                             }else{
                                 document.getElementById("delete-user").value = line.cells[0].innerHTML;
-                                document.getElementById("testid").value = line.cells[0].innerHTML;
-                                document.getElementById("testname").value = line.cells[1].innerHTML;
-                                document.getElementById("examcount").value = line.cells[2].innerHTML;
-                                var allscore=Number(line.cells[3].innerHTML);
-                                var num=Number(line.cells[2].innerHTML);
-                                var score=allscore/num;
-                                document.getElementById("score").value=score;
-                                document.getElementById("testtime").value = line.cells[4].innerHTML;
-                                if(line.cells[5].innerHTML=="杂题")
-                                    document.getElementById("illnessid").value=0;
-                                else if(line.cells[5].innerHTML=="传染病")
-                                    document.getElementById("illnessid").value=1;
-                                else
-                                    document.getElementById("illnessid").value=-1;
+                                document.getElementById("userid").value = line.cells[0].innerHTML;
+                                document.getElementById("recipient-name2").value = line.cells[1].innerHTML;
+                                document.getElementById("message-text2").value = line.cells[3].innerHTML;
+                                document.getElementById("fee-name2").value = line.cells[2].innerHTML;
+                                alert(line.cells[0].innerHTML);
                             }
                         }
                     </script>
@@ -241,8 +367,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <tr>
                             <th>ID</th>
                             <th>考卷名</th>
-                            <th>题目总数</th>
-                            <th>总分值</th>
+                            <th>每题</th>
                             <th>考试时长</th>
                             <th>题目范围</th>
                             <th>具体题目</th>
@@ -252,7 +377,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </tbody>
                     </table>
                     <div class="row">
-                        <ul class="pagination pagination-lg" id="pagenum">
+                        <ul class="pagination pagination-lg">
+                            <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
                         </ul>
                     </div>
                     <div class="buttons_w3ls_agile">
@@ -261,14 +393,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <script>
                                 function deleteTheUser() {
                                     var id = document.getElementById("delete-user").value;
-                                    var url = "/examManage/deletetest";
+                                    var url = "/userManage/deleteuser";
                                     $.post(
                                         url,
                                         {
-                                            testid:id
+                                            userid:id
                                         },//参数列表
                                         function(result,status,xhr){
-                                            window.location.href="managePaper.html?num=0";
+                                            window.location.href="manageUser.html?num=0";
                                         },
                                         "json"
                                     );
@@ -282,14 +414,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title" id="mySmallModalLabel">提示</h4>
                                         </div>
-                                        <div class="modal-body"> 确定要删除该试卷吗</div>
-                                        <div class="modal-footer" value="" id="delete-user">
-                                            <button type="button" class="btn btn-default" onclick="deleteTheUser()">确定</button>
+                                        <div class="modal-body"> 确定要删除该试卷吗                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" >确定</button>
                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <li><a type="button" class="hvr-icon-rotate col-23" data-toggle="modal" data-target="#gridSystemModal">修改基本信息</a></li>
                             <div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
                                 <div class="modal-dialog" role="document">
@@ -299,27 +432,24 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="gridSystemModalLabel">修改试卷基本信息</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="registerUser">
+                                            <form>
                                                 <div class="form-group">
-                                                    <label for="testname" class="control-label">考卷名</label>
-                                                    <input type="text" class="form-control" name="testname" id="testname">
+                                                    <label for="recipient-name2" class="control-label">考卷名</label>
+                                                    <input type="text" class="form-control" value="123" id="recipient-name2">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="testtime" class="control-label">考卷时长</label>
-                                                    <input type="text" class="form-control" name="testtime" id="testtime">
+                                                    <label for="recipient-time" class="control-label">考卷时长</label>
+                                                    <input type="text" class="form-control" value="123" id="recipient-time">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="score" class="control-label">每题分值</label>
-                                                    <input type="text" class="form-control" name="score" id="score">
-                                                </div>
-                                                <input name="testid" id="testid" hidden>
-                                                <input name="examcount" id="examcount" hidden>
-                                                <input name="illnessid" id="illnessid" hidden>
-                                                <div class="modal-footer">
-                                                    <button id="registerUserBt" type="button" class="btn btn-default" data-dismiss="modal">保存</button>
-                                                    <button type="button" class="btn btn-primary">取消</button>
+                                                    <label for="recipient-scope" class="control-label">每题分值</label>
+                                                    <input type="text" class="form-control" value="123" id="recipient-scope">
                                                 </div>
                                             </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
+                                            <button type="button" class="btn btn-primary">取消</button>
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
@@ -363,24 +493,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             classie.toggle( showLeftPush, 'disabled' );
         }
     }
-    $("#registerUserBt").click(function(){
-        $.ajax({
-            type: "POST",   //提交的方法
-            url:"/examManage/updateTest", //提交的地址
-            data:$('#registerUser').serialize(),// 序列化表单值
-            async: false,
-            error: function(request) {  //失败的话
-                alert("Connection error");
-            },
-            success: function(data) {  //成功
-                if(data.code == "0000"){
-                    window.location.href = "/managePaper.html";
-                }else{
-                    alert(data.msg);
-                }
-            }
-        });
-    });
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
 

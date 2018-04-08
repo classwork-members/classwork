@@ -3,7 +3,7 @@ package com.soft.classwork.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import java.sql.Timestamp;
 
 @Entity
 public class Cases {
@@ -14,22 +14,16 @@ public class Cases {
 
   private String casename;
   private Integer illnessid;
-  private String casedate;
 
-  public Cases(String casename, Integer illnessid, String casedate) {
-    this.casename = casename;
-    this.illnessid = illnessid;
-    this.casedate = casedate;
-  }
-
-  public String getCasedate() {
+  public Timestamp getCasedate() {
     return casedate;
   }
 
-  public void setCasedate(String casedate) {
+  public void setCasedate(Timestamp casedate) {
     this.casedate = casedate;
   }
 
+  private Timestamp casedate;
 
 
   public Integer getCaseid() {

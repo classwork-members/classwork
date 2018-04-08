@@ -62,9 +62,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <ul class="sidebar-menu">
                         <li class="header">病例管理</li>
                         <li class="treeview">
-                            <a href="manageUser.html">
+                            <a href="#">
                                 <i class="fa fa-table"></i> <span>用户管理</span>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
+                            <ul class="treeview-menu">
+                                <li><a href="manageUser.html"><i class="fa fa-angle-right"></i>普通用户管理</a></li>
+                                <li><a href="manageManager.html"><i class="fa fa-angle-right"></i>管理员管理</a></li>
+                            </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
@@ -83,6 +88,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="treeview">
                             <a href="diseaseChoice.html">
                                 <i class="fa fa-table"></i> <span>病种管理</span>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
                         </li>
                         <li class="treeview">
@@ -107,7 +113,148 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
     <!-- header-starts -->
     <div class="sticky-header header-section ">
+        <div class="header-left">
 
+            <!--toggle button start-->
+            <button id="showLeftPush"><i class="fa fa-bars"></i></button>
+            <!--toggle button end-->
+            <div class="profile_details_left"><!--notifications of menu start -->
+                <ul class="nofitications-dropdown">
+                    <li class="dropdown head-dpdn">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">4</span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="notification_header">
+                                    <h3>You have 3 new messages</h3>
+                                </div>
+                            </li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/1.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet</p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li class="odd"><a href="#">
+                                <div class="user_img"><img src="images/4.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/3.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li>
+                                <div class="notification_bottom">
+                                    <a href="#">See all messages</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown head-dpdn">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">4</span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="notification_header">
+                                    <h3>You have 3 new notification</h3>
+                                </div>
+                            </li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/4.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet</p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li class="odd"><a href="#">
+                                <div class="user_img"><img src="images/1.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/3.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li>
+                                <div class="notification_bottom">
+                                    <a href="#">See all notifications</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown head-dpdn">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="notification_header">
+                                    <h3>You have 8 pending task</h3>
+                                </div>
+                            </li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Database update</span><span class="percentage">40%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar yellow" style="width:40%;"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar green" style="width:90%;"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Mobile App</span><span class="percentage">33%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar red" style="width: 33%;"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar  blue" style="width: 80%;"></div>
+                                </div>
+                            </a></li>
+                            <li>
+                                <div class="notification_bottom">
+                                    <a href="#">See all pending tasks</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+            <!--notification menu end -->
+            <div class="clearfix"> </div>
+        </div>
         <div class="header-right">
 
             <div class="profile_details">
@@ -167,7 +314,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 var id = getUrlParam("id");
                                 var num = getUrlParam("num");
                                 var url = "/manageCase2/"+id;
-                                num=Number(num);
                                 $.post(
                                     url,
                                     {},//参数列表
@@ -249,16 +395,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                             <div class="panel-body">
-                                                <img src="images/slider6.jpg" width="500" height="250">
-                                                <video width="500" height="250" controls="controls">
-                                                    <source src="video/EP12.390影视.mp4" type="video/mp4" />
-                                                    <object data="video/EP12.390影视.mp4" width="320" height="240">
-                                                        <embed src="video/EP12.390影视.mp4" width="320" height="240" />
-                                                    </object>
-                                                </video>
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="panel panel-default">
                                         <div class="panel-heading" role="tab" id="headingTwo">
@@ -327,39 +466,39 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="catalog-name" class="control-label">病例类别</label>
-                                                    <input type="text" class="form-control" id="catalog-name" value="当前类别" name="illnessid">
+                                                    <input type="text" class="form-control" id="catalog-name" value="当前类别">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password" class="control-label">日期</label>
-                                                    <input type="text" class="form-control" id="password" name="rq">
+                                                    <input type="text" class="form-control" id="password">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="receive-text" class="control-label">接诊</label>
                                                     <div class="form-group">
-                                                        <input type="file" id="jiezhen" name="jz">
+                                                        <input type="file" id="jiezhen" >
                                                     </div>
-                                                    <textarea class="form-control" id="receive-text" name="jztext"></textarea>
+                                                    <textarea class="form-control" id="receive-text"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inspect-text" class="control-label">检查</label>
                                                     <div class="form-group">
-                                                        <input type="file" id="jiancha" name="jc">
+                                                        <input type="file" id="jiancha" >
                                                     </div>
-                                                    <textarea class="form-control" id="inspect-text" name="jctext"></textarea>
+                                                    <textarea class="form-control" id="inspect-text"></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="diagnosis-text" class="control-label">诊断</label>
+                                                    <label for="diagnosis-text" class="control-label">诊断11</label>
                                                     <div class="form-group">
-                                                        <input type="file" id="zhenduan" name="zd">
+                                                        <input type="file" id="zhenduan" >
                                                     </div>
-                                                    <textarea class="form-control" id="diagnosis-text" name="zdtext"></textarea>
+                                                    <textarea class="form-control" id="diagnosis-text"></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="treat-text" class="control-label">治疗</label>
+                                                    <label for="treat-text" class="control-label">治疗1</label>
                                                     <div class="form-group">
-                                                        <input type="file" id="zhiliao" name="zl">
+                                                        <input type="file" id="zhiliao" >
                                                     </div>
-                                                    <textarea class="form-control" id="treat-text" name="zltext"></textarea>
+                                                    <textarea class="form-control" id="treat-text"></textarea>
                                                 </div>
                                             </form>
                                         </div>

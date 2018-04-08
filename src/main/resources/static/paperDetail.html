@@ -62,9 +62,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <ul class="sidebar-menu">
                         <li class="header">考卷详情</li>
                         <li class="treeview">
-                            <a href="manageUser.html">
+                            <a href="#">
                                 <i class="fa fa-table"></i> <span>用户管理</span>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
+                            <ul class="treeview-menu">
+                                <li><a href="manageUser.html"><i class="fa fa-angle-right"></i>普通用户管理</a></li>
+                                <li><a href="manageManager.html"><i class="fa fa-angle-right"></i>管理员管理</a></li>
+                            </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
@@ -83,6 +88,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="treeview">
                             <a href="diseaseChoice.html">
                                 <i class="fa fa-table"></i> <span>病种管理</span>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
                         </li>
                         <li class="treeview">
@@ -107,7 +113,148 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
     <!-- header-starts -->
     <div class="sticky-header header-section ">
+        <div class="header-left">
 
+            <!--toggle button start-->
+            <button id="showLeftPush"><i class="fa fa-bars"></i></button>
+            <!--toggle button end-->
+            <div class="profile_details_left"><!--notifications of menu start -->
+                <ul class="nofitications-dropdown">
+                    <li class="dropdown head-dpdn">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">4</span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="notification_header">
+                                    <h3>You have 3 new messages</h3>
+                                </div>
+                            </li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/1.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet</p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li class="odd"><a href="#">
+                                <div class="user_img"><img src="images/4.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/3.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li>
+                                <div class="notification_bottom">
+                                    <a href="#">See all messages</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown head-dpdn">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">4</span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="notification_header">
+                                    <h3>You have 3 new notification</h3>
+                                </div>
+                            </li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/4.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet</p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li class="odd"><a href="#">
+                                <div class="user_img"><img src="images/1.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="user_img"><img src="images/3.jpg" alt=""></div>
+                                <div class="notification_desc">
+                                    <p>Lorem ipsum dolor amet </p>
+                                    <p><span>1 hour ago</span></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a></li>
+                            <li>
+                                <div class="notification_bottom">
+                                    <a href="#">See all notifications</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown head-dpdn">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="notification_header">
+                                    <h3>You have 8 pending task</h3>
+                                </div>
+                            </li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Database update</span><span class="percentage">40%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar yellow" style="width:40%;"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar green" style="width:90%;"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Mobile App</span><span class="percentage">33%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar red" style="width: 33%;"></div>
+                                </div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="task-info">
+                                    <span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="progress progress-striped active">
+                                    <div class="bar  blue" style="width: 80%;"></div>
+                                </div>
+                            </a></li>
+                            <li>
+                                <div class="notification_bottom">
+                                    <a href="#">See all pending tasks</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+            <!--notification menu end -->
+            <div class="clearfix"> </div>
+        </div>
         <div class="header-right">
 
             <div class="profile_details">
@@ -140,60 +287,72 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
     <!-- //header-ends -->
     <!-- main content start-->
-    <script>
-        function getUrlParam(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-            if (r != null) return unescape(r[2]); return null; //返回参数值
-        }
-        $(document).ready(function( ){
-            var id = getUrlParam("id");
-            var url = "examManage/getAllExamByTestid?testid="+id;
-            $.get(
-                url,
-                {},//参数列表
-                function(result,status,xhr){
-                    for (var i=0;i<result.data.length;i++)
-                    {
-                        var div = document.createElement('div');
-                        div.className ="panel-body";
-                        var text = document.createTextNode(result.data[i].question);
-                        div.appendChild(text);
-                        var answera = document.createTextNode("    A"+result.data[i].alternativea);
-                        div.appendChild(answera);
-                        var answerb = document.createTextNode("    B"+result.data[i].alternativeb);
-                        div.appendChild(answerb);
-                        var answerc = document.createTextNode("    C"+result.data[i].alternativec);
-                        div.appendChild(answerc);
-                        var answerd = document.createTextNode("    D"+result.data[i].alternatived);
-                        div.appendChild(answerd);
-                        var div2 = document.createElement('div');
-                        div2.className ="panel-body";
-                        var correctAnswer = document.createTextNode("答案："+result.data[i].correctAnswer);
-                        div2.appendChild(correctAnswer);
-                        div.appendChild(div2);
-                        var testdiv = document.getElementById("collapseOne");
-                        testdiv.appendChild(div);
-                    }
-                },
-                "json"
-            );
-        });
-    </script>
     <div id="page-wrapper">
         <div class="main-page general">
 
             <div class="panel-group tool-tips widget-shadow" id="accordion" role="tablist" aria-multiselectable="true">
+                <h4 class="title2"> 题目列表 :</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                题目列表
+                                选择题
                             </a>
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-
+                        <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                            <div class="panel-body">
+                                答案：A
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            Eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim  Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                            <div class="panel-body">
+                                答案：A
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                            <div class="panel-body">
+                                答案：C
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            Eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim  Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                            <div class="panel-body">
+                                答案：B
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                填空题
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            Eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim  Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                简答题
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.  apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                        </div>
                     </div>
                 </div>
             </div>
