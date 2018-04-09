@@ -39,6 +39,6 @@
         SELECT * FROM drug ORDER BY drugid
     </select>
     <select id="getDrugsByName" resultType="com.soft.classwork.model.Drug">
-        SELECT * FROM drug WHERE drugname = #{name}
+        SELECT * FROM drug WHERE drugname LIKE #{name}
     </select>
 </mapper>
