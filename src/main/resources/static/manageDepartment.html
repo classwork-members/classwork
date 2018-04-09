@@ -143,13 +143,23 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="header-right">
                         <div class="search-box">
                             <form class="input">
-                                <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32">
+                                <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32" onkeypress="Search(event)" onkeydown="Search()">
                                 <label class="input__label" for="input-32">
                                     <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                         <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
                                     </svg>
                                 </label>
                             </form>
+                            <script>
+                                function Search(e){
+                                    var e = e || window.event;
+                                    if(e.keyCode == 13) {
+                                        var deptname =$("#input-32").val()
+                                        alert(searchName)
+                                        window.location.href = "/manageDepartment.html?deptname="+deptname
+                                        }
+                                }
+                            </script>
                         </div><!--//end-search-box-->
                     </div>
                     <h4>科室列表</h4>
@@ -160,58 +170,108 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             if (r != null) return unescape(r[2]); return null; //返回参数值
                         }
                         $(document).ready(function( ){
-                            var url = "/deptManage/getDepartmentList";
+
+                            var urlGet = "/deptManage/getDepartmentList";
+                            var urlSearch="/deptManage/searchByDeptName";
                             var num = getUrlParam("num");
-                            $.get(
-                                url,
-                                {},//参数列表
-                                function(result,status,xhr){
-                                    num=Number(num);
-                                    if(num+5<result.data.length)
-                                    {
-                                        for (var i=num;i<num+5;i++)
-                                        {
-                                            var $tab1 = $("#thedata");
-                                            if(result.data[i].deptprincipal!='') {
-                                                var deptprincipal = result.data[i].deptprincipal;
-                                            }
-                                            else {
-                                                var deptprincipal = "error";
-                                            }
+                            var deptname=getUrlParam("deptname");
+                            alert(deptname)
+                            if(deptname==null) {
+                                alert('1')
+                                $.get(
+                                    urlGet,
+                                    {},//参数列表
+                                    function (result, status, xhr) {
+                                        num = Number(num);
+                                        if (num + 5 < result.data.length) {
+                                            for (var i = num; i < num + 5; i++) {
+                                                var $tab1 = $("#thedata");
+                                                if (result.data[i].deptprincipal != '') {
+                                                    var deptprincipal = result.data[i].deptprincipal;
+                                                }
+                                                else {
+                                                    var deptprincipal = "error";
+                                                }
 
-                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].deptid +"</th><td>"+ result.data[i].deptname +"</td><td>"+ result.data[i].deptdesc  +"</td><td>"+ deptprincipal+"</td></tr>";
-                                            $tab1.append(trData);
+                                                var trData = "<tr onclick=\"setLineNum(this)\"><th>" + result.data[i].deptid + "</th><td>" + result.data[i].deptname + "</td><td>" + result.data[i].deptdesc + "</td><td>" + deptprincipal + "</td></tr>";
+                                                $tab1.append(trData);
+                                            }
                                         }
-                                    }
-                                    else
-                                    {
-                                        for (var i=num;i<result.data.length;i++) {
-                                            var $tab1 = $("#thedata");
-                                            if(result.data[i].deptprincipal!='') {
-                                                var deptprincipal = result.data[i].deptprincipal;
+                                        else {
+                                            for (var i = num; i < result.data.length; i++) {
+                                                var $tab1 = $("#thedata");
+                                                if (result.data[i].deptprincipal != '') {
+                                                    var deptprincipal = result.data[i].deptprincipal;
+                                                }
+                                                else {
+                                                    var deptprincipal = "error";
+                                                }
+                                                var trData = "<tr onclick=\"setLineNum( this)\"><th>" + result.data[i].deptid + " </th><td>" + result.data[i].deptname + " </td><td>" + result.data[i].deptdesc + "</td><td>" + deptprincipal + "</td></tr>";
+                                                $tab1.append(trData);
                                             }
-                                            else {
-                                                var deptprincipal = "error";
-                                            }
-                                            var trData = "<tr onclick=\"setLineNum( this)\"><th>"+ result.data[i].deptid +" </th><td>"+ result.data[i].deptname +" </td><td>"+ result.data[i].deptdesc +"</td><td>"+ deptprincipal+"</td></tr>";
-                                            $tab1.append(trData);
+
                                         }
 
-                                    }
+                                        var ul = document.getElementById("pagenum");
+                                        var pagenum = 1;
+                                        for (var j = 0; j < result.data.length; j += 5) {
+                                            var li = document.createElement("li");
+                                            j = Number(j);
+                                            li.innerHTML = "<a href=\"manageDepartment.html?num=" + j + "\">" + pagenum + "</a>";
+                                            ul.appendChild(li);
+                                            pagenum++;
+                                        }
+                                    },
+                                    "json"
+                                );
+                            }
+                            else {
+                                alert('2')
+                                $.get(
+                                    urlSearch,
+                                    {},//参数列表
+                                    function(data){
+                                        if (num + 5 < data.data.length) {
+                                            for (var i = num; i < num + 5; i++) {
+                                                var $tab1 = $("#thedata");
+                                                if (data.data[i].deptprincipal != '') {
+                                                    var deptprincipal = data.data[i].deptprincipal;
+                                                }
+                                                else {
+                                                    var deptprincipal = "error";
+                                                }
 
-                                    var ul=document.getElementById("pagenum");
-                                    var pagenum=1;
-                                    for(var j=0;j<result.data.length;j+=5)
-                                    {
-                                        var li=document.createElement("li");
-                                        j=Number(j);
-                                        li.innerHTML="<a href=\"manageDepartment.html?num="+j+"\">"+pagenum+"</a>";
-                                        ul.appendChild(li);
-                                        pagenum++;
-                                    }
-                                },
-                                "json"
-                            );
+                                                var trData = "<tr onclick=\"setLineNum(this)\"><th>" + data.data[i].deptid + "</th><td>" + data.data[i].deptname + "</td><td>" + data.data[i].deptdesc + "</td><td>" + deptprincipal + "</td></tr>";
+                                                $tab1.append(trData);
+                                            }
+                                        }
+                                        else {
+                                            for (var i = num; i < data.data.length; i++) {
+                                                var $tab1 = $("#thedata");
+                                                if (data.data[i].deptprincipal != '') {
+                                                    var deptprincipal = data.data[i].deptprincipal;
+                                                }
+                                                else {
+                                                    var deptprincipal = "error";
+                                                }
+                                                var trData = "<tr onclick=\"setLineNum( this)\"><th>" + data.data[i].deptid + " </th><td>" + data.data[i].deptname + " </td><td>" + data.data[i].deptdesc + "</td><td>" + deptprincipal + "</td></tr>";
+                                                $tab1.append(trData);
+                                            }
+
+                                        }
+                                        var ul = document.getElementById("pagenum");
+                                        var pagenum = 1;
+                                        for (var j = 0; j < data.data.length; j += 5) {
+                                            var li = document.createElement("li");
+                                            j = Number(j);
+                                            li.innerHTML = "<a href=\"manageDepartment.html?deptname="+deptname+"&num=" + j + "\">" + pagenum + "</a>";
+                                            ul.appendChild(li);
+                                            pagenum++;
+                                        }
+                                    },
+                                    "json"
+                                );
+                            }
                         });
                         function setLineNum(line){
                             if(typeof(line)   ==   "undefined "){
@@ -375,7 +435,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- Classie --><!-- for toggle left push menu script -->
 <script src="js/classie.js"></script>
 <script>
-    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+    /*var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
         showLeftPush = document.getElementById( 'showLeftPush' ),
         body = document.body;
 
@@ -390,7 +450,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         if( button !== 'showLeftPush' ) {
             classie.toggle( showLeftPush, 'disabled' );
         }
-    }
+    }*/
     $("#newDeptBt").click(function(){
         obj = document.getElementsByName("deptprincipal");
         check_val = [];
@@ -463,6 +523,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             });
         }
     });
+
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
 
