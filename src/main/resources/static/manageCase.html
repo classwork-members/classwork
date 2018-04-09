@@ -9,8 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head>
     <title>Pet Hospital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
-    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -111,15 +110,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
         <div class="header-right">
 
+
             <div class="profile_details">
                 <ul>
                     <li class="dropdown profile_details_drop">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             <div class="profile_img">
-                                <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
                                 <div class="user-name">
-                                    <p>Admin Name</p>
-                                    <span>Administrator</span>
+                                    <p>管理员</p>
                                 </div>
                                 <i class="fa fa-angle-down lnr"></i>
                                 <i class="fa fa-angle-up lnr"></i>
@@ -127,10 +125,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </a>
                         <ul class="dropdown-menu drp-mnu">
-                            <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-                            <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
-                            <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
-                            <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                            <li> <a href="login.html"><i class="fa fa-sign-out"></i> Logout</a> </li>
                         </ul>
                     </li>
                 </ul>
@@ -146,6 +141,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class="main-page">
             <div class="tables">
                 <div class="bs-example widget-shadow" data-example-id="hoverable-table">
+                    <div class="header-right">
+                        <div class="search-box">
+                            <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="sousuo">
+                            <label class="input__label" for="sousuo">
+                                <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                </svg>
+                            </label>
+                        </div><!--//end-search-box-->
+                    </div>
                     <h4>病种名-病例列表</h4>
                     <table class="table table-hover">
                         <thead>
@@ -162,65 +167,126 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             function getUrlParam(name) {
                                 var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
                                 var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-                                if (r != null) return unescape(r[2]); return null; //返回参数值
+                                if (r != null) return decodeURIComponent(r[2]); return null; //返回参数值
                             }
                             $(document).ready(function( ){
                                 var id = getUrlParam("id");
                                 var num = getUrlParam("num");
-                                var url = "/manageCase2/"+id;
-                                num=Number(num);
-                                $.post(
-                                    url,
-                                    {},//参数列表
-                                    function(result){
-                                        if(num+2<result.length)
-                                        {
-                                            for (var i=num;i<num+2;i++)
+                                var sousuo = getUrlParam("sousuo");
+                                if(sousuo==null || sousuo=="")
+                                {
+                                    document.getElementById("catalog-name").value=id;
+                                    var url = "/manageCase2/"+id;
+                                    num=Number(num);
+                                    $.post(
+                                        url,
+                                        {},//参数列表
+                                        function(result){
+                                            if(num+2<result.length)
                                             {
-                                                var $tab1 = $("#thedata");
-                                                var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result[i].caseid +"</th><td>"+ result[i].illnessid +"</td><td>"+ result[i].casename +"</td><td>"+ result[i].casedate +"</td><td><a type=\"button\"  data-toggle=\"modal\" data-target=\"#detail\" data-whatever=\"@mdo\" >查看详情</a></td></tr>";
-                                                $tab1.append(trData);
+                                                for (var i=num;i<num+2;i++)
+                                                {
+                                                    var $tab1 = $("#thedata");
+                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result[i].caseid +"</th><td>"+ result[i].illnessid +"</td><td>"+ result[i].casename +"</td><td>"+ result[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result[i].caseid+"\" >查看详情</a></td></tr>";
+                                                    $tab1.append(trData);
+                                                }
                                             }
-                                        }
-                                        else
-                                        {
-                                            for (var i=num;i<result.length;i++)
+                                            else
                                             {
-                                                var $tab1 = $("#thedata");
-                                                var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result[i].caseid +"</th><td>"+ result[i].illnessid +"</td><td>"+ result[i].casename +"</td><td>"+ result[i].casedate +"</td><td><a type=\"button\"  data-toggle=\"modal\" data-target=\"#detail\" data-whatever=\"@mdo\" >查看详情</a></td></tr>";
-                                                $tab1.append(trData);
+                                                for (var i=num;i<result.length;i++)
+                                                {
+                                                    var $tab1 = $("#thedata");
+                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result[i].caseid +"</th><td>"+ result[i].illnessid +"</td><td>"+ result[i].casename +"</td><td>"+ result[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result[i].caseid+"\" >查看详情</a></td></tr>";
+                                                    $tab1.append(trData);
+                                                }
                                             }
-                                        }
-                                        var ul=document.getElementById("pagenum");
-                                        var pagenum=1;
-                                        for(var j=0;j<result.length;j+=2)
-                                        {
-                                            var li=document.createElement("li");
-                                            j=Number(j);
-                                            li.innerHTML="<a href=\"manageCase.html?id="+id+"&num="+j+"\">"+pagenum+"</a>";
-                                            ul.appendChild(li);
-                                            pagenum++;
-                                        }
+                                            var ul=document.getElementById("pagenum");
+                                            var pagenum=1;
+                                            for(var j=0;j<result.length;j+=2)
+                                            {
+                                                var li=document.createElement("li");
+                                                j=Number(j);
+                                                li.innerHTML="<a href=\"manageCase.html?id="+id+"&num="+j+"\">"+pagenum+"</a>";
+                                                ul.appendChild(li);
+                                                pagenum++;
+                                            }
 
-                                    },
-                                    "json"
-                                );
+                                        },
+                                        "json"
+                                    );
+                                }
+                                else
+                                {
+                                    var url = "/caseManage/searchCasesByName?casename="+sousuo;
+                                    num=Number(num);
+                                    $.get(
+                                        url,
+                                        {},//参数列表
+                                        function(result){
+                                            if(num+2<result.data.length)
+                                            {
+                                                for (var i=num;i<num+2;i++)
+                                                {
+                                                    var $tab1 = $("#thedata");
+                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].caseid +"</th><td>"+ result.data[i].illnessid +"</td><td>"+ result.data[i].casename +"</td><td>"+ result.data[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result.data[i].caseid+"\" >查看详情</a></td></tr>";
+                                                    $tab1.append(trData);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                for (var i=num;i<result.data.length;i++)
+                                                {
+                                                    var $tab1 = $("#thedata");
+                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].caseid +"</th><td>"+ result.data[i].illnessid +"</td><td>"+ result.data[i].casename +"</td><td>"+ result.data[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result.data[i].caseid+"\" >查看详情</a></td></tr>";
+                                                    $tab1.append(trData);
+                                                }
+                                            }
+                                            var ul=document.getElementById("pagenum");
+                                            var pagenum=1;
+                                            for(var j=0;j<result.data.length;j+=2)
+                                            {
+                                                var li=document.createElement("li");
+                                                j=Number(j);
+                                                li.innerHTML="<a href=\"manageCase.html?sousuo="+sousuo+"&num="+j+"\">"+pagenum+"</a>";
+                                                ul.appendChild(li);
+                                                pagenum++;
+                                            }
+
+                                        },
+                                        "json"
+                                    );
+                                }
+
                             });
                             function setLineNum(line){
                                 if(typeof(line)   ==   "undefined "){
                                     alert('缺少参数');
                                 }else{
-                                    document.getElementById("recipient-name2").value = line.cells[2].innerHTML;
-                                    document.getElementById("catalog-name2").value = line.cells[1].innerHTML;
-                                    document.getElementById("date2").value = line.cells[3].innerHTML;
-                                    if(line.cells[3].innerHTML==1)
-                                    {
-                                        document.getElementById("quanxian1").checked=true;
-                                    }
-                                    else
-                                    {
-                                        document.getElementById("quanxian2").checked=true;
-                                    }
+                                    document.getElementById("delete-assayid").value = line.cells[0].innerHTML;
+                                    document.getElementById("caseid").value = line.cells[0].innerHTML;
+                                    document.getElementById("blm").value = line.cells[2].innerHTML;
+                                    document.getElementById("rq").value = line.cells[3].innerHTML;
+                                    document.getElementById("illnessid").value = line.cells[1].innerHTML;
+                                    var url="/caseManage/getOneCasesAllData?casesid="+line.cells[0].innerHTML;
+                                    $.get(
+                                        url,
+                                        {},//参数列表
+                                        function(data) {  //成功
+                                            if (data.code == "0000") {
+                                                document.getElementById("jztext").value = data.data[6].content;
+                                                document.getElementById("jctext").value = data.data[4].content;
+                                                document.getElementById("zdtext").value = data.data[2].content;
+                                                document.getElementById("zltext").value = data.data[0].content;
+                                                document.getElementById("dataid1").value = data.data[6].dataid;
+                                                document.getElementById("dataid2").value = data.data[4].dataid;
+                                                document.getElementById("dataid3").value = data.data[2].dataid;
+                                                document.getElementById("dataid4").value = data.data[0].dataid;
+                                            } else {
+                                                alert(data.msg);
+                                            }
+                                        },
+                                        "json"
+                                    );
                                 }
                             }
                         </script>
@@ -232,7 +298,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <!--<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>-->
                         </ul>
                     </div>
-                    <!--添加新文件的地方-->
                     <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -250,14 +315,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             </h4>
                                         </div>
                                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                            <div class="panel-body">
-                                                <img src="images/slider6.jpg" width="500" height="250">
-                                                <video width="500" height="250" controls="controls">
-                                                    <source src="video/EP12.390影视.mp4" type="video/mp4" />
-                                                    <object data="video/EP12.390影视.mp4" width="320" height="240">
-                                                        <embed src="video/EP12.390影视.mp4" width="320" height="240" />
-                                                    </object>
-                                                </video>
+                                            <div class="panel-body" id="jz">
+                                                <!--<img src="images/slider6.jpg" width="500" height="250">-->
+                                                <!--<video width="500" height="250" controls="controls">-->
+                                                <!--<source src="video/EP12.390影视.mp4" type="video/mp4" />-->
+                                                <!--<object data="video/EP12.390影视.mp4" width="320" height="240">-->
+                                                <!--<embed src="video/EP12.390影视.mp4" width="320" height="240" />-->
+                                                <!--</object>-->
+                                                <!--</video>-->
                                             </div>
                                         </div>
 
@@ -271,8 +336,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             </h4>
                                         </div>
                                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                            <div class="panel-body">
-                                                Eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim  Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                                            <div class="panel-body" id="jc">
                                             </div>
                                         </div>
                                     </div>
@@ -285,8 +349,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             </h4>
                                         </div>
                                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                            <div class="panel-body">
-                                                3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.  apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                                            <div class="panel-body" id="zd">
                                             </div>
                                         </div>
                                     </div>
@@ -299,73 +362,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             </h4>
                                         </div>
                                         <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                            <div class="panel-body">
-                                                Cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
+                                            <div class="panel-body" id="zl">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <div class="buttons_w3ls_agile">
-                                        <ul class="bt-list">
-                                            <li><a type="button" class="hvr-icon-float-away col-24" data-toggle="modal" data-target="#exampleModaltest" data-whatever="@mdo">添加</a></li>
-                                            <div class="modal fade" id="exampleModaltest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeltest">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="exampleModalLabeltest">添加文件</h4>
-                                                        </div>
-                                                        <div class="modal-body" >
-                                                            <form action="/caseManage/addOneFileData" id="dataform" method="post" enctype="multipart/form-data">
-                                                                <div class="form-group">
-                                                                    <label for="recipient-name" class="control-label">病例阶段名</label>
-                                                                    <input type="text" class="form-control"  id="bljdm",name="casephasename">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="catalog-name" class="control-label">文件</label>
-                                                                    <input type="file" class="form-control" id="postfile" name="file">
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" onclick="postdata()">保存</button>
-                                                            <script>
-                                                                function postdata() {
-                                                                    var formdata = new FormData();
-                                                                    var test1 = document.getElementById("bljdm").value;
-                                                                    formdata.append("file",document.getElementById("postfile").files[0]);
-                                                                    formdata.append("casephasename",test1);
-                                                                    formdata.append("casesid",125);
-                                                                    $.ajax({
-                                                                        type: "POST",   //提交的方法
-                                                                        url:"/caseManage/addOneFileData", //提交的地址
-                                                                        data: formdata
-                                                                        ,// 序列化表单值
-                                                                        //
-                                                                          contentType: false,
-                                                                          processData: false,
-                                                                        async: false,
-                                                                        cache: false,
-                                                                        error: function(request) {  //失败的话
-                                                                            alert("Connection error");
-                                                                        },
-                                                                        success: function(data) {  //成功
-                                                                            alert(data.msg);  //就将返回的数据显示出来
-                                                                            window.location.href = "/manageCase?id="+id
-                                                                        }
-                                                                    });
-                                                                }
-                                                            </script>
-                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <li><button type="button" class="btn btn-default" data-dismiss="modal">确定</button></li>
-                                        </ul>
-                                    </div>
-
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
                                 </div>
                             </div>
                         </div>
@@ -381,7 +384,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="exampleModalLabel">新建病例</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="/caseManage/addCase" method="post">
+                                            <form id="registerUser">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">病例名</label>
                                                     <input type="text" class="form-control" id="recipient-name" name="blm">
@@ -392,45 +395,51 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password" class="control-label">日期</label>
-                                                    <input type="text" class="form-control" id="password" name="rq">
+                                                    <input type="datetime-local" class="form-control" id="password" name="rq">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="receive-text" class="control-label">接诊</label>
-                                                    <div class="form-group">
-                                                        <input type="file" id="jiezhen" name="jz">
-                                                    </div>
                                                     <textarea class="form-control" id="receive-text" name="jztext"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inspect-text" class="control-label">检查</label>
-                                                    <div class="form-group">
-                                                        <input type="file" id="jiancha" name="jc">
-                                                    </div>
                                                     <textarea class="form-control" id="inspect-text" name="jctext"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="diagnosis-text" class="control-label">诊断</label>
-                                                    <div class="form-group">
-                                                        <input type="file" id="zhenduan" name="zd">
-                                                    </div>
                                                     <textarea class="form-control" id="diagnosis-text" name="zdtext"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="treat-text" class="control-label">治疗</label>
-                                                    <div class="form-group">
-                                                        <input type="file" id="zhiliao" name="zl">
-                                                    </div>
                                                     <textarea class="form-control" id="treat-text" name="zltext"></textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" id="registerUserBt" class="btn btn-primary" value="提交">提交</button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" >保存</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
+                            <script>
+                                function deleteTheAssay() {
+                                    var id = document.getElementById("delete-assayid").value;
+                                    var illiness=document.getElementById("catalog-name").value;
+                                    var url = "/caseManage/deleteCase";
+                                    $.post(
+                                        url,
+                                        {
+                                            casesid:id
+                                        },//参数列表
+                                        function(result,status,xhr){
+                                            window.location.href="manageCase.html?id="+illiness;
+                                        },
+                                        "json"
+                                    );
+                                }
+                            </script>
                             <li><a type="button" class="hvr-icon-sink-away col-8" data-toggle="modal" data-target=".bs-example-modal-sm">删除</a></li>
                             <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                                 <div class="modal-dialog modal-sm">
@@ -439,10 +448,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title" id="mySmallModalLabel">提示</h4>
                                         </div>
-                                        <div class="modal-body"> 确定要删除该用户吗                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
-                                            <button type="button" class="btn btn-default" >取消</button>
+                                        <div class="modal-body"> 确定要删除该科室吗                                        </div>
+                                        <div class="modal-footer" value="" id="delete-assayid">
+                                            <button type="button" class="btn btn-default" onclick="deleteTheAssay()">确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                         </div>
                                     </div>
                                 </div>
@@ -456,78 +465,48 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="exampleModalLabel3">修改病例</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="addcassform" method="post">
+                                            <form id="modifyAssay">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">病例名</label>
-                                                    <input type="text" class="form-control" id="recipient-name2">
+                                                    <input type="text" class="form-control" id="blm" name="blm">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="catalog-name" class="control-label">病例类别</label>
-                                                    <input type="text" class="form-control" id="catalog-name2" value="当前类别">
+                                                    <input type="text" class="form-control" id="illnessid" value="当前类别" name="illnessid">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password" class="control-label">日期</label>
-                                                    <input type="text" class="form-control" id="date2">
+                                                    <input type="datetime-local" class="form-control" id="rq" name="rq">
+                                                    <input id="caseid" name="casesid" hidden>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="receive-text" class="control-label">接诊</label>
-                                                    <textarea class="form-control" id="receive-text2"></textarea>
+                                                    <input id="dataid1" name="dataid1" hidden>
+                                                    <textarea class="form-control" id="jztext" name="jztext"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inspect-text" class="control-label">检查</label>
-                                                    <textarea class="form-control" id="inspect-text2"></textarea>
+                                                    <input id="dataid2" name="dataid2" hidden>
+                                                    <textarea class="form-control" id="jctext" name="jctext"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="diagnosis-text" class="control-label">诊断</label>
-                                                    <textarea class="form-control" id="diagnosis-text2"></textarea>
+                                                    <input id="dataid3" name="dataid3" hidden>
+                                                    <textarea class="form-control" id="zdtext" name="zdtext"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="treat-text" class="control-label">治疗</label>
-                                                    <textarea class="form-control" id="treat-text2"></textarea>
+                                                    <input id="dataid4" name="dataid4" hidden>
+                                                    <textarea class="form-control" id="zltext" name="zltext"></textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default"  id="modifyAssayBt">保存</button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                                 </div>
                                             </form>
                                         </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" onclick="post()">保存</button>
-                                            <script>
-                                                function post() {
-                                                    var num = getUrlParam("num");
-                                                    $.ajax({
-                                                        type: "POST",   //提交的方法
-                                                        url:"/caseManage/addCase", //提交的地址
-                                                        data:
-                                                            $('#addcassform').serialize()+"&num="+num
-                                                        ,// 序列化表单值
-                                                        async: false,
-                                                        error: function(request) {  //失败的话
-                                                            alert("Connection error");
-                                                        },
-                                                        success: function(data) {  //成功
-                                                            alert(data.msg);  //就将返回的数据显示出来
-                                                            window.location.href = "/"
-                                                        }
-                                                    });
-                                                }
-                                                    $("#addcassform").ajaxSubmit({
-                                                        url: '',
-                                                        type: 'post',
-                                                        dataType: "json",
-                                                        beforeSubmit: function () {},
-                                                        success: function (data) {
-                                                            if (data.Res == "True" || data.Res == true) {
-                                                                $('.jsrz_main_check').html('您的申请已提交，我们将会在1-2个工作日内进行审核，请耐心等待!');
-                                                            } else {
-                                                                alert(data.Msg);
-                                                            }
-                                                        },
-                                                        clearForm: false,//禁止清楚表单
-                                                        resetForm: false //禁止重置表单
-                                                    });
 
-                                            </script>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -540,7 +519,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
     <!--footer-->
     <div class="footer">
-        <p>&copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+        <p>&copy;2018 Pet Hospital. </p>
     </div>
     <!--//footer-->
 </div>
@@ -555,22 +534,52 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- Classie --><!-- for toggle left push menu script -->
 <script src="js/classie.js"></script>
 <script>
-    // var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-    //     showLeftPush = document.getElementById( 'showLeftPush' ),
-    //     body = document.body;
-    //
-    // showLeftPush.onclick = function() {
-    //     classie.toggle( this, 'active' );
-    //     classie.toggle( body, 'cbp-spmenu-push-toright' );
-    //     classie.toggle( menuLeft, 'cbp-spmenu-open' );
-    //     disableOther( 'showLeftPush' );
-    // };
-    //
-    // function disableOther( button ) {
-    //     if( button !== 'showLeftPush' ) {
-    //         classie.toggle( showLeftPush, 'disabled' );
-    //     }
-    // }
+    $("#registerUserBt").click(function(){
+        var id = getUrlParam("id");
+        $.ajax({
+            type: "POST",   //提交的方法
+            url:"/caseManage/addCase", //提交的地址
+            data:$('#registerUser').serialize(),// 序列化表单值
+            async: false,
+            error: function(request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function(data) {  //成功
+                if(data.code == "0000"){
+                    window.location.href = "/manageCase.html?id="+id;
+                }else{
+                    alert(data.msg);
+                }
+            }
+        });
+    });
+    $('#sousuo').bind('keydown', function(event) {
+        if (event.keyCode == "13") {
+            //回车执行查询
+            var sousuo=document.getElementById("sousuo").value;
+            var id = getUrlParam("id");
+            window.location.href = "/manageCase.html?sousuo="+sousuo+"&id="+id;
+        }
+    });
+    $("#modifyAssayBt").click(function() {
+        var id = getUrlParam("id");
+        $.ajax({
+            type: "POST",   //提交的方法
+            url: "caseManage/updateCasesWords", //提交的地址
+            data:$('#modifyAssay').serialize(),// 序列化表单值
+            async: false,
+            error: function (request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function (data) {  //成功
+                if(data.code == "0000"){
+                    window.location.href = "/manageCase.html?id="+id;
+                }else{
+                    alert(data.msg);
+                }
+            }
+        });
+    });
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
 
