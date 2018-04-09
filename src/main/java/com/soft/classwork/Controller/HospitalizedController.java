@@ -97,7 +97,7 @@ public class HospitalizedController {
             throw new PetException(ResultEnum.ILLNESS_NAME);
         }
         String illness_name = "%"+illnessname+"%";
-        List<Hospitalized> hospitalizeds = hosService.getHosByOutdate(illness_name);
+        List<Hospitalized> hospitalizeds = hosService.getHosByIllnessname(illness_name);
         if (hospitalizeds.size() == 0){
             return ResultUtil.Error(ResultEnum.SEARCH_NULL);
         }

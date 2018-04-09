@@ -142,14 +142,21 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div class="bs-example widget-shadow" data-example-id="hoverable-table">
                     <div class="header-right">
                         <div class="search-box">
-                            <form class="input">
                                 <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32">
                                 <label class="input__label" for="input-32">
                                     <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                         <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
                                     </svg>
                                 </label>
-                            </form>
+                            <script>
+                                $('#input-32').bind('keydown', function(event) {
+                                    if (event.keyCode == "13") {
+                                        //回车执行查询
+                                        var drugname=$("#input-32").val()
+                                        window.location.href = "/manageDrug.html?illnessname="+drugname;
+                                    }
+                                });
+                            </script>
                         </div><!--//end-search-box-->
                     </div>
                     <h4>收费信息列表</h4>
@@ -346,7 +353,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- Classie --><!-- for toggle left push menu script -->
 <script src="js/classie.js"></script>
 <script>
-    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+    /*var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
         showLeftPush = document.getElementById( 'showLeftPush' ),
         body = document.body;
 
@@ -361,7 +368,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         if( button !== 'showLeftPush' ) {
             classie.toggle( showLeftPush, 'disabled' );
         }
-    }
+    }*/
     $("#newFeeBt").click(function(){
         $.ajax({
             type: "POST",   //提交的方法

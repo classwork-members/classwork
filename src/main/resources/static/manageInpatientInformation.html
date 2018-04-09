@@ -143,63 +143,116 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div class="bs-example widget-shadow" data-example-id="hoverable-table">
                     <div class="header-right">
                         <div class="search-box">
-                            <form class="input">
                                 <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32">
                                 <label class="input__label" for="input-32">
                                     <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
                                         <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
                                     </svg>
                                 </label>
-                            </form>
                         </div><!--//end-search-box-->
+                        <script>
+                            $('#input-32').bind('keydown', function(event) {
+                                if (event.keyCode == "13") {
+                                    //回车执行查询
+                                    var illnessname=$("#input-32").val()
+                                    window.location.href = "/manageInpatientInformation.html?illnessname="+illnessname;
+                                }
+                            });
+                        </script>
                     </div>
                     <h4>住院信息列表</h4>
                     <script>
                         function getUrlParam(name) {
                             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
                             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-                            if (r != null) return unescape(r[2]); return null; //返回参数值
+                            if (r != null) return decodeURIComponent(r[2]); return null; //返回参数值
                         }
                         $(document).ready(function( ){
-                            var url = "/hospitalized/getHosList";
+
+                            var urlGet = "/hospitalized/getHosList";
+                            var urlSearch="/hospitalized/searchByIllnessname";
+                            var illnessname=getUrlParam("illnessname");
                             var num = getUrlParam("num");
-                            $.get(
-                                url,
-                                {},//参数列表
-                                function(result,status,xhr){
-                                    num=Number(num);
-                                    if(num+5<result.data.length)
-                                    {
-                                        for (var i=num;i<num+5;i++)
-                                        {
-                                            var $tab1 = $("#thedata");
-                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].hospitalizedid +"</th><td>"+ result.data[i].illnessname +"</td><td>"+ result.data[i].dt_in_hospital  +"</td><td>"+ result.data[i].dt_out_hospital+"</td></tr>";
-                                            $tab1.append(trData);
+                            if(illnessname==null) {
+                                $.get(
+                                    urlGet,
+                                    {},//参数列表
+                                    function (result, status, xhr) {
+                                        num = Number(num);
+                                        if (num + 5 < result.data.length) {
+                                            for (var i = num; i < num + 5; i++) {
+                                                var $tab1 = $("#thedata");
+                                                var trData = "<tr onclick=\"setLineNum(this)\"><th>" + result.data[i].hospitalizedid + "</th><td>" + result.data[i].illnessname + "</td><td>" + result.data[i].dt_in_hospital + "</td><td>" + result.data[i].dt_out_hospital + "</td></tr>";
+                                                $tab1.append(trData);
+                                            }
                                         }
-                                    }
-                                    else
-                                    {
-                                        for (var i=num;i<result.data.length;i++) {
-                                            var $tab1 = $("#thedata");
-                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].hospitalizedid +"</th><td>"+ result.data[i].illnessname +"</td><td>"+ result.data[i].dt_in_hospital  +"</td><td>"+ result.data[i].dt_out_hospital+"</td></tr>";
-                                            $tab1.append(trData);
+                                        else {
+                                            for (var i = num; i < result.data.length; i++) {
+                                                var $tab1 = $("#thedata");
+                                                var trData = "<tr onclick=\"setLineNum(this)\"><th>" + result.data[i].hospitalizedid + "</th><td>" + result.data[i].illnessname + "</td><td>" + result.data[i].dt_in_hospital + "</td><td>" + result.data[i].dt_out_hospital + "</td></tr>";
+                                                $tab1.append(trData);
+                                            }
+
                                         }
 
-                                    }
+                                        var ul = document.getElementById("pagenum");
+                                        var pagenum = 1;
+                                        for (var j = 0; j < result.data.length; j += 5) {
+                                            var li = document.createElement("li");
+                                            j = Number(j);
+                                            li.innerHTML = "<a href=\"manageInpatientInformation.html?num=" + j + "\">" + pagenum + "</a>";
+                                            ul.appendChild(li);
+                                            pagenum++;
+                                        }
+                                    },
+                                    "json"
+                                );
+                            }
+                            else {
+                                $.ajax({
+                                    type: "GET",   //提交的方法
+                                    contentType: "application/json;charset=UTF-8",
+                                    url: urlSearch, //提交的地址
+                                    data: {illnessname:illnessname},
+                                    async: false,
+                                    error: function (request) {  //失败的话
+                                        alert("Connection error");
+                                    },
+                                    success: function(result){
+                                        if(result.code == "0000") {
+                                            num = Number(num);
+                                            if (num + 5 < result.data.length) {
+                                                for (var i = num; i < num + 5; i++) {
+                                                    var $tab1 = $("#thedata");
+                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>" + result.data[i].hospitalizedid + "</th><td>" + result.data[i].illnessname + "</td><td>" + result.data[i].dt_in_hospital + "</td><td>" + result.data[i].dt_out_hospital + "</td></tr>";
+                                                    $tab1.append(trData);
+                                                }
+                                            }
+                                            else {
+                                                for (var i = num; i < result.data.length; i++) {
+                                                    var $tab1 = $("#thedata");
+                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>" + result.data[i].hospitalizedid + "</th><td>" + result.data[i].illnessname + "</td><td>" + result.data[i].dt_in_hospital + "</td><td>" + result.data[i].dt_out_hospital + "</td></tr>";
+                                                    $tab1.append(trData);
+                                                }
 
-                                    var ul=document.getElementById("pagenum");
-                                    var pagenum=1;
-                                    for(var j=0;j<result.data.length;j+=5)
-                                    {
-                                        var li=document.createElement("li");
-                                        j=Number(j);
-                                        li.innerHTML="<a href=\"manageInpatientInformation.html?num="+j+"\">"+pagenum+"</a>";
-                                        ul.appendChild(li);
-                                        pagenum++;
+                                            }
+                                            var ul = document.getElementById("pagenum");
+                                            var pagenum = 1;
+                                            for (var j = 0; j < result.data.length; j += 5) {
+                                                var li = document.createElement("li");
+                                                j = Number(j);
+                                                li.innerHTML = "<a href=\"manageDepartment.html?illnessname=" + illnessname + "&num=" + j + "\">" + pagenum + "</a>";
+                                                ul.appendChild(li);
+                                                pagenum++;
+                                            }
+                                        }
+                                        else {
+
+                                            alert(result.msg);
+                                        }
                                     }
-                                },
-                                "json"
-                            );
+                                });
+                            }
                         });
                         function setLineNum(line){
                             if(typeof(line)   ==   "undefined "){
@@ -356,7 +409,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- Classie --><!-- for toggle left push menu script -->
 <script src="js/classie.js"></script>
 <script>
-    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+    /*var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
         showLeftPush = document.getElementById( 'showLeftPush' ),
         body = document.body;
 
@@ -371,7 +424,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         if( button !== 'showLeftPush' ) {
             classie.toggle( showLeftPush, 'disabled' );
         }
-    }
+    }*/
     $("#newInfoBt").click(function(){
             $.ajax({
                 type: "POST",   //提交的方法
