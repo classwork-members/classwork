@@ -1,0 +1,10 @@
+2018-04-09 16:21:00,572 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 9864 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-04-09 16:21:00,576 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-04-09 16:21:00,611 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-04-09 16:22:31,898 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 104.945 seconds (JVM running for 123.56)
+2018-04-09 16:24:54,111 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-09 16:27:15,574 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 23880 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
+2018-04-09 16:27:15,589 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-04-09 16:27:15,591 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-04-09 16:27:33,868 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 20.124 seconds (JVM running for 30.146)
+2018-04-09 16:27:53,731 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
