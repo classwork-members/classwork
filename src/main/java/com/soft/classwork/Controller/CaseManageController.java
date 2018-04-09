@@ -106,6 +106,8 @@ public class CaseManageController {
     public Result addOneFileData(@RequestParam("file") MultipartFile file,
                                  @RequestParam("casesid") Integer casesid,
                                  @RequestParam("casephasename") String casephasename) throws IOException{
+        System.out.println(casephasename);
+        System.out.println(casesid);
         return caseService.addOneFileData(file,casesid,casephasename);
     }
 

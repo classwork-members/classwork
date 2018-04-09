@@ -9,7 +9,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head>
     <title>Pet Hospital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
     <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -231,6 +232,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <!--<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>-->
                         </ul>
                     </div>
+                    <!--添加新文件的地方-->
                     <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -304,7 +306,66 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                                    <div class="buttons_w3ls_agile">
+                                        <ul class="bt-list">
+                                            <li><a type="button" class="hvr-icon-float-away col-24" data-toggle="modal" data-target="#exampleModaltest" data-whatever="@mdo">添加</a></li>
+                                            <div class="modal fade" id="exampleModaltest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeltest">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="exampleModalLabeltest">添加文件</h4>
+                                                        </div>
+                                                        <div class="modal-body" >
+                                                            <form action="/caseManage/addOneFileData" id="dataform" method="post" enctype="multipart/form-data">
+                                                                <div class="form-group">
+                                                                    <label for="recipient-name" class="control-label">病例阶段名</label>
+                                                                    <input type="text" class="form-control"  id="bljdm",name="casephasename">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="catalog-name" class="control-label">文件</label>
+                                                                    <input type="file" class="form-control" id="postfile" name="file">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" onclick="postdata()">保存</button>
+                                                            <script>
+                                                                function postdata() {
+                                                                    var formdata = new FormData();
+                                                                    var test1 = document.getElementById("bljdm").value;
+                                                                    formdata.append("file",document.getElementById("postfile").files[0]);
+                                                                    formdata.append("casephasename",test1);
+                                                                    formdata.append("casesid",125);
+                                                                    $.ajax({
+                                                                        type: "POST",   //提交的方法
+                                                                        url:"/caseManage/addOneFileData", //提交的地址
+                                                                        data: formdata
+                                                                        ,// 序列化表单值
+                                                                        //
+                                                                          contentType: false,
+                                                                          processData: false,
+                                                                        async: false,
+                                                                        cache: false,
+                                                                        error: function(request) {  //失败的话
+                                                                            alert("Connection error");
+                                                                        },
+                                                                        success: function(data) {  //成功
+                                                                            alert(data.msg);  //就将返回的数据显示出来
+                                                                            window.location.href = "/manageCase?id="+id
+                                                                        }
+                                                                    });
+                                                                }
+                                                            </script>
+                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <li><button type="button" class="btn btn-default" data-dismiss="modal">确定</button></li>
+                                        </ul>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -463,7 +524,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                         clearForm: false,//禁止清楚表单
                                                         resetForm: false //禁止重置表单
                                                     });
-                                                }
+
                                             </script>
                                             <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                         </div>

@@ -78,4 +78,12 @@ public class BackController {
 //
 //    @PostMapping(value = "/addCase")
 //    public String addCase()
+    @PostMapping(value = "/addOneFileData2")
+    public String addOneFileData(@RequestParam("file") MultipartFile file,
+                                 @RequestParam("casesid") Integer casesid,
+                                 @RequestParam("illnessid") Integer illnessid,
+                                 @RequestParam("casephasename") String casephasename) throws IOException{
+        caseService.addOneFileData(file,casesid,casephasename);
+        return "manageCase.html?id="+illnessid.toString();
+}
 }
