@@ -2,6 +2,7 @@ package com.soft.classwork.Controller;
 
 import com.soft.classwork.enums.IllnessEnum;
 import com.soft.classwork.enums.ResultEnum;
+import com.soft.classwork.model.Cases;
 import com.soft.classwork.model.Data;
 import com.soft.classwork.model.Result;
 import com.soft.classwork.service.CaseService;
@@ -116,5 +117,34 @@ public class CaseManageController {
         return ResultUtil.success(dataList);
     }
 
+    @GetMapping(value = "/searchCasesByName")
+    public Result searchCasesByName(@RequestParam("casename") String casename){
+        List<Cases> casesList = caseService.searchCasesByCasename(casename);
+        if(casesList==null)
+            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+        else if (casesList.size()==0)
+            return ResultUtil.success("nothing found");
+        else
+            return ResultUtil.success(casesList);
+    }
 
+    @PostMapping(value = "/searchCasesByNameAndIllnessid")
+    public Result searchCasesByNameAndIllnessid(@RequestParam("casename") String casename,
+                                                @RequestParam("illnessid") Integer illnessid){
+        //Integer illnessid1 = Integer.parseInt(illnessid);
+        System.out.println(1);
+        List<Cases> casesList = caseService.searchCasesByCasenameAndIllnessid(casename,illnessid);
+        if(casesList==null)
+            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+        else if (casesList.size()==0)
+            return ResultUtil.success("nothing found");
+        else
+            return ResultUtil.success(casesList);
+    }
+
+    @PostMapping(value = "/deleteCase")
+    public Result deleteCase(@RequestParam("casesid") Integer casesid){
+        caseService.deleteCase(casesid);
+        return ResultUtil.success("delete case success");
+    }
 }

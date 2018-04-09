@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -315,6 +316,21 @@ public class CaseService {
             dataList.add(data);
         }
         return dataList;
+    }
+
+    public List<Cases> searchCasesByCasename(String casename) {
+        return caseRepository.findAllByCasenameContaining(casename);
+    }
+
+    public List<Cases> searchCasesByCasenameAndIllnessid(String casename, Integer illnessid) {
+        System.out.println(2);
+        return caseRepository.findAllByCasenameContainingAndIllnessid(casename,illnessid);
+    }
+
+    @Transactional
+    public void deleteCase(Integer casesid) {
+        caseRepository.deleteById(casesid);
+        casesPhaseRepository.deleteCasesPhasesByCaseid(casesid);
     }
 }
 

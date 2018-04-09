@@ -17,5 +17,7 @@ public interface CasesPhaseRepository extends JpaRepository<CasesPhase,Integer>{
 
     public CasesPhase getByDataid(Integer dataid);
 
+    public void deleteCasesPhasesByCaseid(Integer caseid);
+
 
 }
