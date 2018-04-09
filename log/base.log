@@ -1,222 +1,54 @@
-2018-04-09 16:21:00,572 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 9864 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
-2018-04-09 16:21:00,576 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 16:21:00,611 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 16:22:31,898 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 104.945 seconds (JVM running for 123.56)
-2018-04-09 16:24:54,111 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:27:15,574 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-S3A0LRV with PID 23880 (G:\Code\classwork\target\classes started by LJS in G:\Code\classwork)
-2018-04-09 16:27:15,589 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 16:27:15,591 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 16:27:33,868 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 20.124 seconds (JVM running for 30.146)
-2018-04-09 16:27:53,731 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:45:19,957 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 14340 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 16:45:19,960 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 16:45:19,963 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 16:45:35,664 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 17.187 seconds (JVM running for 18.442)
-2018-04-09 16:45:38,021 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:45:52,912 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 16:45:53,690 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:45:58,503 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:48:22,347 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 1128 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 16:48:22,350 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 16:48:22,366 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 16:48:40,095 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 18.754 seconds (JVM running for 19.84)
-2018-04-09 16:48:59,700 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:49:08,203 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 16:49:09,052 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:49:14,464 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:49:42,252 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 14068 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 16:49:42,257 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 16:49:42,260 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 16:49:54,546 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 13.829 seconds (JVM running for 14.883)
-2018-04-09 16:50:33,023 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 16:50:33,937 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:50:39,688 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:56:22,764 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 9544 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 16:56:22,768 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 16:56:22,771 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 16:56:37,232 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 15.61 seconds (JVM running for 16.817)
-2018-04-09 16:57:16,766 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 13112 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 16:57:16,769 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 16:57:16,772 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 16:57:28,998 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 13.412 seconds (JVM running for 14.831)
-2018-04-09 16:57:47,555 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 16:57:48,624 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:57:52,720 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:58:02,804 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:58:35,902 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 14836 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 16:58:35,906 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 16:58:35,908 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 16:58:48,445 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 13.816 seconds (JVM running for 15.092)
-2018-04-09 16:59:08,587 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 16:59:09,742 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 16:59:14,904 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:04:51,534 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 2772 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:04:51,538 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:04:51,540 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:05:05,707 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 15.423 seconds (JVM running for 16.524)
-2018-04-09 17:05:15,832 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:05:17,151 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:05:22,320 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:15:11,288 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 6980 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:15:11,288 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:15:11,289 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:15:27,121 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 16.822 seconds (JVM running for 18.247)
-2018-04-09 17:15:41,905 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:15:43,117 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:15:49,205 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:16:18,760 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 10972 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:16:18,764 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:16:18,787 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:16:32,194 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 14.361 seconds (JVM running for 15.658)
-2018-04-09 17:16:42,592 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:16:43,486 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:16:48,831 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:24:20,396 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 2828 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:24:20,406 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:24:20,408 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:24:37,778 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 18.432 seconds (JVM running for 20.112)
-2018-04-09 17:25:02,081 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:25:03,247 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:25:12,360 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:25:40,669 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 6908 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:25:40,673 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:25:40,687 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:25:53,889 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 14.4 seconds (JVM running for 15.569)
-2018-04-09 17:26:21,455 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:26:22,602 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:26:31,291 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:29:20,197 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 7280 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:29:20,202 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:29:20,204 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:29:32,993 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 13.962 seconds (JVM running for 14.95)
-2018-04-09 17:29:40,675 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:29:41,949 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:29:47,286 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:33:06,509 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 8088 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:33:06,512 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:33:06,514 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:33:21,060 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 15.168 seconds (JVM running for 16.305)
-2018-04-09 17:33:29,446 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:33:30,389 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:33:35,528 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:34:26,759 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 9704 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:34:26,763 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:34:26,765 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:34:40,466 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 14.614 seconds (JVM running for 16.016)
-2018-04-09 17:34:47,432 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:34:48,780 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:34:54,405 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:35:04,822 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:35:56,382 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:36:40,671 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:37:38,628 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 16012 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:37:38,635 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:37:38,639 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:37:53,813 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 16.353 seconds (JVM running for 17.311)
-2018-04-09 17:37:59,544 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:38:00,696 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:38:06,085 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:38:46,962 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 10608 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:38:46,966 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:38:46,968 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:39:00,990 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 14.981 seconds (JVM running for 16.117)
-2018-04-09 17:39:06,729 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:39:07,993 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:39:17,989 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:41:36,308 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 6232 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:41:36,313 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:41:36,315 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:41:51,291 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 16.048 seconds (JVM running for 17.341)
-2018-04-09 17:41:58,637 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:41:59,894 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:43:26,490 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:45:19,080 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:46:04,040 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 5768 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:46:04,044 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:46:04,046 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:46:17,858 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 14.89 seconds (JVM running for 15.827)
-2018-04-09 17:46:26,654 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:46:27,782 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:46:32,956 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:46:52,939 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:51:09,545 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 7796 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:51:09,549 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:51:09,551 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:51:22,319 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 14.797 seconds (JVM running for 16.044)
-2018-04-09 17:51:29,548 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:51:30,673 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:51:33,811 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:51:34,781 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:53:36,944 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 8496 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:53:36,948 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:53:36,958 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:53:51,511 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 15.657 seconds (JVM running for 17.077)
-2018-04-09 17:53:57,880 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:53:58,872 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:54:02,006 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:54:04,092 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:54:46,199 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:54:50,052 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:54:51,696 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:55:35,286 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 9348 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 17:55:35,289 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 17:55:35,291 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 17:55:48,250 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 14.34 seconds (JVM running for 16.035)
-2018-04-09 17:55:54,734 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 17:55:56,059 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:55:58,820 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:56:00,895 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 17:56:05,106 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 18:06:47,955 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 10104 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 18:06:47,959 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 18:06:47,961 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 18:07:02,487 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 15.787 seconds (JVM running for 16.933)
-2018-04-09 18:07:10,893 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 18:07:11,584 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 18:07:14,290 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 18:07:16,035 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 18:07:17,391 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 18:08:32,078 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 15888 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 18:08:32,084 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 18:08:32,131 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 18:08:45,109 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 14.033 seconds (JVM running for 15.181)
-2018-04-09 18:09:08,717 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 18:09:09,798 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 18:09:14,922 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 18:09:15,755 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 20:56:05,167 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 20:56:07,275 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 20:56:08,084 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 20:56:13,234 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 20:56:19,995 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 20:56:20,856 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 20:56:23,357 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 22:17:17,164 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 3680 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 22:17:17,169 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 22:17:17,173 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 22:17:34,387 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 18.506 seconds (JVM running for 19.967)
-2018-04-09 22:31:50,488 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 22:31:51,969 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 22:32:25,814 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 22:32:30,151 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 22:34:54,709 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 6136 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 22:34:54,714 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 22:34:54,719 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 22:35:14,727 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 21.112 seconds (JVM running for 23.013)
-2018-04-09 22:35:23,588 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 22:35:27,211 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 22:35:37,104 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 22:36:07,176 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 7548 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 22:36:07,184 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 22:36:07,186 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 22:36:30,375 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 24.488 seconds (JVM running for 26.139)
-2018-04-09 22:36:39,667 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 22:36:43,597 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 22:36:50,426 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 22:42:39,270 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 16008 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
-2018-04-09 22:42:39,274 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
-2018-04-09 22:42:39,276 INFO (SpringApplication.java:656)- The following profiles are active: dev
-2018-04-09 22:42:53,260 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 15.243 seconds (JVM running for 16.259)
-2018-04-09 22:43:47,419 DEBUG (UserService.java:30)- name is ______________ljs------------------
-2018-04-09 22:43:50,155 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
-2018-04-09 22:43:54,916 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:00:01,000 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:11:50,280 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 14556 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
+2018-04-10 00:11:50,283 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-04-10 00:11:50,285 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-04-10 00:12:02,899 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 13.702 seconds (JVM running for 14.602)
+2018-04-10 00:12:08,466 DEBUG (UserService.java:30)- name is ______________ljs------------------
+2018-04-10 00:12:09,483 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:15:24,514 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:20:20,915 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:20:29,733 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:30:16,152 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:33:43,987 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:41:19,136 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:44:09,712 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:50:16,192 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:51:06,961 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:53:51,285 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:54:05,856 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:57:43,247 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 17976 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
+2018-04-10 00:57:43,253 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-04-10 00:57:43,258 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-04-10 00:57:55,594 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 17224 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
+2018-04-10 00:57:55,598 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-04-10 00:57:55,603 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-04-10 00:58:11,789 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 17.197 seconds (JVM running for 18.452)
+2018-04-10 00:58:19,705 DEBUG (UserService.java:30)- name is ______________ljs------------------
+2018-04-10 00:58:21,132 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:58:25,944 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:58:50,461 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:58:58,606 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 672 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
+2018-04-10 00:58:58,610 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-04-10 00:58:58,612 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-04-10 00:59:11,388 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 14.369 seconds (JVM running for 15.316)
+2018-04-10 00:59:17,097 DEBUG (UserService.java:30)- name is ______________ljs------------------
+2018-04-10 00:59:17,963 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:59:20,681 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:59:25,156 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:59:28,077 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:59:31,437 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:59:34,708 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 00:59:40,848 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 01:00:14,516 INFO (StartupInfoLogger.java:50)- Starting ClassworkApplication on DESKTOP-3DCFBEJ with PID 1148 (D:\classwork\classwork\target\classes started by asus in D:\classwork\classwork)
+2018-04-10 01:00:14,520 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.0.RELEASE, Spring v5.0.4.RELEASE
+2018-04-10 01:00:14,522 INFO (SpringApplication.java:656)- The following profiles are active: dev
+2018-04-10 01:00:26,577 INFO (StartupInfoLogger.java:59)- Started ClassworkApplication in 13.292 seconds (JVM running for 14.357)
+2018-04-10 01:00:33,204 DEBUG (UserService.java:30)- name is ______________ljs------------------
+2018-04-10 01:00:34,313 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 01:00:36,918 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 01:00:42,780 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 01:00:46,171 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 01:00:48,808 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 01:00:52,524 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 01:00:59,975 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
+2018-04-10 01:01:05,283 DEBUG (ResultUtil.java:11)- **************************成功输出***************************
