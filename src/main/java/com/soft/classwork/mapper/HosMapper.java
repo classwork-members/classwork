@@ -11,4 +11,7 @@ public interface HosMapper {
     int deleteInfo(@Param("id") int id);
     List<Hospitalized> getList();
     Hospitalized getHosById(@Param("id") int id);
+    List<Hospitalized> getHosByIndate(@Param("indate") String indate);
+    List<Hospitalized> getHosByIllnessname(@Param("illnessname") String illnessname);
+    List<Hospitalized> getHosByOutdate(@Param("outdate") String outdate);
 }

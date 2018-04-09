@@ -41,4 +41,7 @@
     <delete id="deleteDept">
         DELETE FROM department WHERE deptid = #{deptid}
     </delete>
+    <select id="getDeptsByName" resultType="com.soft.classwork.model.Department">
+        SELECT * FROM department WHERE deptname LIKE #{name}
+    </select>
 </mapper>

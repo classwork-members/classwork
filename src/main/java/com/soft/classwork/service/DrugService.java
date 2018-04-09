@@ -50,4 +50,8 @@ public class DrugService {
     public List<Drug> getDrugList(){
         return drugMapper.getDrugList();
     }
+
+    public List<Drug> getDrugsByName(String name){
+        return drugMapper.getDrugsByName(name);
+    }
 }

@@ -31,4 +31,7 @@
     <select id="getAssayList" resultType="com.soft.classwork.model.Assay">
         SELECT * FROM assay ORDER BY assayid
     </select>
+    <select id="getAssayByName" resultType="com.soft.classwork.model.Assay">
+        SELECT * FROM assay WHERE assayname LIKE #{name}
+    </select>
 </mapper>

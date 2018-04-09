@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/drugManage")
 public class DrugManageController {
@@ -48,5 +50,18 @@ public class DrugManageController {
     @RequestMapping(value = "/getDrugList", method = RequestMethod.GET)
     public Result getDrugList(){
         return ResultUtil.success(drugService.getDrugList());
+    }
+
+    @RequestMapping(value = "/searchByDrugname", method = RequestMethod.GET)
+    public Result searchByDrugname(@Param("drugname")String drugname){
+        if(drugname == null){
+            throw new PetException(ResultEnum.DRUG_NAME_NULL);
+        }
+        String drug_name = "%"+drugname+"%";
+        List<Drug> drugs = drugService.getDrugsByName(drug_name);
+        if(drugs.size() == 0){
+            return ResultUtil.Error(ResultEnum.SEARCH_NULL);
+        }
+        return ResultUtil.success(drugs);
     }
 }

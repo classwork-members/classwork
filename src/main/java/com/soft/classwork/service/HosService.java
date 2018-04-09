@@ -46,4 +46,16 @@ public class HosService {
     public List<Hospitalized> getHosList(){
         return hosMapper.getList();
     }
+
+    public List<Hospitalized> getHosByIndate(String indate){
+        return hosMapper.getHosByIndate(indate);
+    }
+
+    public List<Hospitalized> getHosByOutdate(String outdate){
+        return hosMapper.getHosByOutdate(outdate);
+    }
+
+    public List<Hospitalized> getHosByIllnessname(String illnessname){
+        return hosMapper.getHosByIllnessname(illnessname);
+    }
 }

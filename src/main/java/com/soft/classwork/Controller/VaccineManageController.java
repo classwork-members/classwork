@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/vaccineManage")
 public class VaccineManageController {
@@ -51,5 +53,18 @@ public class VaccineManageController {
     @RequestMapping(value = "/getVaccineList", method = RequestMethod.GET)
     public Result getVaccineList(){
         return ResultUtil.success(vaccineService.getVaccineList());
+    }
+
+    @RequestMapping(value = "/searchByVaccineName", method = RequestMethod.GET)
+    public Result searchByVaccine(@Param("vaccinename")String vaccinename){
+        if (vaccinename == null){
+            throw new PetException(ResultEnum.VACCINE_NAME_NULL);
+        }
+        String vaccine_name = "%"+vaccinename+"%";
+        List<Vaccine> vaccines = vaccineService.getVaccineByName(vaccine_name);
+        if(vaccines.size()==0){
+            return ResultUtil.Error(ResultEnum.SEARCH_NULL);
+        }
+        return ResultUtil.success(vaccines);
     }
 }
