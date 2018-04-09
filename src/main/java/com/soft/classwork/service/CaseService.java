@@ -253,13 +253,14 @@ public class CaseService {
         }
     }
 
-    public List<com.soft.classwork.model.Data> getOneCasesAllData(Integer casesid) {
+    public List<Object> getOneCasesAllData(Integer casesid) {
         List<CasesPhase> casesPhaseList = casesPhaseRepository.findAllByCaseid(casesid);
-        List<Data> dataList = new LinkedList<>();
+        List<Object> dataList = new LinkedList<>();
         for(CasesPhase casesPhase : casesPhaseList){
             Integer dataid = casesPhase.getDataid();
             Data data = dataRepository.getOne(dataid);
             dataList.add(data);
+            dataList.add(casesPhase.getCasephasename());
         }
         return dataList;
     }

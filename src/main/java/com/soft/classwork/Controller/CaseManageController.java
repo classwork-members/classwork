@@ -96,7 +96,7 @@ public class CaseManageController {
 
     @GetMapping(value = "/getOneCasesAllData")
     public Result getOneCasesAllData(@RequestParam("casesid") Integer casesid){
-        List<com.soft.classwork.model.Data> dataList = caseService.getOneCasesAllData(casesid);
+        List<Object> dataList = caseService.getOneCasesAllData(casesid);
         if (dataList==null)
             return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
         return ResultUtil.success(dataList);
