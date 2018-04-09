@@ -46,4 +46,12 @@ public class ChargeService {
     public List<Charge> getChargeList(){
         return chargeMapper.getChargeList();
     }
+
+    public List<Charge> getChargeByDt_create(String dt_create){
+        return chargeMapper.getChargeByDt_create(dt_create);
+    }
+
+    public List<Charge> getChargeByPayment(float low, float high){
+        return chargeMapper.getChargeByPayment(low,high);
+    }
 }

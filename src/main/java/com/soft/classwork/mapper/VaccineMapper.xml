@@ -42,4 +42,7 @@
     <select id="getVaccineList" resultType="com.soft.classwork.model.Vaccine">
         SELECT * FROM vaccine ORDER BY vaccineid
     </select>
+    <select id="getVaccinesByName" resultType="com.soft.classwork.model.Vaccine">
+        SELECT * FROM vaccine WHERE vaccinename LIKE #{name}
+    </select>
 </mapper>

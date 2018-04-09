@@ -12,4 +12,5 @@ public interface DrugMapper {
     int deleteDrugByid(@Param("id") int id);
     Drug getDrugById(@Param("id") int id);
     List<Drug> getDrugList();
+    List<Drug> getDrugsByName(@Param("name") String name);
 }

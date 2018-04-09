@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/hospitalized")
 public class HospitalizedController {
@@ -46,5 +48,59 @@ public class HospitalizedController {
     @RequestMapping(value = "/getHosList", method = RequestMethod.GET)
     public Result getHosList(){
         return ResultUtil.success(hosService.getHosList());
+    }
+
+    /**
+     * 按入院时间查询
+     * @param indate
+     * @return
+     */
+    @RequestMapping(value = "/searchByIndate", method = RequestMethod.GET)
+    public Result searchByIndate(@Param("indate") String indate){
+        if (indate == null){
+            throw new PetException(ResultEnum.TIME_NULL);
+        }
+        String in_date = "%"+indate+"%";
+        List<Hospitalized> hospitalizeds = hosService.getHosByIndate(in_date);
+        if (hospitalizeds.size() == 0){
+            return ResultUtil.Error(ResultEnum.SEARCH_NULL);
+        }
+        return ResultUtil.success(hospitalizeds);
+    }
+
+    /**
+     * 按出院时间查询
+     * @param outdate
+     * @return
+     */
+    @RequestMapping(value = "/searchByOutdate", method = RequestMethod.GET)
+    public Result searchByOutdate(@Param("outdate") String outdate){
+        if (outdate == null){
+            throw new PetException(ResultEnum.TIME_NULL);
+        }
+        String out_date = "%"+outdate+"%";
+        List<Hospitalized> hospitalizeds = hosService.getHosByOutdate(out_date);
+        if (hospitalizeds.size() == 0){
+            return ResultUtil.Error(ResultEnum.SEARCH_NULL);
+        }
+        return ResultUtil.success(hospitalizeds);
+    }
+
+    /**
+     * 按illnessname查询
+     * @param illnessname
+     * @return
+     */
+    @RequestMapping(value = "/searchByIllnessname", method = RequestMethod.GET)
+    public Result searchByIllnessname(@Param("illnessname") String illnessname){
+        if (illnessname == null){
+            throw new PetException(ResultEnum.ILLNESS_NAME);
+        }
+        String illness_name = "%"+illnessname+"%";
+        List<Hospitalized> hospitalizeds = hosService.getHosByOutdate(illness_name);
+        if (hospitalizeds.size() == 0){
+            return ResultUtil.Error(ResultEnum.SEARCH_NULL);
+        }
+        return ResultUtil.success(hospitalizeds);
     }
 }

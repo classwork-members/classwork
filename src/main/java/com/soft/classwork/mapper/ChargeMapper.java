@@ -12,4 +12,6 @@ public interface ChargeMapper {
     int updateChargeById(@Param("charge") Charge charge);
     int deleteChargeById(@Param("id") int id);
     List<Charge> getChargeList();
+    List<Charge> getChargeByDt_create(@Param("time") String time);
+    List<Charge> getChargeByPayment(@Param("low") float low, @Param("high") float high);
 }

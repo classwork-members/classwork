@@ -38,4 +38,7 @@
     <select id="getDrugList" resultType="com.soft.classwork.model.Drug">
         SELECT * FROM drug ORDER BY drugid
     </select>
+    <select id="getDrugsByName" resultType="com.soft.classwork.model.Drug">
+        SELECT * FROM drug WHERE drugname = #{name}
+    </select>
 </mapper>

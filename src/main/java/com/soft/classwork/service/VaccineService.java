@@ -49,4 +49,8 @@ public class VaccineService {
     public List<Vaccine> getVaccineList(){
         return vaccineMapper.getVaccineList();
     }
+
+    public List<Vaccine> getVaccineByName(String name){
+        return vaccineMapper.getVaccinesByName(name);
+    }
 }

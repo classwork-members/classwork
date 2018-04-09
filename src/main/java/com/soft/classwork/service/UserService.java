@@ -117,4 +117,7 @@ public class UserService implements UserDetailsService{
         }
         return rs;
     }
+    public List<User> getUsersByUsername(String username){
+        return userMapper.getUsersByName(username);
+    }
 }

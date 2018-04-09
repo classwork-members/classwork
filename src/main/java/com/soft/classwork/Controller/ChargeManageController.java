@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/chargeManage")
@@ -60,5 +61,32 @@ public class ChargeManageController {
     @RequestMapping(value = "/getChargeList", method = RequestMethod.GET)
     public Result getChargeList(){
         return ResultUtil.success(chargeService.getChargeList());
+    }
+
+    @RequestMapping(value = "searchByDt_create", method = RequestMethod.GET)
+    public Result searchByDt_create(@Param("dt_create") String dt_create){
+        if(dt_create == null){
+            throw new PetException(ResultEnum.TIME_NULL);
+        }
+        String time = "%"+dt_create+"%";
+        List<Charge> chargeList = chargeService.getChargeByDt_create(time);
+        if(chargeList.size() == 0){
+           return ResultUtil.Error(ResultEnum.SEARCH_NULL);
+        }
+        return ResultUtil.success(chargeList);
+    }
+
+    @RequestMapping(value = "/searchByPayment" , method = RequestMethod.GET)
+    public Result searchByPayment(@Param("lowpay")String lowpay, @Param("highpay")String highpay){
+        if(lowpay == null || highpay == null){
+            throw new PetException(ResultEnum.PAYMENT_NULL);
+        }
+        float low = Float.valueOf(lowpay);
+        float high = Float.valueOf(highpay);
+        List<Charge> chargeList = chargeService.getChargeByPayment(low,high);
+        if(chargeList.size()==0){
+            return ResultUtil.Error(ResultEnum.SEARCH_NULL);
+        }
+        return ResultUtil.success(chargeList);
     }
 }

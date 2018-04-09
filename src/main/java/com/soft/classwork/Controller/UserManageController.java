@@ -1,6 +1,7 @@
 package com.soft.classwork.Controller;
 
 import com.soft.classwork.enums.ResultEnum;
+import com.soft.classwork.exception.PetException;
 import com.soft.classwork.model.Result;
 import com.soft.classwork.model.User;
 import com.soft.classwork.service.UserService;
@@ -11,10 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -69,5 +67,19 @@ public class UserManageController {
     public Result deleteUserByUserId(@Param("userid") int userid){
         int rs = userService.deleteUserByUserId( userid);
         return ResultUtil.success(rs);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/searchByUsername", method = RequestMethod.GET)
+    public Result searchByUsername(@Param("username") String username){
+        if (username == null){
+            throw new PetException(ResultEnum.USERNSMR_NULL);
+        }
+        String user_name = "%"+username+"%";
+        List<User> users = userService.getUsersByUsername(user_name);
+        if(users.size() == 0){
+            return ResultUtil.Error(ResultEnum.SEARCH_NULL);
+        }
+        return ResultUtil.success(users);
     }
 }

@@ -52,6 +52,10 @@ public enum ResultEnum {
     ADD_CASE_FAIL("0046","插入新病例失败"),
     ADD_DATA_FAIL("0047","插入新数据失败" ),
     ADD_CASESPHASE_FAIL("0048","插入新病例阶段数据失败"),
+    SEARCH_NULL("3000","搜索内容不存在"),
+    TIME_NULL("0049","时间字段不能为空"),
+    PAYMENT_NULL("0050","价格字段不能为空"),
+    USERNSMR_NULL("0051","username 不能为空"),
     ;
 
 

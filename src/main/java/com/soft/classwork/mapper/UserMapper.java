@@ -20,4 +20,5 @@ public interface UserMapper {
     int updateUserRole(@Param("user_id")int user_id,@Param("roles_id") int roles_id);
     int deleteUserByUserId(@Param("userid")int userid);
     int deleteUserRolesByUserId(@Param("user_id") int user_id);
+    List<User> getUsersByName(@Param("username") String username);
 }

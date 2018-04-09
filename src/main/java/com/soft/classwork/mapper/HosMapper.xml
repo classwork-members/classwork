@@ -35,4 +35,13 @@
     <select id="getHosById" resultType="com.soft.classwork.model.Hospitalized">
         SELECT * FROM hospitalized WHERE hospitalizedid = #{id}
     </select>
+    <select id="getHosByIndate" resultType="com.soft.classwork.model.Hospitalized">
+        SELECT * FROM hospitalized WHERE dt_in_hospital LIKE #{indate}
+    </select>
+    <select id="getHosByOutdate" resultType="com.soft.classwork.model.Hospitalized">
+        SELECT * FROM hospitalized WHERE dt_out_hospital LIKE #{outdate}
+    </select>
+    <select id="getHosByIllnessname" resultType="com.soft.classwork.model.Hospitalized">
+        SELECT * FROM hospitalized WHERE illnessname LIKE #{illnessname}
+    </select>
 </mapper>

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/assayManage")
 public class AssayController {
@@ -48,7 +50,19 @@ public class AssayController {
 
     @RequestMapping(value = "/getAssayList", method = RequestMethod.GET)
     public Result getAssayList(){
-
         return ResultUtil.success(assayService.getAssayList());
+    }
+
+    @RequestMapping(value = "/searchByAssayname", method = RequestMethod.GET)
+    public Result searchByAsssayname(@Param("assayname") String assayname){
+        if(assayname == null){
+            throw new PetException(ResultEnum.ASSAY_NAME_NULL);
+        }
+        String assay_name = "%"+assayname+"%";
+        List<Assay> assays = assayService.getAssaysByName(assay_name);
+        if(assays.size() == 0){
+            return ResultUtil.Error(ResultEnum.SEARCH_NULL);
+        }
+        return ResultUtil.success(assays);
     }
 }

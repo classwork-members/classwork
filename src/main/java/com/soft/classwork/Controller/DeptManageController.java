@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/deptManage")
 public class DeptManageController {
@@ -66,5 +68,18 @@ public class DeptManageController {
             throw new PetException(ResultEnum.DEPT_ID);
         }
         return ResultUtil.success(deptService.deleteDept(deptid));
+    }
+
+    @RequestMapping(value = "/searchByDeptName", method = RequestMethod.GET)
+    public Result searchByDeptName(@Param("deptname") String deptname){
+        if(deptname == null){
+            throw new PetException(ResultEnum.DEPT_NAME);
+        }
+        String dept_name = "%"+deptname+"%";
+        List<Department> departments = deptService.getDeptsByName(dept_name);
+        if(departments.size() == 0){
+            return ResultUtil.Error(ResultEnum.SEARCH_NULL);
+        }
+        return ResultUtil.success(departments);
     }
 }

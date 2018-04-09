@@ -46,4 +46,8 @@ public class AssayService {
     public List<Assay> getAssayList(){
         return assayMapper.getAssayList();
     }
+
+    public List<Assay> getAssaysByName(String name){
+        return assayMapper.getAssaysByName(name);
+    }
 }

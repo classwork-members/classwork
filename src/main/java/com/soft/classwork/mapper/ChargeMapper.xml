@@ -36,4 +36,10 @@
     <select id="getChargeList" resultType="com.soft.classwork.model.Charge">
         SELECT * FROM charge ORDER BY chargeid
     </select>
+    <select id="getChargeByDt_create" resultType="com.soft.classwork.model.Charge">
+        SELECT * FROM charge WHERE dt_create LIKE #{time}
+    </select>
+    <select id="getChargeByPayment" resultType="com.soft.classwork.model.Charge">
+        SELECT * FROM charge WHERE payment BETWEEN #{low} AND #{high}
+    </select>
 </mapper>

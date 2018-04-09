@@ -12,4 +12,5 @@ public interface AssayMapper {
     Assay getAssayById(@Param("id") int id);
     int deleteAssayById(@Param("id") int id);
     List<Assay> getAssayList();
+    List<Assay> getAssaysByName(@Param("name") String name);
 }
