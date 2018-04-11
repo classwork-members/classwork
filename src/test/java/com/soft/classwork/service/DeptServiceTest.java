@@ -2,6 +2,8 @@ package com.soft.classwork.service;
 
 import com.soft.classwork.model.Department;
 import java.util.List;
+
+import com.soft.classwork.service.DeptService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +28,7 @@ public class DeptServiceTest {
     @Test
     public void addDept() {
         Department department = new Department();
-        department.setDeptname("精神病科");
+        department.setDeptname("精神病科ww");
         department.setDeptdesc("动物的精神疾病也值得人类关注和研究");
         department.setDeptprincipal("刘璟铄医生");
 
@@ -39,16 +41,16 @@ public class DeptServiceTest {
     public void getDepartmentList() {
         List<Department> departmentList = deptService.getDepartmentList();
         Integer test = departmentList.size();
-        Assert.assertEquals(new Integer(10),test);
+        Assert.assertNotNull(test);
     }
 
     @Test
     public void updateDept() {
         Department department = new Department();
-        department.setDeptname("精神病科");
+        department.setDeptname("精神病科1711");
         department.setDeptdesc("动物的精神疾病也值得人类关注和研究");
         department.setDeptprincipal("刘璟铄医生");
-        department.setDeptid();
+        department.setDeptid(19);
 
         Integer test = deptService.addDept(department);
         Assert.assertEquals(new Integer(1),test);
@@ -56,7 +58,7 @@ public class DeptServiceTest {
 
     @Test
     public void deleteDept() {
-        Integer test = deptService.deleteDept();
+        Integer test = deptService.deleteDept(8);
         Assert.assertEquals(new Integer(1),test);
     }
 
@@ -65,6 +67,6 @@ public class DeptServiceTest {
         String name = "";
         List<Department> departmentList = deptService.getDeptsByName(name);
         Integer test = departmentList.size();
-        Assert.assertEquals(new Integer(10),test);
+        Assert.assertEquals(new Integer(0),test);
     }
 }
