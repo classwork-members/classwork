@@ -96,7 +96,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <li><a href="manageExam.html"><i class="fa fa-angle-right"></i>考试管理</a></li>
                             </ul>
                         </li>
-                        <li><a href="manageCase.html"><i class="fa fa-angle-right text-aqua"></i> <span>返回上一级</span></a></li>
+                        <li><a href="diseaseChoice.html"><i class="fa fa-angle-right text-aqua"></i> <span>返回上一级</span></a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -154,10 +154,24 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 {},//参数列表
                 function(data) {  //成功
                     if (data.code == "0000") {
-                        var answera = document.createTextNode(data.data[6].content);
-                        var answerb = document.createTextNode(data.data[4].content);
-                        var answerc = document.createTextNode(data.data[2].content);
-                        var answerd = document.createTextNode(data.data[0].content);
+                        var length=data.data.length;
+                        var i=0;
+                        while(i<length)
+                        {
+                            if(data.data[i+1]=="jz"){
+                                var answera = document.createTextNode(data.data[i].content);
+                            }
+                            else if(data.data[i+1]=="jc"){
+                                var answerb = document.createTextNode(data.data[i].content); }
+                            else if(data.data[i+1]=="zd"){
+                                var answerc = document.createTextNode(data.data[i].content); }
+                            else if(data.data[i+1]=="zl"){
+                                var answerd = document.createTextNode(data.data[i].content); }
+                            else {
+                                alert("error");
+                            }
+                            i=i+2;
+                        }
                         var testjz = document.getElementById("jz");
                         testjz.appendChild(answera);
                         var testjc = document.getElementById("jc");
@@ -246,7 +260,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default"data-toggle="modal" data-target="#exampleModaltest" data-whatever="@mdo">添加</button>
+                        <button type="button" class="btn btn-default"data-toggle="modal" data-target="#exampleModaltest" data-whatever="@mdo">添加文件</button>
                         <div class="modal fade" id="exampleModaltest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeltest">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -337,22 +351,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- Classie --><!-- for toggle left push menu script -->
 <script src="js/classie.js"></script>
 <script>
-    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-        showLeftPush = document.getElementById( 'showLeftPush' ),
-        body = document.body;
-
-    showLeftPush.onclick = function() {
-        classie.toggle( this, 'active' );
-        classie.toggle( body, 'cbp-spmenu-push-toright' );
-        classie.toggle( menuLeft, 'cbp-spmenu-open' );
-        disableOther( 'showLeftPush' );
-    };
-
-    function disableOther( button ) {
-        if( button !== 'showLeftPush' ) {
-            classie.toggle( showLeftPush, 'disabled' );
-        }
-    }
 </script>
 <!-- //Classie --><!-- //for toggle left push menu script -->
 

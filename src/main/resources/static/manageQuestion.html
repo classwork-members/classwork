@@ -139,6 +139,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <div id="page-wrapper">
         <div class="main-page">
             <div class="tables">
+
                 <form>
                     <div class="form-group" action="manageQuestion.html">
                         <label for="correctAnswer" class="control-label">选择一个病种相关的考题：</label>
@@ -155,17 +156,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     </div>
                 </form>
                 <div class="bs-example widget-shadow" data-example-id="hoverable-table">
-
                     <h4>考题列表</h4>
                     <script>
                         function getUrlParam(name) {
                             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
                             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-                            if (r != null) return unescape(r[2]); return null; //返回参数值
+                            if (r != null) return decodeURIComponent(r[2]); return null; //返回参数值
                         }
                         $(document).ready(function( ){
                             var num = getUrlParam("num");
                             var illness=getUrlParam("illness");
+                            var sousuo=getUrlParam("sousuo");
                             if(illness==null || illness==-1) {
                                 var url = "/examManage/allExam";
                                 $.get(
@@ -312,8 +313,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     "json"
                                 );
                             }
-
-
                         });
                         function setLineNum(line){
                             if(typeof(line)   ==   "undefined "){
