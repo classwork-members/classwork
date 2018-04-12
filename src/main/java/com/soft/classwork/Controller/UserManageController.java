@@ -106,8 +106,57 @@ public class UserManageController {
     @ResponseBody
     @RequestMapping(value = "/getItemsCount", method = RequestMethod.GET)
     public Result getItemsCount(){
-        List items = new ArrayList();
+        List<Item> items = new ArrayList();
         Item item = new Item();
-        return null;
+        item.setItem_name("assay");
+        item.setItem_count(assayService.getAssayCount());
+        items.add(item);
+
+        Item item1 = new Item();
+        item1.setItem_name("case");
+        item1.setItem_count(caseService.getAllCaseNumber());
+        items.add(item1);
+
+        Item item2 = new Item();
+        item2.setItem_name("charge");
+        item2.setItem_count(chargeService.getChargeCount());
+        items.add(item2);
+
+        Item item3 = new Item();
+        item3.setItem_name("department");
+        item3.setItem_count(deptService.getDeptCount());
+        items.add(item3);
+
+        Item item4 = new Item();
+        item4.setItem_name("drug");
+        item4.setItem_count(drugService.getDrugCount());
+        items.add(item4);
+
+        Item item5 = new Item();
+        item5.setItem_name("exam");
+        item5.setItem_count(examService.getAllExamNumber());
+        items.add(item5);
+
+        Item item6 = new Item();
+        item6.setItem_name("hospitalized");
+        item6.setItem_count(hosService.getHosCount());
+        items.add(item6);
+
+        Item item7 = new Item();
+        item7.setItem_name("test");
+        item7.setItem_count(testService.getAllTestNumber());
+        items.add(item7);
+
+        Item item8 = new Item();
+        item8.setItem_name("user");
+        item8.setItem_count(userService.getUserCount());
+        items.add(item8);
+
+        Item item9 = new Item();
+        item9.setItem_name("vaccine");
+        item9.setItem_count(vaccineService.getVaccineCount());
+        items.add(item9);
+
+        return ResultUtil.success(items);
     }
 }

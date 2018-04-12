@@ -13,4 +13,5 @@ public interface AssayMapper {
     int deleteAssayById(@Param("id") int id);
     List<Assay> getAssayList();
     List<Assay> getAssaysByName(@Param("name") String name);
+    int getAssayCount();
 }

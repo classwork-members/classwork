@@ -14,4 +14,5 @@ public interface ChargeMapper {
     List<Charge> getChargeList();
     List<Charge> getChargeByDt_create(@Param("time") String time);
     List<Charge> getChargeByPayment(@Param("low") float low, @Param("high") float high);
+    int getChargeCount();
 }

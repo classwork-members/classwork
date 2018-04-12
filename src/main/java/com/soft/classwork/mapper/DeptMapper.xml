@@ -44,4 +44,7 @@
     <select id="getDeptsByName" resultType="com.soft.classwork.model.Department">
         SELECT * FROM department WHERE deptname LIKE #{name}
     </select>
+    <select id="getDeptCount" resultType="java.lang.Integer">
+        SELECT COUNT(deptid) FROM department
+    </select>
 </mapper>

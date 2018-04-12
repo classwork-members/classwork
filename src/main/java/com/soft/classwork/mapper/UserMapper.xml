@@ -71,4 +71,7 @@
     <select id="getUsersByName" resultMap="lazyLoadRoles">
         SELECT * FROM user WHERE username LIKE #{username}
     </select>
+    <select id="getUserCount" resultType="java.lang.Integer">
+        SELECT COUNT(userid) FROM user
+    </select>
 </mapper>
