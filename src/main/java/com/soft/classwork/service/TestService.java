@@ -113,13 +113,15 @@ public class TestService {
         Test test = testRepository.getOne(testid);
         System.out.println(test.toString());
         Integer score1 = test.getTotalscore();
+        System.out.println(score1);
         if (score1==null)
             test.setTotalscore(score);
-        test.setTotalscore(score1+score);
+        else test.setTotalscore(score1+score);
         Integer count = test.getExamcount();
+        System.out.println(count);
         if (count==null)
             test.setExamcount(1);
-        test.setExamcount(count+1);
+        else test.setExamcount(count+1);
         testRepository.save(test);
         System.out.println(1);
         return testExamRepository.save(testExam);
