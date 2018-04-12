@@ -45,24 +45,19 @@ public class UserManageController {
 
     @ResponseBody
     @RequestMapping(value = "/userManage/signin", method = RequestMethod.POST)
-    public Result register(@Param("username") String username, @Param("password")String password, @Param("email")String email, @Param("Gender")String gender, @Param("role")String role ){
+    public Result register(@RequestParam(value = "username") String username, @RequestParam("password")String password, @Param("email")String email, @Param("Gender")String gender, @Param("role")String role ){
         logger.debug("__________________username: "+username+"___________password:"+password+"_______email:"+email+"______gender:"+gender+"__________role:"+role+"_______________");
-        //return ResultUtil.success();
-
+        if(username.equals("") || password.equals("") || role.equals("")){
+            return ResultUtil.Error("4001","用户名,密码,角色不能为空");
+        }
         int i = userService.register(username, password,email,role);
         logger.debug("_____________i:"+i+"_________");
         if (i == 1) {
             return ResultUtil.success("注册成功!");
-           // model.addAttribute("msg",0);
-           // return "redirect:/manageUser.html";
         } else if (i == -1) {
             return ResultUtil.Error(ResultEnum.REGISTER_FAIL1);
-            //model.addAttribute("msg",1);
-            //return "redirect:/manageUser.html";
         }
         return ResultUtil.Error(ResultEnum.REGISTER_FAIL2);
-        //model.addAttribute("msg",2);
-        //return "redirect:/manageUser.html";
     }
 
     @ResponseBody
