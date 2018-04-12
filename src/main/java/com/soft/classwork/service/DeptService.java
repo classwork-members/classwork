@@ -69,4 +69,8 @@ public class DeptService {
     public List<Department> getDeptsByName(String name){
         return deptMapper.getDeptsByName(name);
     }
+
+    public int getDeptCount(){
+        return deptMapper.getDeptCount();
+    }
 }

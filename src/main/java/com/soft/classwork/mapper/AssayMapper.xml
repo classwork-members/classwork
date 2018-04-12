@@ -34,4 +34,7 @@
     <select id="getAssaysByName" resultType="com.soft.classwork.model.Assay">
         SELECT * FROM assay WHERE assayname LIKE #{name}
     </select>
+    <select id="getAssayCount" resultType="java.lang.Integer">
+        select COUNT(assayid) FROM assay
+    </select>
 </mapper>

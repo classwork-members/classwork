@@ -42,4 +42,7 @@
     <select id="getChargeByPayment" resultType="com.soft.classwork.model.Charge">
         SELECT * FROM charge WHERE payment BETWEEN #{low} AND #{high}
     </select>
+    <select id="getChargeCount" resultType="java.lang.Integer">
+        SELECT COUNT(chargeid) FROM charge
+    </select>
 </mapper>

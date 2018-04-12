@@ -14,4 +14,5 @@ public interface HosMapper {
     List<Hospitalized> getHosByIndate(@Param("indate") String indate);
     List<Hospitalized> getHosByIllnessname(@Param("illnessname") String illnessname);
     List<Hospitalized> getHosByOutdate(@Param("outdate") String outdate);
+    int getHosCount();
 }

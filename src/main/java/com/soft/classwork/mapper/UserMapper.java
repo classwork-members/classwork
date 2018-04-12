@@ -21,4 +21,5 @@ public interface UserMapper {
     int deleteUserByUserId(@Param("userid")int userid);
     int deleteUserRolesByUserId(@Param("user_id") int user_id);
     List<User> getUsersByName(@Param("username") String username);
+    int getUserCount();
 }

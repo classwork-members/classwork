@@ -120,4 +120,8 @@ public class UserService implements UserDetailsService{
     public List<User> getUsersByUsername(String username){
         return userMapper.getUsersByName(username);
     }
+
+    public int getUserCount(){
+        return userMapper.getUserCount();
+    }
 }

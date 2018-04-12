@@ -54,4 +54,8 @@ public class DrugService {
     public List<Drug> getDrugsByName(String name){
         return drugMapper.getDrugsByName(name);
     }
+
+    public int getDrugCount(){
+        return drugMapper.getDrugCount();
+    }
 }
