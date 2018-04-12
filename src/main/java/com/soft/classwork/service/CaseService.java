@@ -333,5 +333,9 @@ public class CaseService {
         caseRepository.deleteById(casesid);
         casesPhaseRepository.deleteCasesPhasesByCaseid(casesid);
     }
+
+    public Integer getAllCaseNumber(){
+        return caseRepository.findAll().size();
+    }
 }
 

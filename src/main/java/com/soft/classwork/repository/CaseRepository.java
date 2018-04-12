@@ -18,4 +18,5 @@ public interface CaseRepository extends JpaRepository<Cases,Integer>{
     public List<Cases> findAllByCasenameContaining(String casename);
 
     public List<Cases> findAllByCasenameContainingAndIllnessid(String casename,Integer illnessid);
+
 }

@@ -165,4 +165,16 @@ public class TestService {
     public List<Examination> getAllExamination(){
         return examinaRepostitory.findAll();
     }
+
+    public Integer getAllExamNumber(){
+        return examRepository.findAll().size();
+    }
+
+    public Integer getAllTestNumber(){
+        return testRepository.findAll().size();
+    }
+
+    public List<Examination> searchByExaminaName(String name){
+        return examinaRepostitory.findAllByExaminationnameContaining(name);
+    }
 }

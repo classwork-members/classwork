@@ -61,5 +61,9 @@ public class ExamService {
 //    }
 
     public List<Exam> findExamByIllnessid(Integer illnessid){return examRepository.findAllByIllnessid(illnessid);}
+
+    public Integer getAllExamNumber(){
+        return examRepository.findAll().size();
+    }
 }
 

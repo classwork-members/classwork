@@ -1,6 +1,7 @@
 package com.soft.classwork.repository;
 
 import com.soft.classwork.model.Examination;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -11,4 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ExaminaRepostitory extends JpaRepository<Examination,Integer>{
 
+    public List<Examination> findAllByExaminationnameContaining(String name);
 }
