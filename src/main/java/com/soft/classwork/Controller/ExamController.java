@@ -5,6 +5,7 @@ import com.soft.classwork.model.*;
 import com.soft.classwork.repository.ExaminaRepostitory;
 import com.soft.classwork.service.ExamService;
 import com.soft.classwork.service.TestService;
+import com.soft.classwork.service.UserTestService;
 import com.soft.classwork.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,6 +27,9 @@ public class ExamController {
 
     @Autowired
     TestService testService;
+
+    @Autowired
+    UserTestService userTestService;
 
     //35
     @GetMapping(value = "/examManage/allExam")
@@ -225,5 +229,35 @@ public class ExamController {
             return ResultUtil.success(examinationList);
     }
 
+
+    @GetMapping(value = "/examMange/searchByExaminaName")
+    public Result searchByExaminaName(String name){
+        List<Examination> examinationList = testService.searchByExaminaName(name);
+        if (examinationList==null){
+            return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
+        }
+        return ResultUtil.success(examinationList);
+    }
+
+    @PostMapping(value = "/examManage/addUserTest")
+    public Result addUserTest(UserTest userTest){
+        UserTest userTest1 = userTestService.addUserTest(userTest);
+        if (userTest1==null){
+            return ResultUtil.Error(ResultEnum.INSERT_FAIL);
+        }
+        return ResultUtil.success(userTest1);
+    }
+
+    @PostMapping(value = "/examManage/deleteUserTest")
+    public Result deleteUserTest(Integer userid,Integer testid){
+        userTestService.deleteUserTestByUseridAndTestid(userid,testid);
+        return ResultUtil.success("delete success!");
+    }
+
+    @PostMapping(value = "/examManage/deleteExaminTest")
+    public Result deleteExaminTest(Integer testid,Integer examid){
+        testService.deleteExaminTest(testid,examid);
+        return ResultUtil.success("delete success!");
+    }
 
 }
