@@ -15,4 +15,5 @@ public interface VaccineMapper {
     int deleteVaccineById(@Param("id") int id);
     List<Vaccine> getVaccineList();
     List<Vaccine> getVaccinesByName(@Param("name")String name);
+    int getVaccineCount();
 }

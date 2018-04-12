@@ -54,4 +54,8 @@ public class ChargeService {
     public List<Charge> getChargeByPayment(float low, float high){
         return chargeMapper.getChargeByPayment(low,high);
     }
+
+    public int getChargeCount(){
+        return chargeMapper.getChargeCount();
+    }
 }

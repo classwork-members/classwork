@@ -41,4 +41,7 @@
     <select id="getDrugsByName" resultType="com.soft.classwork.model.Drug">
         SELECT * FROM drug WHERE drugname LIKE #{name}
     </select>
+    <select id="getDrugCount" resultType="java.lang.Integer">
+        SELECT COUNT(drugid) from drug
+    </select>
 </mapper>

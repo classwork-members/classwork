@@ -53,4 +53,8 @@ public class VaccineService {
     public List<Vaccine> getVaccineByName(String name){
         return vaccineMapper.getVaccinesByName(name);
     }
+
+    public int getVaccineCount(){
+        return vaccineMapper.getVaccineCount();
+    }
 }

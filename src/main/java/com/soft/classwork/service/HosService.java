@@ -58,4 +58,8 @@ public class HosService {
     public List<Hospitalized> getHosByIllnessname(String illnessname){
         return hosMapper.getHosByIllnessname(illnessname);
     }
+
+    public int getHosCount(){
+        return hosMapper.getHosCount();
+    }
 }

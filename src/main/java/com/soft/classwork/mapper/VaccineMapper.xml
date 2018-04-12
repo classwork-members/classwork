@@ -45,4 +45,7 @@
     <select id="getVaccinesByName" resultType="com.soft.classwork.model.Vaccine">
         SELECT * FROM vaccine WHERE vaccinename LIKE #{name}
     </select>
+    <select id="getVaccineCount" resultType="java.lang.Integer">
+        SELECT count(vaccineid) from vaccine
+    </select>
 </mapper>

@@ -50,4 +50,8 @@ public class AssayService {
     public List<Assay> getAssaysByName(String name){
         return assayMapper.getAssaysByName(name);
     }
+
+    public int getAssayCount(){
+        return assayMapper.getAssayCount();
+    }
 }

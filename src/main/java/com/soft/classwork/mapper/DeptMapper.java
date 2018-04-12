@@ -14,4 +14,5 @@ public interface DeptMapper {
     Department getDeptById(@Param("deptid") int deptid);
     int deleteDept(@Param("deptid") int deptid);
     List<Department> getDeptsByName(@Param("name")String name);
+    int getDeptCount();
 }

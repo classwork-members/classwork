@@ -44,4 +44,7 @@
     <select id="getHosByIllnessname" resultType="com.soft.classwork.model.Hospitalized">
         SELECT * FROM hospitalized WHERE illnessname LIKE #{illnessname}
     </select>
+    <select id="getHosCount" resultType="java.lang.Integer">
+        select count(hospitalizedid) from hospitalized
+    </select>
 </mapper>
