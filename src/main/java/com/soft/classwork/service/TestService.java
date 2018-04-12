@@ -177,4 +177,15 @@ public class TestService {
     public List<Examination> searchByExaminaName(String name){
         return examinaRepostitory.findAllByExaminationnameContaining(name);
     }
+
+    public void deleteExaminTest(Integer testid,Integer examid){
+
+        testExamRepository.deleteByTestidAndExamid(testid,examid);
+        Test test = testRepository.getOne(testid);
+        Integer score = test.getTotalscore();
+        TestExam testExam = testExamRepository.findByTestidAndExamid(testid,examid);
+        test.setTotalscore(score-testExam.getScore());
+        testRepository.save(test);
+
+    }
 }

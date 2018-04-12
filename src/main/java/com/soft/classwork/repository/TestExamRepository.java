@@ -16,4 +16,8 @@ public interface TestExamRepository extends JpaRepository<TestExam,Integer>{
 
     public void deleteAllBytestid(Integer testid);
 
+    public void deleteByTestidAndExamid(Integer testid,Integer examid);
+
+    public TestExam findByTestidAndExamid(Integer testid,Integer examid);
+
 }
