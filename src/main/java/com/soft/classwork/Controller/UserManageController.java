@@ -70,7 +70,7 @@ public class UserManageController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/searchByUsername", method = RequestMethod.GET)
+    @RequestMapping(value = "/userManage/searchByUsername", method = RequestMethod.GET)
     public Result searchByUsername(@Param("username") String username){
         if (username == null){
             throw new PetException(ResultEnum.USERNSMR_NULL);
