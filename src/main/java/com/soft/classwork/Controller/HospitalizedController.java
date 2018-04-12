@@ -19,10 +19,10 @@ public class HospitalizedController {
     HosService hosService;
     @RequestMapping(value = "/addInfo", method = RequestMethod.POST)
     public Result addInfo(@RequestBody Hospitalized hospitalized){
-        if(hospitalized.getIllnessname() == null){
+        if(hospitalized.getIllnessname().equals("")){
             throw new PetException(ResultEnum.ILLNESS_NAME);
         }
-        if(hospitalized.getDt_in_hospital() == null){
+        if(hospitalized.getDt_in_hospital().equals("")){
             throw new PetException(ResultEnum.ILLNESS_IN_TIME);
         }
         return ResultUtil.success(hosService.addInfo(hospitalized));
@@ -31,6 +31,12 @@ public class HospitalizedController {
 
     @RequestMapping(value = "/modifyHosInfo", method = RequestMethod.POST)
     public Result modifyHosInfo(@RequestBody Hospitalized hospitalized){
+        if(hospitalized.getIllnessname().equals("")){
+            throw new PetException(ResultEnum.ILLNESS_NAME);
+        }
+        if(hospitalized.getDt_in_hospital().equals("")){
+            throw new PetException(ResultEnum.ILLNESS_IN_TIME);
+        }
         if(hospitalized.getHospitalizedid() == 0){
             throw new PetException(ResultEnum.HOS_ID);
         }
@@ -57,7 +63,7 @@ public class HospitalizedController {
      */
     @RequestMapping(value = "/searchByIndate", method = RequestMethod.GET)
     public Result searchByIndate(@Param("indate") String indate){
-        if (indate == null){
+        if (indate.equals("")){
             throw new PetException(ResultEnum.TIME_NULL);
         }
         String in_date = "%"+indate+"%";
@@ -75,7 +81,7 @@ public class HospitalizedController {
      */
     @RequestMapping(value = "/searchByOutdate", method = RequestMethod.GET)
     public Result searchByOutdate(@Param("outdate") String outdate){
-        if (outdate == null){
+        if (outdate.equals("")){
             throw new PetException(ResultEnum.TIME_NULL);
         }
         String out_date = "%"+outdate+"%";
@@ -93,7 +99,7 @@ public class HospitalizedController {
      */
     @RequestMapping(value = "/searchByIllnessname", method = RequestMethod.GET)
     public Result searchByIllnessname(@Param("illnessname") String illnessname){
-        if (illnessname == null){
+        if (illnessname.equals("")){
             throw new PetException(ResultEnum.ILLNESS_NAME);
         }
         String illness_name = "%"+illnessname+"%";

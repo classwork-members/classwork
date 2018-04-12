@@ -26,7 +26,7 @@ public class DeptManageController {
     DeptService deptService;
     @RequestMapping(value = "/addDepartment", method = RequestMethod.POST)
     public Result addDepartment(@RequestBody Department department){
-        if(department.getDeptname() == null){
+        if(department.getDeptname().equals("")){
             return ResultUtil.Error(ResultEnum.DEPT_NAME);
         }
 
@@ -49,11 +49,11 @@ public class DeptManageController {
 
     @RequestMapping(value = "/updateDept",method = RequestMethod.POST)
     public Result updateDept(@RequestBody Department department){
+        if(department.getDeptname().equals("")){
+            return ResultUtil.Error(ResultEnum.DEPT_NAME);
+        }
         if(department == null){
             throw new PetException(ResultEnum.REQUEST_NULL);
-        }
-        if(department.getDeptname()==null){
-            throw new PetException(ResultEnum.DEPT_NAME);
         }
         if(department.getPrincipalArr()==null){
             throw new PetException(ResultEnum.DEPT_PRIN);
@@ -72,7 +72,7 @@ public class DeptManageController {
 
     @RequestMapping(value = "/searchByDeptName", method = RequestMethod.GET)
     public Result searchByDeptName(@Param("deptname") String deptname){
-        if(deptname == null){
+        if(deptname.equals("")){
             throw new PetException(ResultEnum.DEPT_NAME);
         }
         String dept_name = "%"+deptname+"%";

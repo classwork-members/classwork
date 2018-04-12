@@ -73,6 +73,9 @@ public class UserManageController {
     @ResponseBody
     @RequestMapping(value="/userManage/modifyuserinfo",method = RequestMethod.POST)
     public Result updateUserInfoById(@Param("userid")int userid,@Param("username") String username, @Param("password")String password, @Param("email")String email,@Param("role")String role){
+        if(username.equals("") || password.equals("") || role.equals("")){
+            return ResultUtil.Error("4001","用户名,密码,角色不能为空");
+        }
         int rs = userService.updateUserInfoById(userid,username,password,email,role);
         return ResultUtil.success(rs);
     }
@@ -87,7 +90,7 @@ public class UserManageController {
     @ResponseBody
     @RequestMapping(value = "/userManage/searchByUsername", method = RequestMethod.GET)
     public Result searchByUsername(@Param("username") String username){
-        if (username == null){
+        if (username.equals("")){
             throw new PetException(ResultEnum.USERNSMR_NULL);
         }
         String user_name = "%"+username+"%";

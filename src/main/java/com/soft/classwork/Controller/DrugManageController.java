@@ -22,7 +22,7 @@ public class DrugManageController {
     DrugService drugService;
     @RequestMapping(value = "/addDrug", method = RequestMethod.POST)
     public Result addDrug(@RequestBody Drug drug){
-        if(drug.getDrugname() == null){
+        if(drug.getDrugname().equals("")){
             throw new PetException(ResultEnum.DRUG_NAME_NULL);
         }
         if(Float.valueOf(drug.getDrugfee()) < 0){
@@ -35,6 +35,12 @@ public class DrugManageController {
     public Result updateDrug(@RequestBody Drug drug){
         if(drug.getDrugid() == 0){
             throw new PetException(ResultEnum.DRUG_ID_NULL);
+        }
+        if(drug.getDrugname().equals("")){
+            throw new PetException(ResultEnum.DRUG_NAME_NULL);
+        }
+        if(Float.valueOf(drug.getDrugfee()) < 0){
+            throw new PetException(ResultEnum.DRUG_FEE_NULL);
         }
         return ResultUtil.success(drugService.updateDrug(drug));
     }
@@ -54,7 +60,7 @@ public class DrugManageController {
 
     @RequestMapping(value = "/searchByDrugname", method = RequestMethod.GET)
     public Result searchByDrugname(@Param("drugname")String drugname){
-        if(drugname == null){
+        if(drugname.equals("")){
             throw new PetException(ResultEnum.DRUG_NAME_NULL);
         }
         String drug_name = "%"+drugname+"%";

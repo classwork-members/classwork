@@ -23,10 +23,10 @@ public class AssayController {
 
     @RequestMapping(value = "/addAssay", method = RequestMethod.POST)
     public Result addAssay(@RequestBody Assay assay){
-        if(assay.getAssayname()== null){
+        if(assay.getAssayname().equals("")){
             throw new PetException(ResultEnum.ASSAY_NAME_NULL);
         }
-        if(assay.getDepartment() == null){
+        if(assay.getDepartment().equals("")){
             throw new PetException(ResultEnum.ASSAY_DEPARTMENT_NULL);
         }
         return ResultUtil.success(assayService.addAssay(assay));
@@ -34,9 +34,16 @@ public class AssayController {
 
     @RequestMapping(value = "/updateAssay", method = RequestMethod.POST)
     public Result updateAssay(@RequestBody Assay assay){
+        if(assay.getAssayname().equals("")){
+            throw new PetException(ResultEnum.ASSAY_NAME_NULL);
+        }
+        if(assay.getDepartment().equals("")){
+            throw new PetException(ResultEnum.ASSAY_DEPARTMENT_NULL);
+        }
         if(assay.getAssayid()==0){
             throw new PetException(ResultEnum.ASSAY_ID_NULL);
         }
+
         return ResultUtil.success(assayService.updateAssay(assay));
     }
 
@@ -55,7 +62,7 @@ public class AssayController {
 
     @RequestMapping(value = "/searchByAssayname", method = RequestMethod.GET)
     public Result searchByAsssayname(@Param("assayname") String assayname){
-        if(assayname == null){
+        if(assayname.equals("")){
             throw new PetException(ResultEnum.ASSAY_NAME_NULL);
         }
         String assay_name = "%"+assayname+"%";

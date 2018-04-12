@@ -22,7 +22,7 @@ public class VaccineManageController {
     VaccineService vaccineService;
     @RequestMapping(value = "/addVaccine", method = RequestMethod.POST)
     public Result addVaccine(@RequestBody Vaccine vaccine){
-        if(vaccine.getVaccinename() == null){
+        if(vaccine.getVaccinename().equals("")){
             throw new PetException(ResultEnum.VACCINE_NAME_NULL);
         }
         if(Float.valueOf(vaccine.getFee()) < 0){
@@ -36,9 +36,13 @@ public class VaccineManageController {
         if(vaccine.getVaccineid() < 1){
             throw new PetException(ResultEnum.VACCINE_ID_NULL);
         }
-        if(Float.valueOf(vaccine.getFee()) <0){
+        if(vaccine.getVaccinename().equals("")){
+            throw new PetException(ResultEnum.VACCINE_NAME_NULL);
+        }
+        if(Float.valueOf(vaccine.getFee()) < 0){
             throw new PetException(ResultEnum.VACCINE_FEE_NULL);
         }
+
         return ResultUtil.success(vaccineService.updateVaccine(vaccine));
     }
 
@@ -57,7 +61,7 @@ public class VaccineManageController {
 
     @RequestMapping(value = "/searchByVaccineName", method = RequestMethod.GET)
     public Result searchByVaccine(@Param("vaccinename")String vaccinename){
-        if (vaccinename == null){
+        if (vaccinename.equals("")){
             throw new PetException(ResultEnum.VACCINE_NAME_NULL);
         }
         String vaccine_name = "%"+vaccinename+"%";

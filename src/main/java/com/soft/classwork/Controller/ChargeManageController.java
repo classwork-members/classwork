@@ -27,7 +27,7 @@ public class ChargeManageController {
         if(Float.valueOf(charge.getPayment())<0){
             throw new PetException(ResultEnum.CHARGE_PAYMENT_NULL);
         }
-        if(charge.getPurpose() == null){
+        if(charge.getPurpose().equals("")){
             throw new PetException(ResultEnum.CHARGE_PURPOSE_NULL);
         }
         Date date = new Date();
@@ -41,6 +41,12 @@ public class ChargeManageController {
 
     @RequestMapping(value = "/updateCharge", method = RequestMethod.POST)
     public Result updateCharge(@RequestBody Charge charge){
+        if(Float.valueOf(charge.getPayment())<0){
+            throw new PetException(ResultEnum.CHARGE_PAYMENT_NULL);
+        }
+        if(charge.getPurpose().equals("")){
+            throw new PetException(ResultEnum.CHARGE_PURPOSE_NULL);
+        }
         if(charge.getChargeid() == 0){
             throw new PetException(ResultEnum.CHARGE_ID_NULL);
         }
@@ -65,7 +71,7 @@ public class ChargeManageController {
 
     @RequestMapping(value = "searchByDt_create", method = RequestMethod.GET)
     public Result searchByDt_create(@Param("dt_create") String dt_create){
-        if(dt_create == null){
+        if(dt_create.equals("")){
             throw new PetException(ResultEnum.TIME_NULL);
         }
         String time = "%"+dt_create+"%";
@@ -78,7 +84,7 @@ public class ChargeManageController {
 
     @RequestMapping(value = "/searchByPayment" , method = RequestMethod.GET)
     public Result searchByPayment(@Param("lowpay")String lowpay, @Param("highpay")String highpay){
-        if(lowpay == null || highpay == null){
+        if(lowpay.equals("") || highpay.equals("")){
             throw new PetException(ResultEnum.PAYMENT_NULL);
         }
         float low = Float.valueOf(lowpay);
