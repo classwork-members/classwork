@@ -136,6 +136,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
     <!-- //header-ends -->
     <!-- main content start-->
+
     <script>
         function getUrlParam(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
@@ -143,22 +144,81 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             if (r != null) return decodeURIComponent(r[2]); return null; //返回参数值
         }
         $(document).ready(function( ){
-            var papername = getUrlParam("paper-name");
-            var papertime = getUrlParam("paper-time");
-            var url = "/examManage/addtest1";
-            $.post(
-                url,
-                {
-                    testname:papername,
-                    testtime:papertime
-                },//参数列表
+            var id = getUrlParam("testid");
+            var num = getUrlParam("num");
+            var checked = getUrlParam("checked");
+            if(checked!=null && checked=="zizhu")
+            {
+                document.getElementById("zizhu").checked = true;
+                document.getElementById("self").hidden = false;
+                document.getElementById("self-label").hidden = false;
+            }
+            num=Number(num);
+
+            var url2 = "examManage/getAllExamByTestid?testid="+id;
+            $.get(
+                url2,
+                {},//参数列表
                 function(result,status,xhr){
-                    alert(result.msg);
-                    document.getElementById("testid").value = result.data.testid;
+                    for (var i=num;i<result.data.length;i++)
+                    {
+                        var $tab1 = $("#thedata2");
+                        var catalog= Number(result.data[i].illnessid);
+                        if(catalog==0)
+                            var role="其他";
+                        else if(catalog==1)
+                            var role="传染病";
+                        else if(catalog==2)
+                            var role="寄生虫";
+                        else if(catalog==3)
+                            var role="内科";
+                        else if(catalog==4)
+                            var role="外产科疾病";
+                        else if(catalog==5)
+                            var role="常用手术";
+                        else if(catalog==6)
+                            var role="免疫";
+                        else
+                            var role="error";
+                        var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].examid +"</th><td>"+ result.data[i].question +"</td><td>"+result.data[i].alternativea+"</td><td>"+ result.data[i].alternativeb+"</td><td>"+ result.data[i].alternativec +"</td><td>"+ result.data[i].alternatived +"</td><td>"+ result.data[i].correctAnswer +"</td><td>"+ role+"</td></tr>";
+                        $tab1.append(trData);
+                    }
                 },
                 "json"
             );
+            var url3 = "/examManage/allExam";
 
+            $.get(
+                url3,
+                {},//参数列表
+                function(result,status,xhr){
+                        for (var i=num;i<result.data.length;i++)
+                        {
+                            var $tab1 = $("#thedata");
+                            var catalog= Number(result.data[i].illnessid);
+                            if(catalog==0)
+                                var role="其他";
+                            else if(catalog==1)
+                                var role="传染病";
+                            else if(catalog==2)
+                                var role="寄生虫";
+                            else if(catalog==3)
+                                var role="内科";
+                            else if(catalog==4)
+                                var role="外产科疾病";
+                            else if(catalog==5)
+                                var role="常用手术";
+                            else if(catalog==6)
+                                var role="免疫";
+                            else
+                                var role="error";
+                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].examid +"</th><td>"+ result.data[i].question +"</td><td>"+result.data[i].alternativea+"</td><td>"+ result.data[i].alternativeb+"</td><td>"+ result.data[i].alternativec +"</td><td>"+ result.data[i].alternatived +"</td><td>"+ result.data[i].correctAnswer +"</td><td>"+ role+"</td><td><a href=\"addQuestion.html?testid="+id+"&examid="+result.data[i].examid+"\">添加</a></td></tr>";
+                            $tab1.append(trData);
+                        }
+
+                },
+                "json"
+            );
         })
         function setChoice(choice) {
             if(choice=="1"){
@@ -189,7 +249,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div class="form-group">
 
                             <label><input type="radio" name="choice" value="automatic" onclick="setChoice(1)" required="" >自动生成考题</label>
-                            <label><input type="radio" name="choice" value="autonomy" onclick="setChoice(2)" required="" >自主选择考题</label>
+                            <label><input id="zizhu" type="radio" name="choice" value="autonomy" onclick="setChoice(2)" required="" >自主选择考题</label>
                         </div>
                         <label for="auto" hidden id="auto-label">自动生成考题</label>
                         <div class="tables" hidden id="auto">
@@ -234,151 +294,44 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>所属病种</th>
-                                        <th>考题名</th>
-                                        <th>内容</th>
-                                        <th>答案</th>
-                                        <th>题目类型</th>
+                                        <th>题目</th>
+                                        <th>A选项</th>
+                                        <th>B选项</th>
+                                        <th>C选项</th>
+                                        <th>D选项</th>
+                                        <th>正确选项</th>
+                                        <th>题目所属病种</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr class="active">
-                                        <th scope="row">1</th>
-                                        <td>sjllll</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr class="success">
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr tr class="info">
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr tr class="warning">
-                                        <th scope="row">4</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr tr class="danger">
-                                        <th scope="row">5</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
+                                    </thead>
+                                    <tbody id="thedata2">
                                     </tbody>
                                 </table>
                                 <div class="row">
-                                    <ul class="pagination pagination-lg">
-                                        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    <ul class="pagination pagination-lg" id="pagenum2">
                                     </ul>
                                 </div>
                                 <label for="catalog">新增题目</label>
-                                <div class="row">
-                                    <div class="col-md-3 grid_box1">
-                                        <div class="search-box">
-                                            <div class="input">
-                                                <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32">
-                                                <label class="input__label" for="input-32">
-                                                    <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                                        <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
-                                                    </svg>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>所属病种</th>
-                                        <th>考题名</th>
-                                        <th>内容</th>
-                                        <th>答案</th>
-                                        <th>题目类型</th>
-                                        <th>操作</th>
+                                        <th>题目</th>
+                                        <th>A选项</th>
+                                        <th>B选项</th>
+                                        <th>C选项</th>
+                                        <th>D选项</th>
+                                        <th>正确选项</th>
+                                        <th>题目所属病种</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr class="active">
-                                        <th scope="row">1</th>
-                                        <td>sjllll</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><a href="#">添加到当前考卷</a> </td>
-                                    </tr>
-                                    <tr class="success">
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><a href="#">添加到当前考卷</a> </td>
-                                    </tr>
-                                    <tr tr class="info">
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><a href="#">添加到当前考卷</a> </td>
-                                    </tr>
-                                    <tr tr class="warning">
-                                        <th scope="row">4</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><a href="#">添加到当前考卷</a> </td>
-                                    </tr>
-                                    <tr tr class="danger">
-                                        <th scope="row">5</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><a href="#">添加到当前考卷</a> </td>
-                                    </tr>
+                                    </thead>
+                                    <tbody id="thedata">
                                     </tbody>
                                 </table>
                                 <div class="row">
-                                    <ul class="pagination pagination-lg">
-                                        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    <ul class="pagination pagination-lg" id="pagenum">
                                     </ul>
                                 </div>
                             </div>
