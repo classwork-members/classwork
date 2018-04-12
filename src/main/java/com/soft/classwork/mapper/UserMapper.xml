@@ -68,7 +68,7 @@
     <delete id="deleteUserRolesByUserId">
         delete from user_roles where user_id = #{user_id}
     </delete>
-    <select id="getUsersByName" resultType="com.soft.classwork.model.User">
+    <select id="getUsersByName" resultMap="lazyLoadRoles">
         SELECT * FROM user WHERE username LIKE #{username}
     </select>
 </mapper>
