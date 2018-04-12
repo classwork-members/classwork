@@ -109,6 +109,11 @@ public class TestService {
         testExam.setTestid(testid);
         testExam.setExamid(examid);
         testExam.setScore(score);
+        Test test = testRepository.getOne(testid);
+        Integer score1 = test.getTotalscore();
+        test.setTotalscore(score1+score);
+        Integer count = test.getExamcount();
+        test.setExamcount(count+1);
         return testExamRepository.save(testExam);
 
     }
