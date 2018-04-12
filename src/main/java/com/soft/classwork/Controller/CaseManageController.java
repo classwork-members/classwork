@@ -34,17 +34,17 @@ public class CaseManageController {
 
     //add and update
     @PostMapping(value = "/addCase")
-    public Result addCaseWords(@RequestParam("blm") String blm,
-                          @RequestParam("illnessid") Integer illnessid,
-                          @RequestParam("rq") String rq,
+    public Result addCaseWords(@RequestParam("blm") String blm,//病例名
+                          @RequestParam("illnessid") Integer illnessid,//3
+                          @RequestParam("rq") String rq,//日期
                           //@RequestParam("jz") MultipartFile jz,
-                          @RequestParam("jztext") String jztext,
+                          @RequestParam(value = "jztext", required = false) String jztext,//接诊
 //                          ,@RequestParam("jc") MultipartFile jc,
-                          @RequestParam("jctext") String jctext,
+                          @RequestParam(value = "jctext", required = false) String jctext,//检查
 //                          @RequestParam("zd") MultipartFile zd,
-                          @RequestParam("zdtext") String zdtext,
+                          @RequestParam(value = "zdtext", required = false) String zdtext,//诊断
 //                          @RequestParam("zl") MultipartFile zl,
-                          @RequestParam("zltext") String zltext
+                          @RequestParam(value = "zltext", required = false) String zltext//治疗
     )
                             throws IOException{
         return caseService.addCaseWords(blm, illnessid, rq,jztext, jctext, zdtext,  zltext);
@@ -104,7 +104,7 @@ public class CaseManageController {
 
     @PostMapping(value = "/addOneFileData")
     public Result addOneFileData(@RequestParam("file") MultipartFile file,
-                                 @RequestParam("casesid") Integer casesid,
+                                 @RequestParam("casesid") Integer casesid,//3
                                  @RequestParam("casephasename") String casephasename) throws IOException{
         System.out.println(casephasename);
         System.out.println(casesid);

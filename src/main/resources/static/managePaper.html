@@ -142,14 +142,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div class="bs-example widget-shadow" data-example-id="hoverable-table">
                     <div class="header-right">
                         <div class="search-box">
-                            <form class="input">
-                                <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32">
-                                <label class="input__label" for="input-32">
-                                    <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                        <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
-                                    </svg>
-                                </label>
-                            </form>
+                            <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="sousuo">
+                            <label class="input__label" for="sousuo">
+                                <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                </svg>
+                            </label>
                         </div><!--//end-search-box-->
                     </div>
                     <h4>试卷列表</h4>
@@ -157,59 +155,119 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         function getUrlParam(name) {
                             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
                             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-                            if (r != null) return unescape(r[2]); return null; //返回参数值
+                            if (r != null) return decodeURIComponent(r[2]); return null; //返回参数值
                         }
                         $(document).ready(function( ){
-                            var url = "/examManage/alltest";
+
                             var num = getUrlParam("num");
-                            $.get(
-                                url,
-                                {},//参数列表
-                                function(result,status,xhr){
-                                    num=Number(num);
-                                    if(num+5<result.data.length)
-                                    {
-                                        for (var i=num;i<num+5;i++)
+                            var sousuo = getUrlParam("sousuo");
+                            if(sousuo==null || sousuo=="")
+                            {
+                                var url = "/examManage/alltest";
+                                $.get(
+                                    url,
+                                    {},//参数列表
+                                    function(result,status,xhr){
+                                        num=Number(num);
+                                        if(num+5<result.data.length)
                                         {
-                                            var $tab1 = $("#thedata");
-                                            if(result.data[i].illnessid=="0"){
-                                                var illness="杂题";
+                                            for (var i=num;i<num+5;i++)
+                                            {
+                                                var $tab1 = $("#thedata");
+                                                if(result.data[i].illnessid=="0"){
+                                                    var illness="杂题";
+                                                }
+                                                else{
+                                                    var illness="null"
+                                                }
+                                                var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].testid +"</th><td>"+ result.data[i].testname +"</td><td>"+ result.data[i].examcount+"</td><td>"+ result.data[i].totalscore+"</td><td>"+ result.data[i].testtime+"</td><td>"+ illness+"</td><td><a href=\"paperDetail.html?id="+result.data[i].testid+"\">查看具体题目或管理该考卷题目</a></td></tr>";
+                                                $tab1.append(trData);
                                             }
-                                            else{
-                                                var illness="null"
-                                            }
-                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].testid +"</th><td>"+ result.data[i].testname +"</td><td>"+ result.data[i].examcount+"</td><td>"+ result.data[i].totalscore+"</td><td>"+ result.data[i].testtime+"</td><td>"+ illness+"</td><td><a href=\"paperDetail.html?id="+result.data[i].testid+"\">查看具体题目或管理该考卷题目</a></td></tr>";
-                                            $tab1.append(trData);
                                         }
-                                    }
-                                    else
-                                    {
-                                        for (var i=num;i<result.data.length;i++)
+                                        else
                                         {
-                                            var $tab1 = $("#thedata");
-                                            if(result.data[i].illnessid=="0"){
-                                                var illness="杂题";
+                                            for (var i=num;i<result.data.length;i++)
+                                            {
+                                                var $tab1 = $("#thedata");
+                                                if(result.data[i].illnessid=="0"){
+                                                    var illness="杂题";
+                                                }
+                                                else{
+                                                    var illness="error"
+                                                }
+                                                var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].testid +"</th><td>"+ result.data[i].testname +"</td><td>"+ result.data[i].examcount+"</td><td>"+ result.data[i].totalscore+"</td><td>"+ result.data[i].testtime+"</td><td>"+ illness+"</td><td><a href=\"paperDetail.html?id="+result.data[i].testid+"\">查看具体题目或管理该考卷题目</a></td></tr>";
+                                                $tab1.append(trData);
                                             }
-                                            else{
-                                                var illness="error"
-                                            }
-                                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].testid +"</th><td>"+ result.data[i].testname +"</td><td>"+ result.data[i].examcount+"</td><td>"+ result.data[i].totalscore+"</td><td>"+ result.data[i].testtime+"</td><td>"+ illness+"</td><td><a href=\"paperDetail.html?id="+result.data[i].testid+"\">查看具体题目或管理该考卷题目</a></td></tr>";
-                                            $tab1.append(trData);
                                         }
-                                    }
-                                    var ul=document.getElementById("pagenum");
-                                    var pagenum=1;
-                                    for(var j=0;j<result.data.length;j+=5)
-                                    {
-                                        var li=document.createElement("li");
-                                        j=Number(j);
-                                        li.innerHTML="<a href=\"managePaper.html?num="+j+"\">"+pagenum+"</a>";
-                                        ul.appendChild(li);
-                                        pagenum++;
-                                    }
-                                },
-                                "json"
-                            );
+                                        var ul=document.getElementById("pagenum");
+                                        var pagenum=1;
+                                        for(var j=0;j<result.data.length;j+=5)
+                                        {
+                                            var li=document.createElement("li");
+                                            j=Number(j);
+                                            li.innerHTML="<a href=\"managePaper.html?num="+j+"\">"+pagenum+"</a>";
+                                            ul.appendChild(li);
+                                            pagenum++;
+                                        }
+                                    },
+                                    "json"
+                                );
+                            }
+                            else {
+                                var url = "/examManage/searchTestByName?testname="+sousuo;
+                                $.get(
+                                    url,
+                                    {},//参数列表
+                                    function(result,status,xhr){
+                                        if(result.data!="nothing found")
+                                        {
+                                            num=Number(num);
+                                            if(num+5<result.data.length)
+                                            {
+                                                for (var i=num;i<num+5;i++)
+                                                {
+                                                    var $tab1 = $("#thedata");
+                                                    if(result.data[i].illnessid=="0"){
+                                                        var illness="杂题";
+                                                    }
+                                                    else{
+                                                        var illness="null"
+                                                    }
+                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].testid +"</th><td>"+ result.data[i].testname +"</td><td>"+ result.data[i].examcount+"</td><td>"+ result.data[i].totalscore+"</td><td>"+ result.data[i].testtime+"</td><td>"+ illness+"</td><td><a href=\"paperDetail.html?id="+result.data[i].testid+"\">查看具体题目或管理该考卷题目</a></td></tr>";
+                                                    $tab1.append(trData);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                for (var i=num;i<result.data.length;i++)
+                                                {
+                                                    var $tab1 = $("#thedata");
+                                                    if(result.data[i].illnessid=="0"){
+                                                        var illness="杂题";
+                                                    }
+                                                    else{
+                                                        var illness="error"
+                                                    }
+                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].testid +"</th><td>"+ result.data[i].testname +"</td><td>"+ result.data[i].examcount+"</td><td>"+ result.data[i].totalscore+"</td><td>"+ result.data[i].testtime+"</td><td>"+ illness+"</td><td><a href=\"paperDetail.html?id="+result.data[i].testid+"\">查看具体题目或管理该考卷题目</a></td></tr>";
+                                                    $tab1.append(trData);
+                                                }
+                                            }
+                                            var ul=document.getElementById("pagenum");
+                                            var pagenum=1;
+                                            for(var j=0;j<result.data.length;j+=5)
+                                            {
+                                                var li=document.createElement("li");
+                                                j=Number(j);
+                                                li.innerHTML="<a href=\"managePaper.html?num="+j+"\">"+pagenum+"</a>";
+                                                ul.appendChild(li);
+                                                pagenum++;
+                                            }
+                                        }
+
+                                    },
+                                    "json"
+                                );
+                            }
                         });
                         function setLineNum(line){
                             if(typeof(line)   ==   "undefined "){
@@ -344,7 +402,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- Classie --><!-- for toggle left push menu script -->
 <script src="js/classie.js"></script>
 <script>
-
+    $('#sousuo').bind('keydown', function(event) {
+        if (event.keyCode == "13") {
+            //回车执行查询
+            var sousuo=document.getElementById("sousuo").value;
+            var id = getUrlParam("id");
+            window.location.href = "/managePaper.html?sousuo="+sousuo;
+        }
+    });
     $("#registerUserBt").click(function(){
         $.ajax({
             type: "POST",   //提交的方法

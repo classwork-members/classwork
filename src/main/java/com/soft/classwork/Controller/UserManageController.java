@@ -2,9 +2,10 @@ package com.soft.classwork.Controller;
 
 import com.soft.classwork.enums.ResultEnum;
 import com.soft.classwork.exception.PetException;
+import com.soft.classwork.model.Item;
 import com.soft.classwork.model.Result;
 import com.soft.classwork.model.User;
-import com.soft.classwork.service.UserService;
+import com.soft.classwork.service.*;
 import com.soft.classwork.utils.ResultUtil;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,6 +24,24 @@ public class UserManageController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    AssayService assayService;
+    @Autowired
+    CaseService caseService;
+    @Autowired
+    ChargeService chargeService;
+    @Autowired
+    DeptService deptService;
+    @Autowired
+    DrugService drugService;
+    @Autowired
+    ExamService examService;
+    @Autowired
+    HosService hosService;
+    @Autowired
+    TestService testService;
+    @Autowired
+    VaccineService vaccineService;
 
     @ResponseBody
     @RequestMapping(value = "/userManage/signin", method = RequestMethod.POST)
@@ -70,7 +90,7 @@ public class UserManageController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/searchByUsername", method = RequestMethod.GET)
+    @RequestMapping(value = "/userManage/searchByUsername", method = RequestMethod.GET)
     public Result searchByUsername(@Param("username") String username){
         if (username == null){
             throw new PetException(ResultEnum.USERNSMR_NULL);
@@ -81,5 +101,13 @@ public class UserManageController {
             return ResultUtil.Error(ResultEnum.SEARCH_NULL);
         }
         return ResultUtil.success(users);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getItemsCount", method = RequestMethod.GET)
+    public Result getItemsCount(){
+        List items = new ArrayList();
+        Item item = new Item();
+        return null;
     }
 }

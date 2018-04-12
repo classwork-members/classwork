@@ -151,7 +151,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </label>
                         </div><!--//end-search-box-->
                     </div>
-                    <h4>病种名-病例列表</h4>
+                    <div id="title">
+                    </div>
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -172,7 +173,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             $(document).ready(function( ){
                                 var id = getUrlParam("id");
                                 var num = getUrlParam("num");
+                                var name = getUrlParam("name");
                                 var sousuo = getUrlParam("sousuo");
+                                var testdiv = document.getElementById("title");
+                                var h4 = document.createElement('h4');
+                                h4.innerHTML=name+"-病例列表";
+                                testdiv.appendChild(h4);
                                 if(sousuo==null || sousuo=="")
                                 {
                                     document.getElementById("catalog-name").value=id;
@@ -273,9 +279,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         {},//参数列表
                                         function(data) {  //成功
                                             if (data.code == "0000") {
-                                                document.getElementById("jztext").value = data.data[6].content;
-                                                document.getElementById("jctext").value = data.data[4].content;
-                                                document.getElementById("zdtext").value = data.data[2].content;
+                                                document.getElementById("jztext").value = data.data[0].content;
+                                                document.getElementById("jctext").value = data.data[2].content;
+                                                document.getElementById("zdtext").value = data.data[4].content;
                                                 document.getElementById("zltext").value = data.data[0].content;
                                                 document.getElementById("dataid1").value = data.data[6].dataid;
                                                 document.getElementById("dataid2").value = data.data[4].dataid;
