@@ -105,10 +105,40 @@ public class CaseManageController {
     @PostMapping(value = "/addOneFileData")
     public Result addOneFileData(@RequestParam("file") MultipartFile file,
                                  @RequestParam("casesid") Integer casesid,//3
-                                 @RequestParam("casephasename") String casephasename) throws IOException{
-        System.out.println(casephasename);
-        System.out.println(casesid);
-        return caseService.addOneFileData(file,casesid,casephasename);
+                                 @RequestParam("casephasename") String casephasename,
+                                 @RequestParam(value = "file2",required = false) MultipartFile file2,
+                                 @RequestParam(value = "file3",required = false) MultipartFile file3,
+                                 @RequestParam(value = "file4",required = false) MultipartFile file4,
+                                 @RequestParam(value = "file5",required = false) MultipartFile file5) throws IOException{
+        boolean flag = false;
+        if (!caseService.addOneFileData(file,casesid,casephasename))
+            return ResultUtil.Error(ResultEnum.UPLOAD_FAIL);
+
+        if (file2==null)
+            return  ResultUtil.success("one data upload success!");
+        else{
+            if (!caseService.addOneFileData(file2,casesid,casephasename))
+                return ResultUtil.Error(ResultEnum.UPLOAD_FAIL);
+        }
+        if (file3==null)
+            return  ResultUtil.success("two datas upload success!");
+        else{
+            if (!caseService.addOneFileData(file3,casesid,casephasename))
+                return ResultUtil.Error(ResultEnum.UPLOAD_FAIL);
+        }
+        if (file4==null)
+            return  ResultUtil.success("three datas upload success!");
+        else{
+            if (!caseService.addOneFileData(file4,casesid,casephasename))
+                return ResultUtil.Error(ResultEnum.UPLOAD_FAIL);
+        }
+        if (file5==null)
+            return  ResultUtil.success("four datas upload success!");
+        else{
+            if (!caseService.addOneFileData(file5,casesid,casephasename))
+                return ResultUtil.Error(ResultEnum.UPLOAD_FAIL);
+        }
+        return  ResultUtil.success("five datas upload success!");
     }
 
     @GetMapping(value = "/showCasesInfo")

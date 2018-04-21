@@ -11,21 +11,14 @@ import com.soft.classwork.repository.DataRepository;
 import com.soft.classwork.utils.FileUtil;
 import com.soft.classwork.utils.FtpFileUtil;
 import com.soft.classwork.utils.ResultUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -265,7 +258,7 @@ public class CaseService {
         return dataList;
     }
 
-    public Result addOneFileData(MultipartFile file, Integer casesid, String casephasename) throws IOException{
+    public boolean addOneFileData(MultipartFile file, Integer casesid, String casephasename) throws IOException{
         String fileName = file.getOriginalFilename();
         //InputStream inputStreamfile = file.getInputStream();
 
@@ -285,7 +278,8 @@ public class CaseService {
             data1.setDatatype(filetype);
             Data data = dataRepository.save(data1);
             if (data==null)
-                return ResultUtil.Error(ResultEnum.ADD_DATA_FAIL);
+//                return ResultUtil.Error(ResultEnum.ADD_DATA_FAIL);
+                return false;
             Integer dataid = data.getDataid();
 ////////////////////////////////////////////////////数据插入
             String path = "upload/" + file.getOriginalFilename();
@@ -302,10 +296,10 @@ public class CaseService {
 ////////////////////////////////////////////////////数据插入结束
             CasesPhase casesPhase = casesPhaseRepository.save(new CasesPhase(casesid,casephasename,dataid));
             if (casesPhase==null)
-                return ResultUtil.Error(ResultEnum.ADD_CASESPHASE_FAIL);
+                return false;
 
         }
-        return ResultUtil.success("文件上传成功！");
+        return true;
     }
 
     public List<Data> showCasesInfo(Integer casesid){
