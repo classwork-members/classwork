@@ -167,7 +167,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             var num = getUrlParam("num");
                             var illness=getUrlParam("illness");
                             var sousuo=getUrlParam("sousuo");
-                            if(illness==null || illness==-1) {
+                            if(illness=="null" ||illness==null|| illness==-1) {
                                 var url = "/examManage/allExam";
                                 $.get(
                                     url,
@@ -226,15 +226,37 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 $tab1.append(trData);
                                             }
                                         }
+
                                         var ul=document.getElementById("pagenum");
-                                        var pagenum=1;
-                                        for(var j=0;j<result.data.length;j+=3)
+                                        var maxnum=result.data.length;
+                                        var pagenum=num/3;
+                                        if(pagenum>4)
                                         {
-                                            var li=document.createElement("li");
-                                            j=Number(j);
-                                            li.innerHTML="<a href=\"manageQuestion.html?num="+j+"\">"+pagenum+"</a>";
-                                            ul.appendChild(li);
-                                            pagenum++;
+                                            pagenum=num/3-3;
+                                            if(num+18<result.data.length)
+                                                maxnum=num+18;
+                                            for(var j=num-12;j<maxnum;j+=3)
+                                            {
+                                                var li=document.createElement("li");
+                                                j=Number(j);
+                                                li.innerHTML="<a href=\"manageQuestion.html?num="+j+"\">"+pagenum+"</a>";
+                                                ul.appendChild(li);
+                                                pagenum++;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            var pagenum=1;
+                                            if(33<result.data.length)
+                                                maxnum=33;
+                                            for(var j=0;j<maxnum;j+=3)
+                                            {
+                                                var li=document.createElement("li");
+                                                j=Number(j);
+                                                li.innerHTML="<a href=\"manageQuestion.html?num="+j+"\">"+pagenum+"</a>";
+                                                ul.appendChild(li);
+                                                pagenum++;
+                                            }
                                         }
                                     },
                                     "json"
@@ -300,14 +322,35 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             }
                                         }
                                         var ul=document.getElementById("pagenum");
-                                        var pagenum=1;
-                                        for(var j=0;j<result.data.length;j+=3)
+                                        var maxnum=result.data.length;
+                                        var pagenum=num/3;
+                                        if(pagenum>4)
                                         {
-                                            var li=document.createElement("li");
-                                            j=Number(j);
-                                            li.innerHTML="<a href=\"manageQuestion.html?num="+j+"&illness="+illness+"\">"+pagenum+"</a>";
-                                            ul.appendChild(li);
-                                            pagenum++;
+                                            pagenum=num/3-3;
+                                            if(num+18<result.data.length)
+                                                maxnum=num+18;
+                                            for(var j=num-12;j<maxnum;j+=3)
+                                            {
+                                                var li=document.createElement("li");
+                                                j=Number(j);
+                                                li.innerHTML="<a href=\"manageQuestion.html?illness="+illness+"&num="+j+"\">"+pagenum+"</a>";
+                                                ul.appendChild(li);
+                                                pagenum++;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            var pagenum=1;
+                                            if(33<result.data.length)
+                                                maxnum=33;
+                                            for(var j=0;j<maxnum;j+=3)
+                                            {
+                                                var li=document.createElement("li");
+                                                j=Number(j);
+                                                li.innerHTML="<a href=\"manageQuestion.html?illness="+illness+"&num="+j+"\">"+pagenum+"</a>";
+                                                ul.appendChild(li);
+                                                pagenum++;
+                                            }
                                         }
                                     },
                                     "json"
@@ -422,15 +465,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <script>
                                 function deleteTheUser() {
                                     var id = document.getElementById("delete-user").value;
-                                    alert(id);
                                     var url = "/examManage/deleteExam";
+                                    var illness=getUrlParam("illness");
+                                    var num=getUrlParam("num");
+                                    if(num==null)
+                                        num=0;
                                     $.post(
                                         url,
                                         {
                                             examid:id
                                         },//参数列表
                                         function(result,status,xhr){
-                                            window.location.href="manageQuestion.html?num=0";
+                                            window.location.href="manageQuestion.html?illness="+illness+"&num="+num;
                                         },
                                         "json"
                                     );
@@ -530,6 +576,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="js/classie.js"></script>
 <script>
     $("#registerUserBt").click(function(){
+        var illness=getUrlParam("illness");
         $.ajax({
             type: "POST",   //提交的方法
             url:"/examManage/addExam", //提交的地址
@@ -540,7 +587,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             },
             success: function(data) {  //成功
                 if(data.code == "0000"){
-                    window.location.href = "/manageQuestion.html";
+                    window.location.href = "/manageQuestion.html?illness="+illness;
                 }else{
                     alert(data.msg);
                 }

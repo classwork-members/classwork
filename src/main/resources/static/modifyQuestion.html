@@ -21,7 +21,6 @@
         var alternativeb = getUrlParam("alternativeb");
         var correctAnswer = getUrlParam("correctAnswer");
         var illnessid = getUrlParam("illnessid");
-        alert(userid);
         var url = "/examManage/updateExam";
         $.post(
             url,
@@ -36,8 +35,7 @@
                 illnessid:illnessid
             },//参数列表
             function(result,status,xhr){
-                alert(result.msg);
-                window.location.href="manageQuestion.html?num=0";
+                window.location.href="manageQuestion.html?num=0&illness="+illnessid;
             },
             "json"
         );

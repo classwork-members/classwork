@@ -260,8 +260,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default"data-toggle="modal" data-target="#exampleModaltest" data-whatever="@mdo">添加文件</button>
-                        <div class="modal fade" id="exampleModaltest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeltest">
+                        <buttun type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">上传文件</buttun>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -275,60 +275,79 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             </div>
                                             <div class="form-group">
                                                 <input type="radio" value="jz" id="bljdm1" name="casephasename">接诊
-                                                <input type="radio" value="jz" id="bljdm2" name="casephasename">检查
-                                                <input type="radio" value="jz" id="bljdm3" name="casephasename">诊断
-                                                <input type="radio" value="jz" id="bljdm4" name="casephasename">治疗
+                                                <input type="radio" value="jc" id="bljdm2" name="casephasename">检查
+                                                <input type="radio" value="zd" id="bljdm3" name="casephasename">诊断
+                                                <input type="radio" value="zl" id="bljdm4" name="casephasename">治疗
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label">文件</label>
-                                                <input type="file" class="form-control" id="postfile" name="file">
+                                            <div class="form-group" id="fileadd">
+                                                <button type="button" class="btn btn-default" onclick="addfile()">新增文件</button>
+                                                <input type="file" class="form-control" id="postfile1" name="file">
+
+                                                <input id="filenum" hidden>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" onclick="postdata()">保存</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" onclick="postdata()">保存</button>
-                                        <script>
-                                            function postdata() {
-                                                var formdata = new FormData();
-                                                if( document.getElementById("bljdm1").checked=true)
-                                                    var test1 = "jz";
-                                                else if( document.getElementById("bljdm2").checked=true)
-                                                    var test1 = "jc";
-                                                else if( document.getElementById("bljdm3").checked=true)
-                                                    var test1 = "zd";
-                                                else if( document.getElementById("bljdm4").checked=true)
-                                                    var test1 = "zl";
-                                                else
-                                                    alert(document.getElementById("bljdm1").checked);
-                                                formdata.append("file",document.getElementById("postfile").files[0]);
-                                                formdata.append("casephasename",test1);
-                                                formdata.append("casesid",125);
-                                                $.ajax({
-                                                    type: "POST",   //提交的方法
-                                                    url:"/caseManage/addOneFileData", //提交的地址
-                                                    data: formdata
-                                                    ,// 序列化表单值
-                                                    //
-                                                    contentType: false,
-                                                    processData: false,
-                                                    async: false,
-                                                    cache: false,
-                                                    error: function(request) {  //失败的话
-                                                        alert("Connection error");
-                                                    },
-                                                    success: function(data) {  //成功
-                                                        alert(data.msg);  //就将返回的数据显示出来
-                                                        window.location.href = "/manageCase?id="+id
-                                                    }
-                                                });
-                                            }
-                                        </script>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                        <script>
+                            function addfile() {
+                                var num=document.getElementById("filenum").value;
+                                num=Number(num);
+                                num++;
+                                var file = document.getElementById("fileadd");
+                                var input = document.createElement('input');  //创建input节点
+                                input.setAttribute('type', 'file');  //定义类型是文本输入
+                                input.setAttribute('id', 'postfile'+num);  //定义类型是文本输入
+                                input.setAttribute('name', 'file'+num);  //定义类型是文本输入
+                                input.setAttribute('class', 'form-control');  //定义类型是文本输入
+                                file.appendChild(input );
+                                document.getElementById("fileadd").value=num;
+                            }
+                        </script>
+                        <script>
+                            function postdata() {
+                                var formdata = new FormData();
+                                alert(6);
+                                if( document.getElementById("bljdm1").checked=true)
+                                    var test1 = "jz";
+                                else if( document.getElementById("bljdm2").checked=true)
+                                    var test1 = "jc";
+                                else if( document.getElementById("bljdm3").checked=true)
+                                    var test1 = "zd";
+                                else if( document.getElementById("bljdm4").checked=true)
+                                    var test1 = "zl";
+                                else
+                                    alert(document.getElementById("bljdm1").checked);
+                                formdata.append("file",document.getElementById("postfile").files[0]);
+                                formdata.append("casephasename",test1);
+                                formdata.append("casesid",125);
+                                $.ajax({
+
+                                    type: "POST",   //提交的方法
+                                    url:"/caseManage/addOneFileData", //提交的地址
+                                    data: formdata
+                                    ,// 序列化表单值
+                                    //
+                                    contentType: false,
+                                    processData: false,
+                                    async: false,
+                                    cache: false,
+                                    error: function(request) {  //失败的话
+                                        alert("Connection error");
+                                    },
+                                    success: function(data) {  //成功
+                                        alert(data.msg);  //就将返回的数据显示出来
+                                        window.location.href = "/manageCase?id="+id
+                                    }
+                                });
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
