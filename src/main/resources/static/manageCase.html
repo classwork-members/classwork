@@ -143,7 +143,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div class="bs-example widget-shadow" data-example-id="hoverable-table">
                     <div class="row">
                         <h4 class="modal-title" id="title2" ></h4>
-                        <div class="modal-body"> 简介
+                        <div class="modal-body" id="jianjie">
                         </div>
                         <div class="modal-footer" value="" >
                         </div>
@@ -196,7 +196,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     $.post(
                                         url,
                                         {},//参数列表
-                                        function(result){
+                                        function(data){
+                                            var result=data.casesList;
+                                            var jianjie = document.getElementById("jianjie");
+                                            var p = document.createElement('p');
+                                            var thejianjie="";
+                                            if(data.illnessdesc!=null)
+                                            {
+                                                thejianjie=data.illnessdesc;
+                                            }
+                                            p.innerHTML="简介："+thejianjie;
+                                            jianjie.appendChild(p);
                                             if(num+2<result.length)
                                             {
                                                 for (var i=num;i<num+2;i++)
