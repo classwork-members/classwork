@@ -176,7 +176,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="js/classie.js"></script>
 <script>
     $("#fromcreatebt").click(function(){
-        alert(1);
         $.ajax({
             type: "POST",   //提交的方法
             url:"/examManage/addtest1", //提交的地址
@@ -187,7 +186,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             },
             success: function(data) {  //成功
                 if(data.code == "0000"){
-                    alert("成功");
                     window.location.href = "/createPaper2.html?testid="+data.data.testid;
                 }else{
                     alert(data.msg);

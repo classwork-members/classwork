@@ -144,7 +144,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             if (r != null) return decodeURIComponent(r[2]); return null; //返回参数值
         }
         $(document).ready(function( ){
+
             var id = getUrlParam("testid");
+            document.getElementById("testid").value=id;
             var num = getUrlParam("num");
             var checked = getUrlParam("checked");
             if(checked!=null && checked=="zizhu")
@@ -192,6 +194,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 url3,
                 {},//参数列表
                 function(result,status,xhr){
+                    if(num+10>result.data.length)
+                    {
                         for (var i=num;i<result.data.length;i++)
                         {
                             var $tab1 = $("#thedata");
@@ -215,6 +219,65 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].examid +"</th><td>"+ result.data[i].question +"</td><td>"+result.data[i].alternativea+"</td><td>"+ result.data[i].alternativeb+"</td><td>"+ result.data[i].alternativec +"</td><td>"+ result.data[i].alternatived +"</td><td>"+ result.data[i].correctAnswer +"</td><td>"+ role+"</td><td><a href=\"addQuestion.html?testid="+id+"&examid="+result.data[i].examid+"\">添加</a></td></tr>";
                             $tab1.append(trData);
                         }
+                    }
+                     else
+                    {
+                        for (var i=num;i<num+10;i++)
+                        {
+                            var $tab1 = $("#thedata");
+                            var catalog= Number(result.data[i].illnessid);
+                            if(catalog==0)
+                                var role="其他";
+                            else if(catalog==1)
+                                var role="传染病";
+                            else if(catalog==2)
+                                var role="寄生虫";
+                            else if(catalog==3)
+                                var role="内科";
+                            else if(catalog==4)
+                                var role="外产科疾病";
+                            else if(catalog==5)
+                                var role="常用手术";
+                            else if(catalog==6)
+                                var role="免疫";
+                            else
+                                var role="error";
+                            var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].examid +"</th><td>"+ result.data[i].question +"</td><td>"+result.data[i].alternativea+"</td><td>"+ result.data[i].alternativeb+"</td><td>"+ result.data[i].alternativec +"</td><td>"+ result.data[i].alternatived +"</td><td>"+ result.data[i].correctAnswer +"</td><td>"+ role+"</td><td><a href=\"addQuestion.html?testid="+id+"&examid="+result.data[i].examid+"\">添加</a></td></tr>";
+                            $tab1.append(trData);
+                        }
+                    }
+                    var ul=document.getElementById("pagenum");
+                    var maxnum=result.data.length;
+                    num=Number(num);
+                    var pagenum=num/10;
+                    if(pagenum>4)
+                    {
+                        pagenum=num/10-3;
+                        if(num+60<result.data.length)
+                            maxnum=num+60;
+                        for(var j=num-40;j<maxnum;j+=10)
+                        {
+                            var li=document.createElement("li");
+                            j=Number(j);
+                            li.innerHTML="<a href=\"createPaper2.html?testid="+id+"&num="+j+"&checked=zizhu\">"+pagenum+"</a>";
+                            ul.appendChild(li);
+                            pagenum++;
+                        }
+                    }
+                    else
+                    {
+                        var pagenum=1;
+                        if(110<result.data.length)
+                            maxnum=110;
+                        for(var j=0;j<maxnum;j+=10)
+                        {
+                            var li=document.createElement("li");
+                            j=Number(j);
+                            li.innerHTML="<a href=\"createPaper2.html?testid="+id+"&num="+j+"&checked=zizhu\">"+pagenum+"</a>";
+                            ul.appendChild(li);
+                            pagenum++;
+                        }
+                    }
 
                 },
                 "json"
@@ -307,10 +370,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     <tbody id="thedata2">
                                     </tbody>
                                 </table>
-                                <div class="row">
-                                    <ul class="pagination pagination-lg" id="pagenum2">
-                                    </ul>
-                                </div>
                                 <label for="catalog">新增题目</label>
 
                                 <table class="table table-hover">
@@ -333,6 +392,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <div class="row">
                                     <ul class="pagination pagination-lg" id="pagenum">
                                     </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="managePaper.html"><button type="button"  class="btn btn-default" >结束添加</button></a>
                                 </div>
                             </div>
                         </div>
@@ -358,22 +420,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- Classie --><!-- for toggle left push menu script -->
 <script src="js/classie.js"></script>
 <script>
-    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-        showLeftPush = document.getElementById( 'showLeftPush' ),
-        body = document.body;
-
-    showLeftPush.onclick = function() {
-        classie.toggle( this, 'active' );
-        classie.toggle( body, 'cbp-spmenu-push-toright' );
-        classie.toggle( menuLeft, 'cbp-spmenu-open' );
-        disableOther( 'showLeftPush' );
-    };
-
-    function disableOther( button ) {
-        if( button !== 'showLeftPush' ) {
-            classie.toggle( showLeftPush, 'disabled' );
-        }
-    }
     $("#registerUserBt").click(function(){
         $.ajax({
             type: "POST",   //提交的方法
