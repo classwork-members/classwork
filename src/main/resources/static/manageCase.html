@@ -141,6 +141,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class="main-page">
             <div class="tables">
                 <div class="bs-example widget-shadow" data-example-id="hoverable-table">
+                    <div class="row">
+                        <h4 class="modal-title" id="title2" ></h4>
+                        <div class="modal-body"> 简介
+                        </div>
+                        <div class="modal-footer" value="" >
+                        </div>
+                    </div>
                     <div class="header-right">
                         <div class="search-box">
                             <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="sousuo">
@@ -179,6 +186,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 var h4 = document.createElement('h4');
                                 h4.innerHTML=name+"-病例列表";
                                 testdiv.appendChild(h4);
+                                var testdiv2 = document.getElementById("title2");
+                                testdiv2.innerHTML=name+"-病例简介";
                                 if(sousuo==null || sousuo=="")
                                 {
                                     document.getElementById("catalog-name").value=id;
@@ -212,7 +221,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             {
                                                 var li=document.createElement("li");
                                                 j=Number(j);
-                                                li.innerHTML="<a href=\"manageCase.html?id="+id+"&num="+j+"\">"+pagenum+"</a>";
+                                                li.innerHTML="<a href=\"manageCase.html?num="+j+"&name="+name+"&id="+id+"\">"+pagenum+"</a>";
                                                 ul.appendChild(li);
                                                 pagenum++;
                                             }
@@ -224,6 +233,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 else
                                 {
                                     var url = "/caseManage/searchCasesByName?casename="+sousuo;
+                                    document.getElementById("catalog-name").value=id;
                                     num=Number(num);
                                     $.get(
                                         url,
@@ -253,7 +263,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             {
                                                 var li=document.createElement("li");
                                                 j=Number(j);
-                                                li.innerHTML="<a href=\"manageCase.html?sousuo="+sousuo+"&num="+j+"\">"+pagenum+"</a>";
+                                                li.innerHTML="<a href=\"manageCase.html?sousuo="+sousuo+"&num="+j+"&name="+name+"&id="+id+"\">"+pagenum+"</a>";
                                                 ul.appendChild(li);
                                                 pagenum++;
                                             }
@@ -432,6 +442,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <script>
                                 function deleteTheAssay() {
                                     var id = document.getElementById("delete-assayid").value;
+                                    var name = getUrlParam("name");
                                     var illiness=document.getElementById("catalog-name").value;
                                     var url = "/caseManage/deleteCase";
                                     $.post(
@@ -440,7 +451,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             casesid:id
                                         },//参数列表
                                         function(result,status,xhr){
-                                            window.location.href="manageCase.html?id="+illiness;
+                                            window.location.href="manageCase.html?id="+illiness+"&name="+name;
                                         },
                                         "json"
                                     );
@@ -542,6 +553,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script>
     $("#registerUserBt").click(function(){
         var id = getUrlParam("id");
+        var name = getUrlParam("name");
         $.ajax({
             type: "POST",   //提交的方法
             url:"/caseManage/addCase", //提交的地址
@@ -552,7 +564,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             },
             success: function(data) {  //成功
                 if(data.code == "0000"){
-                    window.location.href = "/manageCase.html?id="+id;
+                    window.location.href = "/manageCase.html?id="+id+"&name="+name;
                 }else{
                     alert(data.msg);
                 }
@@ -564,11 +576,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             //回车执行查询
             var sousuo=document.getElementById("sousuo").value;
             var id = getUrlParam("id");
-            window.location.href = "/manageCase.html?sousuo="+sousuo+"&id="+id;
+            var name = getUrlParam("name");
+            window.location.href = "/manageCase.html?sousuo="+sousuo+"&id="+id+"&name="+name;
         }
     });
     $("#modifyAssayBt").click(function() {
         var id = getUrlParam("id");
+        var name = getUrlParam("name");
         $.ajax({
             type: "POST",   //提交的方法
             url: "caseManage/updateCasesWords", //提交的地址
@@ -579,7 +593,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             },
             success: function (data) {  //成功
                 if(data.code == "0000"){
-                    window.location.href = "/manageCase.html?id="+id;
+                    window.location.href = "/manageCase.html?id="+id+"&name="+name;
                 }else{
                     alert(data.msg);
                 }

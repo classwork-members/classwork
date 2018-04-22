@@ -19,7 +19,6 @@
         var email = getUrlParam("email");
         var Gender = getUrlParam("Gender");
         var role = getUrlParam("role");
-        alert(userid);
         var url = "/userManage/modifyuserinfo";
         $.post(
             url,
@@ -31,7 +30,6 @@
                 role:role
             },//参数列表
             function(result,status,xhr){
-                alert(result.msg);
                 window.location.href="manageUser.html?num=0";
             },
             "json"
