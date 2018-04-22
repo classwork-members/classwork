@@ -1,13 +1,11 @@
 package com.soft.classwork.service;
 
 import com.soft.classwork.enums.ResultEnum;
-import com.soft.classwork.model.Cases;
-import com.soft.classwork.model.CasesPhase;
-import com.soft.classwork.model.Data;
-import com.soft.classwork.model.Result;
+import com.soft.classwork.model.*;
 import com.soft.classwork.repository.CaseRepository;
 import com.soft.classwork.repository.CasesPhaseRepository;
 import com.soft.classwork.repository.DataRepository;
+import com.soft.classwork.repository.IllnessRepository;
 import com.soft.classwork.utils.FileUtil;
 import com.soft.classwork.utils.FtpFileUtil;
 import com.soft.classwork.utils.ResultUtil;
@@ -38,8 +36,14 @@ public class CaseService {
     @Autowired
     CasesPhaseRepository casesPhaseRepository;
 
-    public List<Cases> findCasesByIllnessid(Integer illnessId){
-        return caseRepository.findCasesByIllnessid(illnessId);
+    @Autowired
+    IllnessRepository illnessRepository;
+
+    public IllnessCases findCasesByIllnessid(Integer illnessId){
+        IllnessCases illnessCases = new IllnessCases();
+        illnessCases.setCasesList(caseRepository.findCasesByIllnessid(illnessId));
+        illnessCases.setIllnessdesc(illnessRepository.getOne(illnessId).getIllnessdesc());
+        return illnessCases;
     }
 
 //    public Result addCase(String blm,

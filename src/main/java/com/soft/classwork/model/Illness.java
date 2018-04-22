@@ -12,6 +12,7 @@ public class Illness {
   private Integer illnessid;
   private String illnessname;
   private Integer parentid;
+  private String illnessdesc;
 
 
   public Integer getIllnessid() {
@@ -40,4 +41,11 @@ public class Illness {
     this.parentid = parentid;
   }
 
+  public String getIllnessdesc() {
+    return illnessdesc;
+  }
+
+  public void setIllnessdesc(String illnessdesc) {
+    this.illnessdesc = illnessdesc;
+  }
 }
