@@ -22,14 +22,14 @@ public class CaseServiceTest {
 
     @Autowired
     private CaseService caseService;
-    @Test
-    public void findCasesByIllnessid() {
-        ///////
-       // List<Cases> casesList = caseService.findCasesByIllnessid(3);
-
-        ///////
-        //Assert.assertNotNull(casesList);
-    }
+//    @Test
+//    public void findCasesByIllnessid() {
+//        ///////
+//        List<Cases> casesList = caseService.findCasesByIllnessid(3);
+//
+//        ///////
+//        Assert.assertNotNull(casesList);
+//    }
 
     @Test
     public void getAllCases() {
