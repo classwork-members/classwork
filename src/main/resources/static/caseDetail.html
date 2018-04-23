@@ -283,7 +283,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 <button type="button" class="btn btn-default" onclick="addfile()">新增文件</button>
                                                 <input type="file" class="form-control" id="postfile1" name="file">
 
-                                                <input id="filenum" hidden>
+                                                <input id="filenum" value="1" hidden>
                                             </div>
                                             <div class="form-group">
                                                 <div id="out" hidden>
@@ -313,30 +313,30 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                     }
 
                                                     //设置定时操作函数
-                                                    function s() {
-                                                        if (m == 0) {
-                                                            //首次开始,即m=0时
-                                                            timer = setInterval(run, 100);
-                                                            btn.innerHTML = '暂停';
-                                                            btn.style.color = '#fff';
-                                                            btn.style.backgroundColor = '#000';
-                                                        } else {
-                                                            //m非0,进度条在执行,要根据标记 判断是否为暂停/开始
-                                                            if (mark) {
-                                                                mark = false; //改标记状态
-                                                                clearInterval(timer);
-                                                                btn.innerHTML = '开始';
-                                                                btn.style.color = '#000';
-                                                                btn.style.backgroundColor = '#fff';
-                                                            } else {
-                                                                mark = true; //改标记状态
-                                                                timer = setInterval(run, 100);
-                                                                btn.innerHTML = '暂停';
-                                                                btn.style.color = '#fff';
-                                                                btn.style.backgroundColor = '#000';
-                                                            }
-                                                        }
-                                                    }
+                                                    // function s() {
+                                                    //     if (m == 0) {
+                                                    //         //首次开始,即m=0时
+                                                    //         timer = setInterval(run, 100);
+                                                    //         btn.innerHTML = '暂停';
+                                                    //         btn.style.color = '#fff';
+                                                    //         btn.style.backgroundColor = '#000';
+                                                    //     } else {
+                                                    //         //m非0,进度条在执行,要根据标记 判断是否为暂停/开始
+                                                    //         if (mark) {
+                                                    //             mark = false; //改标记状态
+                                                    //             clearInterval(timer);
+                                                    //             btn.innerHTML = '开始';
+                                                    //             btn.style.color = '#000';
+                                                    //             btn.style.backgroundColor = '#fff';
+                                                    //         } else {
+                                                    //             mark = true; //改标记状态
+                                                    //             timer = setInterval(run, 100);
+                                                    //             btn.innerHTML = '暂停';
+                                                    //             btn.style.color = '#fff';
+                                                    //             btn.style.backgroundColor = '#000';
+                                                    //         }
+                                                    //     }
+                                                    // }
                                                 </script>
                                                 <style type="text/css">
                                                     #out {
@@ -383,7 +383,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <script>
                             function postdata() {
                                 document.getElementById("out").hidden=false;
-                                s();
+                                //s();
                                 var file = null;
                                 var input = $("#file_upload"); //文件域选择文件时, 执行readFile函数
                                 input.addEventListener('change',readFile,false);
@@ -404,7 +404,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     var test1 = "zl";
                                 else
                                     alert(document.getElementById("bljdm1").checked);
-                                formdata.append("file",document.getElementById("postfile").files[0]);
+
+                                var num=document.getElementById("filenum").value;
+                                num=Number(num);
+                                for (var i=0;i<num;i++){
+                                    formdata.append("file"+num,document.getElementById("postfile"+num).files[0]);
+
+                                }
                                 formdata.append("casephasename",test1);
                                 var id = getUrlParam("id");
                                 formdata.append("casesid",id);

@@ -16,4 +16,5 @@ public interface TestRepository extends JpaRepository<Test,Integer>{
 
     public List<Test> findAllByTestnameContaining(String testname);
 
+    public List<Test> findAllByOrderByTestidAsc();
 }

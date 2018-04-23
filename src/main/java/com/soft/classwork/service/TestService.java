@@ -34,7 +34,7 @@ public class TestService {
 
     public List<BigTest> getAllTest(){
         List<BigTest> bigTests = new ArrayList<>();
-        List<Test> tests = testRepository.findAll();
+        List<Test> tests = testRepository.findAllByOrderByTestidAsc();
         System.out.println(tests.toString());
         for(Test t : tests) {
             BigTest bigTest = new BigTest();

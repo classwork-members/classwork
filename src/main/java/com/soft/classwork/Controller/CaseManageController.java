@@ -103,7 +103,7 @@ public class CaseManageController {
     }
 
     @PostMapping(value = "/addOneFileData")
-    public Result addOneFileData(@RequestParam("file") MultipartFile file,
+    public Result addOneFileData(@RequestParam("file1") MultipartFile file,
                                  @RequestParam("casesid") Integer casesid,//3
                                  @RequestParam("casephasename") String casephasename,
                                  @RequestParam(value = "file2",required = false) MultipartFile file2,
