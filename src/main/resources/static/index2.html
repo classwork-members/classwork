@@ -56,6 +56,45 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript">
 
         $(document).ready(function () {
+            var url = "/getItemsCount";
+            $.get(
+                url,
+                {},//参数列表
+                function(result,status,xhr){
+                    var assay=result.data[0].item_count;
+                    var thecase=result.data[1].item_count;
+                    var charge=result.data[2].item_count;
+                    var department=result.data[3].item_count;
+                    var drug=result.data[4].item_count;
+                    var exam=result.data[5].item_count;
+                    var hospitalized=result.data[6].item_count;
+                    var test=result.data[7].item_count;
+                    var user=result.data[8].item_count;
+                    var vaccine=result.data[9].item_count;
+                    var assay_label=document.getElementById("assay");
+                    var case_label=document.getElementById("case");
+                    var charge_label=document.getElementById("charge");
+                    var department_label=document.getElementById("department");
+                    var drug_label=document.getElementById("drug");
+                    var exam_label=document.getElementById("exam");
+                    var hospitalized_label=document.getElementById("hospitalized");
+                    var test_label=document.getElementById("test");
+                    var user_label=document.getElementById("user");
+                    var vaccine_label=document.getElementById("vaccine");
+                    assay_label.innerHTML=assay;
+                    case_label.innerHTML=thecase;
+                    charge_label.innerHTML=charge;
+                    department_label.innerHTML=department;
+                    drug_label.innerHTML=drug;
+                    exam_label.innerHTML=exam;
+                    hospitalized_label.innerHTML=hospitalized;
+                    test_label.innerHTML=test;
+                    user_label.innerHTML=user;
+                    vaccine_label.innerHTML=vaccine;
+
+                },
+                "json"
+            );
             $('#demo-pie-1').pieChart({
                 barColor: '#2dde98',
                 trackColor: '#eee',
@@ -242,7 +281,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="r3_counter_box">
                         <i class="pull-left fa fa-user icon-rounded"></i>
                         <div class="stats">
-                            <h5><strong>28</strong></h5>
+                            <h5 id="user"></h5>
                             <span>用户总数</span>
                         </div>
                     </div>
@@ -252,7 +291,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="r3_counter_box">
                         <i class="pull-left fa fa-building-o user1 icon-rounded"></i>
                         <div class="stats">
-                            <h5><strong>13</strong></h5>
+                            <h5 id="department"></h5>
                             <span>科室总数</span>
                         </div>
                     </div>
@@ -263,7 +302,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="r3_counter_box">
                         <i class="pull-left fa fa-credit-card user2 icon-rounded"></i>
                         <div class="stats">
-                            <h5><strong>6</strong></h5>
+                            <h5 id="hospitalized"></h5>
                             <span>住院信息总数</span>
                         </div>
                     </div>
@@ -274,7 +313,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="r3_counter_box">
                         <i class="pull-left fa  fa-eraser dollar1 icon-rounded"></i>
                         <div class="stats">
-                            <h5><strong>6</strong></h5>
+                            <h5 id="drug"></h5>
                             <span>药品总数</span>
                         </div>
                     </div>
@@ -285,7 +324,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="r3_counter_box">
                         <i class="pull-left fa fa-money dollar2 icon-rounded"></i>
                         <div class="stats">
-                            <h5><strong>3</strong></h5>
+                            <h5 id="charge"></h5>
                             <span>收费总数</span>
                         </div>
                     </div>
@@ -300,7 +339,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="r3_counter_box">
                         <i class="pull-left fa fa-stethoscope icon-rounded"></i>
                         <div class="stats">
-                            <h5><strong>1</strong></h5>
+                            <h5 id="assay"></h5>
                             <span>化验项目总数</span>
                         </div>
                     </div>
@@ -311,7 +350,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="r3_counter_box">
                         <i class="pull-left fa  fa-shield user1 icon-rounded"></i>
                         <div class="stats">
-                            <h5><strong>2</strong></h5>
+                            <h5 id="vaccine"></h5>
                             <span>疫苗总数</span>
                         </div>
                     </div>
@@ -322,7 +361,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="r3_counter_box">
                         <i class="pull-left fa fa-ambulance user2 icon-rounded"></i>
                         <div class="stats">
-                            <h5><strong>7</strong></h5>
+                            <h5 id="case"></h5>
                             <span>病例总数</span>
                         </div>
                     </div>
@@ -333,7 +372,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="r3_counter_box">
                         <i class="pull-left fa fa-list-alt dollar1 icon-rounded"></i>
                         <div class="stats">
-                            <h5><strong>16</strong></h5>
+                            <h5 id="exam"></h5>
                             <span>考题总数</span>
                         </div>
                     </div>
@@ -344,7 +383,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="r3_counter_box">
                         <i class="pull-left fa fa-pencil-square-o dollar2 icon-rounded"></i>
                         <div class="stats">
-                            <h5><strong>4</strong></h5>
+                            <h5 id="test"></h5>
                             <span>考卷总数</span>
                         </div>
                     </div>
