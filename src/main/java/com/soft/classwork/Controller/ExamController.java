@@ -231,7 +231,7 @@ public class ExamController {
 
 
     @GetMapping(value = "/examMange/searchByExaminaName")
-    public Result searchByExaminaName(String name){
+    public Result searchByExaminaName(@RequestParam(value = "ExaminaName") String name){
         List<Examination> examinationList = testService.searchByExaminaName(name);
         if (examinationList==null){
             return ResultUtil.Error(ResultEnum.GETDARA_FAIL);
@@ -249,13 +249,15 @@ public class ExamController {
     }
 
     @PostMapping(value = "/examManage/deleteUserTest")
-    public Result deleteUserTest(Integer userid,Integer testid){
+    public Result deleteUserTest(@RequestParam(value = "userid") Integer userid,
+                                 @RequestParam(value = "testid") Integer testid){
         userTestService.deleteUserTestByUseridAndTestid(userid,testid);
         return ResultUtil.success("delete success!");
     }
 
     @PostMapping(value = "/examManage/deleteExaminTest")
-    public Result deleteExaminTest(Integer testid,Integer examid){
+    public Result deleteExaminTest(@RequestParam(value = "testid") Integer testid,
+                                   @RequestParam(value = "examid") Integer examid){
         testService.deleteExaminTest(testid,examid);
         return ResultUtil.success("delete success!");
     }
