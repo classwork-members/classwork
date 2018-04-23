@@ -298,7 +298,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script>
 
     $("#registerUserBt").click(function(){
-        alert(JSON.stringify($('#endtime').val()));
         $.ajax({
             type: "POST",   //提交的方法
             url:"/examManage/updateExamination", //提交的地址
