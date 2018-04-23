@@ -230,7 +230,7 @@ public class ExamController {
     }
 
 
-    @PostMapping(value = "/examMange/searchByExaminaName")
+    @PostMapping(value = "/examManage/searchByExaminaName")
     public Result searchByExaminaName(@RequestParam(value = "ExaminaName") String name){
         List<Examination> examinationList = testService.searchByExaminaName(name);
         if (examinationList==null){
