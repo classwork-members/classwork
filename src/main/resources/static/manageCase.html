@@ -182,12 +182,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 var num = getUrlParam("num");
                                 var name = getUrlParam("name");
                                 var sousuo = getUrlParam("sousuo");
-                                var testdiv = document.getElementById("title");
-                                var h4 = document.createElement('h4');
-                                h4.innerHTML=name+"-病例列表";
-                                testdiv.appendChild(h4);
-                                var testdiv2 = document.getElementById("title2");
-                                testdiv2.innerHTML=name+"-病例简介";
+
                                 if(sousuo==null || sousuo=="")
                                 {
                                     document.getElementById("catalog-name").value=id;
@@ -198,6 +193,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         {},//参数列表
                                         function(data){
                                             var result=data.casesList;
+                                            var testdiv = document.getElementById("title");
+                                            var h4 = document.createElement('h4');
+                                            h4.innerHTML=name+"-病例列表";
+                                            testdiv.appendChild(h4);
+                                            var testdiv2 = document.getElementById("title2");
+                                            testdiv2.innerHTML=name+"-病例简介";
                                             var jianjie = document.getElementById("jianjie");
                                             var p = document.createElement('p');
                                             var thejianjie="";
@@ -212,7 +213,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 for (var i=num;i<num+2;i++)
                                                 {
                                                     var $tab1 = $("#thedata");
-                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result[i].caseid +"</th><td>"+ result[i].illnessid +"</td><td>"+ result[i].casename +"</td><td>"+ result[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result[i].caseid+"\" >查看详情</a></td></tr>";
+                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result[i].caseid +"</th><td>"+ result[i].illnessid +"</td><td>"+ result[i].casename +"</td><td>"+ result[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result[i].caseid+"&diseaseid="+id+"\" >查看详情</a></td></tr>";
                                                     $tab1.append(trData);
                                                 }
                                             }
@@ -221,7 +222,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 for (var i=num;i<result.length;i++)
                                                 {
                                                     var $tab1 = $("#thedata");
-                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result[i].caseid +"</th><td>"+ result[i].illnessid +"</td><td>"+ result[i].casename +"</td><td>"+ result[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result[i].caseid+"\" >查看详情</a></td></tr>";
+                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result[i].caseid +"</th><td>"+ result[i].illnessid +"</td><td>"+ result[i].casename +"</td><td>"+ result[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result[i].caseid+"&diseaseid="+id+"\" >查看详情</a></td></tr>";
                                                     $tab1.append(trData);
                                                 }
                                             }
@@ -249,34 +250,42 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         url,
                                         {},//参数列表
                                         function(result){
-                                            if(num+2<result.data.length)
+                                            var testdiv = document.getElementById("title");
+                                            var h4 = document.createElement('h4');
+                                            h4.innerHTML=sousuo+"-搜索结果";
+                                            testdiv.appendChild(h4);
+                                            if(result.data!="nothing found")
                                             {
-                                                for (var i=num;i<num+2;i++)
+                                                if(num+2<result.data.length)
                                                 {
-                                                    var $tab1 = $("#thedata");
-                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].caseid +"</th><td>"+ result.data[i].illnessid +"</td><td>"+ result.data[i].casename +"</td><td>"+ result.data[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result.data[i].caseid+"\" >查看详情</a></td></tr>";
-                                                    $tab1.append(trData);
+                                                    for (var i=num;i<num+2;i++)
+                                                    {
+                                                        var $tab1 = $("#thedata");
+                                                        var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].caseid +"</th><td>"+ result.data[i].illnessid +"</td><td>"+ result.data[i].casename +"</td><td>"+ result.data[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result.data[i].caseid+"&diseaseid="+id+"\" >查看详情</a></td></tr>";
+                                                        $tab1.append(trData);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    for (var i=num;i<result.data.length;i++)
+                                                    {
+                                                        var $tab1 = $("#thedata");
+                                                        var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].caseid +"</th><td>"+ result.data[i].illnessid +"</td><td>"+ result.data[i].casename +"</td><td>"+ result.data[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result.data[i].caseid+"&diseaseid="+id+"\" >查看详情</a></td></tr>";
+                                                        $tab1.append(trData);
+                                                    }
+                                                }
+                                                var ul=document.getElementById("pagenum");
+                                                var pagenum=1;
+                                                for(var j=0;j<result.data.length;j+=2)
+                                                {
+                                                    var li=document.createElement("li");
+                                                    j=Number(j);
+                                                    li.innerHTML="<a href=\"manageCase.html?sousuo="+sousuo+"&num="+j+"&name="+name+"&id="+id+"\">"+pagenum+"</a>";
+                                                    ul.appendChild(li);
+                                                    pagenum++;
                                                 }
                                             }
-                                            else
-                                            {
-                                                for (var i=num;i<result.data.length;i++)
-                                                {
-                                                    var $tab1 = $("#thedata");
-                                                    var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].caseid +"</th><td>"+ result.data[i].illnessid +"</td><td>"+ result.data[i].casename +"</td><td>"+ result.data[i].casedate +"</td><td><a href=\"caseDetail.html?id="+result.data[i].caseid+"\" >查看详情</a></td></tr>";
-                                                    $tab1.append(trData);
-                                                }
-                                            }
-                                            var ul=document.getElementById("pagenum");
-                                            var pagenum=1;
-                                            for(var j=0;j<result.data.length;j+=2)
-                                            {
-                                                var li=document.createElement("li");
-                                                j=Number(j);
-                                                li.innerHTML="<a href=\"manageCase.html?sousuo="+sousuo+"&num="+j+"&name="+name+"&id="+id+"\">"+pagenum+"</a>";
-                                                ul.appendChild(li);
-                                                pagenum++;
-                                            }
+
 
                                         },
                                         "json"

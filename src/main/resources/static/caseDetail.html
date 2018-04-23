@@ -148,6 +148,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         }
         $(document).ready(function( ){
             var id = getUrlParam("id");
+            var diseaseid = getUrlParam("diseaseid");
+            document.getElementById("diseaseid").value=diseaseid;
             var url = "/caseManage/getOneCasesAllData?casesid="+id;
             $.get(
                 url,
@@ -194,9 +196,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <div class="tables">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <a href="diseaseChoice.html"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></a>
                         <h4 class="modal-title" id="exampleModalLabel2">疾病名</h4>
                     </div>
+                    <input id="diseaseid" hidden>
                     <div class="modal-body" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">

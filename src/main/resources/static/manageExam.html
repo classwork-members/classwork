@@ -203,10 +203,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             }
                             else
                             {
-                                var url = "/examManage/getAllExamination";
-                                $.get(
+                                var url = "/examManage/searchByExaminaName";
+                                $.post(
                                     url,
-                                    {},//参数列表
+                                    {
+                                        ExaminaName:sousuo
+                                    },//参数列表
                                     function(result,status,xhr){
                                         num=Number(num);
                                         if(num+5<result.data.length)
