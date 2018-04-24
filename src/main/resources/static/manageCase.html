@@ -308,15 +308,36 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         {},//参数列表
                                         function(data) {  //成功
                                             if (data.code == "0000") {
-                                                document.getElementById("jztext").value = data.data[0].content;
-                                                document.getElementById("jctext").value = data.data[2].content;
-                                                document.getElementById("zdtext").value = data.data[4].content;
-                                                document.getElementById("zltext").value = data.data[0].content;
-                                                document.getElementById("dataid1").value = data.data[6].dataid;
-                                                document.getElementById("dataid2").value = data.data[4].dataid;
-                                                document.getElementById("dataid3").value = data.data[2].dataid;
-                                                document.getElementById("dataid4").value = data.data[0].dataid;
-                                            } else {
+                                                var length=data.data.length;
+                                                var i=0;
+                                                while(i<length)
+                                                {
+                                                    if(data.data[i].dataname=="文字")
+                                                    {
+                                                        if(data.data[i+1]=="jz"){
+                                                            document.getElementById("jztext").value=data.data[i].content;
+                                                            document.getElementById("dataid1").value = data.data[i].dataid;
+                                                        }
+                                                        else if(data.data[i+1]=="jc"){
+                                                            document.getElementById("jctext").value=data.data[i].content;
+                                                            document.getElementById("dataid2").value = data.data[i].dataid;
+                                                        }
+                                                        else if(data.data[i+1]=="zd"){
+                                                            document.getElementById("zdtext").value=data.data[i].content;
+                                                            document.getElementById("dataid3").value = data.data[i].dataid;
+                                                        }
+                                                        else if(data.data[i+1]=="zl"){
+                                                            document.getElementById("zltext").value=data.data[i].content;
+                                                            document.getElementById("dataid4").value = data.data[i].dataid;
+                                                        }
+                                                        else {
+                                                            alert("error");
+                                                        }
+                                                    }
+                                                    i=i+2;
+                                                }
+                                            }
+                                            else {
                                                 alert(data.msg);
                                             }
                                         },
