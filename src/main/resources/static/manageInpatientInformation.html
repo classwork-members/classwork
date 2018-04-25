@@ -346,7 +346,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             <h4 class="modal-title" id="mySmallModalLabel">提示</h4>
                                         </div>
-                                        <div class="modal-body"> 确定要删除该科室吗                                        </div>
+                                        <div class="modal-body"> 确定要删除该住院信息吗                                        </div>
                                         <div class="modal-footer" value="" id="delete-hospitalized">
                                             <button type="button" class="btn btn-default" onclick="deleteTheInfo()">确定</button>
                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -452,15 +452,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     $("#modifyInfoBt").click(function() {
             $.ajax({
                 type: "POST",   //提交的方法
-                //contentType: "application/json;charset=UTF-8",
+                contentType: "application/json;charset=UTF-8",
                 url: "/hospitalized/modifyHosInfo", //提交的地址
-                data:$("#modifyInfo").serialize(),
-                    /*JSON.stringify({
+                data://$("#modifyInfo").serialize(),
+                    JSON.stringify({
                         hospitalizedid:$("#hospitalizedid").val(),
-                        illnessname: $("#recipient2-name").val(),
-                        dt_in_hospital: $("#user_date21").val(),
-                        dt_out_hospital: $("#user_date22").val(),
-                }),*/
+                        illnessname: $("#illnessname").val(),
+                        dt_in_hospital: $("#dt_in_hospital").val(),
+                        dt_out_hospital: $("#dt_out_hospital").val(),
+                }),
                 async: false,
                 error: function (request) {  //失败的话
                     alert("Connection error");
