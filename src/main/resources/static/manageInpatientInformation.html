@@ -293,7 +293,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <thead>
                         <tr >
                             <th>ID</th>
-                            <th>病种名</th>
+                            <th>病例名</th>
                             <th>入院时间</th>
                             <th>出院时间</th>
                         </tr>
@@ -318,7 +318,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         <div class="modal-body">
                                             <form id="newInfo" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">病种名</label>
+                                                    <label for="recipient-name" class="control-label">病例名</label>
                                                     <input type="text" class="form-control" id="recipient-name">
                                                 </div>
                                                 <div class="form-group">
@@ -365,17 +365,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         <div class="modal-body">
                                         <form id="modifyInfo" onsubmit="return beforeSubmit()">
                                             <div class="form-group">
-                                                <label for="illnessname" class="control-label">病种名</label>
+                                                <label for="illnessname" class="control-label">病例名</label>
                                                 <input type="text" class="form-control" value="" id="illnessname" name="illnessname">
                                                 <input value="" id="hospitalizedid" name="hospitalizedid" hidden>
                                             </div>
                                             <div class="form-group">
                                                 <label for="dt_in_hospital" class="control-label">开始时间</label>
-                                                <input type="datetime-local" class="form-control" id="dt_in_hospital" name="dt_in_hospital"/>
+                                                <input type="text" class="form-control" id="dt_in_hospital" name="dt_in_hospital"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="dt_out_hospital" class="control-label">结束时间</label>
-                                                <input type="datetime-local" class="form-control" id="dt_out_hospital" name="dt_out_hospital"/>
+                                                <input type="text" class="form-control" id="dt_out_hospital" name="dt_out_hospital"/>
                                             </div>
                                         </form>
                                     </div>
@@ -452,15 +452,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     $("#modifyInfoBt").click(function() {
             $.ajax({
                 type: "POST",   //提交的方法
-                //contentType: "application/json;charset=UTF-8",
+                contentType: "application/json;charset=UTF-8",
                 url: "/hospitalized/modifyHosInfo", //提交的地址
-                data:$("#modifyInfo").serialize(),
-                    /*JSON.stringify({
+                data: JSON.stringify({
                         hospitalizedid:$("#hospitalizedid").val(),
-                        illnessname: $("#recipient2-name").val(),
-                        dt_in_hospital: $("#user_date21").val(),
-                        dt_out_hospital: $("#user_date22").val(),
-                }),*/
+                        illnessname: $("#illnessname").val(),
+                        dt_in_hospital: $("#dt_in_hospital").val(),
+                        dt_out_hospital: $("#dt_out_hospital").val(),
+                }),
                 async: false,
                 error: function (request) {  //失败的话
                     alert("Connection error");

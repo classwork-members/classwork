@@ -11,6 +11,7 @@ import com.soft.classwork.repository.TestRepository;
 import com.soft.classwork.utils.NumberUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Yuukiiii
@@ -193,12 +194,13 @@ public class TestService {
         return examinaRepostitory.findAllByExaminationnameContaining(name);
     }
 
+    @Transactional
     public void deleteExaminTest(Integer testid,Integer examid){
 
+        TestExam testExam = testExamRepository.findByTestidAndExamid(testid,examid);
         testExamRepository.deleteByTestidAndExamid(testid,examid);
         Test test = testRepository.getOne(testid);
         Integer score = test.getTotalscore();
-        TestExam testExam = testExamRepository.findByTestidAndExamid(testid,examid);
         test.setTotalscore(score-testExam.getScore());
         testRepository.save(test);
 
