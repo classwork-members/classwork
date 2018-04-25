@@ -168,8 +168,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             {
                                 if(data.data[i+1]=="jz"){
                                     var answera = document.createTextNode(data.data[i].content);
-                                    testjz.appendChild(answera);
-                                }
+                                    testjz.appendChild(answera);}
                                 else if(data.data[i+1]=="jc"){
                                     var answerb = document.createTextNode(data.data[i].content);
                                     testjc.appendChild(answerb);}
@@ -187,19 +186,42 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             {
                                 var a = document.createElement("a");
                                 if(data.data[i].datatype=="图片")
-                                    var node = document.createTextNode("图片链接 ");
+                                    var node = document.createTextNode("图片链接:"+data.data[i].dataname);
                                 else
-                                    var node = document.createTextNode("视频链接 ");
+                                    var node = document.createTextNode("视频链接:"+data.data[i].dataname);
                                 a.appendChild(node);
                                 a.setAttribute("href","http://115.159.148.70:8086"+data.data[i].content+"/"+data.data[i].dataname);
+                                var a2 = document.createElement("a");
+                                var node2 = document.createTextNode("    (删除该文件)");
+                                var dataid=data.data[i].dataid;
+                                a2.onclick=function(){
+                                    var url = "/caseManage/deleteOneData";
+                                    $.post(
+                                        url,
+                                        {
+                                            dataid:dataid
+                                        },//参数列表
+                                        function(result,status,xhr){
+                                            window.location.href="caseDetail.html?id="+id+"&diseaseid="+diseaseid;
+                                        },
+                                        "json"
+                                    );
+                                };
+                                a2.appendChild(node2);
+                                var br=document.createElement("br");
                                 if(data.data[i+1]=="jz"){
-                                    testjz.appendChild(a);}
+                                    testjz.appendChild(a);
+                                    testjz.appendChild(a2);
+                                    testjz.appendChild(br);}
                                 else if(data.data[i+1]=="jc"){
-                                    testjc.appendChild(a);}
+                                    testjc.appendChild(a);
+                                    testjc.appendChild(br);}
                                 else if(data.data[i+1]=="zd"){
-                                    testzd.appendChild(a);}
+                                    testzd.appendChild(a);
+                                    testzd.appendChild(br);}
                                 else if(data.data[i+1]=="zl"){
-                                    testzl.appendChild(a);}
+                                    testzl.appendChild(a);
+                                    testzl.appendChild(br);}
                             }
                             i=i+2;
                         }

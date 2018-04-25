@@ -187,7 +187,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                             var illness="杂题";
                                                         }
                                                         else{
-                                                            var illness="null"
+                                                            var illness="全部"
                                                         }
                                                         var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].testid +"</th><td>"+ result.data[i].testname +"</td><td>"+ result.data[i].examcount+"</td><td>"+ result.data[i].totalscore+"</td><td>"+ result.data[i].testtime+"</td><td>"+ illness+"</td><td><a href=\"paperDetail.html?id="+result.data[i].testid+"\">查看具体题目或管理该考卷题目</a></td></tr>";
                                                         $tab1.append(trData);
@@ -202,7 +202,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                             var illness="杂题";
                                                         }
                                                         else{
-                                                            var illness="error"
+                                                            var illness="全部"
                                                         }
                                                         var trData = "<tr onclick=\"setLineNum(this)\"><th>"+ result.data[i].testid +"</th><td>"+ result.data[i].testname +"</td><td>"+ result.data[i].examcount+"</td><td>"+ result.data[i].totalscore+"</td><td>"+ result.data[i].testtime+"</td><td>"+ illness+"</td><td><a href=\"paperDetail.html?id="+result.data[i].testid+"\">查看具体题目或管理该考卷题目</a></td></tr>";
                                                         $tab1.append(trData);
@@ -214,7 +214,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 {
                                                     var li=document.createElement("li");
                                                     j=Number(j);
-                                                    li.innerHTML="<a href=\"managePaper.html?num="+j+"\">"+pagenum+"</a>";
+                                                    li.innerHTML="<a href=\"createExam.html?num="+j+"\">"+pagenum+"</a>";
                                                     ul.appendChild(li);
                                                     pagenum++;
                                                 }
