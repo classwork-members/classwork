@@ -142,6 +142,23 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
             if (r != null) return unescape(r[2]); return null; //返回参数值
         }
+        function theclick(testid,examid) {
+            alert(testid);
+            alert(id);
+            var url = "/examManage/deleteExaminTest";
+            $.post(
+                url,
+                {
+                    username:"23333",
+                    password:"123"
+                },//参数列表
+                function(result,status,xhr){
+                    alert(result.data);
+                    window.location.href="manageUser.html?num=0";
+                },
+                "json"
+            );
+        }
         $(document).ready(function( ){
             var id = getUrlParam("id");
             var url = "examManage/getAllExamByTestid?testid="+id;
@@ -167,14 +184,48 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         div2.className ="panel-body";
                         var correctAnswer = document.createTextNode("答案："+result.data[i].correctAnswer);
                         div2.appendChild(correctAnswer);
+                        var div3 = document.createElement('div');
+                        div3.className ="panel-body";
+                        var examid=result.data[i].examid;
+                        var button = document.createElement('button');
+                        button.onclick=function () {
+                            alert(id);
+                            alert(examid);
+                            var url = "/examManage/deleteExaminTest";
+                            $.post(
+                                url,
+                                {
+                                    testid:id,
+                                    examid:examid
+                                },//参数列表
+                                function(result,status,xhr){
+                                    window.location.href="paperDetail.html?id="+id;
+                                },
+                                "json"
+                            );
+                        };
+                        button.innerHTML="删除该题";
+                        div3.appendChild(button);
                         div.appendChild(div2);
+                        div.appendChild(div3);
                         var testdiv = document.getElementById("collapseOne");
                         testdiv.appendChild(div);
                     }
+                    var a = document.createElement("a");
+                    var button2 = document.createElement('button');
+                    button2.innerHTML="添加新考题";
+                    a.appendChild(button2);
+                    a.setAttribute("href","createPaper2.html?testid="+id);
+                    var div4 = document.createElement('div');
+                    div4.className ="panel-body";
+                    div4.appendChild(a);
+                    var testdiv = document.getElementById("collapseOne");
+                    testdiv.appendChild(div4);
                 },
                 "json"
             );
         });
+
     </script>
     <div id="page-wrapper">
         <div class="main-page general">

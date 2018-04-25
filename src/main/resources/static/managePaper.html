@@ -161,7 +161,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                             var num = getUrlParam("num");
                             var sousuo = getUrlParam("sousuo");
-                            if(sousuo==null || sousuo=="")
+                            if(sousuo==null || sousuo=="null" || sousuo=="")
                             {
                                 var url = "/examManage/alltest";
                                 $.get(
@@ -258,7 +258,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             {
                                                 var li=document.createElement("li");
                                                 j=Number(j);
-                                                li.innerHTML="<a href=\"managePaper.html?num="+j+"\">"+pagenum+"</a>";
+                                                li.innerHTML="<a href=\"managePaper.html?num="+j+"&sousuo="+sousuo+"\">"+pagenum+"</a>";
                                                 ul.appendChild(li);
                                                 pagenum++;
                                             }
@@ -317,13 +317,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 function deleteTheUser() {
                                     var id = document.getElementById("delete-user").value;
                                     var url = "/examManage/deletetest";
+                                    var sousuo = getUrlParam("sousuo");
+                                    var num = getUrlParam("num");
                                     $.post(
                                         url,
                                         {
                                             testid:id
                                         },//参数列表
                                         function(result,status,xhr){
-                                            window.location.href="managePaper.html?num=0";
+                                            window.location.href="managePaper.html?sousuo="+sousuo+"&num=0";
                                         },
                                         "json"
                                     );

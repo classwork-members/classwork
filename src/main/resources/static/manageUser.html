@@ -159,7 +159,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             if (r != null) return unescape(r[2]); return null; //返回参数值
                         }
                         $(document).ready(function( ){
-
                             var num = getUrlParam("num");
                             var sousuo = getUrlParam("sousuo");
                             if(sousuo==null || sousuo=="")
@@ -257,7 +256,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         {
                                             var li=document.createElement("li");
                                             j=Number(j);
-                                            li.innerHTML="<a href=\"manageUser.html?num="+j+"\">"+pagenum+"</a>";
+                                            li.innerHTML="<a href=\"manageUser.html?num="+j+"&sousuo="+sousuo+"\">"+pagenum+"</a>";
                                             ul.appendChild(li);
                                             pagenum++;
                                         }
