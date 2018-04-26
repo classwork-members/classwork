@@ -107,11 +107,22 @@
         else if( document.getElementById("bljdm4").checked==true)
             var test1 = "zl";
         var id =$.getUrlParam('id');
-        formdata.append("file1",document.getElementById("file-1").files[0]);
-        formdata.append("file2",document.getElementById("file-1").files[1]);
-        formdata.append("file3",document.getElementById("file-1").files[2]);
-        formdata.append("file4",document.getElementById("file-1").files[3]);
-        formdata.append("file5",document.getElementById("file-1").files[4]);
+        var obj = document.getElementById("file-1");
+        for(var i=0;i<obj.files.length;i++) {
+            var str = "file"+i;
+            formdata.append(str,obj.files[i]);
+        }
+        alert(obj.files[0])
+        alert(obj.files[1])
+        alert(obj.files[2])
+
+        // formdata.append("file1",document.getElementById("file-1").files[0]);
+        // alert(document.getElementById("file-1").files[0].toString())
+        // formdata.append("file2",document.getElementById("file-1").files[1]);
+        // alert(document.getElementById("file-1").files[1].toString())
+        // formdata.append("file3",document.getElementById("file-1").files[2]);
+        // formdata.append("file4",document.getElementById("file-1").files[3]);
+        // formdata.append("file5",document.getElementById("file-1").files[4]);
         formdata.append("casephasename",test1);
         formdata.append("casesid",id);
         $.ajax({

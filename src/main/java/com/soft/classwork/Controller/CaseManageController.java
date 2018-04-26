@@ -94,6 +94,7 @@ public class CaseManageController {
 
     }
 
+
     @GetMapping(value = "/getOneCasesAllData")
     public Result getOneCasesAllData(@RequestParam("casesid") Integer casesid){
         List<Object> dataList = caseService.getOneCasesAllData(casesid);
@@ -140,7 +141,14 @@ public class CaseManageController {
         }
         return  ResultUtil.success("five datas upload success!");
     }
-
+//    @PostMapping(value = "/addOneFileData")
+//    public Result addOneFileData(@RequestParam("file1") MultipartFile[] files,
+//                                 @RequestParam("casesid") Integer casesid,//3
+//                                 @RequestParam("casephasename") String casephasename) throws IOException{
+//        boolean flag = false;
+//        for (int i =0;i<files.length)
+//            caseService.addOneFileData()
+//    }
     @GetMapping(value = "/showCasesInfo")
     public Result showCasesInfo(@RequestParam("casesid") Integer casesid){
         List<Data> dataList = caseService.showCasesInfo(casesid);
