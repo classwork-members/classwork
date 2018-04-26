@@ -189,8 +189,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         var examid=result.data[i].examid;
                         var button = document.createElement('button');
                         button.onclick=function () {
-                            alert(id);
-                            alert(examid);
                             var url = "/examManage/deleteExaminTest";
                             $.post(
                                 url,

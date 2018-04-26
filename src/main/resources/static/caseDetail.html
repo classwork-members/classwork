@@ -192,7 +192,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 a.appendChild(node);
                                 a.setAttribute("href","http://115.159.148.70:8086"+data.data[i].content+"/"+data.data[i].dataname);
                                 var a2 = document.createElement("a");
-                                var node2 = document.createTextNode("    (删除该文件)");
+                                var node2 = document.createTextNode("    【删除该文件】");
                                 var dataid=data.data[i].dataid;
                                 a2.onclick=function(){
                                     var url = "/caseManage/deleteOneData";
@@ -215,18 +215,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     testjz.appendChild(br);}
                                 else if(data.data[i+1]=="jc"){
                                     testjc.appendChild(a);
-                                    testjz.appendChild(a2);
-
+                                    testjc.appendChild(a2);
                                     testjc.appendChild(br);}
                                 else if(data.data[i+1]=="zd"){
                                     testzd.appendChild(a);
-                                    testjz.appendChild(a2);
-
+                                    testzd.appendChild(a2);
                                     testzd.appendChild(br);}
                                 else if(data.data[i+1]=="zl"){
                                     testzl.appendChild(a);
-                                    testjz.appendChild(a2);
-
+                                    testzl.appendChild(a2);
                                     testzl.appendChild(br);}
                             }
                             i=i+2;

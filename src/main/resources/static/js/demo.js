@@ -109,6 +109,7 @@ function upload(){
 		processData: false,
 		success: function (data) {
 			alert('succeed!')  //可以替换为自己的方法
+            window.location.href = "/caseDetail.html?id="+id;
 			closeModal();
 			data.deleteAll(); //清空formData
 			$('.tbody').empty(); //清空列表

@@ -202,6 +202,7 @@ public class TestService {
         Test test = testRepository.getOne(testid);
         Integer score = test.getTotalscore();
         test.setTotalscore(score-testExam.getScore());
+        test.setExamcount(test.getExamcount()-1);
         testRepository.save(test);
 
     }
