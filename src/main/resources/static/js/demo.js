@@ -97,6 +97,7 @@ function upload(){
         var test1 = "zl";
 	var data=Dragfiles(); //获取formData
     var id =$.getUrlParam('id');
+    var diseaseid =$.getUrlParam('diseaseid');
     data.append("casephasename",test1);
     data.append("casesid",id);
 	$.ajax({
@@ -109,7 +110,7 @@ function upload(){
 		processData: false,
 		success: function (data) {
 			alert('succeed!')  //可以替换为自己的方法
-            window.location.href = "/caseDetail.html?id="+id;
+            window.location.href = "/caseDetail.html?id="+id+"&diseaseid="+diseaseid;
 			closeModal();
 			data.deleteAll(); //清空formData
 			$('.tbody').empty(); //清空列表
