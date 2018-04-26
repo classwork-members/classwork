@@ -35,18 +35,18 @@ public class CaseManageController {
     //add and update
     @PostMapping(value = "/addCase")
     public Result addCaseWords(@RequestParam("blm") String blm,//病例名
-                          @RequestParam("illnessid") Integer illnessid,//3
-                          @RequestParam("rq") String rq,//日期
-                          //@RequestParam("jz") MultipartFile jz,
-                          @RequestParam(value = "jztext", required = false) String jztext,//接诊
+                               @RequestParam("illnessid") Integer illnessid,//3
+                               @RequestParam("rq") String rq,//日期
+                               //@RequestParam("jz") MultipartFile jz,
+                               @RequestParam(value = "jztext", required = false) String jztext,//接诊
 //                          ,@RequestParam("jc") MultipartFile jc,
-                          @RequestParam(value = "jctext", required = false) String jctext,//检查
+                               @RequestParam(value = "jctext", required = false) String jctext,//检查
 //                          @RequestParam("zd") MultipartFile zd,
-                          @RequestParam(value = "zdtext", required = false) String zdtext,//诊断
+                               @RequestParam(value = "zdtext", required = false) String zdtext,//诊断
 //                          @RequestParam("zl") MultipartFile zl,
-                          @RequestParam(value = "zltext", required = false) String zltext//治疗
+                               @RequestParam(value = "zltext", required = false) String zltext//治疗
     )
-                            throws IOException{
+            throws IOException{
         return caseService.addCaseWords(blm, illnessid, rq,jztext, jctext, zdtext,  zltext);
     }
 
@@ -141,7 +141,7 @@ public class CaseManageController {
         }
         return  ResultUtil.success("five datas upload success!");
     }
-//    @PostMapping(value = "/addOneFileData")
+    //    @PostMapping(value = "/addOneFileData")
 //    public Result addOneFileData(@RequestParam("file1") MultipartFile[] files,
 //                                 @RequestParam("casesid") Integer casesid,//3
 //                                 @RequestParam("casephasename") String casephasename) throws IOException{

@@ -314,7 +314,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             function theclick()
                             {
                                 var id = getUrlParam("id");
-                                window.location.href = "/upload.html?id="+id
+                                var diseaseid = getUrlParam("diseaseid");
+                                window.location.href = "/upload.html?id="+id+"&diseaseid="+diseaseid;
                             }
                         </script>
                     </div>

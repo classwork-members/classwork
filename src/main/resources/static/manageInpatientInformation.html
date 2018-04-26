@@ -143,12 +143,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div class="bs-example widget-shadow" data-example-id="hoverable-table">
                     <div class="header-right">
                         <div class="search-box">
-                                <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32">
-                                <label class="input__label" for="input-32">
-                                    <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                        <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
-                                    </svg>
-                                </label>
+                            <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-32">
+                            <label class="input__label" for="input-32">
+                                <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                    <path d="m0,0l404,0l0,77l-404,0l0,-77z"></path>
+                                </svg>
+                            </label>
                         </div><!--//end-search-box-->
                         <script>
                             $('#input-32').bind('keydown', function(event) {
@@ -293,7 +293,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <thead>
                         <tr >
                             <th>ID</th>
-                            <th>病例名</th>
+                            <th>病种名</th>
                             <th>入院时间</th>
                             <th>出院时间</th>
                         </tr>
@@ -318,7 +318,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         <div class="modal-body">
                                             <form id="newInfo" onsubmit="return beforeSubmit()">
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">病例名</label>
+                                                    <label for="recipient-name" class="control-label">病种名</label>
                                                     <input type="text" class="form-control" id="recipient-name">
                                                 </div>
                                                 <div class="form-group">
@@ -363,28 +363,28 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                             <h4 class="modal-title" id="gridSystemModalLabel">修改住院信息</h4>
                                         </div>
                                         <div class="modal-body">
-                                        <form id="modifyInfo" onsubmit="return beforeSubmit()">
-                                            <div class="form-group">
-                                                <label for="illnessname" class="control-label">病例名</label>
-                                                <input type="text" class="form-control" value="" id="illnessname" name="illnessname">
-                                                <input value="" id="hospitalizedid" name="hospitalizedid" hidden>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="dt_in_hospital" class="control-label">开始时间</label>
-                                                <input type="text" class="form-control" id="dt_in_hospital" name="dt_in_hospital"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="dt_out_hospital" class="control-label">结束时间</label>
-                                                <input type="text" class="form-control" id="dt_out_hospital" name="dt_out_hospital"/>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal" id="modifyInfoBt">保存</button>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
+                                            <form id="modifyInfo" onsubmit="return beforeSubmit()">
+                                                <div class="form-group">
+                                                    <label for="illnessname" class="control-label">病种名</label>
+                                                    <input type="text" class="form-control" value="" id="illnessname" name="illnessname">
+                                                    <input value="" id="hospitalizedid" name="hospitalizedid" hidden>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="dt_in_hospital" class="control-label">开始时间</label>
+                                                    <input type="text" class="form-control" id="dt_in_hospital" name="dt_in_hospital"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="dt_out_hospital" class="control-label">结束时间</label>
+                                                    <input type="text" class="form-control" id="dt_out_hospital" name="dt_out_hospital"/>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" id="modifyInfoBt">保存</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
                             </div>
                         </ul>
                     </div>
@@ -410,68 +410,68 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="js/classie.js"></script>
 <script>
     /*var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-        showLeftPush = document.getElementById( 'showLeftPush' ),
-        body = document.body;
+     showLeftPush = document.getElementById( 'showLeftPush' ),
+     body = document.body;
 
-    showLeftPush.onclick = function() {
-        classie.toggle( this, 'active' );
-        classie.toggle( body, 'cbp-spmenu-push-toright' );
-        classie.toggle( menuLeft, 'cbp-spmenu-open' );
-        disableOther( 'showLeftPush' );
-    };
+     showLeftPush.onclick = function() {
+     classie.toggle( this, 'active' );
+     classie.toggle( body, 'cbp-spmenu-push-toright' );
+     classie.toggle( menuLeft, 'cbp-spmenu-open' );
+     disableOther( 'showLeftPush' );
+     };
 
-    function disableOther( button ) {
-        if( button !== 'showLeftPush' ) {
-            classie.toggle( showLeftPush, 'disabled' );
-        }
-    }*/
+     function disableOther( button ) {
+     if( button !== 'showLeftPush' ) {
+     classie.toggle( showLeftPush, 'disabled' );
+     }
+     }*/
     $("#newInfoBt").click(function(){
-            $.ajax({
-                type: "POST",   //提交的方法
-                contentType: "application/json;charset=UTF-8",
-                url: "/hospitalized/addInfo", //提交的地址
-                data: JSON.stringify({
-                    illnessname: $("#recipient-name").val(),
-                    dt_in_hospital: $("#user_date11").val(),
-                    dt_out_hospital: $("#user_date12").val(),
-                }),
-                async: false,
-                error: function (request) {  //失败的话
-                    alert("Connection error");
-                },
-                success: function (data) {  //成功
-                    if (data.code == "0000") {
-                        window.location.href = "/manageInpatientInformation.html";
-                    } else {
-                        alert(data.msg);
-                    }
+        $.ajax({
+            type: "POST",   //提交的方法
+            contentType: "application/json;charset=UTF-8",
+            url: "/hospitalized/addInfo", //提交的地址
+            data: JSON.stringify({
+                illnessname: $("#recipient-name").val(),
+                dt_in_hospital: $("#user_date11").val(),
+                dt_out_hospital: $("#user_date12").val(),
+            }),
+            async: false,
+            error: function (request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function (data) {  //成功
+                if (data.code == "0000") {
+                    window.location.href = "/manageInpatientInformation.html";
+                } else {
+                    alert(data.msg);
                 }
-            });
+            }
+        });
 
     });
     $("#modifyInfoBt").click(function() {
-            $.ajax({
-                type: "POST",   //提交的方法
-                contentType: "application/json;charset=UTF-8",
-                url: "/hospitalized/modifyHosInfo", //提交的地址
-                data: JSON.stringify({
-                        hospitalizedid:$("#hospitalizedid").val(),
-                        illnessname: $("#illnessname").val(),
-                        dt_in_hospital: $("#dt_in_hospital").val(),
-                        dt_out_hospital: $("#dt_out_hospital").val(),
-                }),
-                async: false,
-                error: function (request) {  //失败的话
-                    alert("Connection error");
-                },
-                success: function (data) {  //成功
-                    if (data.code == "0000") {
-                        window.location.href = "/manageInpatientInformation.html";
-                    } else {
-                        alert(data.msg);
-                    }
+        $.ajax({
+            type: "POST",   //提交的方法
+            contentType: "application/json;charset=UTF-8",
+            url: "/hospitalized/modifyHosInfo", //提交的地址
+            data: JSON.stringify({
+                hospitalizedid:$("#hospitalizedid").val(),
+                illnessname: $("#illnessname").val(),
+                dt_in_hospital: $("#dt_in_hospital").val(),
+                dt_out_hospital: $("#dt_out_hospital").val(),
+            }),
+            async: false,
+            error: function (request) {  //失败的话
+                alert("Connection error");
+            },
+            success: function (data) {  //成功
+                if (data.code == "0000") {
+                    window.location.href = "/manageInpatientInformation.html";
+                } else {
+                    alert(data.msg);
                 }
-            });
+            }
+        });
 
     });
 </script>

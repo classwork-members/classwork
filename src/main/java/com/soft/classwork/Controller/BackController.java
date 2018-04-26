@@ -43,7 +43,7 @@ public class BackController {
         return caseService.findCasesByIllnessid(bingzhong);
     }
 
-//    @RequestMapping(value = "/ftpuploadimg", method = RequestMethod.POST)
+    //    @RequestMapping(value = "/ftpuploadimg", method = RequestMethod.POST)
 //    public Result uploadImg(@RequestParam("file") MultipartFile file,
 //                     HttpServletRequest request) throws IOException {
 //
